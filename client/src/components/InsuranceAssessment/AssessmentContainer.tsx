@@ -61,6 +61,8 @@ export function AssessmentContainer({ assessment }: AssessmentContainerProps) {
         <EmailGate
           leakage={phase1Leakage}
           potential={scoring.netMonthlySwing}
+          scoring={scoring}
+          answers={state.answers}
           onSubmitEmail={submitEmail}
           onSkip={skipEmail}
         />
@@ -74,6 +76,7 @@ export function AssessmentContainer({ assessment }: AssessmentContainerProps) {
         scoring={scoring}
         answers={state.answers}
         showFullResults={state.emailSubmitted}
+        emailAlreadyCaptured={state.emailSubmitted}
       />
     );
   }

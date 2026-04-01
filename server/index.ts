@@ -15,6 +15,7 @@ import trackingRouter from "./tracking";
 import ghlWebhooksRouter from "./ghl-webhooks";
 import painPointsRouter from "./pain-points";
 import micropodRouter, { handlePodcastRss } from "./micropod";
+import insuranceAssessmentRouter from "./insurance-assessment";
 import { logger, withRequestLogging } from "./logger";
 import { createSeoMiddleware } from "./seo-middleware";
 
@@ -62,6 +63,9 @@ async function startServer() {
 
   // GHL Webhook routes - PUBLIC (called by GoHighLevel)
   app.use("/api/ghl-webhooks", ghlWebhooksRouter);
+
+  // Insurance Assessment API routes - PUBLIC
+  app.use("/api/insurance-assessment", insuranceAssessmentRouter);
 
   // Set up authentication (applies session middleware to routes after this)
   await setupAuth(app);

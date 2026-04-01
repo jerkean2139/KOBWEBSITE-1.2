@@ -2,34 +2,54 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, Lock } from "lucide-react";
 import { AnimatedCounter } from "./AnimatedCounter";
-import { ASSESSMENT_ENDPOINTS } from "./config";
+import type { ScoringResult } from "@/data/insuranceAssessment";
 
 interface EmailGateProps {
   leakage: number;
   potential: number;
+  scoring: ScoringResult;
+  answers: Record<number, number | string>;
   onSubmitEmail: (email: string) => void;
   onSkip: () => void;
 }
 
-export function EmailGate({ leakage, potential, onSubmitEmail, onSkip }: EmailGateProps) {
+export function EmailGate({ leakage, potential, scoring, answers, onSubmitEmail, onSkip }: EmailGateProps) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     setLoading(true);
+    setError("");
 
     try {
-      await fetch(ASSESSMENT_ENDPOINTS.emailCapture, {
+      const resp = await fetch("/api/insurance-assessment/capture", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, leakage, potential }),
+        body: JSON.stringify({
+          email,
+          leakage: scoring.phase1Leakage,
+          potential: scoring.netMonthlySwing,
+          annualRecovery: scoring.annualRecovery,
+          costSaved: scoring.costSaved,
+          revenueGained: scoring.revenueGained,
+          hoursRecovered: scoring.hoursRecovered,
+          categoryBreakdown: scoring.categoryBreakdown,
+          answers,
+        }),
       });
-    } catch {
-    }
 
-    onSubmitEmail(email);
+      if (!resp.ok) {
+        throw new Error("Server error");
+      }
+
+      onSubmitEmail(email);
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -59,7 +79,7 @@ export function EmailGate({ leakage, potential, onSubmitEmail, onSkip }: EmailGa
             />
             <p className="text-xs text-gray-500 mt-1">leaking/mo</p>
           </div>
-          <div className="text-2xl text-gray-300 hidden sm:block">→</div>
+          <div className="text-2xl text-gray-300 hidden sm:block">&rarr;</div>
           <div className="text-center">
             <AnimatedCounter
               value={potential}
@@ -71,7 +91,7 @@ export function EmailGate({ leakage, potential, onSubmitEmail, onSkip }: EmailGa
         </div>
 
         <p className="text-gray-600 mb-6">
-          Enter your email to see your personalized report with detailed breakdowns.
+          Enter your email to unlock your full report. We'll also send a PDF copy to your inbox.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-3">
@@ -92,8 +112,11 @@ export function EmailGate({ leakage, potential, onSubmitEmail, onSkip }: EmailGa
             className="w-full py-3 px-6 bg-red-600 text-white rounded-xl font-semibold text-lg hover:bg-red-700 transition-all shadow-lg shadow-red-500/25 flex items-center justify-center gap-2 disabled:opacity-50"
           >
             <Lock size={18} />
-            See My Results
+            {loading ? "Sending..." : "See My Results"}
           </button>
+          {error && (
+            <p className="text-red-500 text-sm" role="alert">{error}</p>
+          )}
         </form>
 
         <button
@@ -104,7 +127,7 @@ export function EmailGate({ leakage, potential, onSubmitEmail, onSkip }: EmailGa
         </button>
 
         <p className="text-xs text-gray-400 mt-4">
-          We'll never spam you. Unsubscribe anytime.
+          We'll send a PDF copy of your results. No spam, ever.
         </p>
       </div>
     </motion.div>

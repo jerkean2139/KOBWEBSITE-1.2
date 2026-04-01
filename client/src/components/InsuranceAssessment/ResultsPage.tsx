@@ -26,6 +26,7 @@ interface ResultsPageProps {
   scoring: ScoringResult;
   answers: Record<number, number | string>;
   showFullResults: boolean;
+  emailAlreadyCaptured?: boolean;
 }
 
 function EmailResultsForm({ scoring }: { scoring: ScoringResult }) {
@@ -38,7 +39,7 @@ function EmailResultsForm({ scoring }: { scoring: ScoringResult }) {
     if (!email) return;
     setLoading(true);
     try {
-      await fetch(ASSESSMENT_ENDPOINTS.emailResults, {
+      const resp = await fetch(ASSESSMENT_ENDPOINTS.emailResults, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -48,8 +49,10 @@ function EmailResultsForm({ scoring }: { scoring: ScoringResult }) {
           annual: scoring.annualRecovery,
         }),
       });
+      if (resp.ok) {
+        setSubmitted(true);
+      }
     } catch {}
-    setSubmitted(true);
     setLoading(false);
   };
 
@@ -85,7 +88,7 @@ function EmailResultsForm({ scoring }: { scoring: ScoringResult }) {
   );
 }
 
-export function ResultsPage({ scoring, answers, showFullResults }: ResultsPageProps) {
+export function ResultsPage({ scoring, answers, showFullResults, emailAlreadyCaptured }: ResultsPageProps) {
   const [showAnswers, setShowAnswers] = useState(false);
 
   return (
@@ -345,10 +348,17 @@ export function ResultsPage({ scoring, answers, showFullResults }: ResultsPagePr
           <Calendar size={20} />
           {resultsCopy.cta.primary}
         </a>
-        <div className="mt-2">
-          <p className="text-gray-500 text-sm">{resultsCopy.cta.secondary}</p>
-          <EmailResultsForm scoring={scoring} />
-        </div>
+        {!emailAlreadyCaptured && (
+          <div className="mt-2">
+            <p className="text-gray-500 text-sm">{resultsCopy.cta.secondary}</p>
+            <EmailResultsForm scoring={scoring} />
+          </div>
+        )}
+        {emailAlreadyCaptured && (
+          <p className="text-green-600 text-sm mt-2 font-medium">
+            A PDF copy of your results has been sent to your email.
+          </p>
+        )}
       </motion.div>
     </div>
   );
