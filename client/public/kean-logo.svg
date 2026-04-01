@@ -1,0 +1,11 @@
+<svg width="180" height="50" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap');
+  </style>
+  <text x="10" y="35" font-family="Inter, sans-serif" font-size="28" font-weight="bold" fill="#EF4444">
+    KEAN
+  </text>
+  <text x="95" y="35" font-family="Inter, sans-serif" font-size="20" font-weight="normal" fill="#FFFFFF">
+    ON BIZ
+  </text>
+</svg>

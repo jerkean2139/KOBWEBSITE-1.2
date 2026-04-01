@@ -1,0 +1,149 @@
+import { Button } from "@/components/ui/button";
+import Navigation from "@/components/Navigation";
+import { Calendar as CalendarIcon, Clock, Users, Zap, ArrowRight, ArrowLeft } from "lucide-react";
+import { Link } from "wouter";
+
+const sessionTypes = [
+  {
+    id: "strategy",
+    title: "Strategy & Working Sessions",
+    description: "Deep strategic planning or focused execution work. Perfect for automation strategy, system design, and hands-on implementation.",
+    duration: "60 min",
+    icon: CalendarIcon,
+    href: "/jeremys-calendar-strategy",
+    highlights: ["Automation strategy", "System design", "Implementation"],
+  },
+  {
+    id: "coaching",
+    title: "1:1 Coaching Call",
+    description: "Exclusive session for active coaching clients and their team members who need additional time outside regularly scheduled sessions.",
+    duration: "60 min",
+    icon: Users,
+    href: "/jeremys-calendar-coaching",
+    highlights: ["Clients only", "Team training", "Progress reviews"],
+    badge: "Clients Only",
+  },
+  {
+    id: "intro",
+    title: "Quick Connect",
+    description: "Brief check-in for idea exchange, introductions, or exploring whether coaching is right for you.",
+    duration: "15-20 min",
+    icon: Zap,
+    href: "/jeremys-calendar-intro",
+    highlights: ["Quick questions", "Introductions", "Explore fit"],
+  },
+];
+
+export default function Calendar() {
+  return (
+    <div className="min-h-screen bg-[#0f172a]">
+      <Navigation />
+      
+      <section className="pt-32 pb-16 bg-[#0f172a]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <img 
+              src="/jeremy-about-photo.webp" 
+              alt="Jeremy Kean" 
+              className="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-6 object-cover border-4 border-[#FFD700]/30 shadow-lg"
+            />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Book with <span className="text-[#FFD700]">Jeremy</span>
+            </h1>
+            <p className="text-xl text-slate-300">
+              Choose the session type that fits your needs
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-[#0f172a]">
+        <div className="container">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {sessionTypes.map((session) => {
+              const Icon = session.icon;
+              return (
+                <Link key={session.id} href={session.href}>
+                  <div className="group relative h-full bg-[#1e3a5f] hover:bg-[#172554] border border-[#1e3a5f] hover:border-[#FFD700]/50 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col">
+                    {session.badge && (
+                      <span className="absolute top-4 right-4 bg-[#FFD700] text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+                        {session.badge}
+                      </span>
+                    )}
+                    
+                    <div className="w-14 h-14 rounded-full bg-[#0f172a] flex items-center justify-center mb-4">
+                      <Icon className="text-[#FFD700]" size={28} />
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#FFD700] transition-colors">
+                      {session.title}
+                    </h3>
+                    
+                    <div className="flex items-center gap-2 text-slate-400 mb-4">
+                      <Clock size={16} />
+                      <span className="text-sm">{session.duration}</span>
+                    </div>
+                    
+                    <p className="text-slate-300 text-sm mb-6 leading-relaxed flex-grow">
+                      {session.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {session.highlights.map((highlight) => (
+                        <span
+                          key={highlight}
+                          className="text-xs bg-[#0f172a] text-slate-300 px-2 py-1 rounded"
+                        >
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex items-center text-[#FFD700] font-medium group-hover:gap-3 gap-2 transition-all mt-auto">
+                      <span>Book Now</span>
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-[#1e1b4b]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Not Sure Which Session?
+            </h2>
+            <p className="text-slate-300 mb-6">
+              Start with a Quick Connect call and we'll figure out the best path forward together.
+            </p>
+            <Link href="/jeremys-calendar-intro">
+              <Button 
+                size="lg" 
+                className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-[#0f172a] font-semibold"
+              >
+                Schedule Quick Connect
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-[#0f172a] border-t border-[#1e3a5f]">
+        <div className="container">
+          <div className="text-center">
+            <Link href="/">
+              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[#1e3a5f]">
+                <ArrowLeft className="mr-2" size={16} />
+                Back to Home
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,254 @@
+Kean on Biz — Revenue Leak Calculator Assessment Spec
+Instructions for the AI Agent Building the Page
+
+OVERVIEW
+Add a “Revenue Leak Calculator” assessment to the coaching homepage at keanonbiz.com/insurance. This is a self-scoring interactive quiz that shows State Farm agency owners exactly how much money they’re losing each month by NOT having coaching, systems, team training, and accountability tools in place.
+The assessment serves as the primary lead generation and conversion tool on the homepage. It replaces a generic “Book a Call” CTA with a personalized, data-driven experience that creates urgency and buy-in BEFORE they ever speak to Jeremy.
+BRANDING: This page uses the Kean on Biz brand (red/white/black logo). Do NOT use the Pocket Coach logo or branding. Pocket Coach is a separate product app that lives at pocketcoach.one and is referenced on this page only as a client benefit.
+DO NOT change fonts, colors, theme, or vibe of the existing page. This spec covers ONLY the assessment functionality and copy.
+
+REFERENCE: CoreTrack Assessment Structure (What We’re Modeling After)
+The CoreTrack Assessment at web-production-aa10.up.railway.app uses this proven structure:
+Two-Phase Flow
+Phase 1: “What You’re Losing” — Pain-focused questions that accumulate a running monthly loss total
+Phase 2: “What You Could Gain” — Opportunity-focused questions that calculate potential recovery
+UI Layout (3-Column During Assessment)
+Left sidebar: Running “Estimated Leakage” counter (dollar amount that grows with each answer), risk level badge (Low → Moderate → High → Critical), dynamic motivational/fear quotes
+Center: Question card with category tag, question number (X of N), question text, helper text, 4 answer options (radio buttons) OR numeric input with Next button
+Right sidebar: Progress tracker showing all categories with X/N completion, social proof testimonial (rotates), and in Phase 2: “Potential Impact” calculator showing Cost Saved + Revenue Gained + hours/week recovered + Net Monthly Swing
+Key UX Mechanics
+Auto-advance on radio select — clicking an answer immediately loads the next question (no Next button needed for radio questions)
+Numeric inputs require Next button — for dollar/number fields, user must type a value to enable the Next button
+Running total animation — the leakage counter on the left updates live with each answer, creating a visceral “watching money drain” effect
+Risk level escalation — starts at “Low Risk” and escalates through Moderate → High → Critical as the total grows, with color changes (green → yellow → orange → red)
+Dynamic quotes — the motivational text below the leakage counter changes based on risk level (e.g., “The cracks are starting to show” → “That’s a car payment — every single month” → “You’re funding a competitor’s growth with your waste”)
+Interstitial screens — appear at ~50% completion (“You’re halfway there. $X/mo.") and at the Phase 1→2 transition ("$X/mo — That’s what’s keeping you stuck as the operator — not the CEO.”)
+Social proof testimonial — appears alongside questions after ~5 questions, stays visible throughout
+Progress bar — red progress bar at top fills as questions are completed
+Two-step funnel indicator — shows “1: What You’re Losing” and “2: What You Could Gain” at top with checkmark when Phase 1 completes
+Email gate before results — after final question, show a summary screen with leaking/potential numbers and email capture. Offer both “See My Results” (gated) and “Skip — show me the summary only” (ungated but abbreviated results)
+Phase 2 has BOTH radio and numeric questions — not all Phase 2 questions are numeric inputs. Some (like automatable tasks and time-use preference) use radio buttons with auto-advance.
+
+ADAPTED ASSESSMENT FOR KEANONBIZ.COM/INSURANCE
+Title & Framing
+Page Section Title: “How Much Is Your Agency Leaking?”
+Assessment Title (once started): “What’s Standing Between You and Running Your Agency Like a CEO?”
+Landing copy before start button: > “Most State Farm agents don’t realize they’re bleeding $2,000–$8,000 every month from team inefficiency, missed opportunities, and operating as a firefighter instead of a CEO.” > > “This 3-minute assessment reveals exactly where your agency is losing money — and what changes would recover it.”
+Start CTA: “Find Out What You’re Losing →”
+Social proof below CTA: Jeremy’s avatar + “Jeremy Kean, CEO Sidekick & Agency Coach” + “Trusted by State Farm agents nationwide”
+
+CATEGORIES & QUESTIONS (29 Total)
+8 Categories mapped to Jeremy’s coaching framework:
+Category
+Questions
+Maps To
+Team Performance & Accountability
+4 (Q1–Q4)
+Red/Green Dashboards, Data Accountability
+Sales Process & Presentation
+4 (Q5–Q8)
+Same-Day Presentation, IFR 24hr Rule, Objection Handling
+Life & Health Production
+3 (Q9–Q11)
+Life Pivot, Bundling, Health Cross-Sell
+Team Culture & Psychology
+4 (Q12–Q15)
+Team Coaching, Psychology, Confidence
+Owner Operations & Delegation
+3 (Q16–Q18)
+Visionary vs. Implementer, CEO Mindset
+Client Retention & Growth
+3 (Q19–Q21)
+Follow-Up Systems, Outreach, Referrals
+Sales Discipline & Systems
+2 (Q22–Q23)
+Scoreboards, Objection Management, Process
+Revenue & Opportunity
+7 (Q24–Q28 numeric + Q29 numeric + Q30 radio)
+Personalized financial calculation
+
+
+PHASE 1: “What Your Agency Is Losing” (Questions 1–23, all radio buttons)
+Category 1: Team Performance & Accountability (4 questions)
+Q1: “Does every person on your team have specific, measurable monthly goals?” Helper: “Not corporate goals — individual production targets they own.” - Yes — each person has clear numbers they track weekly → $0 - Sort of — we have team goals but not individual ones → $350/mo - We talk about goals but nothing is written down → $650/mo - No — we just try to hit the agency number → $950/mo
+Q2: “How does your team know if they’re winning or losing on any given day?” Helper: “Think scoreboard, dashboard, daily tracking…” - Real-time dashboard everyone can see (Red/Green system) → $0 - I review numbers with them weekly → $300/mo - They find out at the end of the month → $600/mo - They don’t — I’m the only one watching numbers → $900/mo
+Q3: “When a team member misses their targets, what happens?” Helper: “Accountability is the difference between a wish and a plan.” - Structured conversation with action plan within 48 hours → $0 - I mention it but there’s no formal process → $400/mo - Nothing — I avoid confrontation → $750/mo - I didn’t know they missed because we don’t track individually → $1,000/mo
+Q4: “How often do you review production data with your team?” Helper: “By the 10th, 20th, and 30th — or never?” - 3x/month with structured check-ins (10th/20th/30th) → $0 - Monthly at best → $250/mo - Quarterly when State Farm sends reports → $500/mo - Only when something goes wrong → $750/mo
+Category 2: Sales Process & Presentation (4 questions)
+Q5: “When a new lead comes in, how fast does your team present a quote?” Helper: “Speed-to-quote is the #1 predictor of close rate in insurance.” - Same day — we have a system for immediate presentation → $0 - Within 24-48 hours → $400/mo - It depends on who picks it up → $800/mo - We usually call them back when we get around to it → $1,200/mo
+Q6: “Does your team present insurance as a value conversation or a price comparison?” Helper: “If your team leads with price, you’ve already lost.” - Value-first — we do full gap audits and tell the client’s story → $0 - We try, but most reps default to quoting price → $500/mo - Mostly price comparisons — that’s what the client asks for → $900/mo - We just send quotes and hope for the best → $1,300/mo
+Q7: “Do you have a structured follow-up process after quoting but before closing?” Helper: “80% of sales happen between the 5th and 12th contact.” - Yes — automated + personal follow-up sequence → $0 - Some reps follow up, but it’s inconsistent → $450/mo - We follow up once, maybe twice → $800/mo - If they don’t call back, we move on → $1,100/mo
+Q8: “What happens when a prospect says ‘I need to think about it’?” Helper: “This is where deals die or get saved.” - We have trained responses and a same-day close process → $0 - We say ‘okay’ and hope they call back → $500/mo - We don’t have a response — the rep freezes → $850/mo - Honestly, I don’t know what my team says in that moment → $1,100/mo
+Category 3: Life & Health Production (3 questions)
+Q9: “What percentage of your auto/fire clients also have a life policy with you?” Helper: “The national average for State Farm agents is under 30%.” - Over 50% — we pivot on every conversation → $0 - 30-50% — we try but it’s inconsistent → $600/mo - Under 30% — life comes up occasionally → $1,100/mo - I honestly don’t know the number → $1,500/mo
+Q10: “Does your team have a trained ‘life pivot’ they use on every call?” Helper: “Not a pitch — a natural bridge from auto/fire to life.” - Yes — every team member has a practiced pivot → $0 - A couple people do it, but most skip it → $500/mo - We mention life sometimes but there’s no system → $900/mo - Life production is basically an afterthought → $1,300/mo
+Q11: “Are you actively cross-selling health and financial services?” Helper: “These lines separate top-performing agencies from average ones.” - Yes — it’s part of our review and onboarding process → $0 - Occasionally — when the client brings it up → $400/mo - Rarely — we don’t feel confident in those products → $750/mo - Never — we stick to auto and fire → $1,000/mo
+Category 4: Team Culture & Psychology (4 questions)
+Q12: “If your top producer quit tomorrow, what would happen to your agency?” Helper: “If one person leaving would tank your numbers, that’s a structural problem.” - We’d adjust — no single person carries the agency → $0 - It would hurt but we’d recover in a month or two → $350/mo - It would seriously damage us for 3-6 months → $800/mo - It would be catastrophic — they ARE the agency → $1,200/mo
+Q13: “How would you rate your team’s confidence level right now?” Helper: “Confidence drives production more than product knowledge.” - High — they believe in themselves and the agency → $0 - Mixed — some are confident, others are struggling → $400/mo - Low — there’s a lot of self-doubt and hesitation → $750/mo - Toxic — negativity and drama are constant → $1,100/mo
+Q14: “When there’s conflict on your team, how do you handle it?” Helper: “Unresolved conflict costs more than you think.” - Direct conversation with both parties within 24 hours → $0 - I address it eventually but often let it simmer → $350/mo - I avoid it and hope it resolves itself → $700/mo - Conflict is constant and I don’t know how to fix it → $1,000/mo
+Q15: “Does your team genuinely like working together?” Helper: “Culture isn’t a perk — it’s a production multiplier.” - Yes — there’s real camaraderie and mutual respect → $0 - Mostly — a few personality clashes but manageable → $300/mo - It’s tense — people tolerate each other → $600/mo - It’s toxic — I’m afraid someone is about to quit → $1,000/mo
+Category 5: Owner Operations & Delegation (3 questions)
+Q16: “How many hours per week do YOU spend on tasks your team should handle?” Helper: “Admin, quoting, scheduling, service work, putting out fires…” - Less than 5 — my team runs operations → $0 - 5-15 hours — I still handle a lot of day-to-day → $500/mo - 15-25 hours — I’m doing my job AND theirs → $1,000/mo - 25+ hours — I am the agency, they just help → $1,500/mo
+Q17: “Are you operating as the CEO of your agency or as the top-producing agent?” Helper: “There’s a massive difference — and it determines your ceiling.” - CEO — I work ON the business, not IN it → $0 - Mostly CEO but I still produce a lot personally → $400/mo - More agent than CEO — I can’t step away → $800/mo - 100% agent — if I stop producing, we stop growing → $1,200/mo
+Q18: “If you took a 2-week vacation, what would happen?” Helper: “This is the ultimate test of your systems.” - Business runs smoothly — I’ve done it → $0 - Minor hiccups but mostly fine → $300/mo - Significant drop in production and service → $700/mo - It would basically stop — I can’t leave → $1,100/mo
+Category 6: Client Retention & Growth (3 questions)
+Q19: “What is your current client retention rate?” Helper: “Every lost client costs 5-10x more to replace.” - 95%+ — we have retention systems in place → $0 - 90-95% — decent but we lose some we shouldn’t → $500/mo - 85-90% — noticeable churn every month → $900/mo - Below 85% or I don’t know → $1,300/mo
+Q20: “Do you have a structured outreach system for existing clients?” Helper: “Not marketing blasts — personal, intentional contact.” - Yes — daily outreach buckets with tracked minimums → $0 - We do some outreach but it’s not systematic → $400/mo - Only when it’s time for renewal → $750/mo - No — we wait for them to call us → $1,000/mo
+Q21: “How many referrals does your team generate per month?” Helper: “Referrals are the highest-converting, lowest-cost leads.” - 10+ per month with a referral system → $0 - 5-10 but it’s organic, no system → $350/mo - A few, unpredictably → $650/mo - Almost none — we don’t ask → $900/mo
+Category 7: Sales Discipline & Systems (3 questions)
+Q22: “Do you have a single scoreboard showing daily/weekly/monthly production?” Helper: “If your team can’t see the score, they can’t play to win.” - Yes — visible dashboard updated in real-time → $0 - I track it but the team doesn’t see it regularly → $350/mo - We use State Farm reports at month-end → $600/mo - No consistent tracking at all → $900/mo
+Q23: “Does your team have a documented process for handling the top 5 objections they hear every day?” Helper: “‘I need to think about it.’ ‘I’m happy with my current rate.’ ‘Just send me a quote.’ — does your team know what to say?” - Yes — we’ve trained and role-played every common objection → $0 - A couple reps handle objections well, but most wing it → $450/mo - We don’t have a formal objection-handling process → $800/mo - My team avoids pushback entirely — they just accept ‘no’ → $1,200/mo
+
+PHASE 1→2 TRANSITION INTERSTITIAL
+Show accumulated total in large red text:
+“$[TOTAL]/mo”
+“That’s what’s slipping through the cracks in your agency every month.”
+“Now let’s see what your agency could look like with the right coaching, systems, and team training in place.”
+“The next questions calculate your recovery potential — the revenue, confidence, and freedom you unlock when you stop being the firefighter and start being the CEO.”
+CTA Button: “Show Me My Recovery Potential →”
+
+PHASE 2: “What You Could Gain” (Questions 24–30)
+A mix of NUMERIC INPUTS and RADIO BUTTONS to personalize the financial calculation. These questions shift the tone from “what’s broken” to “what’s possible” — focusing on the revenue hiding inside the conversations your team IS having (but poorly) and the conversations they’re NOT having at all.
+Revenue Metrics Category (5 numeric inputs)
+Q24: “What is your average annual premium per new auto/fire client?” Helper: “Average across all new business this year.” - Numeric input, default: $1,800 - Unit: $/year
+Q25: “How many new policies does your agency write per month?” Helper: “Across all lines — auto, fire, life, health.” - Numeric input, default: 40 - Unit: policies/month
+Q26: “How many team members do you have (including yourself)?” Helper: “Full-time equivalents.” - Numeric input, default: 4 - Unit: people
+Q27: “What is your average staff hourly cost?” Helper: “Loaded cost (salary + benefits + overhead).” - Numeric input, default: $25 - Unit: $/hr - Used in: Cost Saved calculation (wasted hours on low-value work × staff rate)
+Q28: “What would you estimate your hourly value is as the agency owner?” Helper: “What should your time be worth when you’re doing CEO-level work?” - Numeric input, default: $150 - Unit: $/hour
+Opportunity Cost Category (1 numeric + 1 radio)
+Q29 (NUMERIC): “How many hours/week do YOU spend on tasks your team should handle?” Helper: “Admin, inbox, scheduling, quoting, putting out fires — things you shouldn’t be doing.” - Numeric input, default: 15 - Unit: hrs/week - Used in: Hours/week recovered calculation + owner time-value recovery
+Q30 (RADIO — FINAL QUESTION): “If you got 10 extra hours per week, what would you do with them?” Helper: “This determines how we calculate your revenue upside.” - Close more deals and have better conversations → maps to revenue acceleration multiplier - Build referral partnerships and community presence → maps to referral pipeline value - Coach, train, and develop my team → maps to team productivity multiplier - Work on the business — strategy, growth, and planning → maps to operational leverage value
+UX Note: This is labeled “Last question!” above the progress bar. It auto-advances on radio select like Phase 1 questions. The answer maps to the Revenue Gained calculation — each option weights the upside formula differently.
+Total Questions: 30 (23 Phase 1 radio + 6 Phase 2 numeric + 1 Phase 2 radio)
+
+SCORING & CALCULATION LOGIC
+Phase 1 (Leakage Calculation)
+Each radio button answer (Q1–Q23) has a fixed dollar amount ($0 to $1,500)
+Running total accumulates with each answer
+Best-case scenario: $0/mo (all first options)
+Worst-case scenario: ~$23,100/mo (all worst options)
+Realistic range for target audience: $3,000–$10,000/mo
+Phase 2 (Recovery Calculation)
+Use the Phase 1 leakage total + Phase 2 inputs to calculate two buckets:
+Cost Saved (from fixing operational gaps): - Operational leak recovery: Phase 1 total × 0.65 (conservative recovery rate with coaching — better conversations, disciplined follow-up, life pivots, objection handling, and accountability systems recover most of the leakage) - Owner time recovered: Q29 hours × Q28 owner hourly value × 4.33 weeks/month × 0.50 (50% of time redirected to CEO-level work through delegation, process, and team development) - Sum = Total Cost Saved/mo
+Revenue Gained (from unlocked production): - Life policy gap: (Q26 team size × 500 estimated clients/person × life penetration gap × $800 avg premium) / 12 - Life penetration gap = difference between current % (inferred from Q9 answer) and 50% target - This represents the revenue from having every team member trained to pivot every conversation to life - New business acceleration: (Q25 × 1.25 - Q25) × Q24 / 12 - Assumes 25% increase in new policy volume through better value conversations, complimentary gap audits, same-day presentation, and disciplined follow-up - Revenue upside from Q30 answer: - “Close more deals and have better conversations” → 1.3× multiplier on Revenue Gained - “Build referral partnerships and community presence” → 1.2× multiplier on Revenue Gained - “Coach, train, and develop my team” → 1.15× multiplier on Revenue Gained - “Work on the business — strategy, growth, and planning” → 1.1× multiplier on Revenue Gained - Sum = Total Revenue Gained/mo
+Hours/Week Recovered: - Owner hours: Q29 × 0.60 (coaching typically recovers 60% of wasted owner hours through team development and delegation) - Total displayed as “X hrs/week recovered”
+Net Monthly Swing: - -[Phase1Leakage](red)++[Cost Saved + Revenue Gained] (green) = $[Net]/mo (green)
+Risk Level Thresholds
+Monthly Leakage
+Risk Level
+Color
+Badge
+$0–$2,000
+Low Risk
+Green
+✓
+$2,001–$5,000
+Moderate Risk
+Yellow
+⚠
+$5,001–$10,000
+High Risk
+Orange
+⚠
+$10,001+
+Critical
+Red
+🚨
+
+Dynamic Quotes by Risk Level
+Low Risk: “Small optimizations can still unlock thousands.”
+Moderate Risk: “That’s a team member’s salary leaking out every year.”
+High Risk: “You’re paying for coaching you’re not getting — from the worst coach possible: nobody.”
+Critical: “Your agency is funding someone else’s growth with your waste.”
+
+EMAIL GATE (After Q31, Before Full Results)
+After the final question, show a completion screen:
+Top: Green checkmark in circle animation Hero numbers: “-[PHASE1TOTAL]leaking/mo+[TOTAL POTENTIAL] potential/mo” Copy: “Enter your email to see your personalized report. We’ll also send you a PDF copy.” Email input field: placeholder “you@agency.com” Primary CTA (red button, lock icon): “See My Results” Skip link below: “Skip — show me the summary only” Trust line: “We’ll never spam you. Unsubscribe anytime.”
+If they enter email → show FULL results page (detailed breakdown, category bars, recommendations) If they skip → show ABBREVIATED results (just the 3 summary cards and CTA, no category breakdown) Email captured goes to your email/CRM system for nurture sequence
+
+RESULTS PAGE
+After email gate (or skip), show the results page:
+Top Section (Hero)
+Large animated number: “$[NET MONTHLY GAIN]/mo”
+Subheadline: “That’s what’s on the other side of the right coaching.”
+Sub-subheadline: “$[ANNUAL] per year your agency could be recovering”
+Breakdown Cards (3 cards in a row)
+Money You’re Losing — $[PHASE 1 TOTAL]/mo (red) — “From gaps in team performance, sales process, and operations”
+Money You’d Recover — $[RECOVERY TOTAL]/mo (green) — “With coaching, systems, and team training in place”
+Time You’d Get Back — [HOURS]/week (blue) — “Hours redirected from firefighting to CEO-level work”
+“Where You’re Losing Money” (Category Breakdown)
+Show each of the 7 Phase 1 categories with: - Category name - Score (dollar amount lost in that category) - Horizontal bar graph (red fill proportional to loss) - One-line diagnosis (e.g., “Your team has no daily accountability system” or “Life production is significantly below potential”)
+“Where You’d Gain It Back” (Recovery Breakdown)
+Two sub-sections:
+Cost Savings: - Reduced team inefficiency (accountability systems, disciplined processes) - Owner time recaptured (delegation, team development) - Lower client acquisition cost (better conversations = higher close rates = fewer wasted leads)
+Revenue Gained: - Life & health production lift (trained life pivots on every conversation) - New business acceleration (value-based selling, complimentary gap audits, same-day presentation) - Client retention improvement (structured outreach, deeper relationships, reduced churn)
+Hours/Week Back
+Show total hours/week recovered with clock icon, green text.
+“Your Answers at a Glance”
+Expandable/collapsible section showing all 31 answers with the user’s selected response highlighted. Lets them review what they said and see which answers triggered the biggest losses.
+The Pitch Section
+“Here’s the thing — these aren’t just numbers.”
+“Every dollar on this screen represents a real conversation your team isn’t having, a client who’s going to leave, or an hour you’re spending on work that isn’t moving the needle.”
+“I’ve helped State Farm agents recover exactly these kinds of losses — not with corporate playbooks, but by coaching you and your entire team on the psychology, systems, and accountability that State Farm doesn’t teach.”
+— Jeremy Kean, CEO Sidekick
+Social Proof (Below pitch)
+Show 2-3 real testimonials: - Beth P.: “I needed someone to turn me into a CEO, not an agent.” - Anissa V.: “He’s a game changer — a Swiss Army Knife for everything State Farm doesn’t teach you.” - Shelby F.: “I feel more confident this year than I did last year. If there was a trophy to be won, you are absolutely the breadwinner.”
+CTA Section
+Two CTAs:
+Primary CTA (large, prominent): “Book a Free Strategy Call — Let’s Build Your Recovery Plan” → Links to calendar booking
+Secondary CTA (smaller, below): “Not ready to talk? Get your full results emailed to you.” → Email capture form (name + email + agency state) → This is the lead gen mechanism — sends them a PDF of their results + a follow-up nurture sequence
+
+INTERSTITIAL SCREENS
+Halfway Point (after ~Q11): > “You’re halfway there.” > “$[RUNNING TOTAL]/mo” > “Based on your answers so far, you’re leaving more on the table than most agents realize.” > “Finish the assessment to unlock your personalized recovery plan.” > CTA: “Keep Going →”
+Phase Transition (after Q23): Dark background, large red number: > “$[PHASE 1 TOTAL]/mo” > “That’s what’s keeping you stuck as the agent — not the CEO.” > “Now let’s see what your agency looks like when you stop doing everything yourself.” > “The next questions calculate your recovery potential — the revenue, time, and freedom you unlock with the right coaching and systems.” > CTA: “Show Me My Recovery Potential →”
+
+HOMEPAGE INTEGRATION
+Site Architecture
+keanonbiz.com — Main Kean on Biz brand site
+keanonbiz.com/insurance — The coaching homepage (THIS page) with the assessment
+pocketcoach.one — Separate site for the Pocket Coach AI app (for paying clients only)
+The /insurance page mentions Pocket Coach as a client benefit and links to pocketcoach.one. But the assessment, branding, and coaching pitch all live under Kean on Biz.
+Where It Goes
+Add as a major section on keanonbiz.com/insurance, positioned AFTER the “Problems” section and BEFORE “How It Works”
+It should feel like a natural next step: “You’ve read about the problems → now see YOUR numbers”
+Entry Point on Homepage
+A dedicated section with: - Section headline: “How Much Is Your Agency Leaking Every Month?” - Subheadline: “Most State Farm agents are losing $3,000–$8,000/month to gaps they can’t even see. This 3-minute assessment shows you exactly where — and what you’d recover with the right coaching.” - CTA Button: “Take the Free Assessment →” - Below CTA: “Takes 3 minutes • 100% confidential • No email required to start” - Optional: Show a mockup/preview of the results page to create curiosity
+Assessment Can Also:
+Be a standalone page at keanonbiz.com/insurance/assessment for direct linking
+Open in a modal/overlay on the homepage (preferred for keeping people on the page)
+Be linked from the navigation bar as “Free Assessment”
+
+TECHNICAL NOTES
+All calculations happen client-side (no backend needed for the calculator)
+Store answers in React state as the user progresses
+Animate the leakage counter with a counting-up effect when it changes
+Use smooth transitions between questions (fade or slide)
+Mobile-responsive: on mobile, left/right sidebars stack below the question
+The email capture on the results page DOES need a backend endpoint (or use a form service like Formspree/ConvertKit)
+Consider saving assessment results to Supabase if you want to track completion rates and average scores
+
+STATE FARM CONTEXT (Important for Copy & Positioning)
+State Farm agent offices run on locked-down corporate systems. The primary CRM is eCRM (built on Salesforce). Key constraints and philosophy for the assessment:
+No AI or automation language in the assessment. State Farm corporate has not broadly adopted AI tools for agents. More importantly, the real coaching gaps Jeremy addresses aren’t technology gaps — they’re people gaps. The money agents lose comes from team members who aren’t having value-based conversations, aren’t pivoting to life, aren’t handling objections, aren’t following up with discipline, and aren’t being held accountable. The assessment language should focus on: systems, processes, discipline, conversations, training, objection management, value-based selling, gap audits, life pivoting, showing up prepared, and team development.
+The Pocket Coach PWA runs OUTSIDE the State Farm network. Agents access it on personal phones or a dedicated office computer set up for outside URLs. It does not integrate with eCRM (yet). The assessment should NOT promise eCRM integration. Mention Pocket Coach only as a client benefit on the results/pitch page.
+Future eCRM integration path (internal knowledge, NOT for marketing): State Farm uses Salesforce + MuleSoft for third-party integrations. The path to getting approved:
+Register through the State Farm B2B Portal supplier process
+Get sponsored by a State Farm business unit (Agent Technology or Innovations)
+Meet security, compliance, and data handling requirements
+Onboard through the Coupa procurement system
+This is a longer-term play — do NOT reference it in any current copy
+NASFA (National Association of State Farm Agents) at nasfa.com is the agent advocacy organization — potential distribution channel for the assessment.
+The assessment’s core thesis is anti-State-Farm-playbook: State Farm trains agents to blow through calls, lead with price, and play the volume game. Jeremy’s coaching shifts agents to value-based discussions, complimentary gap audits, relationship-first selling, and team accountability. The questions should expose the cost of doing it the State Farm way vs. the coaching way.
+
+COPY TONE GUIDE
+Direct and unflinching — don’t sugarcoat the losses
+Insurance-specific language — use terms like “book of business,” “premium,” “life pivot,” “policies in force,” “auto/fire,” “bundling,” “gap audit,” “complimentary review”
+Anti-corporate — this is NOT a State Farm assessment. Frame everything as “what State Farm doesn’t teach you.” State Farm trains volume and price. Jeremy teaches value and relationships.
+Psychology-forward — reference confidence, team dynamics, culture, showing up ready to perform, not just numbers
+CEO vs. Agent framing — the consistent thread is: are you running your agency or is it running you?
+Value > Price — the assessment should expose the cost of leading with price instead of value. Gap audits, story-based selling, objection management — these are the revenue drivers
+People over technology — the gaps aren’t tech gaps. They’re conversation gaps, discipline gaps, training gaps, accountability gaps. The money is lost in the conversations your team ISN’T having or ISN’T having well
+No AI/automation language — never use “AI-powered,” “automated,” “machine learning,” “artificial intelligence” in assessment questions. Use “systems,” “processes,” “training,” “discipline,” “structure”
+No banned phrases — never use “just checking in,” “circle back,” “touch base,” “let me know,” “any questions?”

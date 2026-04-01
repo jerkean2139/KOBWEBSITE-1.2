@@ -1,0 +1,59 @@
+Can Replit work for SEO? Yes, but with caveats:
+
+Platform	Best For	SEO Strength
+Vercel	Dynamic sites, SSR/ISR	⭐⭐⭐⭐⭐ (best for SEO-critical sites)
+Netlify	Static/Jamstack sites	⭐⭐⭐⭐⭐ (excellent edge caching)
+Replit	Rapid development + deploy	⭐⭐⭐ (good with optimizations)
+My recommendation: Keep building on Replit for now. We can optimize it significantly with proper caching headers, static asset handling, and performance tuning. If you find cold-start times hurting your Core Web Vitals after launch, migrating to Vercel later is straightforward since it's a Node/React app.
+
+Questions Before Executing:
+Custom Domain Ready? Do you have a custom domain purchased (e.g., themanumationmethod.com)? This is essential for SEO.
+
+Google Search Console / Analytics? Do you have these accounts ready, or need me to guide you through setup?
+
+Google Business Profile? For local SEO - do you have physical business location(s) to list?
+
+Target Geography? You mentioned "local and regional" - what areas are you targeting? (City, state, region?)
+
+Primary Keywords? What 3-5 core topics do you want to rank for? (e.g., "business automation consulting", "AI business coach", etc.)
+
+PRE-BUILD Checklist (Before Publishing)
+Technical Foundation
+ Custom domain purchased and verified
+ SSL certificate active (automatic on Replit)
+ robots.txt configured (allow AI crawlers)
+ XML sitemap generated
+ Proper caching headers on static assets
+ Image optimization (WebP/AVIF, responsive srcsets)
+ Core Web Vitals targets: LCP ≤ 2.5s, FCP ≤ 1.8s, CLS ≤ 0.1
+SEO On-Page
+ Unique title tags per page (≤60 chars)
+ Meta descriptions (120-160 chars)
+ Proper H1/H2/H3 hierarchy
+ Alt text on all images
+ Canonical URLs set
+ Open Graph + Twitter Card tags
+Schema Markup (JSON-LD)
+ Organization schema
+ Book schema (for the Manumation Method book)
+ Person schema (author)
+ FAQPage schema
+ BreadcrumbList schema
+POST-PUBLISH Checklist (After Going Live)
+Immediate (Day 1)
+ Submit sitemap to Google Search Console
+ Submit sitemap to Bing Webmaster Tools
+ Request indexing for key pages
+ Verify all pages rendering correctly
+Week 1
+ Set up Google Analytics 4
+ Create Google Business Profile (if applicable)
+ Claim Bing Places listing
+ Submit to Apple Maps (if local business)
+Ongoing SEO/AEO/GEO
+ Create FAQ content with direct answers (for AI engines)
+ Add statistics and citations to content
+ Build presence on Reddit, Quora (user-generated mentions)
+ Get listed on industry directories
+ Publish on Medium/LinkedIn with backlinks
+ Monitor AI citations (ChatGPT, Perplexity, Google AI Overviews)

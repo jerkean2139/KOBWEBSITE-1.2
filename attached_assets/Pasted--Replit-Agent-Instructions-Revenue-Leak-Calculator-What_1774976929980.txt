@@ -1,0 +1,158 @@
+# Replit Agent Instructions — Revenue Leak Calculator
+
+## What You're Building
+
+Build a **Revenue Leak Calculator** — a 30-question interactive assessment for State Farm insurance agency owners. It's a React single-page application that calculates how much money an agency is losing per month from coaching/process/team gaps, then shows them what they'd recover.
+
+**This is modeled after the CoreTrack Assessment at web-production-aa10.up.railway.app.** Visit that URL and complete the assessment to see the exact UX pattern, animations, layout, and flow you need to replicate. That is your visual reference. The attached spec document contains all the custom questions, copy, scoring logic, and branding — but the CoreTrack assessment IS the design template.
+
+## Tech Stack
+
+- **React** (with hooks, functional components)
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations (counter counting up, question transitions, progress bar)
+- **Client-side only** — no backend needed for the calculator itself
+- The email capture form on the results page should POST to a configurable endpoint (leave a placeholder URL that can be swapped for ConvertKit, Formspree, or a Supabase function later)
+
+## Critical UX Requirements
+
+Read the attached spec for full detail, but these are the non-negotiable UX behaviors:
+
+1. **3-column layout during the assessment.** Left sidebar = running leakage counter + risk level + dynamic quote. Center = question card. Right sidebar = progress by category + (in Phase 2) potential impact calculator with Cost Saved, Revenue Gained, hours recovered, and Net Monthly Swing. On mobile, stack vertically: question on top, sidebars below.
+
+2. **Auto-advance on radio questions.** When the user clicks a radio button answer, immediately animate to the next question. No "Next" button for radio questions. This is critical for flow — it should feel fast and effortless.
+
+3. **Numeric inputs need a "Next" button.** The Next button starts disabled and enables only when the user has typed a value. Previous button always available. Pre-fill each numeric input with the default value from the spec.
+
+4. **Running leakage counter animates.** The dollar amount on the left sidebar should count UP smoothly (like a slot machine or odometer) every time the user answers a Phase 1 question. Use Framer Motion or a counting animation library. This is the emotional core of the experience — watching money drain creates urgency.
+
+5. **Risk level escalates with color changes.** Starts at "Low Risk" (green). As the leakage total grows, it shifts through Moderate (yellow) → High (orange) → Critical (red). The badge, the counter color, and the dynamic quote all change. Thresholds are in the spec.
+
+6. **Progress bar at the top.** Red bar that fills left-to-right as questions are completed (Q1 = 0%, Q30 = 100%). Show encouraging text above it ("Over halfway!", "Almost there...", "Last question!").
+
+7. **Two interstitial screens.** One at the halfway point (~Q11) and one at the Phase 1→2 transition (after Q23). These are pause screens with the running total in large text, a motivational message, and a "Keep Going" / "Show Me My Recovery" CTA. Copy is in the spec.
+
+8. **Email gate before results.** After Q30, show a completion screen with a green checkmark, the two summary numbers (leaking/mo and potential/mo), an email input, a red "See My Results" button, and a "Skip — show me the summary only" link. If they enter email → full results. If they skip → abbreviated results (just the 3 summary cards and CTA, no category breakdown).
+
+9. **Full results page.** Animated hero number (Net Monthly Swing), 3 breakdown cards, category-by-category horizontal bar charts showing where they're losing money, recovery breakdown (Cost Savings + Revenue Gained), hours/week back, "Your Answers at a Glance" expandable section, testimonials, and two CTAs (Book a Call + Email Results). All copy is in the spec.
+
+10. **Social proof testimonial in right sidebar.** Starting around Q5, show a rotating testimonial card. Keep it visible throughout the rest of the assessment. Real quotes are in the spec.
+
+## What's in the Attached Spec Document
+
+The 13-page spec contains everything you need:
+
+- **All 30 questions** with exact wording, helper text, answer options, and dollar values for each answer
+- **8 categories** the questions belong to (used for the progress tracker and results breakdown)
+- **Complete scoring formulas** for Phase 1 (leakage) and Phase 2 (recovery calculation with Cost Saved, Revenue Gained, Hours Recovered, and Net Monthly Swing)
+- **Risk level thresholds** and the dynamic quotes that change at each level
+- **All interstitial screen copy** (halfway point and phase transition)
+- **Email gate screen** layout and copy
+- **Full results page** structure, copy, testimonials, and CTA text
+- **Homepage integration** instructions (where the assessment entry point goes on the page)
+- **Copy tone guide** and banned phrases
+- **State Farm context** section explaining what language to avoid (no AI/automation terminology) and why
+
+## Color Palette & Branding
+
+- **Brand:** Kean on Biz (NOT Pocket Coach)
+- **Primary red:** Use for CTAs, progress bar, leakage numbers, and the primary action buttons
+- **Green:** Use for recovery/potential numbers, "Revenue Gained" stats, hours recovered
+- **Black/dark gray:** Use for the Net Monthly Swing card background, phase transition interstitial
+- **Risk colors:** Green (low) → Yellow (moderate) → Orange (high) → Red (critical)
+- **White/light backgrounds** for question cards and sidebars
+- Match the clean, professional feel of the CoreTrack assessment — not flashy, not corporate. Direct and confident.
+
+## File Structure Suggestion
+
+```
+src/
+  components/
+    Assessment/
+      AssessmentContainer.jsx    -- Main state manager, question flow logic
+      QuestionCard.jsx           -- Renders radio or numeric question
+      RadioOption.jsx            -- Individual radio button with click handler
+      NumericInput.jsx           -- Dollar/number input with Next button
+      LeakageSidebar.jsx         -- Left sidebar: counter, risk badge, quote
+      ProgressSidebar.jsx        -- Right sidebar: category progress, impact calc
+      InterstitialScreen.jsx     -- Halfway + phase transition screens
+      EmailGate.jsx              -- Post-assessment email capture
+      ResultsPage.jsx            -- Full results with breakdowns
+      ProgressBar.jsx            -- Top progress bar
+    common/
+      AnimatedCounter.jsx        -- Counting-up dollar animation
+      CategoryBar.jsx            -- Horizontal bar for results breakdown
+  data/
+    questions.js                 -- All 30 questions, options, values, categories
+    scoring.js                   -- Calculation formulas
+    copy.js                      -- Dynamic quotes, interstitial copy, results copy
+  hooks/
+    useAssessment.js             -- Core state: answers, current question, totals
+```
+
+## Data Structure for Questions
+
+Each question should be an object like:
+
+```javascript
+{
+  id: 1,
+  phase: 1,
+  category: "Team Performance & Accountability",
+  categoryIcon: "target",  // or whatever icon set you use
+  question: "Does every person on your team have specific, measurable monthly goals?",
+  helper: "Not corporate goals — individual production targets they own.",
+  type: "radio",  // or "numeric"
+  options: [  // for radio type
+    { text: "Yes — each person has clear numbers they track weekly", value: 0 },
+    { text: "Sort of — we have team goals but not individual ones", value: 350 },
+    { text: "We talk about goals but nothing is written down", value: 650 },
+    { text: "No — we just try to hit the agency number", value: 950 },
+  ],
+  // For numeric type:
+  // unit: "$/year", default: 1800, min: 0, max: 100000
+}
+```
+
+## Scoring Logic Summary
+
+**Phase 1 (Q1-Q23):** Each answer has a dollar value. Sum them all = Estimated Monthly Leakage.
+
+**Phase 2 (Q24-Q30):** Uses the numeric inputs + the Phase 1 total to calculate:
+
+- **Cost Saved** = (Phase 1 total x 0.65) + (Q29 hours x Q28 hourly rate x 4.33 x 0.50)
+- **Revenue Gained** = Life policy gap calculation + New business acceleration + multiplier from Q30 answer
+- **Hours/Week Recovered** = Q29 x 0.60
+- **Net Monthly Swing** = Cost Saved + Revenue Gained (displayed as the hero number)
+
+Full formulas with all the math are in the spec document. Follow them exactly.
+
+## Important Constraints
+
+1. **NEVER use the words "AI," "automated," "machine learning," or "artificial intelligence" anywhere in the assessment UI.** This is for State Farm agents and that language doesn't fit their world. Use "systems," "processes," "training," "structure," "discipline" instead.
+
+2. **Never use these phrases anywhere in copy:** "just checking in," "circle back," "touch base," "let me know," "any questions?"
+
+3. **The assessment must work without JavaScript errors on mobile Safari, Chrome, and desktop browsers.** Test responsive layout — the 3-column design collapses to single column on mobile.
+
+4. **All calculation happens client-side.** No API calls needed except for the optional email capture POST.
+
+5. **The "Previous" button should always be available** (except on Q1) so users can go back and change answers. When they go back, their previous answer should be pre-selected.
+
+## What to Build First
+
+1. Start with the data layer — get all 30 questions into the questions.js file from the spec
+2. Build the AssessmentContainer with question flow (forward, back, interstitials)
+3. Build the QuestionCard (radio + numeric variants)
+4. Add the LeakageSidebar with animated counter
+5. Add the ProgressSidebar
+6. Build the interstitial screens
+7. Build the email gate
+8. Build the results page with all breakdowns
+9. Polish animations, transitions, and mobile responsiveness
+10. Add the homepage entry point section
+
+## Reference
+
+**Live reference app to model after:** web-production-aa10.up.railway.app (CoreTrack Assessment)
+**Attached document:** Contains all questions, copy, scoring logic, and detailed spec

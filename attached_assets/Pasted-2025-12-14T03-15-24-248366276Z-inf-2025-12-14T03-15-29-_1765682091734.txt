@@ -1,0 +1,59 @@
+2025-12-14T03:15:24.248366276Z [inf]  
+2025-12-14T03:15:29.094172633Z [inf]  [35m[Region: asia-southeast1][0m
+2025-12-14T03:15:29.098696045Z [inf]  [35m==============
+2025-12-14T03:15:29.098756244Z [inf]  Using Nixpacks
+2025-12-14T03:15:29.098763408Z [inf]  ==============
+2025-12-14T03:15:29.098769837Z [inf]  [0m
+2025-12-14T03:15:29.098945802Z [inf]  context: z71z-Sp30
+2025-12-14T03:15:29.232509069Z [inf]  ╔═════════════════════ Nixpacks v1.38.0 ═════════════════════╗
+2025-12-14T03:15:29.232564084Z [inf]  ║ setup      │ nodejs_20                                     ║
+2025-12-14T03:15:29.232571457Z [inf]  ║────────────────────────────────────────────────────────────║
+2025-12-14T03:15:29.232575835Z [inf]  ║ caddy      │ pkgs: caddy                                   ║
+2025-12-14T03:15:29.232583549Z [inf]  ║            │ cmds: caddy fmt --overwrite /assets/Caddyfile ║
+2025-12-14T03:15:29.232588534Z [inf]  ║────────────────────────────────────────────────────────────║
+2025-12-14T03:15:29.232593615Z [inf]  ║ install    │ pnpm install                                  ║
+2025-12-14T03:15:29.232598343Z [inf]  ║────────────────────────────────────────────────────────────║
+2025-12-14T03:15:29.232602777Z [inf]  ║ build      │ pnpm run build                                ║
+2025-12-14T03:15:29.232608460Z [inf]  ║────────────────────────────────────────────────────────────║
+2025-12-14T03:15:29.232613467Z [inf]  ║ start      │ node dist/index.js                            ║
+2025-12-14T03:15:29.232617893Z [inf]  ╚════════════════════════════════════════════════════════════╝
+2025-12-14T03:15:30.096920440Z [inf]  [internal] load build definition from Dockerfile
+2025-12-14T03:15:30.097002415Z [inf]  [internal] load build definition from Dockerfile
+2025-12-14T03:15:30.097019695Z [inf]  [internal] load build definition from Dockerfile
+2025-12-14T03:15:30.112301670Z [inf]  [internal] load build definition from Dockerfile
+2025-12-14T03:15:30.115247892Z [inf]  [internal] load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+2025-12-14T03:15:30.385647318Z [inf]  [internal] load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+2025-12-14T03:15:30.385736815Z [inf]  [internal] load .dockerignore
+2025-12-14T03:15:30.385783114Z [inf]  [internal] load .dockerignore
+2025-12-14T03:15:30.385799768Z [inf]  [internal] load .dockerignore
+2025-12-14T03:15:30.400648584Z [inf]  [internal] load .dockerignore
+2025-12-14T03:15:30.409576193Z [inf]  [stage-0 15/15] COPY . /app
+2025-12-14T03:15:30.409647959Z [inf]  [internal] load build context
+2025-12-14T03:15:30.409668056Z [inf]  [internal] load build context
+2025-12-14T03:15:31.568760599Z [inf]  [internal] load build context
+2025-12-14T03:15:31.575343219Z [inf]  [stage-0  2/10] WORKDIR /app/
+2025-12-14T03:15:31.575394634Z [inf]  [stage-0  3/15] COPY .nixpacks/nixpkgs-ba913eda2df8eb72147259189d55932012df6301.nix .nixpacks/nixpkgs-ba913eda2df8eb72147259189d55932012df6301.nix
+2025-12-14T03:15:31.575409826Z [inf]  [stage-0  4/15] RUN nix-env -if .nixpacks/nixpkgs-ba913eda2df8eb72147259189d55932012df6301.nix && nix-collect-garbage -d
+2025-12-14T03:15:31.575419514Z [inf]  [stage-0  5/15] COPY .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix
+2025-12-14T03:15:31.575431338Z [inf]  [stage-0  6/15] RUN nix-env -if .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix && nix-collect-garbage -d
+2025-12-14T03:15:31.575441195Z [inf]  [stage-0  7/15] COPY .nixpacks/assets /assets/
+2025-12-14T03:15:31.575460236Z [inf]  [stage-0  8/15] COPY . /app/.
+2025-12-14T03:15:31.838632766Z [inf]  [stage-0  8/15] COPY . /app/.
+2025-12-14T03:15:31.842313485Z [inf]  [stage-0  9/15] RUN  caddy fmt --overwrite /assets/Caddyfile
+2025-12-14T03:15:32.068819755Z [inf]  [stage-0  9/15] RUN  caddy fmt --overwrite /assets/Caddyfile
+2025-12-14T03:15:32.070612499Z [inf]  [stage-0 10/15] COPY . /app/.
+2025-12-14T03:15:32.296071363Z [inf]  [stage-0 10/15] COPY . /app/.
+2025-12-14T03:15:32.304266122Z [inf]  [stage-0 11/15] RUN --mount=type=cache,id=s/f3435903-31d7-443c-8b06-3557567bcdcb-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install
+2025-12-14T03:15:32.392821066Z [inf]  /bin/bash: line 1: pnpm: command not found
+
+2025-12-14T03:15:32.416086700Z [err]  [stage-0 11/15] RUN --mount=type=cache,id=s/f3435903-31d7-443c-8b06-3557567bcdcb-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install
+2025-12-14T03:15:32.433656313Z [err]  Dockerfile:26
+2025-12-14T03:15:32.433721768Z [err]  -------------------
+2025-12-14T03:15:32.433731030Z [err]  24 |     ENV NIXPACKS_PATH=/app/node_modules/.bin:$NIXPACKS_PATH
+2025-12-14T03:15:32.433736704Z [err]  25 |     COPY . /app/.
+2025-12-14T03:15:32.433745965Z [err]  26 | >>> RUN --mount=type=cache,id=s/f3435903-31d7-443c-8b06-3557567bcdcb-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install
+2025-12-14T03:15:32.433751138Z [err]  27 |
+2025-12-14T03:15:32.433757533Z [err]  28 |     # build phase
+2025-12-14T03:15:32.433763395Z [err]  -------------------
+2025-12-14T03:15:32.433770553Z [err]  ERROR: failed to build: failed to solve: process "/bin/bash -ol pipefail -c pnpm install" did not complete successfully: exit code: 127
+2025-12-14T03:15:32.441779973Z [err]  Error: Docker build failed

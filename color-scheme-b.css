@@ -1,0 +1,56 @@
+/* VERSION B: Dual Brand System (Warm Personal + Cool Tech) */
+
+:root {
+  /* Primary: Warm Copper/Burnt Orange (Personal Brand) */
+  --primary: oklch(0.60 0.14 40);  /* Refined copper/burnt orange */
+  --primary-foreground: oklch(0.98 0 0);
+  
+  /* Secondary: Deep Burgundy (Personal Brand Accent) */
+  --secondary: oklch(0.35 0.12 25);  /* Rich burgundy */
+  --secondary-foreground: oklch(0.98 0 0);
+  
+  /* Tech Accent: Blue/Purple for tech mentions */
+  --tech-primary: oklch(0.55 0.20 280);  /* Purple */
+  --tech-secondary: oklch(0.55 0.18 250);  /* Blue */
+  
+  /* Background stays light */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.20 0.02 30);
+  
+  /* Cards */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.02 30);
+  
+  /* Muted */
+  --muted: oklch(0.96 0.01 40);
+  --muted-foreground: oklch(0.45 0.03 40);
+  
+  /* Borders */
+  --border: oklch(0.90 0.01 40);
+  --input: oklch(0.90 0.01 40);
+  --ring: oklch(0.60 0.14 40);
+}
+
+/* Gradient Definitions for Version B */
+.gradient-hero-b {
+  background: linear-gradient(135deg, oklch(0.18 0.04 30) 0%, oklch(0.15 0.03 25) 50%, oklch(0.20 0.04 35) 100%);
+}
+
+.gradient-ecosystem-b {
+  /* Tech section gets cool gradient */
+  background: linear-gradient(135deg, oklch(0.22 0.08 270) 0%, oklch(0.18 0.07 250) 100%);
+}
+
+.gradient-cta-b {
+  /* CTA stays warm (personal) */
+  background: linear-gradient(135deg, oklch(0.18 0.04 30) 0%, oklch(0.15 0.03 25) 50%, oklch(0.20 0.04 35) 100%);
+}
+
+/* Tech brand cards get blue/purple accents */
+.tech-card-b {
+  border-color: oklch(0.55 0.20 280 / 0.3) !important;
+}
+
+.tech-card-b:hover {
+  border-color: oklch(0.55 0.20 280) !important;
+}

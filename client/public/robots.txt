@@ -1,0 +1,54 @@
+# robots.txt for KeanOnBiz
+# https://keanonbiz.com/
+
+User-agent: *
+Allow: /
+
+# Block admin and utility paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dev
+Disallow: /404
+Disallow: /founders-filter/start
+
+# Block common non-content paths
+Disallow: /_next/
+Disallow: /assets/
+Disallow: /*.json$
+
+# Allow important resources
+Allow: /manifest.json
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.webp
+Allow: /*.svg
+
+# AI Crawler Access - Allow AI assistants to index content for better AEO/GEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://keanonbiz.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

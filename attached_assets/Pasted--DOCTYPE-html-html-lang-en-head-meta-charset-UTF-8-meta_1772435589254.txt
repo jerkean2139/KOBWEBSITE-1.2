@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VybeKoderz Business Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-card: #111118;
+    --bg-card-hover: #16161f;
+    --bg-stage: #1a1a25;
+    --accent-gold: #d4a843;
+    --accent-gold-dim: #a8862f;
+    --accent-green: #2dd4a0;
+    --accent-blue: #4d8eff;
+    --accent-orange: #ff8c42;
+    --accent-red: #ff4d6a;
+    --accent-purple: #9d6aff;
+    --text-primary: #e8e6e1;
+    --text-secondary: #8a8798;
+    --text-dim: #5a5868;
+    --border: #222230;
+    --border-active: #333345;
+    --glass: rgba(255,255,255,0.03);
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–bg-primary);
+color: var(–text-primary);
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* === NOISE TEXTURE OVERLAY === */
+body::before {
+content: ‘’;
+position: fixed;
+top: 0; left: 0; right: 0; bottom: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 9999;
+}
+
+/* === HEADER === */
+.hub-header {
+padding: 3rem 2rem 2rem;
+text-align: center;
+position: relative;
+}
+
+.hub-header::after {
+content: ‘’;
+position: absolute;
+bottom: 0;
+left: 10%;
+right: 10%;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–border-active), transparent);
+}
+
+.hub-badge {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.4rem 1rem;
+background: linear-gradient(135deg, rgba(212,168,67,0.1), rgba(212,168,67,0.05));
+border: 1px solid rgba(212,168,67,0.2);
+border-radius: 100px;
+font-family: ‘Space Mono’, monospace;
+font-size: 0.7rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: var(–accent-gold);
+margin-bottom: 1.5rem;
+}
+
+.hub-badge .dot {
+width: 6px;
+height: 6px;
+background: var(–accent-gold);
+border-radius: 50%;
+animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.3; }
+}
+
+.hub-title {
+font-family: ‘Syne’, sans-serif;
+font-size: clamp(2rem, 5vw, 3.5rem);
+font-weight: 800;
+letter-spacing: -0.02em;
+line-height: 1.1;
+margin-bottom: 1rem;
+background: linear-gradient(135deg, var(–text-primary), var(–accent-gold));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.hub-subtitle {
+font-size: 1.05rem;
+color: var(–text-secondary);
+max-width: 600px;
+margin: 0 auto 2rem;
+line-height: 1.6;
+}
+
+/* === FILTER TABS === */
+.filter-bar {
+display: flex;
+justify-content: center;
+gap: 0.5rem;
+padding: 1.5rem 2rem;
+flex-wrap: wrap;
+}
+
+.filter-btn {
+padding: 0.5rem 1.2rem;
+background: var(–glass);
+border: 1px solid var(–border);
+border-radius: 100px;
+color: var(–text-secondary);
+font-family: ‘Space Mono’, monospace;
+font-size: 0.72rem;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+background: rgba(212,168,67,0.1);
+border-color: var(–accent-gold-dim);
+color: var(–accent-gold);
+}
+
+/* === LISTINGS GRID === */
+.listings-container {
+max-width: 1400px;
+margin: 0 auto;
+padding: 2rem;
+display: flex;
+flex-direction: column;
+gap: 3rem;
+}
+
+/* === LISTING CARD === */
+.listing-card {
+background: var(–bg-card);
+border: 1px solid var(–border);
+border-radius: 20px;
+overflow: hidden;
+transition: all 0.4s ease;
+position: relative;
+}
+
+.listing-card:hover {
+border-color: var(–border-active);
+transform: translateY(-2px);
+box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.listing-card::before {
+content: ‘’;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 3px;
+}
+
+.listing-card.stage-5::before { background: linear-gradient(90deg, var(–accent-green), var(–accent-blue)); }
+.listing-card.stage-4::before { background: linear-gradient(90deg, var(–accent-blue), var(–accent-purple)); }
+.listing-card.stage-1::before { background: linear-gradient(90deg, var(–accent-orange), var(–accent-gold)); }
+
+.card-top {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0;
+}
+
+@media (max-width: 900px) {
+.card-top { grid-template-columns: 1fr; }
+}
+
+.card-info {
+padding: 2.5rem;
+}
+
+.card-meta {
+display: flex;
+align-items: center;
+gap: 1rem;
+margin-bottom: 1.5rem;
+flex-wrap: wrap;
+}
+
+.stage-badge {
+padding: 0.3rem 0.8rem;
+border-radius: 100px;
+font-family: ‘Space Mono’, monospace;
+font-size: 0.65rem;
+text-transform: uppercase;
+letter-spacing: 0.12em;
+font-weight: 700;
+}
+
+.stage-badge.launch { background: rgba(45,212,160,0.12); color: var(–accent-green); border: 1px solid rgba(45,212,160,0.25); }
+.stage-badge.build { background: rgba(77,142,255,0.12); color: var(–accent-blue); border: 1px solid rgba(77,142,255,0.25); }
+.stage-badge.idea { background: rgba(255,140,66,0.12); color: var(–accent-orange); border: 1px solid rgba(255,140,66,0.25); }
+
+.category-tag {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.65rem;
+color: var(–text-dim);
+text-transform: uppercase;
+letter-spacing: 0.1em;
+}
+
+.card-title {
+font-family: ‘Syne’, sans-serif;
+font-size: 1.8rem;
+font-weight: 700;
+margin-bottom: 0.3rem;
+letter-spacing: -0.01em;
+}
+
+.card-domain {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.8rem;
+color: var(–accent-gold-dim);
+margin-bottom: 1rem;
+}
+
+.card-desc {
+color: var(–text-secondary);
+font-size: 0.95rem;
+line-height: 1.7;
+margin-bottom: 1.5rem;
+}
+
+.card-includes {
+display: flex;
+flex-wrap: wrap;
+gap: 0.4rem;
+margin-bottom: 1rem;
+}
+
+.include-chip {
+padding: 0.25rem 0.6rem;
+background: var(–glass);
+border: 1px solid var(–border);
+border-radius: 6px;
+font-size: 0.72rem;
+color: var(–text-secondary);
+}
+
+/* === RIGHT PANEL — FINANCIALS === */
+.card-financials {
+padding: 2.5rem;
+background: var(–bg-stage);
+border-left: 1px solid var(–border);
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+@media (max-width: 900px) {
+.card-financials { border-left: none; border-top: 1px solid var(–border); }
+}
+
+.fin-label {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: var(–text-dim);
+margin-bottom: 0.3rem;
+}
+
+.fin-value {
+font-family: ‘Syne’, sans-serif;
+font-size: 1.6rem;
+font-weight: 700;
+margin-bottom: 1.2rem;
+}
+
+.fin-value.gold { color: var(–accent-gold); }
+.fin-value.green { color: var(–accent-green); }
+
+.fin-row {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+padding: 0.6rem 0;
+border-bottom: 1px solid var(–border);
+}
+
+.fin-row:last-child { border-bottom: none; }
+
+.fin-row-label {
+font-size: 0.82rem;
+color: var(–text-secondary);
+}
+
+.fin-row-value {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.82rem;
+color: var(–text-primary);
+}
+
+/* === STAGE TRACKER === */
+.stage-tracker {
+padding: 2rem 2.5rem;
+border-top: 1px solid var(–border);
+}
+
+.stage-tracker-title {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.65rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: var(–text-dim);
+margin-bottom: 1.2rem;
+}
+
+.stages {
+display: flex;
+gap: 0;
+position: relative;
+}
+
+.stage {
+flex: 1;
+position: relative;
+padding-top: 2rem;
+}
+
+.stage-dot {
+position: absolute;
+top: 0;
+left: 0;
+width: 14px;
+height: 14px;
+border-radius: 50%;
+background: var(–bg-stage);
+border: 2px solid var(–border);
+z-index: 2;
+}
+
+.stage.completed .stage-dot { background: var(–accent-green); border-color: var(–accent-green); }
+.stage.active .stage-dot { background: var(–accent-gold); border-color: var(–accent-gold); box-shadow: 0 0 12px rgba(212,168,67,0.4); }
+.stage.upcoming .stage-dot { background: var(–bg-stage); border-color: var(–border); }
+
+.stage-line {
+position: absolute;
+top: 6px;
+left: 14px;
+right: 0;
+height: 2px;
+background: var(–border);
+}
+
+.stage.completed .stage-line { background: var(–accent-green); }
+.stage.active .stage-line { background: linear-gradient(90deg, var(–accent-gold), var(–border)); }
+
+.stage:last-child .stage-line { display: none; }
+
+.stage-name {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.62rem;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+color: var(–text-dim);
+margin-bottom: 0.2rem;
+}
+
+.stage.completed .stage-name { color: var(–accent-green); }
+.stage.active .stage-name { color: var(–accent-gold); }
+
+.stage-detail {
+font-size: 0.72rem;
+color: var(–text-dim);
+line-height: 1.4;
+}
+
+.stage.completed .stage-detail { color: var(–text-secondary); }
+.stage.active .stage-detail { color: var(–text-secondary); }
+
+/* === ACQUISITION OPTIONS === */
+.acq-options {
+padding: 2rem 2.5rem;
+border-top: 1px solid var(–border);
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1rem;
+}
+
+@media (max-width: 900px) {
+.acq-options { grid-template-columns: 1fr; }
+}
+
+.acq-card {
+padding: 1.5rem;
+background: var(–bg-stage);
+border: 1px solid var(–border);
+border-radius: 12px;
+cursor: pointer;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.acq-card:hover {
+border-color: var(–accent-gold-dim);
+background: var(–bg-card-hover);
+}
+
+.acq-card.featured {
+border-color: rgba(212,168,67,0.3);
+}
+
+.acq-card.featured::after {
+content: ‘POPULAR’;
+position: absolute;
+top: 12px;
+right: -24px;
+background: var(–accent-gold);
+color: var(–bg-primary);
+font-family: ‘Space Mono’, monospace;
+font-size: 0.55rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+padding: 0.2rem 2rem;
+transform: rotate(45deg);
+}
+
+.acq-type {
+font-family: ‘Syne’, sans-serif;
+font-size: 1rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+}
+
+.acq-price {
+font-family: ‘Space Mono’, monospace;
+font-size: 1.3rem;
+color: var(–accent-gold);
+margin-bottom: 0.8rem;
+}
+
+.acq-details {
+font-size: 0.8rem;
+color: var(–text-secondary);
+line-height: 1.6;
+margin-bottom: 1rem;
+}
+
+.acq-btn {
+display: block;
+width: 100%;
+padding: 0.7rem;
+background: transparent;
+border: 1px solid var(–border-active);
+border-radius: 8px;
+color: var(–text-primary);
+font-family: ‘Space Mono’, monospace;
+font-size: 0.7rem;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+cursor: pointer;
+transition: all 0.3s ease;
+text-align: center;
+}
+
+.acq-btn:hover {
+background: var(–accent-gold);
+border-color: var(–accent-gold);
+color: var(–bg-primary);
+}
+
+.acq-card.featured .acq-btn {
+background: rgba(212,168,67,0.15);
+border-color: var(–accent-gold-dim);
+color: var(–accent-gold);
+}
+
+/* === DOCUMENTATION LOG === */
+.doc-log {
+padding: 2rem 2.5rem;
+border-top: 1px solid var(–border);
+}
+
+.doc-log-title {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.65rem;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: var(–text-dim);
+margin-bottom: 1rem;
+}
+
+.log-entries {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.log-entry {
+display: flex;
+align-items: flex-start;
+gap: 1rem;
+padding: 0.8rem 1rem;
+background: var(–bg-stage);
+border-radius: 8px;
+border: 1px solid var(–border);
+}
+
+.log-date {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.68rem;
+color: var(–text-dim);
+min-width: 80px;
+padding-top: 2px;
+}
+
+.log-content {
+font-size: 0.82rem;
+color: var(–text-secondary);
+line-height: 1.5;
+}
+
+.log-tag {
+display: inline-block;
+padding: 0.1rem 0.4rem;
+border-radius: 4px;
+font-family: ‘Space Mono’, monospace;
+font-size: 0.58rem;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+margin-right: 0.4rem;
+}
+
+.log-tag.research { background: rgba(255,140,66,0.12); color: var(–accent-orange); }
+.log-tag.build { background: rgba(77,142,255,0.12); color: var(–accent-blue); }
+.log-tag.marketing { background: rgba(157,106,255,0.12); color: var(–accent-purple); }
+.log-tag.launch { background: rgba(45,212,160,0.12); color: var(–accent-green); }
+.log-tag.milestone { background: rgba(212,168,67,0.12); color: var(–accent-gold); }
+
+/* === CREATOR SECTION === */
+.creator-bar {
+padding: 1.5rem 2.5rem;
+border-top: 1px solid var(–border);
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 1rem;
+}
+
+.creator-info {
+display: flex;
+align-items: center;
+gap: 0.8rem;
+}
+
+.creator-avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(–accent-gold), var(–accent-orange));
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: ‘Syne’, sans-serif;
+font-weight: 800;
+font-size: 0.8rem;
+color: var(–bg-primary);
+}
+
+.creator-name {
+font-size: 0.85rem;
+font-weight: 600;
+}
+
+.creator-label {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+color: var(–text-dim);
+}
+
+.creator-stats {
+display: flex;
+gap: 1.5rem;
+}
+
+.stat {
+text-align: center;
+}
+
+.stat-val {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.9rem;
+color: var(–accent-gold);
+}
+
+.stat-label {
+font-size: 0.6rem;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+color: var(–text-dim);
+}
+
+/* === SECTION DIVIDER === */
+.section-label {
+text-align: center;
+padding: 1rem 2rem;
+position: relative;
+}
+
+.section-label span {
+font-family: ‘Space Mono’, monospace;
+font-size: 0.65rem;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(–text-dim);
+background: var(–bg-primary);
+padding: 0 1rem;
+position: relative;
+z-index: 1;
+}
+
+.section-label::before {
+content: ‘’;
+position: absolute;
+top: 50%;
+left: 10%;
+right: 10%;
+height: 1px;
+background: var(–border);
+}
+
+/* === INVESTORS ALERT BOX === */
+.alert-box {
+max-width: 1400px;
+margin: 0 auto 2rem;
+padding: 0 2rem;
+}
+
+.alert-inner {
+padding: 1.5rem 2rem;
+background: linear-gradient(135deg, rgba(212,168,67,0.06), rgba(212,168,67,0.02));
+border: 1px solid rgba(212,168,67,0.15);
+border-radius: 12px;
+display: flex;
+align-items: center;
+gap: 1.2rem;
+flex-wrap: wrap;
+}
+
+.alert-icon {
+font-size: 1.5rem;
+}
+
+.alert-text {
+flex: 1;
+min-width: 200px;
+}
+
+.alert-title {
+font-family: ‘Syne’, sans-serif;
+font-weight: 700;
+font-size: 1rem;
+color: var(–accent-gold);
+margin-bottom: 0.2rem;
+}
+
+.alert-desc {
+font-size: 0.82rem;
+color: var(–text-secondary);
+}
+
+.alert-btn {
+padding: 0.6rem 1.5rem;
+background: var(–accent-gold);
+color: var(–bg-primary);
+border: none;
+border-radius: 8px;
+font-family: ‘Space Mono’, monospace;
+font-size: 0.7rem;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.alert-btn:hover { background: var(–text-primary); }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+.stages { flex-direction: column; gap: 1rem; }
+.stage { padding-top: 0; padding-left: 2rem; }
+.stage-dot { top: 0; left: 0; }
+.stage-line { display: none; }
+.card-info, .card-financials { padding: 1.5rem; }
+.acq-options, .stage-tracker, .doc-log, .creator-bar { padding: 1.5rem; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header class="hub-header">
+  <div class="hub-badge">
+    <span class="dot"></span>
+    VybeKoderz Business Hub
+  </div>
+  <h1 class="hub-title">Own Something Real.</h1>
+  <p class="hub-subtitle">Fully documented, de-risked businesses built by verified creators. Invest fractionally, buy outright, or partner up — watch the value being built before you commit.</p>
+</header>
+
+<!-- FILTERS -->
+
+<div class="filter-bar">
+  <button class="filter-btn active">All Listings</button>
+  <button class="filter-btn">🟢 Launch Ready</button>
+  <button class="filter-btn">🔵 In Development</button>
+  <button class="filter-btn">🟠 Early Stage</button>
+  <button class="filter-btn">Buy Now</button>
+  <button class="filter-btn">Fractional</button>
+  <button class="filter-btn">Partnership</button>
+</div>
+
+<!-- NEW DROP ALERT -->
+
+<div class="alert-box">
+  <div class="alert-inner">
+    <div class="alert-icon">⚡</div>
+    <div class="alert-text">
+      <div class="alert-title">New Business Drop — MenuMoney</div>
+      <div class="alert-desc">Early stage listing just added. VIP members get first access to invest before public listing.</div>
+    </div>
+    <button class="alert-btn">Get VIP Access</button>
+  </div>
+</div>
+
+<!-- LISTINGS -->
+
+<div class="listings-container">
+
+  <!-- ============================================ -->
+
+  <!-- LISTING 1: PIMPMYPROMPT — STAGE 5 LAUNCH READY -->
+
+  <!-- ============================================ -->
+
+  <div class="section-label"><span>Featured Listing</span></div>
+
+  <article class="listing-card stage-5">
+    <div class="card-top">
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="stage-badge launch">Stage 5 · Launch Ready</span>
+          <span class="category-tag">AI / Productivity</span>
+        </div>
+        <h2 class="card-title">PimpMyPrompt</h2>
+        <div class="card-domain">pimpmyprompt.lol</div>
+        <p class="card-desc">An AI-powered prompt engineering tool that transforms basic prompts into optimized, high-performance prompts for any LLM. Users paste in a rough prompt, select their target model and use case, and get back a professionally structured prompt with system instructions, few-shot examples, and output formatting.</p>
+        <div class="card-includes">
+          <span class="include-chip">Full Codebase</span>
+          <span class="include-chip">Domain</span>
+          <span class="include-chip">Brand Kit</span>
+          <span class="include-chip">Marketing Plan</span>
+          <span class="include-chip">SOPs</span>
+          <span class="include-chip">90-Day Coaching</span>
+          <span class="include-chip">Customer Research</span>
+          <span class="include-chip">Launch Playbook</span>
+        </div>
+      </div>
+      <div class="card-financials">
+        <div class="fin-label">Current Valuation</div>
+        <div class="fin-value gold">$45,000</div>
+        <div class="fin-label">Projected Monthly Revenue (Mo. 6)</div>
+        <div class="fin-value green">$8,500</div>
+        <div class="fin-row">
+          <span class="fin-row-label">Build Cost</span>
+          <span class="fin-row-value">$12,400</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Monthly Operating Cost</span>
+          <span class="fin-row-value">$340/mo</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Target Market Size</span>
+          <span class="fin-row-value">2.4M users</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Competitor Avg Revenue</span>
+          <span class="fin-row-value">$15K/mo</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Time to Revenue</span>
+          <span class="fin-row-value">Immediate</span>
+        </div>
+      </div>
+    </div>
+
+```
+<!-- STAGE TRACKER -->
+<div class="stage-tracker">
+  <div class="stage-tracker-title">Build Journey — Documented & Verified</div>
+  <div class="stages">
+    <div class="stage completed">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 1 · Ideation</div>
+      <div class="stage-detail">Market research, competitor analysis, customer persona development</div>
+    </div>
+    <div class="stage completed">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 2 · Validation</div>
+      <div class="stage-detail">Revenue projections, cost modeling, marketability score</div>
+    </div>
+    <div class="stage completed">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 3 · MVP Build</div>
+      <div class="stage-detail">Core product built, tested, functional prototype live</div>
+    </div>
+    <div class="stage completed">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 4 · Marketing</div>
+      <div class="stage-detail">Brand identity, marketing plan, launch strategy, content pipeline</div>
+    </div>
+    <div class="stage completed">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 5 · Launch Ready</div>
+      <div class="stage-detail">Production deployed, SOPs written, ready for revenue Day 1</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACQUISITION OPTIONS -->
+<div class="acq-options">
+  <div class="acq-card">
+    <div class="acq-type">Fractional Investment</div>
+    <div class="acq-price">$4,500 / seat</div>
+    <div class="acq-details">Join up to 10 investors splitting 50% of net profit. Includes quarterly board calls, real-time revenue dashboard, and voting rights on major decisions. Min hold: 12 months.</div>
+    <button class="acq-btn">Reserve a Seat →</button>
+  </div>
+  <div class="acq-card featured">
+    <div class="acq-type">Partnership · 51/49</div>
+    <div class="acq-price">$22,500</div>
+    <div class="acq-details">You own 51%, we operate and retain 49%. Net profit split matches equity. Pre-determined buyout at $65,000 to acquire 100% ownership anytime after Month 6.</div>
+    <button class="acq-btn">Apply for Partnership →</button>
+  </div>
+  <div class="acq-card">
+    <div class="acq-type">Buy It Now</div>
+    <div class="acq-price">$45,000</div>
+    <div class="acq-details">Full ownership. Codebase, domain, brand, customers, SOPs — everything transfers. Includes 90 days of coaching and technical support from the creator.</div>
+    <button class="acq-btn">Purchase Outright →</button>
+  </div>
+</div>
+
+<!-- DOCUMENTATION LOG -->
+<div class="doc-log">
+  <div class="doc-log-title">Build Documentation Log</div>
+  <div class="log-entries">
+    <div class="log-entry">
+      <span class="log-date">Feb 28</span>
+      <span class="log-content"><span class="log-tag launch">Launch</span> Production deployment finalized. All systems green. Monitoring dashboard configured.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Feb 22</span>
+      <span class="log-content"><span class="log-tag marketing">Marketing</span> Content calendar built — 30 days of LinkedIn, Twitter, and Reddit posts queued. Landing page A/B test running.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Feb 14</span>
+      <span class="log-content"><span class="log-tag build">Build</span> Core prompt transformation engine complete. Supports GPT-4, Claude, Gemini, Llama. Response time under 3 seconds.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Feb 3</span>
+      <span class="log-content"><span class="log-tag research">Research</span> Competitor analysis: PromptPerfect ($12K MRR), Promptheus ($8K MRR). Gap identified: no tool handles multi-model optimization.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Jan 28</span>
+      <span class="log-content"><span class="log-tag milestone">Milestone</span> Idea validated. TAM estimated at 2.4M prompt-heavy users. Green-lit for build.</span>
+    </div>
+  </div>
+</div>
+
+<!-- CREATOR -->
+<div class="creator-bar">
+  <div class="creator-info">
+    <div class="creator-avatar">JR</div>
+    <div>
+      <div class="creator-name">Jeremy · VybeKoderz</div>
+      <div class="creator-label">Verified Creator · 3 Listings</div>
+    </div>
+  </div>
+  <div class="creator-stats">
+    <div class="stat">
+      <div class="stat-val">3</div>
+      <div class="stat-label">Businesses Listed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">100%</div>
+      <div class="stat-label">Delivery Rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">$0</div>
+      <div class="stat-label">Disputes</div>
+    </div>
+  </div>
+</div>
+```
+
+  </article>
+
+  <!-- ============================================ -->
+
+  <!-- LISTING 2: POCKET NOTE — STAGE 4 IN DEV -->
+
+  <!-- ============================================ -->
+
+  <div class="section-label"><span>Active Build</span></div>
+
+  <article class="listing-card stage-4">
+    <div class="card-top">
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="stage-badge build">Stage 4 · Marketing Phase</span>
+          <span class="category-tag">Productivity / SaaS</span>
+        </div>
+        <h2 class="card-title">Pocket Note</h2>
+        <div class="card-domain">pocketnote.app</div>
+        <p class="card-desc">A fast, AI-enhanced note-taking app designed for people who think in fragments. Capture voice memos, quick text, screenshots, and links — then let AI organize, tag, summarize, and connect your notes into actionable threads. Built for creators, founders, and idea machines who lose great thoughts to bad systems.</p>
+        <div class="card-includes">
+          <span class="include-chip">Full Codebase</span>
+          <span class="include-chip">Domain</span>
+          <span class="include-chip">Brand Kit</span>
+          <span class="include-chip">Marketing Plan</span>
+          <span class="include-chip">User Research</span>
+          <span class="include-chip">60-Day Coaching</span>
+        </div>
+      </div>
+      <div class="card-financials">
+        <div class="fin-label">Current Valuation</div>
+        <div class="fin-value gold">$32,000</div>
+        <div class="fin-label">Projected Monthly Revenue (Mo. 6)</div>
+        <div class="fin-value green">$12,000</div>
+        <div class="fin-row">
+          <span class="fin-row-label">Build Cost (to date)</span>
+          <span class="fin-row-value">$9,800</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Est. Monthly Operating</span>
+          <span class="fin-row-value">$520/mo</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Target Market Size</span>
+          <span class="fin-row-value">8.1M users</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Price at Stage 5</span>
+          <span class="fin-row-value">$48,000</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Time to Launch</span>
+          <span class="fin-row-value">~3 weeks</span>
+        </div>
+      </div>
+    </div>
+
+```
+<!-- STAGE TRACKER -->
+<div class="stage-tracker">
+  <div class="stage-tracker-title">Build Journey — Documented & Verified</div>
+  <div class="stages">
+    <div class="stage completed">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 1 · Ideation</div>
+      <div class="stage-detail">Problem validated with 200+ survey responses from creators and founders</div>
+    </div>
+    <div class="stage completed">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 2 · Validation</div>
+      <div class="stage-detail">$12K MRR target validated against Notion, Mem, Capacities pricing models</div>
+    </div>
+    <div class="stage completed">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 3 · MVP Build</div>
+      <div class="stage-detail">Core capture + AI organization engine complete. Mobile responsive.</div>
+    </div>
+    <div class="stage active">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 4 · Marketing</div>
+      <div class="stage-detail">Brand identity complete. Building content pipeline and launch strategy now.</div>
+    </div>
+    <div class="stage upcoming">
+      <div class="stage-dot"></div>
+      <div class="stage-name">Stage 5 · Launch Ready</div>
+      <div class="stage-detail">Est. 3 weeks — final QA, SOPs, payment integration</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACQUISITION OPTIONS -->
+<div class="acq-options">
+  <div class="acq-card">
+    <div class="acq-type">Fractional Investment</div>
+    <div class="acq-price">$3,200 / seat</div>
+    <div class="acq-details">10 seats available. 50% net profit split across investors. Get in at Stage 4 pricing — value increases to $4,800/seat at launch. Dashboard access included.</div>
+    <button class="acq-btn">Reserve a Seat →</button>
+  </div>
+  <div class="acq-card featured">
+    <div class="acq-type">Partnership · 51/49</div>
+    <div class="acq-price">$16,500</div>
+    <div class="acq-details">Lock in pre-launch pricing. 51% ownership, 51% profit split. Buyout available at $52,000 post-launch. We handle operations until handoff.</div>
+    <button class="acq-btn">Apply for Partnership →</button>
+  </div>
+  <div class="acq-card">
+    <div class="acq-type">Buy It Now</div>
+    <div class="acq-price">$32,000</div>
+    <div class="acq-details">Take over at Stage 4. We complete the marketing phase as part of the deal. Everything transfers including 60 days of creator coaching.</div>
+    <button class="acq-btn">Purchase Outright →</button>
+  </div>
+</div>
+
+<!-- DOCUMENTATION LOG -->
+<div class="doc-log">
+  <div class="doc-log-title">Build Documentation Log</div>
+  <div class="log-entries">
+    <div class="log-entry">
+      <span class="log-date">Feb 26</span>
+      <span class="log-content"><span class="log-tag marketing">Marketing</span> Brand identity finalized. Logo, color system, and tone of voice guide delivered. Starting content creation.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Feb 18</span>
+      <span class="log-content"><span class="log-tag build">Build</span> AI auto-tagging engine hitting 94% accuracy. Voice-to-text capture integrated. PWA shell complete.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Feb 8</span>
+      <span class="log-content"><span class="log-tag research">Research</span> Survey complete: 73% of respondents lose 3+ ideas per week to bad capture. Top pain point: context loss between devices.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Jan 30</span>
+      <span class="log-content"><span class="log-tag milestone">Milestone</span> Idea greenlit. Competitor gap identified: no tool combines voice + text + AI organization under $10/mo.</span>
+    </div>
+  </div>
+</div>
+
+<!-- CREATOR -->
+<div class="creator-bar">
+  <div class="creator-info">
+    <div class="creator-avatar">JR</div>
+    <div>
+      <div class="creator-name">Jeremy · VybeKoderz</div>
+      <div class="creator-label">Verified Creator · 3 Listings</div>
+    </div>
+  </div>
+  <div class="creator-stats">
+    <div class="stat">
+      <div class="stat-val">$16K</div>
+      <div class="stat-label">Saved vs Stage 5</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">7/10</div>
+      <div class="stat-label">Seats Available</div>
+    </div>
+  </div>
+</div>
+```
+
+  </article>
+
+  <!-- ============================================ -->
+
+  <!-- LISTING 3: MENUMONEY — STAGE 1 IDEA -->
+
+  <!-- ============================================ -->
+
+  <div class="section-label"><span>Early Access · Lowest Entry</span></div>
+
+  <article class="listing-card stage-1">
+    <div class="card-top">
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="stage-badge idea">Stage 1 · Research & Ideation</span>
+          <span class="category-tag">Restaurant / AI Analytics</span>
+        </div>
+        <h2 class="card-title">MenuMoney</h2>
+        <div class="card-domain">menumoney.io</div>
+        <p class="card-desc">An AI-powered menu optimization engine for restaurant owners. Upload your menu, and MenuMoney analyzes pricing against local competitors, food cost benchmarks, and pricing psychology to recommend what to price higher, what to cut, what to rename, and where you're leaving money on the table. Turns a $2 price tweak into thousands in monthly margin.</p>
+        <div class="card-includes">
+          <span class="include-chip">Market Research</span>
+          <span class="include-chip">Competitor Analysis</span>
+          <span class="include-chip">Revenue Projections</span>
+          <span class="include-chip">Ideal Customer Profile</span>
+          <span class="include-chip">Domain (pending)</span>
+        </div>
+      </div>
+      <div class="card-financials">
+        <div class="fin-label">Current Valuation</div>
+        <div class="fin-value gold">$8,000</div>
+        <div class="fin-label">Projected Monthly Revenue (Mo. 6)</div>
+        <div class="fin-value green">$18,000</div>
+        <div class="fin-row">
+          <span class="fin-row-label">Research Cost (to date)</span>
+          <span class="fin-row-value">$1,200</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Est. Total Build Cost</span>
+          <span class="fin-row-value">$14,000</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Target Market Size</span>
+          <span class="fin-row-value">1M+ restaurants</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Price at Stage 3 (MVP)</span>
+          <span class="fin-row-value">$22,000</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Price at Stage 5 (Launch)</span>
+          <span class="fin-row-value">$55,000</span>
+        </div>
+        <div class="fin-row">
+          <span class="fin-row-label">Est. Time to Launch</span>
+          <span class="fin-row-value">~10 weeks</span>
+        </div>
+      </div>
+    </div>
+
+```
+<!-- STAGE TRACKER -->
+<div class="stage-tracker">
+  <div class="stage-tracker-title">Build Journey — Documented & Verified</div>
+  <div class="stages">
+    <div class="stage active">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 1 · Ideation</div>
+      <div class="stage-detail">Deep dive research in progress. Competitor pricing, TAM, customer interviews.</div>
+    </div>
+    <div class="stage upcoming">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 2 · Validation</div>
+      <div class="stage-detail">Financial model, pricing strategy, go/no-go decision</div>
+    </div>
+    <div class="stage upcoming">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 3 · MVP Build</div>
+      <div class="stage-detail">Core menu analysis engine, competitor data pipeline, UI</div>
+    </div>
+    <div class="stage upcoming">
+      <div class="stage-dot"></div>
+      <div class="stage-line"></div>
+      <div class="stage-name">Stage 4 · Marketing</div>
+      <div class="stage-detail">Restaurant owner outreach, case study creation, launch prep</div>
+    </div>
+    <div class="stage upcoming">
+      <div class="stage-dot"></div>
+      <div class="stage-name">Stage 5 · Launch Ready</div>
+      <div class="stage-detail">Production deployment, onboarding flow, payment live</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACQUISITION OPTIONS -->
+<div class="acq-options">
+  <div class="acq-card featured">
+    <div class="acq-type">Fractional Investment</div>
+    <div class="acq-price">$800 / seat</div>
+    <div class="acq-details">Ground floor pricing. 10 seats at $800 each. Same 50% net profit split. Current valuation: $8K. Projected Stage 5 valuation: $55K. Seat value grows with each completed stage.</div>
+    <button class="acq-btn">Reserve a Seat →</button>
+  </div>
+  <div class="acq-card">
+    <div class="acq-type">Partnership · 51/49</div>
+    <div class="acq-price">$4,200</div>
+    <div class="acq-details">Earliest possible entry. 51% ownership as we build it together. Buyout at $65,000 post-launch. You're buying the vision + our execution track record.</div>
+    <button class="acq-btn">Apply for Partnership →</button>
+  </div>
+  <div class="acq-card">
+    <div class="acq-type">Buy It Now</div>
+    <div class="acq-price">$8,000</div>
+    <div class="acq-details">Own the research, the concept, and the build plan. We complete the build as part of the deal at current contractor rates. You own 100% from day one.</div>
+    <button class="acq-btn">Purchase Outright →</button>
+  </div>
+</div>
+
+<!-- DOCUMENTATION LOG -->
+<div class="doc-log">
+  <div class="doc-log-title">Build Documentation Log</div>
+  <div class="log-entries">
+    <div class="log-entry">
+      <span class="log-date">Feb 28</span>
+      <span class="log-content"><span class="log-tag research">Research</span> Initial market sizing complete. 1M+ independent restaurants in US alone. Average menu hasn't been optimized in 2+ years.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Feb 27</span>
+      <span class="log-content"><span class="log-tag research">Research</span> Competitor scan: MenuDrive focuses on online ordering, not optimization. Yelp data available via API. No direct competitor doing AI menu pricing.</span>
+    </div>
+    <div class="log-entry">
+      <span class="log-date">Feb 26</span>
+      <span class="log-content"><span class="log-tag milestone">Milestone</span> Idea submitted to VybeKoderz Hub. Initial research phase funded and kicked off.</span>
+    </div>
+  </div>
+</div>
+
+<!-- CREATOR -->
+<div class="creator-bar">
+  <div class="creator-info">
+    <div class="creator-avatar">JR</div>
+    <div>
+      <div class="creator-name">Jeremy · VybeKoderz</div>
+      <div class="creator-label">Verified Creator · 3 Listings</div>
+    </div>
+  </div>
+  <div class="creator-stats">
+    <div class="stat">
+      <div class="stat-val">$800</div>
+      <div class="stat-label">Lowest Entry</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">6.8x</div>
+      <div class="stat-label">Projected Value Growth</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">10/10</div>
+      <div class="stat-label">Seats Available</div>
+    </div>
+  </div>
+</div>
+```
+
+  </article>
+
+</div>
+
+<!-- FOOTER CTA -->
+
+<div style="text-align: center; padding: 4rem 2rem 3rem;">
+  <p style="font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dim); margin-bottom: 1rem;">Are you a creator with ideas to sell?</p>
+  <h2 style="font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">List Your Business on the Hub</h2>
+  <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 1.5rem; font-size: 0.9rem; line-height: 1.6;">Build it. Document it. List it. We handle investor matching, contract management, and quality assurance. You keep creating.</p>
+  <button class="alert-btn" style="font-size: 0.75rem; padding: 0.8rem 2rem;">Apply as a Creator →</button>
+</div>
+
+<div style="text-align: center; padding: 1rem 2rem 3rem;">
+  <p style="font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.05em;">© 2025 VybeKoderz Business Hub · All investments involve risk · Revenue projections are estimates based on market research</p>
+</div>
+
+</body>
+</html>

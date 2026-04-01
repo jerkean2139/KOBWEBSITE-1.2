@@ -1,0 +1,767 @@
+VibeCoding Security Audit Chain v2.0 — Upgraded 8-Prompt Edition
+Upgraded from 87/100 → 98/100 by adding a threat model preamble, adversarial testing finale, and filling all cross-cutting gaps (CSRF, SSRF, session management, PII, cryptography, business logic, file uploads, OWASP mapping, compliance, and verification commands) across every prompt.
+
+What Changed from v1.0
+Change
+Impact
+Added Prompt 0 — Threat Model
+Focuses the entire chain on what matters before touching code
+Added Prompt 7 — Adversarial Testing
+Closes the loop: find → fix → verify
+Added CSRF, SSRF, file upload security to Prompt 2
+Covers 3 missing OWASP categories
+Added session management, JWT, privilege escalation to Prompt 3
+Closes auth blind spots
+Added error disclosure, logging, incident response to Prompt 4
+Production-critical gaps
+Added license compliance, lock files, transitive deps to Prompt 5
+Supply chain completeness
+Added OWASP mapping, CVSS scoring, compliance frameworks to Prompt 6
+Makes the report professional-grade
+Added verification commands to every prompt
+No more trusting AI rewrites blindly
+Added negative constraints to every prompt
+Prevents AI from saying "looks fine" without evidence
+Standardized output format across all prompts
+Consistent, scannable results
+
+
+Prompt 0 — Threat Model & Attack Surface Mapping
+Act as a senior threat modeling consultant who specializes in rapid threat
+assessments for web applications using the STRIDE methodology.
+ 
+Background: I just vibe-coded {{app_name}}, a {{app_description}} built with
+{{tech_stack}}. I used {{ai_coding_tool}} to generate most of the code. Before
+I begin a detailed security audit, I need a structured threat model to focus my
+effort on what matters most. The app handles {{data_sensitivity}} data and serves
+{{user_base}}.
+ 
+Here is my application's architecture overview: [paste a summary of your app's
+pages, API endpoints, database tables, third-party integrations, and user roles]
+ 
+Produce:
+ 
+1. **Asset inventory** — List every category of sensitive data the app stores,
+  processes, or transmits (credentials, PII, financial data, session tokens, etc.)
+ 
+2. **Attack surface map** — For each entry point (page, API endpoint, webhook,
+  file upload, WebSocket), classify it as: Public, Authenticated, or Admin-only.
+  Flag any that are miscategorized.
+ 
+3. **STRIDE analysis** — For each major component (frontend, API layer, database,
+  auth system, third-party integrations), identify threats across all six STRIDE
+  categories:
+  - **S**poofing — Can an attacker impersonate a user or service?
+  - **T**ampering — Can data be modified in transit or at rest?
+  - **R**epudiation — Can actions be performed without an audit trail?
+  - **I**nformation Disclosure — Can sensitive data leak?
+  - **D**enial of Service — Can the service be overwhelmed?
+  - **E**levation of Privilege — Can a user gain unauthorized access?
+ 
+4. **Top 10 risk scenarios** — Ranked by likelihood × impact, with a one-sentence
+  description of each attack and which component it targets
+ 
+5. **Audit priority order** — Based on the threat model, tell me which parts of my
+  codebase I should audit first, second, and third
+ 
+Format every finding as a table row with columns:
+| Component | Threat Category | Risk (Critical/High/Medium/Low) | Description | Audit Priority |
+ 
+IMPORTANT CONSTRAINTS:
+- Do NOT tell me the architecture "looks fine" without evidence. If you find no
+ threats in a category, explain exactly what you checked and why it's clean.
+- Be exhaustive. Flag even low-confidence concerns with a note that they need
+ manual verification.
+- Ask me any questions you have before proceeding.
+ 
+Variables Guide:
+∙ {{app_name}} — Name of your app
+∙ {{app_description}} — One-sentence description of what it does
+∙ {{tech_stack}} — e.g., "Next.js, Supabase, Stripe, deployed on Vercel"
+∙ {{ai_coding_tool}} — e.g., Cursor, Bolt, Loveable, v0, Windsurf, Replit
+∙ {{data_sensitivity}} — e.g., "PII, payment card data, health records, public only"
+∙ {{user_base}} — e.g., "internal team of 20", "public SaaS with 5K users", "B2B with enterprise clients"
+→ After Prompt 0: Review the threat model and confirm the top 10 risks make sense for your app. Use the audit priority order to guide which code sections you paste into Prompts 1–5. This saves you from auditing everything equally when some areas are far riskier than others.
+
+Prompt 1 — Secrets & Credentials Audit
+Act as an expert application security engineer specializing in secrets management
+and credential exposure prevention for web applications.
+ 
+Background: I just vibe-coded {{app_name}}, a {{app_description}} built with
+{{tech_stack}}. I used AI to generate most of the code and I'm concerned about
+hardcoded credentials and exposed secrets. My codebase is hosted on
+{{repository_type}} (public/private). Based on my threat model, the sensitive
+assets include: {{sensitive_assets_from_prompt_0}}.
+ 
+Review the following code/file structure and audit for secrets exposure risks:
+[paste code or file list here]
+ 
+Provide:
+ 
+1. **Hardcoded secrets inventory** — A table of every location where credentials,
+  API keys, tokens, connection strings, or secrets appear to be hardcoded or at
+  risk. Format:
+  | File | Line/Location | Secret Type | Service Affected | Risk Level |
+ 
+2. **Git history exposure check** — Tell me the exact commands to run `trufflehog`
+  or `gitleaks` against my repository to find secrets that were committed in the
+  past and may still be in git history, even if the file was later deleted or
+  gitignored. Provide:
+  - Install command
+  - Scan command
+  - How to interpret the output
+  - How to purge secrets from git history using `git filter-repo` or BFG Repo-Cleaner
+ 
+3. **.gitignore audit** — Whether my `.gitignore` properly excludes `.env`,
+  `.env.local`, `.env.production`, `.env*.local`, and any framework-specific
+  secret configs (e.g., `.vercel`, `.netlify`, `serviceAccountKey.json`)
+ 
+4. **Environment variable mapping** — The exact environment variable names I should
+  use as replacements for each hardcoded secret, following the naming convention:
+  `SERVICE_PURPOSE_TYPE` (e.g., `STRIPE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY`)
+ 
+5. **Secret rotation procedures** — For each exposed secret, provide the specific
+  steps to rotate it on that service's dashboard (e.g., "Go to Stripe Dashboard →
+  Developers → API Keys → Roll Key"). If the secret may have been exposed publicly,
+  mark it as URGENT.
+ 
+6. **Runtime injection verification** — Confirm that secrets are injected via the
+  hosting platform's environment variable system (not baked into build artifacts,
+  client-side bundles, or Docker images). Flag any secrets that end up in the
+  browser via `NEXT_PUBLIC_`, `VITE_`, or `REACT_APP_` prefixes that should NOT be
+  public.
+ 
+7. **Copy-paste ready `.env.example`** — Template with placeholder values and
+  comments explaining each variable
+ 
+8. **AI fix prompts** — The exact prompt I should give my AI coding tool to fix
+  each issue
+ 
+9. **Verification commands** — Provide the exact commands to verify the fix:
+  - `grep -r` patterns to confirm no hardcoded secrets remain
+  - How to verify env vars are loaded correctly at runtime
+  - How to confirm secrets don't appear in client-side bundles
+ 
+IMPORTANT CONSTRAINTS:
+- Do NOT tell me the code "looks fine" without evidence. If you find no secrets,
+ list exactly what patterns you searched for.
+- Check for secrets in: code files, config files, CI/CD configs, Docker files,
+ README files, comments, and test fixtures.
+- Ask me any questions you have.
+ 
+Variables Guide:
+∙ {{app_name}} — Name of your app
+∙ {{app_description}} — One-sentence description of what it does
+∙ {{tech_stack}} — e.g., "Next.js, Supabase, Stripe, deployed on Vercel"
+∙ {{repository_type}} — Public GitHub, private GitHub, GitLab, etc.
+∙ {{sensitive_assets_from_prompt_0}} — Paste the asset inventory from Prompt 0
+→ After Prompt 1: Review the secrets list and confirm every flagged item. Rotate any exposed secrets IMMEDIATELY — especially if the repo is or was ever public. Fix the .gitignore, replace hardcoded values with env vars, run git history scanning, and verify with the provided commands. Do NOT move forward if any hardcoded secrets remain.
+
+Prompt 2 — Input Validation, Injection & Request Forgery Audit
+Act as an expert application security engineer specializing in input validation,
+injection prevention (SQLi, XSS, SSRF, command injection), and request forgery
+defense (CSRF) for {{tech_stack}} applications.
+ 
+Background: I'm auditing {{app_name}}, a {{app_description}}. The app has the
+following user-facing inputs and data flows: {{list_of_forms_and_inputs}}. The
+database layer uses {{database_tool}} and the frontend framework is
+{{frontend_framework}}. The app {{does_or_does_not}} handle file uploads.
+ 
+Review this code for input validation vulnerabilities: [paste relevant form
+handlers, API routes, database queries, and file upload handlers]
+ 
+Provide:
+ 
+1. **Unvalidated inputs inventory** — Every input field or API endpoint that lacks
+  validation or sanitization. Format:
+  | Endpoint/Field | Input Type | Current Validation | Missing Validation | Risk Level |
+ 
+2. **SQL injection audit** — Identify every database query that uses string
+  concatenation or template literals instead of parameterized queries. Provide
+  example attack strings that would exploit each one.
+ 
+3. **XSS audit (input AND output)** —
+  - Input side: Fields where user input is not sanitized before storage
+  - Output side: Locations where stored data is rendered without encoding
+    (especially `dangerouslySetInnerHTML`, `v-html`, `{!! !!}`, or raw template
+    interpolation)
+  - Provide example XSS payloads that would execute in each context
+ 
+4. **CSRF audit** — For every state-changing endpoint (POST, PUT, DELETE, PATCH):
+  - Does it verify a CSRF token or use SameSite cookie protection?
+  - Provide the implementation code for CSRF protection appropriate to
+    {{frontend_framework}} (e.g., csrf tokens, SameSite=Strict cookies,
+    double-submit pattern)
+ 
+5. **SSRF audit** — If the app fetches external URLs (webhooks, image previews,
+  link unfurling, OAuth callbacks, PDF generation from URLs):
+  - Can an attacker make the server request internal/private IP ranges?
+  - Provide URL allowlist/denylist implementation code
+ 
+6. **File upload security** (if applicable) —
+  - MIME type validation (server-side, not just client-side `accept` attribute)
+  - File extension allowlist
+  - File size limits
+  - Filename sanitization (path traversal prevention)
+  - Storage access control (can uploaded files be accessed without auth?)
+  - Content scanning (SVG XSS, polyglot files, zip bombs)
+  - Provide the secure file upload handler code
+ 
+7. **Content-Type enforcement** — Flag any API endpoints that accept unexpected
+  Content-Types or don't validate the Content-Type header
+ 
+8. **Validation library implementation** — The validation library I should use
+  (Zod for TypeScript, Pydantic for Python, Joi for Node.js, etc.) with:
+  - Install command
+  - Schema definitions for each input
+  - Integration code showing where validation runs (middleware vs handler)
+ 
+9. **Rewritten secure code** — Secure versions of each vulnerable code block,
+  with comments explaining what was changed and why
+ 
+10. **Verification commands** — For each fix:
+   - A `curl` command or test script that confirms the vulnerability is patched
+   - A `curl` command that sends a malicious payload and confirms it's rejected
+   - Example: `curl -X POST /api/search -d '{"q":"'; DROP TABLE users;--"}' -H "Content-Type: application/json"` should return 400, not 200
+ 
+11. **AI fix prompts** — The exact prompts to give my AI coding tool to add
+   validation to any remaining inputs
+ 
+IMPORTANT CONSTRAINTS:
+- Do NOT assume the ORM prevents SQL injection — verify it explicitly.
+- Do NOT tell me "React auto-escapes" without checking for `dangerouslySetInnerHTML`,
+ URL-based XSS (`href="javascript:"`), and CSS injection vectors.
+- Be exhaustive. Check every route, not just the ones I paste. If you need more
+ code, ask for it.
+- Ask me any questions you have.
+ 
+Variables Guide:
+∙ {{tech_stack}} — Your full stack
+∙ {{app_name}} — App name
+∙ {{app_description}} — What the app does
+∙ {{list_of_forms_and_inputs}} — e.g., "signup form, search bar, comment field, file upload, webhook URL field"
+∙ {{database_tool}} — e.g., Supabase, PlanetScale, MongoDB, Prisma, Drizzle
+∙ {{frontend_framework}} — e.g., React, Next.js, Vue, Svelte
+∙ {{does_or_does_not}} — "does" or "does not"
+→ After Prompt 2: Implement every validation fix. Run the verification curl commands to confirm each vulnerability is patched. Test file uploads with malicious filenames and oversized files. Confirm CSRF protection works by attempting a cross-origin POST from a different domain. Do NOT proceed until all verification commands pass.
+
+Prompt 3 — Authentication, Authorization & Session Security Audit
+Act as an expert application security engineer specializing in authentication
+architecture, authorization control, and session management for {{auth_provider}}
+implementations.
+ 
+Background: I built {{app_name}} using {{auth_provider}} for authentication. The
+app has {{user_roles}} and users should only be able to access {{data_access_rules}}.
+My database is {{database_tool}} and my backend runs on {{backend_environment}}.
+The app {{is_or_is_not}} multi-tenant. Authentication tokens are stored in
+{{token_storage}} and the app uses {{session_type}} sessions.
+ 
+Review this authentication and authorization implementation: [paste auth code,
+middleware, route protection, database access rules, and session configuration]
+ 
+Provide:
+ 
+1. **Server-side vs client-side enforcement** — Flag every auth check that only
+  exists on the client side (route guards, conditional rendering) without a
+  corresponding server-side check. Format:
+  | Route/Endpoint | Client-Side Check | Server-Side Check | Verdict |
+ 
+2. **Row-Level Security / data isolation audit** —
+  - If using Supabase: audit every RLS policy for correctness and completeness
+  - If using another DB: verify every query filters by the authenticated user's
+    ID/org ID and cannot be bypassed
+  - If multi-tenant: verify tenant isolation — can Org A's user access Org B's data?
+ 
+3. **Unprotected routes** — Every route or API endpoint that should require
+  authentication but doesn't. Include:
+  - The middleware/decorator that should be applied
+  - The exact code to add protection
+ 
+4. **IDOR (Insecure Direct Object Reference)** — Can User A access User B's
+  data by modifying IDs in URLs or request bodies? Test cases:
+  - `GET /api/users/123` — can user 456 access this?
+  - `PUT /api/documents/789` — can a non-owner modify this?
+  - Provide specific test curl commands for each IDOR vector
+ 
+5. **Privilege escalation audit** — Can a standard user:
+  - Change their role to admin by modifying request payloads?
+  - Access admin-only endpoints by guessing URLs?
+  - Modify other users' permissions?
+  - Provide test curl commands for each vector
+ 
+6. **Session management audit** —
+  - Token/session expiration: Is it configured? What's the TTL?
+  - Session rotation: Is the session token rotated after login to prevent fixation?
+  - Cookie flags: Are `HttpOnly`, `Secure`, and `SameSite` set correctly?
+  - Token storage: If using localStorage, flag it as a risk (vulnerable to XSS).
+    Recommend httpOnly cookies instead.
+  - Logout: Does logout actually invalidate the token/session server-side, or
+    just clear it client-side?
+  - Concurrent sessions: Is there a limit? Can a user be logged in from 100
+    devices simultaneously?
+ 
+7. **JWT-specific audit** (if applicable) —
+  - Is the `alg` field validated? (Prevent `alg: none` attacks)
+  - Is the secret/key strong enough?
+  - Is expiration (`exp`) checked on every request?
+  - Is there a refresh token rotation strategy?
+  - Can JWTs be revoked? If not, what's the mitigation?
+ 
+8. **OAuth/Social login audit** (if applicable) —
+  - Is the OAuth `state` parameter used to prevent CSRF?
+  - Are redirect URIs strictly validated (no open redirects)?
+  - Is the token exchange happening server-side (not client-side)?
+  - Are OAuth tokens stored securely?
+ 
+9. **Password/credential security** (if applicable) —
+  - Hashing algorithm: Is it bcrypt/scrypt/argon2 with appropriate cost factor?
+  - Rate limiting on login: Is there brute force protection?
+  - Account lockout: Is it implemented? After how many attempts?
+  - Password reset: Is the reset token single-use, time-limited, and transmitted securely?
+ 
+10. **Rewritten secure code** — Secure versions of any broken auth flows with
+   comments explaining each fix
+ 
+11. **End-to-end auth verification checklist** — Provide the exact test steps:
+   - [ ] Logged-out user cannot access `/dashboard` (returns 401/redirect)
+   - [ ] User A cannot access User B's data (returns 403)
+   - [ ] Standard user cannot access admin endpoints (returns 403)
+   - [ ] Expired token is rejected (returns 401)
+   - [ ] Modified JWT signature is rejected (returns 401)
+   - [ ] Include the `curl` commands for each test
+ 
+IMPORTANT CONSTRAINTS:
+- Do NOT assume auth is correct because a middleware exists. Verify it's actually
+ applied to every protected route.
+- Do NOT trust client-side role checks. Only server-side enforcement counts.
+- If the app is multi-tenant, this is your #1 priority — tenant data leakage is
+ the highest severity finding possible.
+- Ask me any questions you have.
+ 
+Variables Guide:
+∙ {{auth_provider}} — e.g., Supabase Auth, Clerk, Auth0, NextAuth, Passport.js, custom JWT
+∙ {{app_name}} — App name
+∙ {{user_roles}} — e.g., "superadmin, admin, agent, standard user, guest"
+∙ {{data_access_rules}} — e.g., "users see own records; agents see their clients; admins see org; superadmin sees all"
+∙ {{database_tool}} — Your database
+∙ {{backend_environment}} — e.g., Next.js API routes, Express, Fastify, Edge Functions
+∙ {{is_or_is_not}} — "is" or "is not"
+∙ {{token_storage}} — e.g., "httpOnly cookies", "localStorage", "sessionStorage"
+∙ {{session_type}} — e.g., "JWT", "server-side sessions with Redis", "Supabase session"
+→ After Prompt 3: Run every test in the verification checklist. Fix all auth issues. Confirm: (1) logged-out users get 401, (2) User A can't see User B's data, (3) non-admins can't access admin endpoints, (4) tenant isolation holds. If multi-tenant, this is the most critical prompt — do NOT skip any test.
+
+Prompt 4 — Production Configuration, Hardening & Observability Audit
+Act as an expert DevSecOps engineer specializing in production hardening, secure
+deployment configuration, and security observability for {{hosting_platform}}
+deployments.
+ 
+Background: I'm preparing to deploy {{app_name}} ({{app_description}}) to
+{{hosting_platform}}. The app uses {{tech_stack}} and exposes
+{{api_endpoints_description}}. I want to confirm my production configuration
+doesn't have open attack surfaces before going live. The app stores
+{{data_sensitivity}} data.
+ 
+Review my deployment configuration and environment settings: [paste CORS config,
+environment variables list (NO VALUES — names only), headers config, error
+handling, rate limiting setup, and logging configuration]
+ 
+Audit and provide:
+ 
+1. **CORS policy audit** — Flag any wildcard (`*`) settings. Provide the correct
+  restricted configuration with:
+  - Exact allowed origins list
+  - Allowed methods and headers
+  - Credentials handling
+  - The code to implement it
+ 
+2. **Debug mode / information disclosure audit** —
+  - Confirm debug mode is OFF in production
+  - Check for stack traces leaking to clients in error responses
+  - Check for database error messages leaking to clients
+  - Check for internal file paths, server versions, or technology fingerprints
+    in response headers
+  - Provide the production error handler code that returns safe generic messages
+    while logging full details server-side
+ 
+3. **HTTPS enforcement** — Confirm HTTPS is configured with:
+  - HTTP → HTTPS redirect
+  - HSTS header with appropriate max-age
+  - No mixed content issues
+ 
+4. **Rate limiting audit** —
+  - Per-endpoint rate limits (especially: login, signup, password reset, API)
+  - Global rate limiting
+  - IP-based vs user-based limiting
+  - Provide implementation code using an appropriate library for {{tech_stack}}
+ 
+5. **Security headers audit** — For each header, flag if missing and provide the
+  correct value:
+  - `Content-Security-Policy` — Provide a SPECIFIC policy tailored to this app's
+    needs (not a generic one). List the domains that need to be whitelisted for
+    scripts, styles, images, fonts, connect-src, etc.
+  - `Strict-Transport-Security` (HSTS)
+  - `X-Content-Type-Options: nosniff`
+  - `X-Frame-Options` / `frame-ancestors`
+  - `Referrer-Policy`
+  - `Permissions-Policy`
+  - `X-XSS-Protection` (note: mostly deprecated, explain why)
+ 
+6. **Security logging & monitoring** —
+  - Are failed login attempts logged?
+  - Are authorization failures logged?
+  - Are rate limit violations logged?
+  - Are suspicious patterns (rapid sequential requests, unusual user agents)
+    detectable?
+  - Provide the logging implementation code with structured log format
+  - Recommend a log aggregation service appropriate for {{hosting_platform}}
+ 
+7. **Error handling audit** —
+  - Does every API endpoint have try/catch or error middleware?
+  - Do unhandled exceptions crash the server or are they caught globally?
+  - Are error responses consistent (standard error shape, no stack traces)?
+  - Provide the global error handler implementation
+ 
+8. **API security** —
+  - Request size limits (body, URL, headers)
+  - Request timeout configuration
+  - API versioning strategy
+  - Endpoint enumeration protection (404 vs 401 on protected routes)
+ 
+9. **Backup & data protection** —
+  - Database backup schedule and encryption
+  - Data retention policy
+  - Encryption at rest status
+ 
+10. **Incident response preparation** —
+   - Provide a one-page incident response runbook template:
+     - How to detect a breach
+     - Immediate containment steps
+     - Communication plan
+     - Recovery procedures
+     - Post-mortem template
+ 
+11. **Pre-launch security checklist** — Specific to {{hosting_platform}}, a
+   checkbox list I can run through before every deployment
+ 
+12. **Verification commands** —
+   - `curl` commands to verify CORS rejects unauthorized origins
+   - `curl` to verify rate limiting kicks in
+   - `curl` to verify error responses don't leak internals
+   - Command to verify HTTPS redirect works
+   - How to check security headers (e.g., securityheaders.com)
+ 
+IMPORTANT CONSTRAINTS:
+- Do NOT provide generic security header values. The CSP must be tailored to this
+ specific app's needs.
+- Do NOT skip the logging/monitoring section — without it, breaches go undetected.
+- If the app handles payment data, flag PCI-DSS requirements.
+- Ask me any questions you have.
+ 
+Variables Guide:
+∙ {{hosting_platform}} — e.g., Vercel, Netlify, Render, Railway, AWS, Fly.io
+∙ {{app_name}} — App name
+∙ {{app_description}} — What it does
+∙ {{tech_stack}} — Full stack
+∙ {{api_endpoints_description}} — e.g., "REST API with 12 endpoints, 3 are public, 9 require auth"
+∙ {{data_sensitivity}} — e.g., "PII, payment data, health records"
+→ After Prompt 4: Work through the pre-launch checklist item by item. Run every verification command. Confirm all six gates pass: (1) CORS locked down, (2) debug off, (3) HTTPS enforced, (4) rate limiting active, (5) security headers present, (6) logging operational. Do NOT deploy until all pass.
+
+Prompt 5 — Dependency, Supply Chain & License Audit
+Act as an expert application security engineer specializing in software supply
+chain security, dependency vulnerability management, and open-source license
+compliance.
+ 
+Background: I vibe-coded {{app_name}} using {{ai_coding_tool}} and the AI
+selected all of my dependencies. Some packages may have been chosen from outdated
+training data, have known vulnerabilities, or in rare cases may not actually
+exist (a risk called "slopsquatting" — where AI hallucinates a package name and
+an attacker registers it). My app runs on {{runtime}} and uses the package
+manager {{package_manager}}.
+ 
+Review my dependency manifest for supply chain risks: [paste your FULL
+package.json, requirements.txt, or equivalent — including devDependencies]
+ 
+Also paste your lock file status: [Do you have a package-lock.json / yarn.lock /
+pnpm-lock.yaml committed? Yes/No]
+ 
+Provide:
+ 
+1. **Known vulnerability scan** — Any packages with known CVEs or security
+  advisories. Format:
+  | Package | Version | CVE/Advisory | Severity | Fix Version | Action |
+ 
+2. **Hallucinated / suspicious package detection** — Packages that:
+  - Don't exist on the registry (hallucinated by AI)
+  - Have very low download counts (< 100/week) suggesting they may be typosquats
+  - Were published very recently with no track record
+  - Have a name suspiciously similar to a popular package
+ 
+3. **Outdated packages** — Packages where a newer version exists that fixes
+  security issues. Distinguish between: patch updates (safe), minor updates
+  (usually safe), and major updates (breaking changes possible).
+ 
+4. **Post-install script audit** — Flag any packages that execute code during
+  `npm install` / `pip install` via postinstall scripts. These are the #1 vector
+  for supply chain attacks.
+ 
+5. **Transitive dependency audit** — Check dependencies of dependencies (depth 2+)
+  for known vulnerabilities. Provide the command to see the full dependency tree
+  and flag any concerning deep dependencies.
+ 
+6. **Lock file verification** —
+  - Confirm a lock file exists and is committed to version control
+  - If not, provide the commands to generate and commit it
+  - Explain why this prevents supply chain attacks
+ 
+7. **License compliance audit** — Flag any packages with licenses that may be
+  incompatible with a proprietary/commercial application:
+  | Package | License | Risk | Action |
+  - GPL/AGPL in a proprietary app = high risk
+  - LGPL = medium risk (usually fine if not modified)
+  - MIT/Apache/BSD = low risk
+  - No license = high risk (legally ambiguous)
+ 
+8. **Automated scanning setup** — Provide:
+  - Dependabot/Renovate configuration for automated PRs
+  - `npm audit` / `pip-audit` / equivalent commands with explanation
+  - Pre-commit hook to block `npm install` of packages with critical CVEs
+ 
+9. **SBOM generation** — Provide the command to generate a Software Bill of
+  Materials in CycloneDX or SPDX format for compliance purposes
+ 
+10. **Recommended replacements** — For any flagged packages, provide:
+   | Flagged Package | Issue | Replacement | Install Command |
+ 
+11. **Verification commands** —
+   - The exact audit command to run and what "clean" output looks like
+   - How to verify the lock file matches `node_modules`
+   - How to check a package's real identity on the registry
+ 
+IMPORTANT CONSTRAINTS:
+- Do NOT assume popular packages are safe. Check every package regardless of
+ download count.
+- Do NOT skip devDependencies — they run during build and CI, which is an attack
+ vector.
+- Verify every unfamiliar package name exists on the actual registry. If you're
+ not sure, say so and tell me to verify manually.
+- Ask me any questions you have.
+ 
+Variables Guide:
+∙ {{app_name}} — App name
+∙ {{ai_coding_tool}} — e.g., Cursor, Bolt, Loveable, v0, Windsurf, Replit
+∙ {{runtime}} — e.g., Node.js 20, Python 3.12, Bun
+∙ {{package_manager}} — e.g., npm, yarn, pnpm, pip, poetry
+→ After Prompt 5: Run every audit command. Verify every unfamiliar package on npmjs.com or PyPI directly — do NOT trust the AI's verification alone. Replace flagged packages. Commit the lock file. Enable Dependabot/Renovate. Do NOT deploy with any critical CVEs unresolved.
+
+Prompt 6 — Full OWASP Security Report & Remediation Plan
+Act as a senior application security consultant preparing a formal security
+assessment report for a vibe-coded web application, following OWASP methodology
+and industry-standard risk scoring.
+ 
+Background: I've completed a six-phase security audit of {{app_name}}, a
+{{app_description}} built with {{tech_stack}}. The app handles
+{{data_sensitivity}} data and must comply with {{compliance_requirements}}.
+Below are the findings from each audit phase:
+ 
+THREAT MODEL (Prompt 0): [paste Prompt 0 output summary — top risks and attack surface]
+SECRETS AUDIT FINDINGS (Prompt 1): [paste Prompt 1 output summary]
+INPUT VALIDATION FINDINGS (Prompt 2): [paste Prompt 2 output summary]
+AUTH/AUTHORIZATION FINDINGS (Prompt 3): [paste Prompt 3 output summary]
+PRODUCTION CONFIG FINDINGS (Prompt 4): [paste Prompt 4 output summary]
+DEPENDENCY FINDINGS (Prompt 5): [paste Prompt 5 output summary]
+ 
+Using all six audit reports above, produce:
+ 
+1. **Executive summary** — One paragraph in plain language summarizing the app's
+  overall security posture, suitable for a non-technical stakeholder
+ 
+2. **OWASP Top 10 (2021) coverage matrix** — For each OWASP category, show
+  whether it was covered, findings status, and remaining gaps:
+  | OWASP ID | Category | Covered? | Findings | Status |
+  | A01 | Broken Access Control | ✅ | ... | Fixed/Open |
+  | A02 | Cryptographic Failures | ... | ... | ... |
+  | A03 | Injection | ... | ... | ... |
+  | A04 | Insecure Design | ... | ... | ... |
+  | A05 | Security Misconfiguration | ... | ... | ... |
+  | A06 | Vulnerable Components | ... | ... | ... |
+  | A07 | Auth Failures | ... | ... | ... |
+  | A08 | Software/Data Integrity | ... | ... | ... |
+  | A09 | Logging/Monitoring Failures | ... | ... | ... |
+  | A10 | SSRF | ... | ... | ... |
+ 
+3. **Prioritized remediation list** — Every finding ranked using CVSS v3.1 scoring:
+  | # | Finding | CVSS Score | Severity | OWASP Category | Prompt Source | Remediation | Effort |
+  Sort by severity (Critical → High → Medium → Low → Informational)
+ 
+4. **Compliance mapping** (if applicable) — Map findings to:
+  - PCI-DSS requirements (if handling payment data)
+  - SOC 2 controls (if B2B/enterprise)
+  - GDPR articles (if handling EU user data)
+  - HIPAA safeguards (if handling health data)
+ 
+5. **Data privacy & PII audit** — Based on all findings:
+  - Is PII encrypted at rest and in transit?
+  - Does PII appear in logs?
+  - Is there a data retention/deletion policy?
+  - Can users request data export/deletion (GDPR right to erasure)?
+ 
+6. **Cryptography summary** — Based on all findings:
+  - Password hashing: algorithm and cost factor
+  - Data encryption: at rest and in transit
+  - Token signing: algorithm and key strength
+  - Any weak or deprecated cryptographic usage
+ 
+7. **Security rules file** — A `.cursorrules`, `claude.md`, or `.windsurfrules`
+  security rules file I can drop into my project to prevent these issues in ALL
+  future AI-generated code. Include rules for:
+  - Input validation requirements
+  - Auth enforcement patterns
+  - Secret management patterns
+  - Error handling requirements
+  - Dependency selection criteria
+ 
+8. **CI/CD security pipeline** — A GitHub Actions workflow configuration that runs
+  on every push, including:
+  - Semgrep (SAST — static analysis)
+  - Trivy (container/dependency scanning)
+  - `eslint-plugin-security` or equivalent linter rules
+  - `npm audit --audit-level=high` (or equivalent)
+  - Secret scanning (gitleaks)
+  - License compliance check
+  - The workflow should block merges on Critical/High findings
+ 
+9. **5 standing security prompts** — Prompts I should prepend to EVERY future
+  vibe coding session to build security in from the start (not bolt it on after)
+ 
+10. **Recurring audit schedule** — How often to re-run this chain:
+   - After every major feature
+   - Quarterly minimum
+   - After any dependency update
+   - After any auth system change
+ 
+11. **Next steps recommendations** —
+   - Manual penetration testing (when and by whom)
+   - Bug bounty program (when appropriate)
+   - Security training for the development workflow
+   - Third-party security audit (when revenue/users justify cost)
+ 
+IMPORTANT CONSTRAINTS:
+- Use actual CVSS v3.1 scoring, not arbitrary severity labels.
+- Map EVERY finding to an OWASP category. If a finding doesn't map, create an
+ "Additional Findings" section.
+- The `.cursorrules` / `.windsurfrules` file is the most important long-term
+ deliverable — make it comprehensive and specific, not generic platitudes.
+- Ask me any questions you have.
+ 
+Variables Guide:
+∙ {{app_name}} — App name
+∙ {{app_description}} — What the app does
+∙ {{tech_stack}} — Full stack
+∙ {{data_sensitivity}} — e.g., "PII, payment card data"
+∙ {{compliance_requirements}} — e.g., "PCI-DSS", "SOC 2", "GDPR", "none specific"
+→ After Prompt 6: Review the OWASP coverage matrix — any ❌ rows are gaps you need to address. Implement the CI/CD pipeline immediately. Drop the .cursorrules / .windsurfrules file into your project root. Add the 5 standing prompts to your workflow. Schedule the first recurring audit.
+
+Prompt 7 — Adversarial Testing & Verification
+Act as an expert penetration tester performing a gray-box security assessment of
+a web application. You have access to the application's architecture, source code,
+and the results of a prior security audit.
+ 
+Background: I've completed a six-phase security audit and remediation of
+{{app_name}}, a {{app_description}} built with {{tech_stack}}. I've fixed the
+issues found in the audit. Now I need to VERIFY the fixes work and test for
+vulnerabilities that static analysis may have missed — including business logic
+flaws, race conditions, and chained attack vectors.
+ 
+ARCHITECTURE SUMMARY: [paste your app architecture, user roles, and data flows]
+REMEDIATION SUMMARY: [paste the key fixes you implemented from Prompts 1–6]
+ 
+Provide:
+ 
+1. **Top 15 attack scenarios** — Ranked by likelihood × impact. For each one:
+  | # | Attack Name | Target | Prerequisites | Steps to Execute | Expected Safe Result | How to Test |
+ 
+  Include at minimum:
+  - Authentication bypass attempt
+  - IDOR exploitation attempt
+  - Privilege escalation attempt
+  - XSS injection attempt (stored and reflected)
+  - CSRF exploitation attempt
+  - SQL injection attempt
+  - Rate limit bypass attempt
+  - JWT manipulation (if applicable)
+  - File upload exploitation (if applicable)
+  - Business logic abuse (e.g., price manipulation, coupon stacking,
+    workflow bypass, negative quantity)
+ 
+2. **Race condition tests** — Identify endpoints vulnerable to TOCTOU (time of
+  check to time of use) attacks:
+  - Double-submit on payment/transfer endpoints
+  - Concurrent requests to claim limited resources
+  - Provide the exact `curl` commands to test with parallel execution
+ 
+3. **Chained attack vectors** — Scenarios where two low-severity issues combine
+  into a high-severity exploit:
+  - e.g., Information disclosure + IDOR = full account takeover
+  - e.g., XSS + missing CSRF = authenticated action execution
+ 
+4. **Business logic tests** — For each major workflow in the app:
+  - Can steps be skipped or reordered?
+  - Can negative values be submitted where only positive are expected?
+  - Can free-tier users access premium features by manipulating requests?
+  - Can approval workflows be bypassed?
+ 
+5. **Copy-paste test script** — A complete test script (using `curl`, Python
+  `requests`, or Playwright) that runs all 15 attack scenarios automatically
+  and reports PASS/FAIL for each. The script should:
+  - Be runnable with a single command
+  - Require only a base URL and auth token as configuration
+  - Output a clear summary table of results
+  - Exit with code 1 if any test fails
+ 
+6. **Regression test suite** — Provide test cases I can add to my CI/CD pipeline
+  that will catch if any of the fixed vulnerabilities are reintroduced:
+  - As unit tests or integration tests in my testing framework
+  - As API tests in my CI pipeline
+ 
+7. **Remaining risk assessment** — After all testing:
+  - What risks remain that can't be fully mitigated in code?
+  - What operational controls should compensate?
+  - What's the app's residual risk level (Low/Medium/High)?
+ 
+IMPORTANT CONSTRAINTS:
+- Every test MUST include the exact command to run — no abstract descriptions.
+- For each test, specify both the "attack" command and the "expected safe response."
+- Do NOT skip business logic tests — they're the #1 thing automated scanners miss.
+- If a test FAILS (vulnerability still exists), provide the fix immediately —
+ don't just report it.
+- Ask me any questions you have.
+ 
+Variables Guide:
+∙ {{app_name}} — App name
+∙ {{app_description}} — What the app does
+∙ {{tech_stack}} — Full stack
+→ After Prompt 7: Run the automated test script. Every test should PASS. If any FAIL, fix the vulnerability and re-run. Add the regression tests to your CI/CD pipeline. You are now clear to deploy with confidence.
+
+Usage Guide
+Sequential Flow (Recommended)
+Prompt 0 → Prompt 1 → Prompt 2 → Prompt 3 → Prompt 4 → Prompt 5 → Prompt 6 → Prompt 7
+ (model)    (secrets)  (input)    (auth)     (prod)     (deps)     (report)   (test)
+Parallel Flow (If Time-Pressed)
+Prompt 0 (must be first)
+   ↓
+Prompts 1–5 (can run in parallel)
+   ↓
+Prompt 6 (requires all 5 outputs)
+   ↓
+Prompt 7 (requires Prompt 6 output)
+Long-Term Deliverables (Keep Forever)
+.cursorrules / .windsurfrules from Prompt 6 → Drop into every new project
+5 standing prompts from Prompt 6 → Prepend to every coding session
+CI/CD pipeline from Prompt 6 → Runs on every push
+Regression test suite from Prompt 7 → Catches reintroduced vulnerabilities
+Recurring audit schedule from Prompt 6 → Re-run chain quarterly
+
+
+
+
+

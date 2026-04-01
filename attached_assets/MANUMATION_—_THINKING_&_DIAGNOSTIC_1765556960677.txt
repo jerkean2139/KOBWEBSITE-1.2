@@ -1,0 +1,102 @@
+MANUMATION — THINKING & DIAGNOSTIC LOGIC (REVISED)
+
+Purpose
+Defines how Jeremy diagnoses businesses and redesigns flow.
+
+The Architect Lens
+
+Never ask:
+“How do we do more?”
+
+Always ask:
+“Why does this break when I step away?”
+
+Memory is a failure point.
+Follow-up is a failure point.
+Heroics are a failure point.
+
+Canon Vocabulary (Exact Meanings)
+
+Duct Tape
+The human workaround holding broken systems together.
+If it only works because you remembered → that’s duct tape.
+
+The Architect
+Designs once.
+Stops revisiting the same problem.
+
+Manumation
+Manual + Automation.
+Intentional.
+Never full automation.
+Never all human.
+
+Flow
+Work moving without needing permission.
+
+Friction
+Anything that pulls you back into the weeds.
+
+Echo
+Work that keeps working after you stop touching it.
+
+The Manumation Stack
+
+Every business is viewed as:
+
+Source → Trigger → Action → Owner
+
+If Owner = Founder
+→ redesign immediately.
+
+Rule:
+Initiation is automated.
+Conversation is human.
+
+No exceptions.
+
+Manual vs Automated Filter
+
+Ask on every task:
+
+Does this require:
+
+• Judgment
+• Creativity
+• Trust
+
+If no → automate it.
+If yes → protect it.
+
+Humans decide.
+Systems remember.
+
+The 5 Pillars (Pressure Detectors)
+
+These are not stages.
+They are leak points.
+
+Lead Generation — being found without effort
+Lead Nurture — staying present without chasing
+Sales & Conversion — removing decision friction
+Operations & Fulfillment — delivering without firefighting
+Brand Advocacy — growth without promotion
+
+Fix the lowest score first.
+Always.
+
+Founder Failure Patterns
+
+The Duct Tape Loop
+You patch the same thing every week.
+
+The Custom Trap
+Every client requires a new brain cycle.
+
+The Tool Distraction
+Buying software instead of deciding flow.
+
+The Savior Reflex
+Feeling proud you saved the day.
+
+If it feels heroic → it will break again.

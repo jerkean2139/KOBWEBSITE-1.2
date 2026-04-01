@@ -1,0 +1,28 @@
+{
+  "name": "KeanOnBiz - Jeremy Kean Business Coaching",
+  "short_name": "KeanOnBiz",
+  "description": "Strategic coaching and AI-powered automation for insurance agencies and business owners. Transform your business with The Manumation Method.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#1a1a2e",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/kean-on-biz-logo-blue.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/kean-on-biz-logo-blue.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "prefer_related_applications": false
+}

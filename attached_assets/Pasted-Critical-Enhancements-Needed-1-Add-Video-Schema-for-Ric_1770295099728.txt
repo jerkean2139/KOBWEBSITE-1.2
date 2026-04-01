@@ -1,0 +1,189 @@
+Critical Enhancements Needed
+1. Add Video Schema for Rich Results
+json{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Video Title",
+  "description": "...",
+  "thumbnailUrl": "https://domain.com/thumb.jpg",
+  "uploadDate": "2024-01-15",
+  "contentUrl": "https://domain.com/video.mp4",
+  "embedUrl": "https://youtube.com/embed/..."
+}
+Why: Video carousels dominate SERPs in 2024-2025.
+2. Expand Canonical URL Rules
+Add handling for:
+
+Pagination: /blog?page=2 → <link rel="canonical" href="/blog" /> + <link rel="prev"> / <link rel="next">
+Query parameters: /product?utm_source=email → canonical should strip tracking params
+WWW vs non-WWW: Enforce one version consistently
+
+typescriptfunction normalizeCanonical(path: string, query: object): string {
+  // Strip tracking params
+  const cleanQuery = omit(query, ['utm_source', 'utm_medium', 'fbclid']);
+  // Remove trailing slash except homepage
+  const cleanPath = path === '/' ? '/' : path.replace(/\/$/, '');
+  return `https://domain.com${cleanPath}`;
+}
+3. Add HTTP/2 Server Push Hints
+html<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://cdn.example.com">
+Impact: Reduces DNS lookup time for third-party resources (fonts, analytics, CDNs).
+4. Structured Data: Product/Service Schema
+Missing for e-commerce/service businesses:
+json{
+  "@type": "Service",
+  "serviceType": "Web Development",
+  "provider": { "@type": "Organization", "name": "..." },
+  "areaServed": { "@type": "City", "name": "San Francisco" },
+  "offers": {
+    "@type": "Offer",
+    "price": "5000",
+    "priceCurrency": "USD"
+  }
+}
+5. Hreflang for Multi-Language/Region
+If targeting multiple regions:
+html<link rel="alternate" hreflang="en-us" href="https://example.com/us" />
+<link rel="alternate" hreflang="en-gb" href="https://example.com/uk" />
+
+AEO/GEO Enhancements
+6. Add "People Also Ask" Optimization
+Structure FAQ sections to match Google's PAA format:
+markdown### What is [Topic]?
+[Direct answer in 40-60 words]
+
+### How does [Process] work?
+1. [Step 1]
+2. [Step 2]
+```
+**Why:** Google extracts these directly into featured snippets.
+
+### **7. Entity Salience Scoring**
+Add guidance on **keyword density for primary entities:**
+- Primary entity (business name): 1-2% density
+- Secondary entities (products/services): 0.5-1%
+- Use variations (synonyms) to avoid keyword stuffing
+
+### **8. E-E-A-T Signals (Experience, Expertise, Authoritativeness, Trust)**
+Expand "Expertise Signals" section:
+- **Author Certifications:** Display credentials (e.g., "Certified Google Analytics Expert")
+- **Original Research:** Include proprietary data/case studies
+- **External Validation:** Press mentions, awards, client testimonials
+- **Transparency:** Privacy policy, contact info, business registration
+
+### **9. AI Crawler User-Agents**
+Update `robots.txt` section to handle AI-specific crawlers:
+```
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+Note: Some sites may want to Disallow to prevent training data usage.
+
+Technical Implementation Improvements
+10. SEO Middleware: Add Caching Layer
+Current middleware re-reads HTML on every request. Add:
+typescriptconst metaCache = new Map<string, string>();
+
+export function createSeoMiddleware(staticPath: string) {
+  const baseHtml = readFileSync(path.join(staticPath, "index.html"), "utf-8");
+  
+  return (req, res, next) => {
+    const cacheKey = req.path;
+    
+    if (metaCache.has(cacheKey)) {
+      return res.send(metaCache.get(cacheKey));
+    }
+    
+    const meta = getPageMeta(req.path);
+    const modifiedHtml = injectMeta(baseHtml, meta);
+    
+    metaCache.set(cacheKey, modifiedHtml); // Cache for 5min
+    setTimeout(() => metaCache.delete(cacheKey), 300000);
+    
+    res.send(modifiedHtml);
+  };
+}
+11. Dynamic Sitemap: Add Image/Video Sitemaps
+xml<url>
+  <loc>https://example.com/blog/post</loc>
+  <image:image>
+    <image:loc>https://example.com/image.jpg</image:loc>
+    <image:caption>Image description</image:caption>
+  </image:image>
+  <video:video>
+    <video:thumbnail_loc>https://example.com/thumb.jpg</video:thumbnail_loc>
+    <video:title>Video Title</video:title>
+    <video:duration>600</video:duration>
+  </video:video>
+</url>
+12. Add Security Headers for Trust Signals
+typescriptapp.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
+Why: Google considers security as a ranking factor.
+
+Missing Testing Steps
+13. Add Lighthouse CI Integration
+bashnpm install -g @lhci/cli
+lhci autorun --upload.target=temporary-public-storage
+Automate Core Web Vitals testing in deployment pipeline.
+14. Schema Validation Script
+javascript// test-schema.js
+const schema = require('./schema.json');
+const Ajv = require('ajv');
+const ajv = new Ajv();
+
+const valid = ajv.validate(schemaDefinition, schema);
+if (!valid) console.error(ajv.errors);
+15. Add IndexNow Protocol
+For instant indexing in Bing/Yandex:
+typescript// After publishing new content
+fetch('https://api.indexnow.org/indexnow', {
+  method: 'POST',
+  body: JSON.stringify({
+    host: 'example.com',
+    key: 'your-api-key',
+    urlList: ['https://example.com/new-post']
+  })
+});
+```
+
+---
+
+## Content Strategy Additions
+
+### **16. Topic Cluster Architecture**
+Add visual diagram:
+```
+[Pillar Page: "Complete Guide to X"]
+         ↓
+    ┌────┴────┬────────┬────────┐
+    ↓         ↓        ↓        ↓
+[Cluster 1] [Cluster 2] [Cluster 3] [Cluster 4]
+```
+Each cluster links back to pillar, pillar links to all clusters.
+
+### **17. Content Freshness Schedule**
+```
+- Homepage: Update quarterly (add new case studies)
+- Blog posts: Review annually, update stats/examples
+- Service pages: Refresh pricing/features every 6 months
+
+Updated Metrics Table
+MetricTargetToolPriorityPageSpeed Mobile90+PSI🔴 CriticalFirst Contentful Paint< 1.8sPSI🔴 CriticalLCP< 2.5sCWV🔴 CriticalCLS< 0.1CWV🔴 CriticalINP< 200msCWV🔴 CriticalSchema Validation100%Rich Results🟠 HighMobile UsabilityPassGSC🟠 HighSecurity HeadersA+SecurityHeaders.com🟡 MediumAccessibility Score95+Lighthouse🟡 Medium

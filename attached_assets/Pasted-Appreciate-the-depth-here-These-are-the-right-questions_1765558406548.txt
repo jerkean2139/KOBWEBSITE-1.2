@@ -1,0 +1,295 @@
+Appreciate the depth here.
+These are the right questions.
+
+I’ll answer directly, then lock rules so the Studio isn’t guessing.
+
+1. Primary Niches for Content Prioritization
+
+Do not rotate equally.
+
+That’s how you get shallow everywhere and authoritative nowhere.
+
+Priority order (for now):
+
+Financial Services
+(Insurance, Mortgage, Wealth)
+
+Real Estate Agents
+
+Coaches / Consultants
+
+Why:
+
+These three:
+
+Are already system-heavy
+
+Feel pain fast when follow-up breaks
+
+Search for solutions instead of inspiration
+
+They map cleanly to:
+
+Lead routing
+
+Nurture automation
+
+Follow-up failures
+
+Founder-as-bottleneck problems
+
+Title Companies, Trades, Non-Profits
+→ Phase 2 expansion
+→ Spin once authority is established
+
+Rule:
+Weight content 70 / 20 / 10
+
+70% → Financial + Real Estate
+
+20% → Coaches / Consultants
+
+10% → Experimental / edge cases
+
+Authority compounds when Google knows who you’re for.
+
+2. Blog Post Length Guidance
+
+Forget word count as a goal.
+
+But the Studio still needs rails.
+
+Target range:
+
+1,200 – 1,600 words
+
+Hard stop at ~1,800
+
+Under 1,000 only if the topic is surgical
+
+Why:
+
+The rhythm creates white space
+
+The ideas are long-form
+
+The sentences are short
+
+Long-form here means:
+
+More breaths.
+Not more filler.
+
+If it hits 1,400 words and says what needed to be said → stop.
+
+3. SEO Keywords vs. Voice Purity
+
+This is non-negotiable:
+
+Voice wins. Always.
+
+But there’s a way to do SEO without polluting tone.
+
+Rules of engagement:
+
+Primary keyword:
+
+Used in:
+
+H1
+
+URL
+
+Meta description
+
+First 100 words
+
+1–2 natural mentions after
+
+Do not force repetition in body copy
+
+Use:
+
+Synonyms
+
+Adjacent phrases
+
+Natural language
+
+If a sentence sounds stupid when spoken out loud → it gets cut.
+
+Exception clause:
+
+If skipping a keyword costs >20% ranking potential on a core pillar term, we:
+
+Keep keyword technical
+
+Make the sentence blunt
+
+Accept slight awkwardness once
+
+Never more than that.
+
+SEO bends.
+Voice doesn’t break.
+
+4. CTA Rules for Blog Posts
+
+Blogs are not social.
+
+They’re entry points.
+
+Every blog gets a CTA.
+But:
+
+It must be soft
+
+It must be contextual
+
+It must be earned
+
+Allowed CTAs:
+
+Assessment invitation
+
+Diagnostic framing
+
+“If this feels familiar…” style exits
+
+Not allowed:
+
+Hard sells
+
+“Book a call now”
+
+Anything that sounds like a funnel slide
+
+Think:
+
+A door.
+Not a shove.
+
+5. Image Prompt Style
+
+Absolutely not corporate.
+
+The images should feel like the book reads.
+
+Primary style:
+Cinematic / documentary
+
+Real spaces
+
+Real tension
+
+Quiet moments
+
+Slight imperfection
+
+Examples:
+
+Empty office at night
+
+Founder alone at a desk
+
+Whiteboard half erased
+
+Messy notebook, coffee ring included
+
+Secondary style (sparingly):
+Minimal graphic diagrams
+Only when explaining flow or systems
+
+Never use:
+
+Stock-photo smiles
+
+Abstract tech blobs
+
+Futuristic nonsense
+
+People pointing at nothing
+
+If the image looks like a SaaS homepage → reject it.
+
+Recommendations (Approved)
+1. Blog Post Template
+
+Yes.
+Do it.
+
+But it’s a skeleton, not a script.
+
+Rough shape:
+
+Hook (lived moment)
+
+Problem reframed
+
+Why effort failed
+
+Where structure was missing
+
+One clear architectural fix
+
+Soft exit
+
+No formulas.
+No “5 steps.”
+
+2. Image Style Guide
+
+Yes.
+
+3–5 canonical prompts.
+Lock them.
+Reuse aggressively.
+
+Consistency > creativity here.
+
+3. Niche Priority Matrix
+
+Yes.
+
+Weight it like this:
+
+40% → Revenue & buyer intent
+
+30% → Content gap
+
+20% → System fit
+
+10% → Ease of proof
+
+Not equal.
+Never equal.
+
+4. SEO / Voice Conflict Rule
+
+Your proposed rule works.
+
+Codify it as:
+
+Voice purity is preserved unless the SEO loss materially impacts ranking on a core pillar keyword (>20%).
+Even then, compromise is minimal and isolated.
+
+That’s the line.
+
+Bottom line:
+
+This Content Studio is not here to publish volume.
+
+It’s here to:
+
+Drain pressure
+
+Clarify structure
+
+Attract founders who already feel the crack
+
+If it ever starts sounding impressive instead of relieving → we missed.
+
+This version is close.
+These additions will lock it.
+
+Ready when you are.

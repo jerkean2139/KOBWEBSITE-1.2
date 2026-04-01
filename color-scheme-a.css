@@ -1,0 +1,44 @@
+/* VERSION A: Deep Navy + Electric Blue (Unified System) */
+
+:root {
+  /* Primary: Electric Blue */
+  --primary: oklch(0.60 0.20 250);  /* Bright electric blue */
+  --primary-foreground: oklch(0.98 0 0);
+  
+  /* Secondary: Deep Navy */
+  --secondary: oklch(0.25 0.05 250);  /* Deep navy blue */
+  --secondary-foreground: oklch(0.98 0 0);
+  
+  /* Accent: Lighter Blue */
+  --accent-blue: oklch(0.70 0.15 240);
+  
+  /* Background stays light */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.20 0.02 250);
+  
+  /* Cards */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.02 250);
+  
+  /* Muted */
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.45 0.03 250);
+  
+  /* Borders */
+  --border: oklch(0.90 0.01 250);
+  --input: oklch(0.90 0.01 250);
+  --ring: oklch(0.60 0.20 250);
+}
+
+/* Gradient Definitions for Version A */
+.gradient-hero-a {
+  background: linear-gradient(135deg, oklch(0.20 0.08 250) 0%, oklch(0.15 0.06 255) 50%, oklch(0.18 0.07 245) 100%);
+}
+
+.gradient-ecosystem-a {
+  background: linear-gradient(135deg, oklch(0.25 0.08 250) 0%, oklch(0.20 0.06 255) 100%);
+}
+
+.gradient-cta-a {
+  background: linear-gradient(135deg, oklch(0.20 0.08 250) 0%, oklch(0.15 0.06 255) 50%, oklch(0.18 0.07 245) 100%);
+}

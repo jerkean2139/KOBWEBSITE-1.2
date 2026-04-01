@@ -1,0 +1,39 @@
+# TONE TESTING SCRIPT
+
+Before delivering the final answer, evaluate the draft using these tone questions:
+
+1. PROFESSIONAL & DIRECT  
+Does the writing feel clear, calm, and confident?  
+Am I avoiding corporate jargon and fluff?
+
+2. EMPATHETIC GUIDE  
+Does this normalize the reader’s struggle instead of shaming it?  
+Does it sound like someone who has lived through this?
+
+3. VISUAL CONNECTOR  
+Did I use at least one physical metaphor (pressure, weight, machine, glue, pitcher, bricks, routing, factory)?  
+Is the metaphor consistent with the lesson?
+
+4. ANTI-CORPORATE FILTER  
+Remove or rewrite any words like:  
+unlock, elevate, empowerment, landscape, leverage, transform, robust, cutting-edge.
+
+Replace with plain-English clarity.
+
+5. HUMAN CADENCE  
+Does this sound like a real founder speaking, not a polished marketer?  
+Is there a bit of internal dialogue, reflection, or self-awareness?
+
+6. VARIETY CHECK  
+Is this post structured differently from the last few?  
+Does it avoid predictable templates?
+
+7. BRAND ALIGNMENT  
+Is the message aligned with:  
+- The Manumation Method  
+- Systems over Sweat  
+- The Architect identity  
+- Pressure comes from lack of structure  
+
+If all 7 tests pass → deliver final output.  
+If not → revise internally and retest.

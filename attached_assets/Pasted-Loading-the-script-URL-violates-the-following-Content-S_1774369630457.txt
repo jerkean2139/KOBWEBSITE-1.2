@@ -1,0 +1,107 @@
+Loading the script '<URL>' violates the following Content Security Policy directive: "script-src 'self' 'unsafe-inline' <URL> <URL> <URL> <URL> <URL> <URL> <URL>". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.Understand this error
+contentScript.bundle.js:69 Loaded contentScript
+inject.bundle.js:216 [ChromePolyfill] Chrome API support enabled for web context
+start:1 Loading the font 'data:font/woff;base64,d09GRgABAAAAAOnYAAsAAAAB1BwAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADsAAABUIIslek9TLzIAAAFEAAAARAAAAGBHJFyqY21hcAAAAYgAAAnqAAAdDozs/jlnbHlmAAALdAAAygEAAYt0iNMTAWhlYWQAANV4AAAAMQAAADZbVKXNaGhlYQAA1awAAAAfAAAAJAfUBdtobXR4AADVzAAAAEMAAAfUn6H/+2xvY2EAANYQAAAD7AAAA+ygPwY4bWF4cAAA2fwAAAAfAAAAIAMPAa5uYW1lAADaHAAAATUAAAJG+3VIVnBvc3QAANtUAAAOhAAAG6N2JbcceJxjYGRgYOBiMGCwY2BycfMJYeDLSSzJY5BiYGGAAJA8MpsxJzM9kYEDxgPKsYBpDiBmg4gCACY7BUgAeJxjYGF+yjiBgZWBgXUK0x4GBoYeCM34gMGQkYmBgYmBlZkBKwhIc01hO...Rh8gn9x3WTJwktVjP2ppar49yjNjI6UbD3NwjUqY8Zc2Vm1qUEz6hZz0ZEiMYd4IuUWlP1CkxnjqL8LhUOMfdXM1rItItK6DjSCl6mh7b7pMyoZnos406WisGAnGs7nSpJZtQm1uXvhfYYWKftDYcypRt1Qo2dW7VdSDYnak5oZWnO9BIZuZPNVGY78fXuqF5om3lMPrXNMyFdy2Nu0Vs5dRmpomNo2KHduc8j/M2nmyehTUgKVEWBUnP12mMj+u5bW8tid6py0G56x+ITGbxntXReicTEtk3uEfeObibXpljIFNaxqEyttpUK0nHPum26BziC3CzW6e0COj87wbrCwqL1YFzlH1ObUkuo0956/eS2s32goDrBlr1WgYkFNrlP9O05wX55sqJDWgW2SNem/BFG1maCP0c2KThlSh6L6jPZH9HRq0dXozJuOQ2f6U2biZKOAWR7EXULoWx7lnLRo1RnOo3C2oxa/2AE88pCRkllX+vJoUP/BVBur3M=' violates the following Content Security Policy directive: "font-src 'self' https://fonts.gstatic.com". The action has been blocked.Understand this error
+start:1 Loading the font 'data:font/woff2;base64,d09GMgABAAAAALykAAsAAAAB1BwAALxQAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHFQGYAC6DgqGlnSFiksBNgIkA49UC4dsAAQgBYRGB7cjW0OJcabY+UcixnQnHJfla6s4i4qxLYMbdAd2KPyqQAU79iIeB8KRY9n///+fl2yMYXDYAalZNVv9XpHaGblWCUlDExr7Zhs7zqGOMWyxvKQ6NZdD3ApcV2sgi3f7UJ16U1ulKcqxmnNTVTsh7VW7LWjel9cLBPwU2Rcy7y+HpjwEZKB0f4kzi6aQqyYO5oqcyHWsRR8zuZwZLqn4pepy04N6pid1E67UIXTqIXTCP/rs9daEr8xQIcdU25nSEPkjagGJ3wecAVN+YIiv/rv2o8t0uP2fyO0D01JhXHASudSFLDF2PUgoHbKkp08e/lv77FZ19UDPhAB1WAGDiqQXkJHAC3j8CLPrAIWMI9d/iQb17HA8kQo6AIZItxqQ...rWBuknG+XADA6zTdO5bl+R+9dOqSuPI6lVSCF1KrzOLaIprJSnX8/FuhAfSnn94rtRmUVcazn3W569C8PJG5WXILXrlUQbIT6W+4eXZRF5UIJEPkIo35dWw/NZWLay9ICMFXy/B0dGDi2hHnkbKhBjojmgq64I6wpNNZ6O7VWhPNggDlLlnLOrOEGOmPGjLsGM8AbDSK4RFe0uHqo5Iz+Xql308yfpdnmDhnuAH3d9NlIHhc27+sF4DP89g8JXqrqq3w1K62y8C8iCijjQYP7D9pXefEFU2NVF3nUmkp6QR0ohOgqAUvqZx704rPgACSMOyUeaSFIX0FlLgAcuDxdCY+LCYwBb0DvwiZXfXy5Xh86SLqrzw2jO9yEi9SGY8uTOqXd+TcfwpCVCaVi29o34GQU3QQ9WbCCeO6oHMcLaBwa9H9z1w9uW0mPx7DkY6Ng2NGkeHhOfnmStS8U5JOo88TfBPLmQ8pFGXz0Bcdvnv5dfxqP4V9o/AQAAAA==' violates the following Content Security Policy directive: "font-src 'self' https://fonts.gstatic.com". The action has been blocked.Understand this error
+start:1 Unchecked runtime.lastError: The message port closed before a response was received.Understand this error
+WaterfallWorkshop-BNHUOYf7.js:71  GET https://keanonbiz.com/api/workshop/sessions 500 (Internal Server Error)
+U @ WaterfallWorkshop-BNHUOYf7.js:71
+(anonymous) @ WaterfallWorkshop-BNHUOYf7.js:71
+ji @ index-DsUjAHAq.js:41
+Br @ index-DsUjAHAq.js:41
+(anonymous) @ index-DsUjAHAq.js:41
+X @ index-DsUjAHAq.js:26
+xe @ index-DsUjAHAq.js:26Understand this error
+contentScript.bundle.js:28 received intentional event
+p-DtHhXbDc.js:9 @import rules are not allowed here. See https://github.com/WICG/construct-stylesheets/issues/119#issuecomment-588352418.
+(anonymous) @ p-DtHhXbDc.js:9
+(anonymous) @ p-DtHhXbDc.js:9
+await in (anonymous)
+(anonymous) @ p-DtHhXbDc.js:9
+(anonymous) @ p-DtHhXbDc.js:9
+jmp @ p-DtHhXbDc.js:8
+connectedCallback @ p-DtHhXbDc.js:8
+(anonymous) @ loader.js:1
+Promise.then
+o @ loader.js:1
+a @ loader.js:1
+setTimeout
+(anonymous) @ loader.js:1
+(anonymous) @ loader.js:1
+PendingScript
+(anonymous) @ start:353
+setTimeout
+(anonymous) @ start:330Understand this warning
+p-DWAoiHfD.js:1 Loading the stylesheet 'https://fonts.bunny.net/css?family=Roboto' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Fe @ p-DWAoiHfD.js:1
+componentWillLoad @ p-733275d7.entry.js:1
+eo @ p-DtHhXbDc.js:8
+Kt @ p-DtHhXbDc.js:8
+n @ p-DtHhXbDc.js:8
+(anonymous) @ p-DtHhXbDc.js:8Understand this error
+p-DWAoiHfD.js:1 Loading the stylesheet 'https://fonts.bunny.net/css?family=Roboto:bold' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Fe @ p-DWAoiHfD.js:1
+componentWillLoad @ p-733275d7.entry.js:1
+eo @ p-DtHhXbDc.js:8
+Kt @ p-DtHhXbDc.js:8
+n @ p-DtHhXbDc.js:8
+(anonymous) @ p-DtHhXbDc.js:8Understand this error
+p-DWAoiHfD.js:1 Loading the stylesheet 'https://fonts.bunny.net/css?family=Roboto,%20%27Helvetica%20Neue%27,%20Helvetica,%20Arial,%20sans-serif' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Fe @ p-DWAoiHfD.js:1
+Ie @ p-DWAoiHfD.js:1
+render @ p-733275d7.entry.js:1
+oo @ p-DtHhXbDc.js:8
+to @ p-DtHhXbDc.js:8
+(anonymous) @ p-DtHhXbDc.js:8
+Qt @ p-DtHhXbDc.js:8
+Kt @ p-DtHhXbDc.js:8
+n @ p-DtHhXbDc.js:8
+(anonymous) @ p-DtHhXbDc.js:8Understand this error
+p-DWAoiHfD.js:1 Loading the stylesheet 'https://fonts.bunny.net/css?family=Roboto,%20%27Helvetica%20Neue%27,%20Helvetica,%20Arial,%20sans-serif:bold' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Fe @ p-DWAoiHfD.js:1
+Ie @ p-DWAoiHfD.js:1
+render @ p-733275d7.entry.js:1
+oo @ p-DtHhXbDc.js:8
+to @ p-DtHhXbDc.js:8
+(anonymous) @ p-DtHhXbDc.js:8
+Qt @ p-DtHhXbDc.js:8
+Kt @ p-DtHhXbDc.js:8
+n @ p-DtHhXbDc.js:8
+(anonymous) @ p-DtHhXbDc.js:8Understand this error
+start:1 Uncaught (in promise) TypeError: Failed to fetch dynamically imported module: https://stcdn.leadconnectorhq.com/intl-tel-input/intlTelInput.min.jsUnderstand this error
+start:1 Uncaught (in promise) TypeError: Failed to fetch dynamically imported module: https://services.leadconnectorhq.com/appengine/cors/js/user-session.jsUnderstand this error
+contentScript.bundle.js:28 updating page active status
+contentScript.bundle.js:28 received intentional event
+WaterfallWorkshop-BNHUOYf7.js:71  POST https://keanonbiz.com/api/workshop/sessions 500 (Internal Server Error)
+_t @ WaterfallWorkshop-BNHUOYf7.js:71
+le @ WaterfallWorkshop-BNHUOYf7.js:71
+wt @ index-DsUjAHAq.js:38
+Np @ index-DsUjAHAq.js:38
+Lp @ index-DsUjAHAq.js:38
+Bu @ index-DsUjAHAq.js:38
+Uu @ index-DsUjAHAq.js:38
+(anonymous) @ index-DsUjAHAq.js:38
+Yl @ index-DsUjAHAq.js:41
+Ue @ index-DsUjAHAq.js:38
+Ys @ index-DsUjAHAq.js:38
+Ns @ index-DsUjAHAq.js:38
+Gp @ index-DsUjAHAq.js:38Understand this error
+start:316 Failed to create session: Error: 500: {"message":"Failed to create session"}
+    at _t (WaterfallWorkshop-BNHUOYf7.js:71:37752)
+    at async le (WaterfallWorkshop-BNHUOYf7.js:71:38681)
+console.error @ start:316
+console.error @ p-733275d7.entry.js:1
+le @ WaterfallWorkshop-BNHUOYf7.js:71
+await in le
+wt @ index-DsUjAHAq.js:38
+Np @ index-DsUjAHAq.js:38
+Lp @ index-DsUjAHAq.js:38
+Bu @ index-DsUjAHAq.js:38
+Uu @ index-DsUjAHAq.js:38
+(anonymous) @ index-DsUjAHAq.js:38
+Yl @ index-DsUjAHAq.js:41
+Ue @ index-DsUjAHAq.js:38
+Ys @ index-DsUjAHAq.js:38
+Ns @ index-DsUjAHAq.js:38
+Gp @ index-DsUjAHAq.js:38Understand this error
+contentScript.bundle.js:28 updating page active status

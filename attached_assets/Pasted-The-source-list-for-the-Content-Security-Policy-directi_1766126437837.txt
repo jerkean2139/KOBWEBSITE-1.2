@@ -1,0 +1,390 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+KOBWEBSITE:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+KOBWEBSITE:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+KOBWEBSITE:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+414fcb3b0a551d76.js:2 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+414fcb3b0a551d76.js:2 Download the Apollo DevTools for a better development experience: https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm
+414fcb3b0a551d76.js:2 [Coframe] Replit Enterprise watcher loaded
+414fcb3b0a551d76.js:2 [LaunchDarkly] LaunchDarkly client initialized
+414fcb3b0a551d76.js:2 [ai-chat] Creating connection with chat proxy enabled
+(anonymous) @ 414fcb3b0a551d76.js:2
+414fcb3b0a551d76.js:2 Cache data may be lost when replacing the dealContext field of a Org object.
+
+This could cause additional (usually avoidable) network requests to fetch data that were otherwise cached.
+
+To address this problem (which is not a bug in Apollo Client), either ensure all objects of type OrgDealContext have an ID or a custom merge function, or define a custom merge function for the Org.dealContext field, so InMemoryCache can safely merge these objects:
+
+  existing: {"__typename":"OrgDealContext","dealType":"default","salesContactEmail":null}
+  incoming: {"__typename":"OrgDealContext","dealType":"default"}
+
+For more information about these options, please refer to the documentation:
+
+  * Ensuring entity objects have IDs: https://go.apollo.dev/c/generating-unique-identifiers
+  * Defining custom merge functions: https://go.apollo.dev/c/merging-non-normalized-objects
+
+(anonymous) @ 414fcb3b0a551d76.js:2
+414fcb3b0a551d76.js:2 Adding extension: Icon Generator Object
+414fcb3b0a551d76.js:2 Adding extension: API Request Tester Object
+414fcb3b0a551d76.js:2 Adding extension: repl.tv Object
+414fcb3b0a551d76.js:2 Adding extension: AI Playground Object
+414fcb3b0a551d76.js:2 Adding extension: ReplDB Export and Import Object
+414fcb3b0a551d76.js:2 Adding extension: CSS Shadow Generator Object
+414fcb3b0a551d76.js:2 Adding extension: JSON Editor Object
+attached_assets/image_1765953534288.png:1  Failed to load resource: the server responded with a status of 404 ()
+attached_assets/image_1766060389546.png:1  Failed to load resource: the server responded with a status of 404 ()
+attached_assets/Gemini_Generated_Image_i22u22i22u22i22u_1765974570546.png:1  Failed to load resource: the server responded with a status of 404 ()
+attached_assets/image_1766060367409.png:1  Failed to load resource: the server responded with a status of 404 ()
+attached_assets/image_1766060328563.png:1  Failed to load resource: the server responded with a status of 404 ()
+attached_assets/image_1766064702837.png:1  Failed to load resource: the server responded with a status of 404 ()
+attached_assets/image_1766066821703.png:1  Failed to load resource: the server responded with a status of 404 ()
+attached_assets/image_1766069576961.png:1  Failed to load resource: the server responded with a status of 404 ()
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ed1e693c96a75807.js:2 Unrecognized feature: 'ambient-light-sensor'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'battery'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'execution-while-not-rendered'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'execution-while-out-of-viewport'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'layout-animations'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'legacy-image-formats'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'navigation-override'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'oversized-images'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'publickey-credentials'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'speaker-selection'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'unoptimized-images'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'unsized-media'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Unrecognized feature: 'pointer-lock'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Allow attribute will take precedence over 'allowfullscreen'.
+z @ ed1e693c96a75807.js:2
+ed1e693c96a75807.js:2 Allow attribute will take precedence over 'allowpaymentrequest'.
+z @ ed1e693c96a75807.js:2
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'battery'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'layout-animations'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'legacy-image-formats'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'navigation-override'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'oversized-images'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'publickey-credentials'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'speaker-selection'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'unoptimized-images'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Unrecognized feature: 'unsized-media'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Arpv%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+@import rules are not allowed here. See <URL>.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/src/pages/ContentStudio.tsx?t=1766122630176:1  Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+ Loading the script 'https://stcdn.leadconnectorhq.com/intl-tel-input/intlTelInput.min.js' violates the following Content Security Policy directive: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://assets.calendly.com https://link.msgsndr.com https://widgets.leadconnectorhq.com". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.
+Bt.loadITI @ p-021ee3e4.entry.js:1
+Loading the stylesheet '<URL>' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' <URL>". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Loading the stylesheet '<URL>' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' <URL>". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Loading the stylesheet '<URL>' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' <URL>". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Loading the stylesheet '<URL>' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' <URL>". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Loading the stylesheet '<URL>' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' <URL>". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Loading the stylesheet '<URL>' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' <URL>". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Loading the stylesheet '<URL>' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' <URL>". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+Loading the stylesheet '<URL>' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' <URL>". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked.
+t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://it.at&size=32:1  Failed to load resource: the server responded with a status of 404 ()
+t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://it.at/&size=32:1  Failed to load resource: the server responded with a status of 404 ()
+414fcb3b0a551d76.js:2 [Coframe] Mutation callback infinite loop protection triggered, disconnecting mutation observer Object
+(anonymous) @ 414fcb3b0a551d76.js:2
+ Loading the script 'https://stcdn.leadconnectorhq.com/intl-tel-input/intlTelInput.min.js' violates the following Content Security Policy directive: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://assets.calendly.com https://link.msgsndr.com https://widgets.leadconnectorhq.com". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.
+Bt.loadITI @ p-021ee3e4.entry.js:1
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/api/newsletters:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/api/newsletters:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/api/newsletters:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+414fcb3b0a551d76.js:2 WARN: A component changed from uncontrolled to controlled.
+(anonymous) @ 414fcb3b0a551d76.js:2
+414fcb3b0a551d76.js:2 WARN: A component changed from controlled to uncontrolled.
+(anonymous) @ 414fcb3b0a551d76.js:2
+414fcb3b0a551d76.js:2 WARN: A component changed from uncontrolled to controlled.
+(anonymous) @ 414fcb3b0a551d76.js:2
+dc7af29f-f8b9-418d-8bc5-36f48ab3fd6f-00-3o8jk8b3nl199.riker.replit.dev/api/content-studio/blog-posts/1/generate?topicId=3&imageProvider=gemini:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+requests.js:1 Fetch finished loading: POST "https://replit.com/graphql".
+s.fetch @ requests.js:1
+(anonymous) @ 414fcb3b0a551d76.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+e.consumeQueue @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+o @ 414fcb3b0a551d76.js:2
+requests.js:1 Fetch finished loading: POST "https://replit.com/graphql".
+s.fetch @ requests.js:1
+(anonymous) @ 414fcb3b0a551d76.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+e.consumeQueue @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+o @ 414fcb3b0a551d76.js:2
+setTimeout
+(anonymous) @ 414fcb3b0a551d76.js:2
+e.scheduleQueueConsumption @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+e.try @ baa08b4c3293c5d5.js:2
+e.start @ baa08b4c3293c5d5.js:2
+r.request @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+Promise.then
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+Promise.then
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+complete @ baa08b4c3293c5d5.js:2
+r.start @ baa08b4c3293c5d5.js:2
+r @ baa08b4c3293c5d5.js:2
+e.getObservableFromLink @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+(anonymous) @ e9a564ba5bc82b62.js:2
+(anonymous) @ e9a564ba5bc82b62.js:2
+s @ e9a564ba5bc82b62.js:2
+e.mutate @ baa08b4c3293c5d5.js:2
+e.mutate @ baa08b4c3293c5d5.js:2
+(anonymous) @ b588d16b5e01b9db.js:2
+n @ 15eb77792579d027.js:2
+o @ 414fcb3b0a551d76.js:2
+requests.js:1 Fetch finished loading: POST "https://replit.com/graphql".
+s.fetch @ requests.js:1
+(anonymous) @ 414fcb3b0a551d76.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+e.consumeQueue @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+o @ 414fcb3b0a551d76.js:2
+setTimeout
+(anonymous) @ 414fcb3b0a551d76.js:2
+e.scheduleQueueConsumption @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+e.try @ baa08b4c3293c5d5.js:2
+e.start @ baa08b4c3293c5d5.js:2
+r.request @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+Promise.then
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+Promise.then
+(anonymous) @ baa08b4c3293c5d5.js:2
+e @ 58378561d6ad6282.js:2
+i.subscribe @ 58378561d6ad6282.js:2
+complete @ baa08b4c3293c5d5.js:2
+r.start @ baa08b4c3293c5d5.js:2
+r @ baa08b4c3293c5d5.js:2
+e.getObservableFromLink @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+(anonymous) @ baa08b4c3293c5d5.js:2
+(anonymous) @ e9a564ba5bc82b62.js:2
+(anonymous) @ e9a564ba5bc82b62.js:2
+s @ e9a564ba5bc82b62.js:2
+e.mutate @ baa08b4c3293c5d5.js:2
+e.mutate @ baa08b4c3293c5d5.js:2
+(anonymous) @ b588d16b5e01b9db.js:2
+(anonymous) @ 414fcb3b0a551d76.js:2
+(anonymous) @ b7b37283fe653194.js:2
+r @ 338cdf280f56313f.js:2
+l @ 338cdf280f56313f.js:2
+(anonymous) @ 338cdf280f56313f.js:2
+(anonymous) @ 338cdf280f56313f.js:2
+(anonymous) @ 414fcb3b0a551d76.js:2
+(anonymous) @ 414fcb3b0a551d76.js:2
+y @ 414fcb3b0a551d76.js:2
+S @ 414fcb3b0a551d76.js:2
+_ @ 414fcb3b0a551d76.js:2
+o @ 414fcb3b0a551d76.js:2

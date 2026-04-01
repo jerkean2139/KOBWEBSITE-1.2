@@ -1,0 +1,111 @@
+Based on my analysis, here are all 7 conversion points on your website that connect to GoHighLevel:
+
+All Lead Capture Points
+Entry Point	GHL Form/Calendar ID	Page URL
+Assessment	p7TQrdK8KZEQfC9JWtQT	/assessment
+Newsletter Signup	WeCKj6eththzMepQtObZ	Home, Blog, Newsletter pages
+Waterfall Workshop	zgCM4tgBuMifZyMfWfmH	/waterfall-workshop-landing
+Dirty Secret Coaching	BmNwodj0BwAaw5UlvZO0	/dirty-secret-coaching
+Calendar: Quick Connect	exCGzR6pDrz2wfc2aoNt	/jeremys-calendar-intro
+Calendar: Strategy Session	uslCIRV9xwkJQlHC1Rl7	/jeremys-calendar-strategy
+Calendar: 1:1 Coaching	HDMThBdATyMVW7HFteZe	/jeremys-calendar-coaching
+Step-by-Step GoHighLevel Workflow Setup Guide
+Step 1: Create Tags for Each Entry Point
+Go to Settings → Tags in GoHighLevel
+Create these tags:
+Lead Source: Assessment
+Lead Source: Newsletter
+Lead Source: Waterfall Workshop
+Lead Source: Dirty Secret Coaching
+Booking: Quick Connect
+Booking: Strategy Session
+Booking: 1:1 Coaching
+Assessment Score: High (for leads needing urgent help)
+Assessment Score: Medium
+Assessment Score: Low
+Step 2: Set Up Form Trigger Tags
+For each form, go to Sites → Forms and find each form:
+
+Assessment Form (p7TQrdK8KZEQfC9JWtQT)
+
+Edit form → Actions → Add Tag: Lead Source: Assessment
+Newsletter Form (WeCKj6eththzMepQtObZ)
+
+Edit form → Actions → Add Tag: Lead Source: Newsletter
+Waterfall Workshop Form (zgCM4tgBuMifZyMfWfmH)
+
+Edit form → Actions → Add Tag: Lead Source: Waterfall Workshop
+Dirty Secret Coaching Form (BmNwodj0BwAaw5UlvZO0)
+
+Edit form → Actions → Add Tag: Lead Source: Dirty Secret Coaching
+Step 3: Set Up Calendar Trigger Tags
+For each calendar, go to Calendars and find each:
+
+Quick Connect (exCGzR6pDrz2wfc2aoNt)
+
+Settings → Actions → Add Tag: Booking: Quick Connect
+Strategy Session (uslCIRV9xwkJQlHC1Rl7)
+
+Settings → Actions → Add Tag: Booking: Strategy Session
+1:1 Coaching (HDMThBdATyMVW7HFteZe)
+
+Settings → Actions → Add Tag: Booking: 1:1 Coaching
+Step 4: Create Automation Workflows
+Go to Automation → Workflows → Create New Workflow
+
+Workflow 1: Assessment Completion
+Trigger: Form Submitted → Select Assessment Form
+Actions:
+
+Add Tag: Lead Source: Assessment
+Wait 2 minutes
+Send Email: "Your Assessment Results"
+Wait 1 day
+Send SMS: "Thanks for taking the assessment..."
+Add to Opportunity Pipeline: "New Leads"
+Workflow 2: Newsletter Welcome
+Trigger: Form Submitted → Select Newsletter Form
+Actions:
+
+Add Tag: Lead Source: Newsletter
+Send Email: Welcome email with first newsletter
+Wait 3 days
+Send Email: "Here's what you might have missed..."
+Workflow 3: Waterfall Workshop Signup
+Trigger: Form Submitted → Select Waterfall Workshop Form
+Actions:
+
+Add Tag: Lead Source: Waterfall Workshop
+Send Email: Workshop access instructions
+Wait 7 days (if no booking)
+Send Email: "Ready for your free strategy call?"
+Add to Pipeline: "Workshop Participants"
+Workflow 4: Booking Confirmations
+Trigger: Appointment Booked → Any Calendar
+Actions:
+
+Send SMS: Confirmation with meeting link
+Wait until 1 day before
+Send Email: Reminder with prep questions
+Wait until 1 hour before
+Send SMS: "See you in 1 hour!"
+Workflow 5: No-Show Follow Up
+Trigger: Appointment → Status Changed to No-Show
+Actions:
+
+Wait 30 minutes
+Send SMS: "Sorry I missed you..."
+Send Email: Reschedule link
+Wait 3 days
+Send SMS: Final reschedule attempt
+Step 5: Create Opportunity Pipelines
+Go to Opportunities → Pipelines:
+
+Pipeline: KeanOnBiz Leads
+
+Stage 1: New Lead
+Stage 2: Engaged (took assessment, workshop)
+Stage 3: Call Booked
+Stage 4: Call Completed
+Stage 5: Proposal Sent
+Stage 6: Won / Lost

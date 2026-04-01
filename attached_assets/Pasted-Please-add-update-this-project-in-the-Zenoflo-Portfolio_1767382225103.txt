@@ -1,0 +1,114 @@
+Please add/update this project in the Zenoflo Portfolio:
+
+PORTFOLIO_DATA_START
+{
+  "title": "Pocket Coach",
+  "slug": "pocket-coach",
+  "description": "AI-powered coaching ecosystem for insurance agents featuring multi-agent chat, voice roleplay with real-time analysis, async voice messaging, and comprehensive analytics powered by OpenAI, Retell AI, and Hume AI.",
+  "category": "platform",
+  "status": "in_progress",
+  "techStack": ["React", "TypeScript", "Express.js", "PostgreSQL", "OpenAI", "Retell AI", "Hume AI", "ElevenLabs", "Tailwind CSS"],
+  "liveUrl": null,
+  "replitUrl": "https://replit.com/@user/pocket-coach",
+  "githubUrl": null,
+  "featuredImage": null,
+  "heroVideoUrl": null,
+  "clientName": "Pocket Jeremy",
+  "clientIndustry": "Insurance, Coaching",
+  "buildStartDate": "2024-12-01",
+  "buildEndDate": null,
+  "caseStudy": {
+    "tagline": "AI-powered coaching ecosystem that transforms insurance agents into top performers",
+    "problemStatement": "Insurance agents struggle to improve sales conversations without real-time feedback. Traditional coaching is expensive, time-limited, and doesn't scale.",
+    "solutionOverview": "Pocket Coach provides an always-available AI coaching ecosystem with specialized agents, voice roleplay training, and async voice messaging with automatic transcription and AI coaching responses.",
+    "keyFeatures": [
+      "Multi-agent AI Chat with specialized coaches for sales, marketing, leadership, and operations",
+      "Role Play Pro voice training with real-time whisper coaching and post-call analytics",
+      "Audio Nuggets async voice messaging with OpenAI Whisper transcription",
+      "Voice Analytics Dashboard with filler words, emotion detection, and talk ratios",
+      "ConversionCraft 45-question assessment with personalized coaching roadmaps",
+      "Gamification with XP, levels, achievements, and challenges"
+    ],
+    "buildApproach": "Full-stack TypeScript with React frontend and Express backend. Integrated multiple AI services for comprehensive coaching capabilities. Mobile-first Cyber-Minimalist design.",
+    "challengesFaced": [
+      "Audio transcription pipeline sequencing - fixed by restructuring upload flow",
+      "Multi-source voice analytics normalization from Retell, OpenAI, and Hume AI",
+      "Unlimited tier handling with infinity display and transaction logging bypass"
+    ],
+    "lessonsLearned": [
+      "Verify full data flow end-to-end when debugging async processes",
+      "Object storage streaming requires proper Node.js stream handling",
+      "Gamification elements significantly boost user engagement"
+    ],
+    "resultsAchieved": [
+      "Complete AI coaching ecosystem with 5+ specialized agents",
+      "Real-time voice roleplay with sub-second whisper coaching",
+      "Unified voice analytics from 3 AI services",
+      "Async coaching with automatic Whisper transcription"
+    ],
+    "clientTestimonial": null,
+    "nextSteps": [
+      "Production deployment",
+      "Mobile PWA enhancements",
+      "Team analytics for agency managers"
+    ]
+  },
+  "milestones": [
+    {
+      "id": "m1",
+      "title": "Core Authentication & Multi-Tenant Foundation",
+      "description": "Email/password auth with bcrypt, session management, role-based access, multi-tenant agency support",
+      "date": "2024-12-01",
+      "mediaUrl": null,
+      "mediaType": "image",
+      "agentNotes": "Custom auth for user management control"
+    },
+    {
+      "id": "m2",
+      "title": "Multi-Agent AI Chat System",
+      "description": "Specialized AI coaching agents with entitlement-based access across subscription tiers",
+      "date": "2024-12-10",
+      "mediaUrl": null,
+      "mediaType": "image",
+      "agentNotes": "Each agent has unique personality and expertise"
+    },
+    {
+      "id": "m3",
+      "title": "Role Play Pro Voice Module",
+      "description": "Retell AI integration for real-time voice conversations with AI prospects",
+      "date": "2024-12-15",
+      "mediaUrl": null,
+      "mediaType": "image",
+      "agentNotes": "Real-time whisper coaching with GPT-4o-mini"
+    },
+    {
+      "id": "m4",
+      "title": "Voice Analytics Dashboard",
+      "description": "Comprehensive analytics with filler words, talk ratios, speech pace, and Hume AI emotion analysis",
+      "date": "2024-12-20",
+      "mediaUrl": null,
+      "mediaType": "image",
+      "agentNotes": "Unified dashboard combining Retell, GPT-4o, and Hume AI data"
+    },
+    {
+      "id": "m5",
+      "title": "Audio Nuggets Async Coaching",
+      "description": "Async voice messaging with OpenAI Whisper transcription and AI coaching responses",
+      "date": "2024-12-26",
+      "mediaUrl": null,
+      "mediaType": "image",
+      "agentNotes": "Unlimited tier with infinity symbol for admin users"
+    },
+    {
+      "id": "m6",
+      "title": "ConversionCraft Assessment",
+      "description": "45-question AI-graded diagnostic measuring 9 skill domains with coaching roadmaps",
+      "date": "2024-12-28",
+      "mediaUrl": null,
+      "mediaType": "image",
+      "agentNotes": "Uses OpenAI o1 for holistic analysis"
+    }
+  ],
+  "mediaGallery": []
+}
+PORTFOLIO_DATA_END

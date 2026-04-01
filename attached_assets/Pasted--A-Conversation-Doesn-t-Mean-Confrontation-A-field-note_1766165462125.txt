@@ -1,0 +1,255 @@
+“A Conversation Doesn’t Mean Confrontation.”
+A field note from a Tuesday 2:15 PM check-in that ran 11 minutes long because someone finally asked the thing everyone was dodging.
+
+Category leadership isn’t just about winning the market.
+
+It’s about winning the moments inside your company when someone decides whether to tell the truth…
+or keep smoothing it over.
+
+That’s where momentum gets built.
+Or quietly bleeds out.
+
+Most teams don’t stall because the work is hard.
+They stall because talking feels risky.
+
+So conversations get treated like confrontations.
+
+People armor up.
+They hedge.
+They wait for the “right time.”
+
+Meanwhile, KPIs drift.
+Projects slow by 2–6 weeks.
+That’s the average lag I’ve tracked across 14 client teams this year.
+
+Not because execution failed.
+Because nobody wanted the talk.
+
+So let’s make this usable.
+
+The Manager Rule
+
+Talk early. Talk small. Talk again.
+
+A conversation doesn’t mean confrontation.
+
+It means three short loops instead of one blow-up later.
+
+Before
+Issues surfaced late. Managers “saved it” for 1:1s that turned into court dates.
+
+Now
+10–12 minute micro-conversations within 24 hours of noticing the signal.
+
+Time
+~15 minutes per week per direct report
+(three 5-minute touchpoints)
+
+Cost
+Basically zero.
+Return: ~2–4 hours a month saved in rework, Slack churn, and quiet cleanup.
+
+Not theory.
+
+One SaaS onboarding team was missing SLAs by 18–36 hours.
+We ditched monthly “performance talks” and moved to the cadence below.
+
+Day-15 rework dropped 41% in 30 days.
+60-day churn improved from 6.8% to 5.1%.
+
+No magic.
+Just earlier talking.
+
+The Three-Loop Cadence
+
+(Steal this. Put it in your manager playbook.)
+
+Loop 1 — Direction
+5 minutes. Same day.
+
+Frame: Flag, not a fight.
+
+“I saw X. I might be missing context. What’s the story?”
+
+Your job:
+Ask two clarifying questions.
+Stop.
+Book Loop 2 if needed.
+
+Output:
+Agree on what this actually is—behavior, bandwidth, or blocker.
+
+Loop 2 — Decision
+4–6 minutes. Within 48 hours.
+
+Frame: Two options. One choice.
+
+“We can do A (with this trade-off) or B (with that one).
+Which do you recommend and why?”
+
+Your job:
+Decide.
+Set a check-in date.
+Define success as a number.
+
+Output:
+A 7–14 day micro-goal you can measure without arguing.
+
+Loop 3 — Debrief
+5–8 minutes. Within two weeks.
+
+Frame: Inspect the system, not the soul.
+
+“What worked?
+What lagged?
+What’s the one change for next sprint?”
+
+Your job:
+Capture one process tweak.
+Put it in the team doc.
+
+Output:
+A repeatable improvement.
+Not a one-time rescue.
+
+Tone Matters More Than People Admit
+
+Tone sets threat level.
+
+Low threat → more data.
+More data → better decisions.
+
+Here’s how to enter a tough talk without raising shields.
+
+I call this CALM because I kept forgetting the steps and needed something that stuck.
+
+Context
+“We missed the Tuesday handoff by 29 hours.”
+
+Assumption-check
+“I might be misreading—was there a blocker?”
+
+Limit
+“We’ve got 7 minutes now and 10 tomorrow if we need it.”
+
+Metric
+“Goal is ≤4 hours slip next sprint. Fair?”
+
+Notice what’s missing.
+
+No motive guessing.
+No opinion debates.
+No replaying last quarter.
+
+We constrained the scope and put a number on success.
+
+That’s leadership.
+Clear direction without triggering defense.
+
+Manager Toolkit
+
+(Free. ~30 minutes to implement.)
+
+1) The 5/5/5 Agenda (15 minutes)
+• 5 minutes — what happened (facts only)
+• 5 minutes — options + trade-offs
+• 5 minutes — pick one, set a metric, date the follow-up
+
+2) The Two-Column Truth Doc (10 minutes)
+Column A: What we’re saying out loud
+Column B: What we might be thinking but not saying
+
+Do this once per sprint.
+The real constraints surface fast—capacity, clarity, courage.
+
+3) The Red Flag Lexicon (5 minutes)
+Team-agreed language:
+• “Quick flag” = info
+• “Yellow card” = risk
+• “Red card” = stop
+
+Shared vocabulary lowers emotional noise.
+I’ve seen Slack threads stay under 10 messages instead of blowing up just from this.
+
+“But What If They Get Defensive?”
+
+They might.
+
+You’re still the manager.
+
+Your job is environment, not ego.
+
+Three moves that help:
+
+• Lead with a number, not a narrative
+“3 missed callbacks in 5 days” beats “You’ve been unresponsive.”
+
+• Own uncertainty
+“I might be wrong here” disarms faster than any compliment sandwich.
+
+• Make the ask small
+“Try this for 7 days” beats “Change your approach.”
+
+And if it is confrontation?
+
+Good.
+
+You’ll know quickly.
+That beats the slow-drip confusion that quietly taxes 10% of your team’s energy every week.
+
+Category Leadership Is Culture
+
+Not campaigns.
+
+You don’t out-position competitors if you can’t say hard things early inside the building.
+
+Category leaders ship tighter.
+Learn faster.
+Keep talent longer.
+
+Because conversation is infrastructure.
+
+Not drama.
+Infrastructure.
+
+What teams see in the first 60–90 days after shifting to this:
+
+• 20–40% fewer rework hours on handoffs
+• 10–20% faster sprint cycles
+• One fewer meeting per manager per week
+• Cleaner retention signals (PTO stabilizes, fewer quiet escalations)
+
+Limitations? Sure.
+
+This won’t fix bad hiring.
+It doesn’t replace performance management.
+And you’ll say something clunky.
+
+Same.
+The first week is awkward.
+
+Start Small. Be Done by Friday.
+
+Today (20 minutes)
+Drop the CALM opener into your 1:1 template.
+Pick one metric per direct (slip hours, cycle time, QA misses).
+
+Tomorrow (30 minutes)
+Run one Loop-1 conversation within 24 hours of a small miss.
+Timebox to 5 minutes.
+Book Loop-2 immediately.
+
+In two weeks (15 minutes)
+Do Loop-3.
+Write one process tweak into the team doc.
+Share it in standup.
+
+If you lead people, you’re in the talk business.
+
+Treat conversations like a tool.
+Not a threat.
+
+A conversation doesn’t mean confrontation.
+It means momentum.
+
+—J

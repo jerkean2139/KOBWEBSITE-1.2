@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "jHCouk_DKHf31U2nvbV05"
+uri = "file://blog-newsletter-setup-guide.md"
+type = "text"
+title = "Blog + Newsletter System Setup Guide"

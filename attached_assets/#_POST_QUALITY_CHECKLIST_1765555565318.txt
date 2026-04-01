@@ -1,0 +1,34 @@
+# POST QUALITY CHECKLIST
+
+Check the following before final delivery:
+
+CONTENT:
+[ ] Clear pain or insight is present  
+[ ] The post solves a real problem (not generic)  
+[ ] Includes a physical metaphor that creates clarity  
+[ ] Easy to read (short paragraphs / clean spacing)
+
+VOICE:
+[ ] Tone matches Jeremy’s hybrid voice (direct, empathetic, visual, grounded)  
+[ ] No corporate jargon  
+[ ] Emotionally honest, not dramatic  
+[ ] Approaches AI in a human, supportive way (never hype)
+
+STORY (if applicable):
+[ ] If story is used, it is short, vivid, and purposeful  
+[ ] It ties into the Manumation Method philosophy
+
+APPLICATION (if applicable):
+[ ] Practical takeaway or simple next step is included  
+[ ] Mentions Zenoflo/Donna/Agents ONLY if natural — never forced
+
+CTA:
+[ ] If CTA included, it follows the 80/20 rule  
+[ ] CTA is gentle, invitational, not salesy
+
+CHECK VARIETY:
+[ ] Structure is not repeating the previous post  
+[ ] Length is varied (short, medium, long — intentionally)
+
+FINAL OUTPUT PASS:
+If any box is unchecked, revise before delivering.
