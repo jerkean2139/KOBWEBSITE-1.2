@@ -1,0 +1,134 @@
+name: Portfolio Snapshot
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      project_slug:
+        description: 'Project slug to snapshot'
+        required: true
+        type: string
+
+jobs:
+  capture-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          NODE_ENV: development
+
+      - name: Build application
+        run: pnpm run build
+        continue-on-error: true
+        env:
+          NODE_ENV: production
+          DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://localhost:5432/temp' }}
+
+      - name: Install Playwright browsers
+        if: success()
+        run: npx playwright install chromium --with-deps
+        continue-on-error: true
+
+      - name: Start server and capture screenshot
+        if: success()
+        continue-on-error: true
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Build directory not found, skipping screenshot"
+            exit 0
+          fi
+
+          pnpm run start &
+          SERVER_PID=$!
+
+          sleep 10
+
+          mkdir -p screenshots
+
+          npx playwright screenshot --viewport-size="1920,1080" http://localhost:3001 screenshots/homepage-$(date +%Y%m%d-%H%M%S).png || echo "Screenshot failed"
+
+          kill $SERVER_PID || true
+
+      - name: Generate AI Summary
+        continue-on-error: true
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+
+          echo "Commit: $COMMIT_HASH"
+          echo "Message: $COMMIT_MSG"
+
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "No OpenAI key configured, skipping AI summary"
+            SUMMARY="$COMMIT_MSG"
+          else
+            SUMMARY=$(curl -s https://api.openai.com/v1/chat/completions \
+              -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $OPENAI_API_KEY" \
+              -d "{
+                \"model\": \"gpt-4o-mini\",
+                \"messages\": [
+                  {\"role\": \"system\", \"content\": \"You are a technical writer. Summarize this commit in 1-2 sentences for a non-technical audience watching a project being built.\"},
+                  {\"role\": \"user\", \"content\": \"Commit message: $COMMIT_MSG\"}
+                ],
+                \"max_tokens\": 100
+              }" | jq -r '.choices[0].message.content // empty')
+            SUMMARY="${SUMMARY:-$COMMIT_MSG}"
+          fi
+
+          echo "Summary: $SUMMARY"
+          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
+          {
+            echo 'COMMIT_MSG<<EOF'
+            echo "$COMMIT_MSG"
+            echo 'EOF'
+          } >> $GITHUB_ENV
+          {
+            echo 'SUMMARY<<EOF'
+            echo "$SUMMARY"
+            echo 'EOF'
+          } >> $GITHUB_ENV
+
+      - name: Upload screenshot artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-screenshots
+          path: screenshots/
+          retention-days: 90
+          if-no-files-found: ignore
+
+      - name: Update Portfolio API
+        continue-on-error: true
+        env:
+          PORTFOLIO_API_URL: ${{ secrets.PORTFOLIO_API_URL }}
+          PORTFOLIO_API_KEY: ${{ secrets.PORTFOLIO_API_KEY }}
+        run: |
+          if [ -n "$PORTFOLIO_API_URL" ] && [ -n "$PORTFOLIO_API_KEY" ]; then
+            curl -X POST "$PORTFOLIO_API_URL/api/portfolio/projects/${{ github.event.inputs.project_slug || 'keanonbiz' }}/snapshots" \
+              -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $PORTFOLIO_API_KEY" \
+              -d "{
+                \"commitHash\": \"$COMMIT_HASH\",
+                \"commitMessage\": \"$(echo "$COMMIT_MSG" | head -1)\",
+                \"aiSummary\": \"$SUMMARY\",
+                \"changeHighlights\": []
+              }"
+          else
+            echo "Portfolio API not configured, skipping snapshot upload"
+          fi
