@@ -13,13 +13,15 @@
 3. [Insurance Revenue Leak Calculator — Full Test Script](#3-insurance-revenue-leak-calculator--full-test-script)
 4. [Bottleneck Audit (General Assessment) — Test Script](#4-bottleneck-audit-general-assessment--test-script)
 5. [Calendar / Booking Pages — Test Script](#5-calendar--booking-pages--test-script)
-6. [Homepage — CTA & Flow Audit](#6-homepage--cta--flow-audit)
-7. [Blog — Spot-Check 3 Posts](#7-blog--spot-check-3-posts)
-8. [Newsletter Signup — Test Script](#8-newsletter-signup--test-script)
-9. [API Endpoint Verification](#9-api-endpoint-verification)
-10. [Known Issues & Inconsistencies](#10-known-issues--inconsistencies)
-11. [Mobile / Responsive Checklist](#11-mobile--responsive-checklist)
-12. [Accessibility Quick-Check](#12-accessibility-quick-check)
+6. [Founder's Filter — Test Script](#6-founders-filter--test-script)
+7. [Homepage — CTA & Flow Audit](#7-homepage--cta--flow-audit)
+8. [Site-Wide CTA Audit Matrix](#8-site-wide-cta-audit-matrix)
+9. [Blog Content Map & 3-Post QA](#9-blog-content-map--3-post-qa)
+10. [Newsletter Signup — Test Script](#10-newsletter-signup--test-script)
+11. [API Endpoint Verification (Full)](#11-api-endpoint-verification-full)
+12. [Known Issues & Inconsistencies](#12-known-issues--inconsistencies)
+13. [Mobile / Responsive Checklist](#13-mobile--responsive-checklist)
+14. [Accessibility Quick-Check](#14-accessibility-quick-check)
 
 ---
 
@@ -141,14 +143,46 @@ POST to GHL form WeCKj6eththzMepQtObZ (client-side direct)
 GHL nurture sequence
 ```
 
-### Funnel D: Content → Booking
+### Funnel D: Founder's Filter
 
 ```
-/blog/:slug  (blog post with CTAs)
+[Traffic Source / Nav / Blog]
    ↓
-CTA to /assessment OR /jeremys-calendar-intro
+/founders-filter  (Landing page — "The Founder's Filter")
    ↓
-(enters Funnel B or books directly)
+[Click "Start The Founder's Filter Now"]
+   ↓
+/founders-filter/start  (Interactive app — Replit Auth login → Donna AI session)
+   ↓
+Task categorization: Keep / Delegate Today / Delegate This Quarter
+   ↓
+Session persistence to PostgreSQL
+   ↓
+PDF export of delegation plan
+   ↓
+CTA: Book a call → /jeremys-calendar or /jeremys-calendar-intro
+```
+
+### Funnel E: Direct Booking
+
+```
+[Any page with booking CTA]
+   ↓
+/jeremys-calendar  (Session selector)
+   ├── Strategy & Working Sessions → /jeremys-calendar-strategy (widget uslCIRV9xwkJQlHC1Rl7)
+   ├── 1:1 Coaching (Clients Only) → /jeremys-calendar-coaching (widget HDMThBdATyMVW7HFteZe)
+   └── Quick Connect → /jeremys-calendar-intro (widget uslCIRV9xwkJQlHC1Rl7)
+```
+
+### Funnel F: Content → Booking
+
+```
+/blog/:slug  (blog post with inline CTAs + sidebar)
+   ↓
+Inline links to /assessment, /insurance, related posts
+Sidebar CTAs: Manumation book, AI Agents toolkit, Book a Call → /jeremys-calendar
+   ↓
+(enters Funnel A, B, or E)
 ```
 
 ---
@@ -309,9 +343,41 @@ Scoring formulas to verify:
 
 ---
 
-## 6. Homepage — CTA & Flow Audit
+## 6. Founder's Filter — Test Script
 
-### Test 6A: Hero Section
+### Test 6A: Landing Page (`/founders-filter`)
+
+| # | Step | Expected Result | Pass? |
+|---|------|-----------------|-------|
+| 1 | Navigate to `/founders-filter` | Landing page loads. Dark gradient. "The Founder's Filter" heading. Jeremy's photo. | |
+| 2 | Verify "Free 59-Minute Session" badge | Amber badge at top | |
+| 3 | Verify headline copy | "Stop drowning in tasks that aren't yours to carry." | |
+| 4 | Click "Start The Founder's Filter Now" | Navigates to `/founders-filter/start` | |
+| 5 | GHL form embed script loads | Script from `link.msgsndr.com/js/form_embed.js` present in DOM | |
+
+### Test 6B: Interactive App (`/founders-filter/start`)
+
+| # | Step | Expected Result | Pass? |
+|---|------|-----------------|-------|
+| 1 | Navigate to `/founders-filter/start` | App loads. Replit Auth login prompt appears (if not authenticated). | |
+| 2 | Authenticate via Replit Auth | Session starts. Donna AI ready. | |
+| 3 | Enter a task description | Donna AI categorizes: Keep / Delegate Today / Delegate This Quarter | |
+| 4 | Add multiple tasks | Tasks accumulate in the session. Categories fill. | |
+| 5 | Session persistence | Refresh page — tasks should persist (PostgreSQL storage). | |
+| 6 | PDF export | Download delegation plan as PDF. | |
+
+### Test 6C: Redirect Compatibility
+
+| # | Step | Expected Result | Pass? |
+|---|------|-----------------|-------|
+| 1 | Navigate to `/waterfall-workshop` | Redirects to `/founders-filter` | |
+| 2 | Navigate to `/waterfall-workshop/start` | Redirects to `/founders-filter/start` | |
+
+---
+
+## 7. Homepage — CTA & Flow Audit
+
+### Test 7A: Hero Section
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
@@ -322,14 +388,14 @@ Scoring formulas to verify:
 | 5 | Social proof badges | "100+ Businesses Helped", "15+ Hours/Week Saved", "35 Years Experience" | |
 | 6 | Quick testimonial (desktop) | Ryan Templeton testimonial with photo | |
 
-### Test 6B: Services Section
+### Test 7B: Services Section
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
 | 1 | Scroll to "Choose Your Journey" | 3 cards: DIY, Do With You, Done For You | |
 | 2 | Verify each CTA links correctly | DIY → book link, DWY → `/jeremys-calendar-intro`, DFY → `/jeremys-calendar-strategy` | |
 
-### Test 6C: Newsletter Section (Footer Area)
+### Test 7C: Newsletter Section (Footer Area)
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
@@ -339,32 +405,175 @@ Scoring formulas to verify:
 
 ---
 
-## 7. Blog — Spot-Check 3 Posts
+## 8. Site-Wide CTA Audit Matrix
 
-### Test 7A: Blog Index (`/blog`)
+Every CTA on every public page, with destination and expected behavior:
 
-| # | Step | Expected Result | Pass? |
-|---|------|-----------------|-------|
-| 1 | Navigate to `/blog` | Blog index loads with posts | |
-| 2 | Content pillar filter | Filters available: Pain, Hope, Philosophy, Proof, Vision | |
-| 3 | Click a pillar filter | Posts filter to that pillar only | |
-| 4 | Click any post | Navigates to `/blog/:slug` | |
+### Navigation (all pages)
 
-### Test 7B: Individual Blog Post
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| KEAN ON BIZ logo | `/` | Navigate home |
+| About | `/about` | Navigate |
+| Services | `/#services` | Scroll to section (on homepage) or navigate to `/#services` |
+| Blog | `/blog` | Navigate |
+| Contact | `/contact` | Navigate |
 
-Pick 3 random blog posts and check:
+### Homepage (`/`)
 
-| # | Check | Expected Result | Pass? |
-|---|-------|-----------------|-------|
-| 1 | Page loads without errors | No blank screen, no console errors | |
-| 2 | Breadcrumbs present | Navigation breadcrumbs visible at top | |
-| 3 | Content renders (no raw HTML) | Article body is properly formatted, images load | |
-| 4 | CTAs present | Some form of CTA (assessment link, calendar link, or newsletter) | |
-| 5 | SEO meta tags | Check page source: title, description, og:image present | |
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Take the Free Bottleneck Audit | `/assessment` | Navigate (primary hero CTA) |
+| Get the Book (desktop) | `https://manumation.ai` | New tab |
+| Get the Book (mobile card) | `https://manumation.ai` | New tab |
+| Manumation ecosystem card | `https://manumation.ai/coming-soon` | New tab |
+| Zenoflo ecosystem card | `https://zenoflo.com` | New tab |
+| DIY card CTA | Manumation book link | New tab |
+| DWY card CTA | `/jeremys-calendar-intro` | Navigate |
+| DFY card CTA | `/jeremys-calendar-strategy` | Navigate |
+| How It Works step 4: "Book a Call" | `/jeremys-calendar-intro` | Navigate |
+| "Take the Bottleneck Audit" (multiple) | `/assessment` | Navigate (appears in services + CTA section) |
+| Subscribe (newsletter form) | GHL `WeCKj6eththzMepQtObZ` | POST to GHL |
+| PocketCoach.one CTA | `https://pocketcoach.one` | New tab |
+| Kingdom Legacy CTA | `https://www.kingdomlegacyministries.org` | New tab |
+| LinkedIn / Facebook / YouTube / Instagram | Social profiles | New tab |
+| Footer: Schedule a Call | `/jeremys-calendar-intro` | Navigate |
+| Footer: Terms / Privacy | `/terms`, `/privacy` | Navigate |
+
+### About (`/about`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Book a Call | `/jeremys-calendar` | Navigate |
+| Take Free Bottleneck Audit | `/assessment` | Navigate |
+| Manumation card | `https://manumation.ai/coming-soon` | New tab |
+| Zenoflo card | `https://zenoflo.com` | New tab |
+
+### Contact (`/contact`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Strategy Call card | `/jeremys-calendar-intro` | Navigate |
+| Working Session card | `/jeremys-calendar-strategy` | Navigate |
+| Coaching Call card | `/jeremys-calendar-coaching` | Navigate |
+| Take Free Bottleneck Audit | `/assessment` | Navigate |
+| Email link | `mailto:support@keanonbiz.com` | Open mail client |
+| LinkedIn | `https://linkedin.com/in/jeremykean` | New tab |
+
+### Insurance (`/insurance`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Find Your Revenue Leak (hero) | Starts assessment quiz | In-page transition |
+| See How It Works | `#how-it-works` | Smooth scroll |
+| Find Out What You're Losing (mid-page) | Starts assessment quiz | In-page transition |
+
+### Insurance Results Page
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Book Your Strategy Call | `/jeremys-calendar-intro` | Navigate |
+| Email My Results (if skipped gate) | POST `/api/insurance-assessment/email-results` | Ajax call |
+
+### CalendarIntro (`/jeremys-calendar-intro`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Back to Insurance Coaching | `/insurance` | Navigate |
+| Back to Home | `/` | Navigate |
+
+### Blog Index (`/blog`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Pillar filter links | `/blog/topic/:pillar` | Navigate |
+| Post cards | `/blog/:slug` | Navigate |
+| Footer: Book a Call | `/jeremys-calendar` | Navigate |
+| Footer: Manumation / Zenoflo | External sites | New tab |
+
+### Blog Post (`/blog/:slug`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Inline content links | Various `/blog/:slug` cross-links | Navigate |
+| Sidebar: Get the Book | `https://manumation.ai` | New tab |
+| Sidebar: Book a Call | `/jeremys-calendar` | Navigate |
+| Share buttons | LinkedIn / Twitter / Facebook share | New tab |
+| Related posts | `/blog/:slug` | Navigate |
+
+### Book (`/book`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Get the Book | `https://manumation.ai` | New tab |
+| Take the Assessment | `/assessment` | Navigate |
+| Book a Call | `/jeremys-calendar` | Navigate |
 
 ---
 
-## 8. Newsletter Signup — Test Script
+## 9. Blog Content Map & 3-Post QA
+
+### Blog Content Pillars → Funnel Mapping
+
+| Pillar | Target Funnel | Insurance-Relevant? |
+|--------|---------------|---------------------|
+| Pain | Insurance Funnel A (via `/insurance`) + Bottleneck Audit B | Yes — agency pain points |
+| Hope | Bottleneck Audit B → Discovery Call | Some posts |
+| Philosophy | Brand awareness → Book → Audit | General |
+| Proof | Social proof → Booking (Funnel E) | Some posts |
+| Vision | Book promo → Manumation site | General |
+
+### Insurance-Relevant Blog Posts (feed Funnel A)
+
+| Slug | Title Area | Links To |
+|------|-----------|----------|
+| `insurance-agency-tech-stack-7-tools-save-time` | Tech stack for agencies | Inline links to other posts |
+| `automate-insurance-renewals-without-losing-personal-touch` | Renewal automation | Cross-links to assessment |
+| `insurance-agency-lead-generation-ai-powered-funnels` | Lead gen for agencies | Cross-links |
+| `insurance-agency-bottleneck-nobody-talks-about` | Agency bottleneck (key funnel post) | Referenced by 5+ other posts |
+| `insurance-agency-client-retention-strategies-2026` | Client retention | Cross-links |
+| `ai-automation-for-insurance-agencies-complete-guide-2026` | AI for agencies | Related to insurance tech stack |
+
+### 3-Post Deep QA
+
+**Post 1: `insurance-agency-bottleneck-nobody-talks-about`**
+
+| # | Check | Expected Result | Pass? |
+|---|-------|-----------------|-------|
+| 1 | Navigate to `/blog/insurance-agency-bottleneck-nobody-talks-about` | Page loads. No blank screen. | |
+| 2 | Breadcrumbs | Shows: Home > Blog > [Post Title] | |
+| 3 | Content renders properly | No raw HTML. Images load. Markdown formatted. | |
+| 4 | Inline cross-links work | Links to other blog posts navigate correctly | |
+| 5 | Sidebar CTAs present | Book CTA, "Book a Call" link visible | |
+| 6 | SEO meta tags | `<title>`, `<meta name="description">`, `og:image` present in page source | |
+| 7 | Share buttons work | LinkedIn/Twitter/Facebook share links generate correct URLs | |
+| 8 | Related posts display | 3 related post cards at bottom | |
+
+**Post 2: `90-day-operations-overhaul-transform-business-one-quarter`**
+
+| # | Check | Expected Result | Pass? |
+|---|-------|-----------------|-------|
+| 1 | Navigate to `/blog/90-day-operations-overhaul-transform-business-one-quarter` | Page loads | |
+| 2 | Breadcrumbs | Home > Blog > [Post Title] | |
+| 3 | Content renders | Properly formatted. Internal links work. | |
+| 4 | Cross-links to Manumation Method | Link to `/blog/manumation-method-five-pillars` works | |
+| 5 | Sidebar CTAs | Present and functional | |
+| 6 | SEO tags | Title, description, OG image present | |
+
+**Post 3: `manumation-method-five-pillars`**
+
+| # | Check | Expected Result | Pass? |
+|---|-------|-----------------|-------|
+| 1 | Navigate to `/blog/manumation-method-five-pillars` | Page loads | |
+| 2 | Breadcrumbs | Home > Blog > [Post Title] | |
+| 3 | Content renders | Properly formatted. The 5 pillars are clearly structured. | |
+| 4 | Most cross-linked post | This slug is referenced by 10+ other posts — verify it loads correctly since it's a critical node | |
+| 5 | Sidebar CTAs | Book CTA links to `manumation.ai`, Call CTA links to `/jeremys-calendar` | |
+| 6 | SEO tags | Title, description, OG image present | |
+
+---
+
+## 10. Newsletter Signup — Test Script
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
@@ -375,9 +584,20 @@ Pick 3 random blog posts and check:
 
 ---
 
-## 9. API Endpoint Verification
+## 11. API Endpoint Verification (Full)
 
-### 9A: Insurance Assessment Capture
+### 11A: Public Endpoints (Non-API)
+
+| Method | Endpoint | Expected Response | Pass? |
+|--------|----------|-------------------|-------|
+| GET | `/sitemap.xml` | Valid XML sitemap with all public URLs | |
+| GET | `/sitemap_index.xml` | 301 redirect → `/sitemap.xml` | |
+| GET | `/robots.txt` | Text file with crawl rules, Sitemap URL | |
+| GET | `/llms.txt` | LLM-readable site summary (llmstxt.org standard) | |
+| GET | `/llms-full.txt` | Extended LLM-readable content | |
+| GET | `/podcast.xml` | Valid RSS feed for MicroPod episodes | |
+
+### 11B: Insurance Assessment Capture
 
 ```
 POST /api/insurance-assessment/capture
@@ -400,7 +620,7 @@ Content-Type: application/json
 
 **Rate limit**: 10 requests per 15-minute window.
 
-### 9B: Insurance Email Results
+### 11C: Insurance Email Results
 
 ```
 POST /api/insurance-assessment/email-results
@@ -411,7 +631,7 @@ Content-Type: application/json
 
 **Expected**: `200 OK` with `{ "success": true }`
 
-### 9C: Validation Tests
+### 11D: Validation Tests
 
 | Test | Input | Expected |
 |------|-------|----------|
@@ -419,9 +639,19 @@ Content-Type: application/json
 | Invalid email | `{"email": "notanemail"}` | 400: "A valid email is required" |
 | Rate limit exceeded | 11 rapid requests | 429: "Too many submissions" |
 
+### 11E: Other API Endpoints (Smoke Tests)
+
+| Method | Endpoint | Expected | Auth Required? |
+|--------|----------|----------|----------------|
+| GET | `/api/portfolio/projects` | JSON array of portfolio projects | No |
+| GET | `/api/pain-points/industries` | JSON array of industry profiles | No |
+| GET | `/api/micropod/episodes` | JSON array of podcast episodes | No |
+| GET | `/api/content-studio/topics` | JSON array of content topics | Admin key |
+| GET | `/api/newsletter/newsletters` | JSON array of newsletters | Admin key |
+
 ---
 
-## 10. Known Issues & Inconsistencies
+## 12. Known Issues & Inconsistencies
 
 ### HIGH Priority — Confirmed (verified in source code)
 
@@ -446,7 +676,7 @@ Content-Type: application/json
 
 ---
 
-## 11. Mobile / Responsive Checklist
+## 13. Mobile / Responsive Checklist
 
 Test on iPhone 12/13 size (390×844) and iPad (768×1024):
 
@@ -458,11 +688,12 @@ Test on iPhone 12/13 size (390×844) and iPad (768×1024):
 | 4 | `/jeremys-calendar-intro` | Photo + text stack. Booking widget scrollable. | |
 | 5 | `/` | Hero stacks. Mobile book card appears (lg:hidden). Nav hamburger works. | |
 | 6 | `/blog` | Post cards stack. Filters wrap. | |
-| 7 | Navigation | Hamburger menu opens/closes. Links work. Escape key closes menu. | |
+| 7 | `/founders-filter` | Landing stacks. Jeremy's photo + text responsive. CTA button full-width. | |
+| 8 | Navigation | Hamburger menu opens/closes. Links work. Escape key closes menu. | |
 
 ---
 
-## 12. Accessibility Quick-Check
+## 14. Accessibility Quick-Check
 
 | # | Check | How to Test | Pass? |
 |---|-------|-------------|-------|
