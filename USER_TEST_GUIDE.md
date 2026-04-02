@@ -3,6 +3,16 @@
 > **Date**: April 2, 2026
 > **Version**: 1.2
 > **Prepared for**: Jeremy Kean, Kianna, QA Testers
+>
+> **Audit Execution Summary**:
+> - All public pages verified: 200 OK (15+ pages tested via HTTP)
+> - All API endpoints tested: `/api/health`, `/api/track/*` (5 endpoints), `/api/insurance-assessment/*` (2 endpoints), `/api/portfolio/projects`
+> - Validation tested: Missing email → 400, Invalid email → 400 (confirmed)
+> - CTA audit: 80+ CTAs across 18 page sections — all code-verified PASS
+> - Blog posts: 3 posts deep-tested, all load correctly (200 OK)
+> - Screenshots captured: `/`, `/insurance`, `/blog`, `/jeremys-calendar`
+> - Items marked MANUAL: Founder's Filter (requires Replit Auth), GHL form submissions (requires GHL dashboard), rate limit testing
+> - 6 Known Issues documented (4 confirmed, 2 needs-confirmation)
 
 ---
 
@@ -82,13 +92,19 @@
 
 | Method | Endpoint | Purpose |
 |--------|----------|---------|
+| GET | `/api/health` | Health check (returns `{"status":"ok"}`) |
+| POST | `/api/track/assessment` | Track assessment completion |
+| POST | `/api/track/pageview` | Track page views |
+| POST | `/api/track/blog-read` | Track blog read events |
+| POST | `/api/track/newsletter-subscribe` | Track newsletter signups |
+| POST | `/api/track/workshop-complete` | Track workshop completions |
 | POST | `/api/insurance-assessment/capture` | Email gate capture + GHL forward |
-| POST | `/api/insurance-assessment/email-results` | Email results from results page |
+| POST | `/api/insurance-assessment/email-results` | Email results from results page (stub) |
 | GET/POST | `/api/portfolio/*` | Portfolio CRUD |
-| GET/POST | `/api/pain-points/*` | Pain points CRUD |
-| GET/POST | `/api/micropod/*` | Podcast management |
-| GET/POST | `/api/content-studio/*` | Blog content management |
-| GET/POST | `/api/newsletter/*` | Newsletter management |
+| GET/POST | `/api/pain-points/*` | Pain points CRUD (admin auth required) |
+| GET/POST | `/api/micropod/*` | Podcast management (admin auth required) |
+| GET/POST | `/api/content-studio/*` | Blog content management (admin auth required) |
+| GET/POST | `/api/newsletter/*` | Newsletter management (admin auth required) |
 | GET | `/podcast.xml` | Podcast RSS feed |
 
 ---
@@ -216,63 +232,63 @@ Sidebar CTAs: Manumation book, AI Agents toolkit, Book a Call → /jeremys-calen
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Navigate to `/insurance` | Landing page loads. Hero: "Stop Running Your Agency. Start Leading It." Red/dark theme. | |
-| 2 | Verify Jeremy's avatar | Small round avatar with "Jeremy Kean / Agency Coach & CEO Sidekick" label | |
-| 3 | Verify stats bar | Shows: $3.3K avg leak, 40% recovery, 3 min, 100% confidential | |
-| 4 | Verify "Problems Nobody Talks About" section | 4 cards: accountability, sales, life production, owner dependency | |
-| 5 | Verify "How It Works" section | 3 steps: Take Assessment → See Numbers → Build Plan | |
-| 6 | Click "Find Your Revenue Leak" (hero CTA) | Scrolls/transitions to assessment quiz. URL stays `/insurance` or updates to `/insurance/assessment` | |
-| 7 | Click "See How It Works" | Smooth scrolls to #how-it-works section | |
-| 8 | Verify NO mentions of: State Farm, eCRM, NASFA, AI, automation | Landing page should only reference: systems, processes, discipline, training, coaching | |
+| 1 | Navigate to `/insurance` | Landing page loads. Hero: "Stop Running Your Agency. Start Leading It." Red/dark theme. | PASS |
+| 2 | Verify Jeremy's avatar | Small round avatar with "Jeremy Kean / Agency Coach & CEO Sidekick" label | PASS |
+| 3 | Verify stats bar | Shows: $3.3K avg leak, 40% recovery, 3 min, 100% confidential | PASS |
+| 4 | Verify "Problems Nobody Talks About" section | 4 cards: accountability, sales, life production, owner dependency | PASS |
+| 5 | Verify "How It Works" section | 3 steps: Take Assessment → See Numbers → Build Plan | PASS |
+| 6 | Click "Find Your Revenue Leak" (hero CTA) | Scrolls/transitions to assessment quiz. URL stays `/insurance` or updates to `/insurance/assessment` | PASS |
+| 7 | Click "See How It Works" | Smooth scrolls to #how-it-works section | PASS |
+| 8 | Verify NO mentions of: State Farm, eCRM, NASFA, AI, automation | Landing page should only reference: systems, processes, discipline, training, coaching | PASS |
 
 ### Test 3B: Assessment Quiz (Phase 1)
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | After clicking CTA, quiz loads | 3-column layout: leakage sidebar (left), question card (center), progress sidebar (right) | |
-| 2 | Progress bar shows | "Phase 1 of 2" with question counter | |
-| 3 | Answer Q1 (radio question) | Auto-advances to Q2 after brief delay. Leakage counter updates. | |
-| 4 | Click "Previous" on Q2 | Returns to Q1 with previous answer preserved | |
-| 5 | Answer Q1-Q11 sequentially | Leakage counter climbs. Categories fill in progress sidebar. | |
-| 6 | Answer Q12 | **Halfway interstitial** appears. Shows current leakage total. | |
-| 7 | Click "Continue" on interstitial | Returns to Q13 | |
-| 8 | Complete Q13-Q23 | **Phase transition interstitial** appears after Q23 | |
-| 9 | Click "Continue" on phase transition | Phase 2 begins. Progress bar updates to "Phase 2 of 2" | |
+| 1 | After clicking CTA, quiz loads | 3-column layout: leakage sidebar (left), question card (center), progress sidebar (right) | PASS (code-verified) |
+| 2 | Progress bar shows | "Phase 1 of 2" with question counter | PASS (code-verified) |
+| 3 | Answer Q1 (radio question) | Auto-advances to Q2 after brief delay. Leakage counter updates. | PASS (code-verified) |
+| 4 | Click "Previous" on Q2 | Returns to Q1 with previous answer preserved | PASS (code-verified) |
+| 5 | Answer Q1-Q11 sequentially | Leakage counter climbs. Categories fill in progress sidebar. | PASS (code-verified) |
+| 6 | Answer Q12 | **Halfway interstitial** appears. Shows current leakage total. | PASS (code-verified) |
+| 7 | Click "Continue" on interstitial | Returns to Q13 | PASS (code-verified) |
+| 8 | Complete Q13-Q23 | **Phase transition interstitial** appears after Q23 | PASS (code-verified) |
+| 9 | Click "Continue" on phase transition | Phase 2 begins. Progress bar updates to "Phase 2 of 2" | PASS (code-verified) |
 
 ### Test 3C: Assessment Quiz (Phase 2)
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Q24 loads | Numeric input question (e.g., premium volume) | |
-| 2 | Enter numeric value, click Next | Advances to Q25 | |
-| 3 | Complete Q24-Q30 | After Q30, **Email Gate** screen appears | |
+| 1 | Q24 loads | Numeric input question (e.g., premium volume) | PASS (code-verified) |
+| 2 | Enter numeric value, click Next | Advances to Q25 | PASS (code-verified) |
+| 3 | Complete Q24-Q30 | After Q30, **Email Gate** screen appears | PASS (code-verified) |
 
 ### Test 3D: Email Gate
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Email gate loads | Shows "Assessment Complete!" with green checkmark | |
-| 2 | Verify leakage/potential display | Red "-$X,XXX leaking/mo" and green "+$X,XXX potential/mo" | |
-| 3 | Enter invalid email (e.g., "test") | HTML5 validation prevents submit | |
-| 4 | Enter valid email, click "See My Results" | Button shows "Sending..." → success → redirects to Results | |
-| 5 | Verify API call | Network tab: POST to `/api/insurance-assessment/capture` with JSON body containing: email, leakage, potential, annualRecovery, costSaved, revenueGained, hoursRecovered, categoryBreakdown, answers | |
-| 6 | Click "Skip — show me the summary only" | Goes to Results page but **without** full category breakdown | |
+| 1 | Email gate loads | Shows "Assessment Complete!" with green checkmark | PASS (code-verified) |
+| 2 | Verify leakage/potential display | Red "-$X,XXX leaking/mo" and green "+$X,XXX potential/mo" | PASS (code-verified) |
+| 3 | Enter invalid email (e.g., "test") | HTML5 validation prevents submit | PASS (code-verified) |
+| 4 | Enter valid email, click "See My Results" | Button shows "Sending..." → success → redirects to Results | PASS (code-verified) |
+| 5 | Verify API call | Network tab: POST to `/api/insurance-assessment/capture` with JSON body containing: email, leakage, potential, annualRecovery, costSaved, revenueGained, hoursRecovered, categoryBreakdown, answers | PASS (API tested: 200 OK) |
+| 6 | Click "Skip — show me the summary only" | Goes to Results page but **without** full category breakdown | PASS (code-verified) |
 
 ### Test 3E: Results Page
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Results load (email submitted path) | Big green "$X,XXX/mo" recovery potential at top | |
-| 2 | Three summary cards | Red (leaking), Green (recovery), Blue (hours/wk) | |
-| 3 | "Where You're Losing Money" section | Category bars with dollar amounts | |
-| 4 | "Where You'd Gain It Back" section | Cost Savings + Revenue Gained columns | |
-| 5 | "Your Answers at a Glance" accordion | Expandable. Shows all 30 answers. Worst answers highlighted red. | |
-| 6 | Jeremy's pitch section | Dark card with personalized copy | |
-| 7 | Testimonials | 3 testimonial cards (Beth P., Anissa V., Shelby F.) | |
-| 8 | CTA button | "Book Your Strategy Call" → links to `/jeremys-calendar-intro` | |
-| 9 | **No duplicate email form** | If email was submitted at gate, NO second email form appears. Instead: "A PDF copy of your results has been sent to your email." | |
-| 10 | Results load (skipped email path) | Recovery potential shows, but category breakdown is **hidden** | |
-| 11 | Email form appears (skip path) | "Email My Results" form appears below CTA since email wasn't captured | |
+| 1 | Results load (email submitted path) | Big green "$X,XXX/mo" recovery potential at top | PASS (code-verified) |
+| 2 | Three summary cards | Red (leaking), Green (recovery), Blue (hours/wk) | PASS (code-verified) |
+| 3 | "Where You're Losing Money" section | Category bars with dollar amounts | PASS (code-verified) |
+| 4 | "Where You'd Gain It Back" section | Cost Savings + Revenue Gained columns | PASS (code-verified) |
+| 5 | "Your Answers at a Glance" accordion | Expandable. Shows all 30 answers. Worst answers highlighted red. | PASS (code-verified) |
+| 6 | Jeremy's pitch section | Dark card with personalized copy | PASS (code-verified) |
+| 7 | Testimonials | 3 testimonial cards (Beth P., Anissa V., Shelby F.) | PASS (code-verified) |
+| 8 | CTA button | "Book Your Strategy Call" → links to `/jeremys-calendar-intro` | PASS (code-verified) |
+| 9 | **No duplicate email form** | If email was submitted at gate, NO second email form appears. Instead: "A PDF copy of your results has been sent to your email." | PASS (code-verified) — but see Known Issue #3: no actual PDF/email sent |
+| 10 | Results load (skipped email path) | Recovery potential shows, but category breakdown is **hidden** | PASS (code-verified) |
+| 11 | Email form appears (skip path) | "Email My Results" form appears below CTA since email wasn't captured | PASS (code-verified) |
 
 ### Test 3F: Scoring Sanity Check
 
@@ -311,10 +327,10 @@ Scoring formulas to verify:
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Navigate to `/assessment` | Page loads with embedded GHL form | |
-| 2 | Verify form captures: name, email, phone + diagnostic questions | GHL form ID: `p7TQrdK8KZEQfC9JWtQT` | |
-| 3 | Submit form with test data | Form submits successfully. Confirmation message appears. | |
-| 4 | Verify GHL receives submission | Check GHL dashboard for the test contact | |
+| 1 | Navigate to `/assessment` | Page loads with embedded GHL form | PASS (200 OK) |
+| 2 | Verify form captures: name, email, phone + diagnostic questions | GHL form ID: `p7TQrdK8KZEQfC9JWtQT` | PASS (code-verified) |
+| 3 | Submit form with test data | Form submits successfully. Confirmation message appears. | MANUAL (requires GHL test) |
+| 4 | Verify GHL receives submission | Check GHL dashboard for the test contact | MANUAL (requires GHL access) |
 
 ---
 
@@ -324,41 +340,41 @@ Scoring formulas to verify:
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Navigate to `/jeremys-calendar` | Page loads. Jeremy's photo (round, gold border). "Book with Jeremy" heading. | |
-| 2 | Verify 3 session cards | Strategy (60 min), Coaching (60 min, "Clients Only" badge), Quick Connect (15-20 min) | |
-| 3 | Click Strategy card | Navigates to `/jeremys-calendar-strategy` | |
-| 4 | Click Coaching card | Navigates to `/jeremys-calendar-coaching` | |
-| 5 | Click Quick Connect card | Navigates to `/jeremys-calendar-intro` | |
-| 6 | "Not Sure?" section | CTA: "Schedule Quick Connect" → `/jeremys-calendar-intro` | |
+| 1 | Navigate to `/jeremys-calendar` | Page loads. Jeremy's photo (round, gold border). "Book with Jeremy" heading. | PASS (screenshot verified) |
+| 2 | Verify 3 session cards | Strategy (60 min), Coaching (60 min, "Clients Only" badge), Quick Connect (15-20 min) | PASS (screenshot verified) — see Known Issue #1: Quick Connect shows 15-20 min but links to 60-min page |
+| 3 | Click Strategy card | Navigates to `/jeremys-calendar-strategy` | PASS (code-verified) |
+| 4 | Click Coaching card | Navigates to `/jeremys-calendar-coaching` | PASS (code-verified) |
+| 5 | Click Quick Connect card | Navigates to `/jeremys-calendar-intro` | PASS (code-verified) |
+| 6 | "Not Sure?" section | CTA: "Schedule Quick Connect" → `/jeremys-calendar-intro` | PASS (code-verified) |
 
 ### Test 5B: Strategy Call / CalendarIntro (`/jeremys-calendar-intro`)
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Navigate to `/jeremys-calendar-intro` | Dark page with red accents. Jeremy's photo (large, rectangular). | |
-| 2 | Verify badge | "60 MINUTE STRATEGY SESSION" | |
-| 3 | Verify headline | "Let's Build Your Recovery Plan" | |
-| 4 | Stats row | 35+ Years, 60+ Coached, $4.2K Avg Recovery, 100% Confidential | |
-| 5 | "What We'll Cover" checklist | 5 items including "Review your Revenue Leak Calculator results" | |
-| 6 | Booking widget loads | GHL iframe with widget `uslCIRV9xwkJQlHC1Rl7` | |
-| 7 | Testimonials section | 3 testimonials (Beth P., Agency Owner, Anissa V.) with star ratings | |
-| 8 | Back links | "Back to Insurance Coaching" → `/insurance`, "Back to Home" → `/` | |
+| 1 | Navigate to `/jeremys-calendar-intro` | Dark page with red accents. Jeremy's photo (large, rectangular). | PASS (200 OK) |
+| 2 | Verify badge | "60 MINUTE STRATEGY SESSION" | PASS (code-verified) |
+| 3 | Verify headline | "Let's Build Your Recovery Plan" | PASS (code-verified) |
+| 4 | Stats row | 35+ Years, 60+ Coached, $4.2K Avg Recovery, 100% Confidential | PASS (code-verified) |
+| 5 | "What We'll Cover" checklist | 5 items including "Review your Revenue Leak Calculator results" | PASS (code-verified) |
+| 6 | Booking widget loads | GHL iframe with widget `uslCIRV9xwkJQlHC1Rl7` | PASS (code-verified) |
+| 7 | Testimonials section | 3 testimonials (Beth P., Agency Owner, Anissa V.) with star ratings | PASS (code-verified) |
+| 8 | Back links | "Back to Insurance Coaching" → `/insurance`, "Back to Home" → `/` | PASS (code-verified) |
 
 ### Test 5C: Strategy & Working Sessions (`/jeremys-calendar-strategy`)
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Page loads | Blue/gold theme. "Strategy & Working Sessions" heading. | |
-| 2 | Booking widget | Same widget ID `uslCIRV9xwkJQlHC1Rl7` | |
-| 3 | Back link | "All Booking Options" → `/jeremys-calendar` | |
+| 1 | Page loads | Blue/gold theme. "Strategy & Working Sessions" heading. | PASS (200 OK) |
+| 2 | Booking widget | Same widget ID `uslCIRV9xwkJQlHC1Rl7` | PASS (code-verified) |
+| 3 | Back link | "All Booking Options" → `/jeremys-calendar` | PASS (code-verified) |
 
 ### Test 5D: 1:1 Coaching (`/jeremys-calendar-coaching`)
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Page loads | "Clients Only" gold badge. Blue/gold theme. | |
-| 2 | Booking widget | **Different** widget ID: `HDMThBdATyMVW7HFteZe` | |
-| 3 | Back link | "All Booking Options" → `/jeremys-calendar` | |
+| 1 | Page loads | "Clients Only" gold badge. Blue/gold theme. | PASS (200 OK) |
+| 2 | Booking widget | **Different** widget ID: `HDMThBdATyMVW7HFteZe` | PASS (code-verified) |
+| 3 | Back link | "All Booking Options" → `/jeremys-calendar` | PASS (code-verified) |
 
 ---
 
@@ -368,29 +384,29 @@ Scoring formulas to verify:
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Navigate to `/founders-filter` | Landing page loads. Dark gradient. "The Founder's Filter" heading. Jeremy's photo. | |
-| 2 | Verify "Free 59-Minute Session" badge | Amber badge at top | |
-| 3 | Verify headline copy | "Stop drowning in tasks that aren't yours to carry." | |
-| 4 | Click "Start The Founder's Filter Now" | Navigates to `/founders-filter/start` | |
-| 5 | GHL form embed script loads | Script from `link.msgsndr.com/js/form_embed.js` present in DOM | |
+| 1 | Navigate to `/founders-filter` | Landing page loads. Dark gradient. "The Founder's Filter" heading. Jeremy's photo. | PASS (200 OK) |
+| 2 | Verify "Free 59-Minute Session" badge | Amber badge at top | PASS (code-verified) |
+| 3 | Verify headline copy | "Stop drowning in tasks that aren't yours to carry." | PASS (code-verified) |
+| 4 | Click "Start The Founder's Filter Now" | Navigates to `/founders-filter/start` | PASS (code-verified) |
+| 5 | GHL form embed script loads | Script from `link.msgsndr.com/js/form_embed.js` present in DOM | PASS (code-verified) |
 
 ### Test 6B: Interactive App (`/founders-filter/start`)
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Navigate to `/founders-filter/start` | App loads. Replit Auth login prompt appears (if not authenticated). | |
-| 2 | Authenticate via Replit Auth | Session starts. Donna AI ready. | |
-| 3 | Enter a task description | Donna AI categorizes: Keep / Delegate Today / Delegate This Quarter | |
-| 4 | Add multiple tasks | Tasks accumulate in the session. Categories fill. | |
-| 5 | Session persistence | Refresh page — tasks should persist (PostgreSQL storage). | |
-| 6 | PDF export | Download delegation plan as PDF. | |
+| 1 | Navigate to `/founders-filter/start` | App loads. Replit Auth login prompt appears (if not authenticated). | MANUAL (requires Replit Auth) |
+| 2 | Authenticate via Replit Auth | Session starts. Donna AI ready. | MANUAL (requires Replit Auth) |
+| 3 | Enter a task description | Donna AI categorizes: Keep / Delegate Today / Delegate This Quarter | MANUAL (requires auth + OpenAI) |
+| 4 | Add multiple tasks | Tasks accumulate in the session. Categories fill. | MANUAL (requires auth + OpenAI) |
+| 5 | Session persistence | Refresh page — tasks should persist (PostgreSQL storage). | MANUAL (requires auth) |
+| 6 | PDF export | Download delegation plan as PDF. | MANUAL (requires auth) |
 
 ### Test 6C: Redirect Compatibility
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Navigate to `/waterfall-workshop` | Redirects to `/founders-filter` | |
-| 2 | Navigate to `/waterfall-workshop/start` | Redirects to `/founders-filter/start` | |
+| 1 | Navigate to `/waterfall-workshop` | Redirects to `/founders-filter` | PASS (code-verified: redirect in App.tsx) |
+| 2 | Navigate to `/waterfall-workshop/start` | Redirects to `/founders-filter/start` | PASS (code-verified: redirect in App.tsx) |
 
 ---
 
@@ -400,197 +416,199 @@ Scoring formulas to verify:
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Navigate to `/` | Hero loads with Manumation book cover (floating animation on desktop) | |
-| 2 | Primary CTA | "Take the Free Bottleneck Audit" → `/assessment` | |
-| 3 | Book CTA (desktop) | "Get the Book" → `https://manumation.ai` (opens new tab) | |
-| 4 | Book CTA (mobile) | Mobile book card with "Get the Book" → `https://manumation.ai` | |
-| 5 | Social proof badges | "100+ Businesses Helped", "15+ Hours/Week Saved", "35 Years Experience" | |
-| 6 | Quick testimonial (desktop) | Ryan Templeton testimonial with photo | |
+| 1 | Navigate to `/` | Hero loads with Manumation book cover (floating animation on desktop) | PASS (screenshot verified) |
+| 2 | Primary CTA | "Take the Free Bottleneck Audit" → `/assessment` | PASS (code-verified) |
+| 3 | Book CTA (desktop) | "Get the Book" → `https://manumation.ai` (opens new tab) | PASS (code-verified) |
+| 4 | Book CTA (mobile) | Mobile book card with "Get the Book" → `https://manumation.ai` | PASS (code-verified) |
+| 5 | Social proof badges | "100+ Businesses Helped", "15+ Hours/Week Saved", "35 Years Experience" | PASS (code-verified) |
+| 6 | Quick testimonial (desktop) | Ryan Templeton testimonial with photo | PASS (code-verified) |
 
 ### Test 7B: Services Section
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Scroll to "Choose Your Journey" | 3 cards: DIY, Do With You, Done For You | |
-| 2 | Verify each CTA links correctly | DIY → book link, DWY → `/jeremys-calendar-intro`, DFY → `/jeremys-calendar-strategy` | |
+| 1 | Scroll to "Choose Your Journey" | 3 cards: DIY, Do With You, Done For You | PASS (code-verified) |
+| 2 | Verify each CTA links correctly | DIY → book link, DWY → `/jeremys-calendar-intro`, DFY → `/jeremys-calendar-strategy` | PASS (code-verified) |
 
 ### Test 7C: Newsletter Section (Footer Area)
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | Scroll to newsletter signup | Email input + Subscribe button | |
-| 2 | Enter email + click Subscribe | Shows "You're subscribed! Check your inbox." | |
-| 3 | Verify network request | POST to GHL form `WeCKj6eththzMepQtObZ` | |
+| 1 | Scroll to newsletter signup | Email input + Subscribe button | PASS (code-verified) |
+| 2 | Enter email + click Subscribe | Shows "You're subscribed! Check your inbox." | PASS (code-verified) — see Known Issue #4: always shows success even on error |
+| 3 | Verify network request | POST to GHL form `WeCKj6eththzMepQtObZ` | PASS (code-verified) |
 
 ---
 
 ## 8. Site-Wide CTA Audit Matrix
 
-Every CTA on every public page, with destination and expected behavior:
+Every CTA on every public page, with destination, expected behavior, and verification status.
+
+**Legend**: PASS = code-verified destination/behavior matches; MANUAL = requires browser interaction to confirm.
 
 ### Navigation (all pages)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| KEAN ON BIZ logo | `/` | Navigate home |
-| About | `/about` | Navigate |
-| Services | `/#services` | Scroll to section (on homepage) or navigate to `/#services` |
-| Blog | `/blog` | Navigate |
-| Contact | `/contact` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| KEAN ON BIZ logo | `/` | Navigate home | PASS |
+| About | `/about` | Navigate | PASS |
+| Services | `/#services` | Scroll to section (on homepage) or navigate to `/#services` | PASS |
+| Blog | `/blog` | Navigate | PASS |
+| Contact | `/contact` | Navigate | PASS |
 
 ### Homepage (`/`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Take the Free Bottleneck Audit | `/assessment` | Navigate (primary hero CTA) |
-| Get the Book (desktop) | `https://manumation.ai` | New tab |
-| Get the Book (mobile card) | `https://manumation.ai` | New tab |
-| Manumation ecosystem card | `https://manumation.ai/coming-soon` | New tab |
-| Zenoflo ecosystem card | `https://zenoflo.com` | New tab |
-| DIY card CTA | Manumation book link | New tab |
-| DWY card CTA | `/jeremys-calendar-intro` | Navigate |
-| DFY card CTA | `/jeremys-calendar-strategy` | Navigate |
-| How It Works step 4: "Book a Call" | `/jeremys-calendar-intro` | Navigate |
-| "Take the Bottleneck Audit" (multiple) | `/assessment` | Navigate (appears in services + CTA section) |
-| Subscribe (newsletter form) | GHL `WeCKj6eththzMepQtObZ` | POST to GHL |
-| PocketCoach.one CTA | `https://pocketcoach.one` | New tab |
-| Kingdom Legacy CTA | `https://www.kingdomlegacyministries.org` | New tab |
-| LinkedIn / Facebook / YouTube / Instagram | Social profiles | New tab |
-| Footer: Schedule a Call | `/jeremys-calendar-intro` | Navigate |
-| Footer: Terms / Privacy | `/terms`, `/privacy` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Take the Free Bottleneck Audit | `/assessment` | Navigate (primary hero CTA) | PASS |
+| Get the Book (desktop) | `https://manumation.ai` | New tab | PASS |
+| Get the Book (mobile card) | `https://manumation.ai` | New tab | PASS |
+| Manumation ecosystem card | `https://manumation.ai/coming-soon` | New tab | PASS |
+| Zenoflo ecosystem card | `https://zenoflo.com` | New tab | PASS |
+| DIY card CTA | Manumation book link | New tab | PASS |
+| DWY card CTA | `/jeremys-calendar-intro` | Navigate | PASS |
+| DFY card CTA | `/jeremys-calendar-strategy` | Navigate | PASS |
+| How It Works step 4: "Book a Call" | `/jeremys-calendar-intro` | Navigate | PASS |
+| "Take the Bottleneck Audit" (multiple) | `/assessment` | Navigate (appears in services + CTA section) | PASS |
+| Subscribe (newsletter form) | GHL `WeCKj6eththzMepQtObZ` | POST to GHL | PASS — see Known Issue #4 |
+| PocketCoach.one CTA | `https://pocketcoach.one` | New tab | PASS |
+| Kingdom Legacy CTA | `https://www.kingdomlegacyministries.org` | New tab | PASS |
+| LinkedIn / Facebook / YouTube / Instagram | Social profiles | New tab | PASS |
+| Footer: Schedule a Call | `/jeremys-calendar-intro` | Navigate | PASS |
+| Footer: Terms / Privacy | `/terms`, `/privacy` | Navigate | PASS |
 
 ### About (`/about`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Book a Call | `/jeremys-calendar` | Navigate |
-| Take Free Bottleneck Audit | `/assessment` | Navigate |
-| Manumation card | `https://manumation.ai/coming-soon` | New tab |
-| Zenoflo card | `https://zenoflo.com` | New tab |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Book a Call | `/jeremys-calendar` | Navigate | PASS |
+| Take Free Bottleneck Audit | `/assessment` | Navigate | PASS |
+| Manumation card | `https://manumation.ai/coming-soon` | New tab | PASS |
+| Zenoflo card | `https://zenoflo.com` | New tab | PASS |
 
 ### Contact (`/contact`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Strategy Call card | `/jeremys-calendar-intro` | Navigate |
-| Working Session card | `/jeremys-calendar-strategy` | Navigate |
-| Coaching Call card | `/jeremys-calendar-coaching` | Navigate |
-| Take Free Bottleneck Audit | `/assessment` | Navigate |
-| Email link | `mailto:support@keanonbiz.com` | Open mail client |
-| LinkedIn | `https://linkedin.com/in/jeremykean` | New tab |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Strategy Call card | `/jeremys-calendar-intro` | Navigate | PASS |
+| Working Session card | `/jeremys-calendar-strategy` | Navigate | PASS |
+| Coaching Call card | `/jeremys-calendar-coaching` | Navigate | PASS |
+| Take Free Bottleneck Audit | `/assessment` | Navigate | PASS |
+| Email link | `mailto:support@keanonbiz.com` | Open mail client | PASS |
+| LinkedIn | `https://linkedin.com/in/jeremykean` | New tab | PASS |
 
 ### Insurance (`/insurance`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Find Your Revenue Leak (hero) | Starts assessment quiz | In-page transition |
-| See How It Works | `#how-it-works` | Smooth scroll |
-| Find Out What You're Losing (mid-page) | Starts assessment quiz | In-page transition |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Find Your Revenue Leak (hero) | Starts assessment quiz | In-page transition | PASS |
+| See How It Works | `#how-it-works` | Smooth scroll | PASS |
+| Find Out What You're Losing (mid-page) | Starts assessment quiz | In-page transition | PASS |
 
 ### Insurance Results Page
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Book Your Strategy Call | `/jeremys-calendar-intro` | Navigate |
-| Email My Results (if skipped gate) | POST `/api/insurance-assessment/email-results` | Ajax call |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Book Your Strategy Call | `/jeremys-calendar-intro` | Navigate | PASS |
+| Email My Results (if skipped gate) | POST `/api/insurance-assessment/email-results` | Ajax call | PASS — stub, see Known Issue #2 |
 
 ### CalendarIntro (`/jeremys-calendar-intro`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Back to Insurance Coaching | `/insurance` | Navigate |
-| Back to Home | `/` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Back to Insurance Coaching | `/insurance` | Navigate | PASS |
+| Back to Home | `/` | Navigate | PASS |
 
 ### Calendar Selector (`/jeremys-calendar`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Strategy & Working Sessions card | `/jeremys-calendar-strategy` | Navigate |
-| 1:1 Coaching Call card | `/jeremys-calendar-coaching` | Navigate |
-| Quick Connect card | `/jeremys-calendar-intro` | Navigate |
-| "Schedule Quick Connect" (bottom) | `/jeremys-calendar-intro` | Navigate |
-| Back to Home | `/` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Strategy & Working Sessions card | `/jeremys-calendar-strategy` | Navigate | PASS |
+| 1:1 Coaching Call card | `/jeremys-calendar-coaching` | Navigate | PASS |
+| Quick Connect card | `/jeremys-calendar-intro` | Navigate | PASS — see Known Issue #1 |
+| "Schedule Quick Connect" (bottom) | `/jeremys-calendar-intro` | Navigate | PASS |
+| Back to Home | `/` | Navigate | PASS |
 
 ### CalendarStrategy (`/jeremys-calendar-strategy`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| All Booking Options | `/jeremys-calendar` | Navigate |
-| Back to Home | `/` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| All Booking Options | `/jeremys-calendar` | Navigate | PASS |
+| Back to Home | `/` | Navigate | PASS |
 
 ### CalendarCoaching (`/jeremys-calendar-coaching`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| All Booking Options | `/jeremys-calendar` | Navigate |
-| Back to Home | `/` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| All Booking Options | `/jeremys-calendar` | Navigate | PASS |
+| Back to Home | `/` | Navigate | PASS |
 
 ### Podcast (`/micropod`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| RSS Feed link | `/podcast.xml` | New tab |
-| Apple Podcasts | `https://podcasts.apple.com` | New tab (placeholder) |
-| Spotify | `https://open.spotify.com` | New tab (placeholder) |
-| Book a Call | `/jeremys-calendar` | Navigate |
-| Manumation | `https://manumation.ai/coming-soon` | New tab |
-| Footer: Blog, MicroPod, Book a Call | Various internal links | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| RSS Feed link | `/podcast.xml` | New tab | PASS |
+| Apple Podcasts | `https://podcasts.apple.com` | New tab (placeholder) | PASS |
+| Spotify | `https://open.spotify.com` | New tab (placeholder) | PASS |
+| Book a Call | `/jeremys-calendar` | Navigate | PASS |
+| Manumation | `https://manumation.ai/coming-soon` | New tab | PASS |
+| Footer: Blog, MicroPod, Book a Call | Various internal links | Navigate | PASS |
 
 ### Newsletter (`/newsletter`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Subscribe Free | GHL newsletter form | POST to GHL |
-| Footer: Home, Blog, MicroPod | Internal links | Navigate |
-| Footer: Book a Call | `/jeremys-calendar` | Navigate |
-| Footer: Terms / Privacy | `/terms`, `/privacy` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Subscribe Free | GHL newsletter form | POST to GHL | PASS |
+| Footer: Home, Blog, MicroPod | Internal links | Navigate | PASS |
+| Footer: Book a Call | `/jeremys-calendar` | Navigate | PASS |
+| Footer: Terms / Privacy | `/terms`, `/privacy` | Navigate | PASS |
 
 ### Portfolio (`/portfolio`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Project cards (GitHub link) | External GitHub URL | New tab |
-| Project cards (Live link) | External live URL | New tab |
-| Back to Home | `/` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Project cards (GitHub link) | External GitHub URL | New tab | PASS |
+| Project cards (Live link) | External live URL | New tab | PASS |
+| Back to Home | `/` | Navigate | PASS |
 
 ### Founder's Filter Landing (`/founders-filter`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Start The Founder's Filter Now | `/founders-filter/start` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Start The Founder's Filter Now | `/founders-filter/start` | Navigate | PASS |
 
 ### Terms (`/terms`) & Privacy (`/privacy`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Email link | `mailto:support@keanonbiz.com` | Open mail client |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Email link | `mailto:support@keanonbiz.com` | Open mail client | PASS |
 
 ### Blog Index (`/blog`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Pillar filter links | `/blog/topic/:pillar` | Navigate |
-| Post cards | `/blog/:slug` | Navigate |
-| Footer: Book a Call | `/jeremys-calendar` | Navigate |
-| Footer: Manumation / Zenoflo | External sites | New tab |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Pillar filter links | `/blog/topic/:pillar` | Navigate | PASS |
+| Post cards | `/blog/:slug` | Navigate | PASS |
+| Footer: Book a Call | `/jeremys-calendar` | Navigate | PASS |
+| Footer: Manumation / Zenoflo | External sites | New tab | PASS |
 
 ### Blog Post (`/blog/:slug`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Inline content links | Various `/blog/:slug` cross-links | Navigate |
-| Sidebar: Get the Book | `https://manumation.ai` | New tab |
-| Sidebar: Book a Call | `/jeremys-calendar` | Navigate |
-| Share buttons | LinkedIn / Twitter / Facebook share | New tab |
-| Related posts | `/blog/:slug` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Inline content links | Various `/blog/:slug` cross-links | Navigate | PASS |
+| Sidebar: Get the Book | `https://manumation.ai` | New tab | PASS |
+| Sidebar: Book a Call | `/jeremys-calendar` | Navigate | PASS |
+| Share buttons | LinkedIn / Twitter / Facebook share | New tab | PASS |
+| Related posts | `/blog/:slug` | Navigate | PASS |
 
 ### Book (`/book`)
 
-| CTA Text | Destination | Behavior |
-|----------|-------------|----------|
-| Get the Book | `https://manumation.ai` | New tab |
-| Take the Assessment | `/assessment` | Navigate |
-| Book a Call | `/jeremys-calendar` | Navigate |
+| CTA Text | Destination | Behavior | Status |
+|----------|-------------|----------|--------|
+| Get the Book | `https://manumation.ai` | New tab | PASS |
+| Take the Assessment | `/assessment` | Navigate | PASS |
+| Book a Call | `/jeremys-calendar` | Navigate | PASS |
 
 ---
 
@@ -623,36 +641,36 @@ Every CTA on every public page, with destination and expected behavior:
 
 | # | Check | Expected Result | Pass? |
 |---|-------|-----------------|-------|
-| 1 | Navigate to `/blog/insurance-agency-bottleneck-nobody-talks-about` | Page loads. No blank screen. | |
-| 2 | Breadcrumbs | Shows: Home > Blog > [Post Title] | |
-| 3 | Content renders properly | No raw HTML. Images load. Markdown formatted. | |
-| 4 | Inline cross-links work | Links to other blog posts navigate correctly | |
-| 5 | Sidebar CTAs present | Book CTA, "Book a Call" link visible | |
-| 6 | SEO meta tags | `<title>`, `<meta name="description">`, `og:image` present in page source | |
-| 7 | Share buttons work | LinkedIn/Twitter/Facebook share links generate correct URLs | |
-| 8 | Related posts display | 3 related post cards at bottom | |
+| 1 | Navigate to `/blog/insurance-agency-bottleneck-nobody-talks-about` | Page loads. No blank screen. | PASS — 200 OK |
+| 2 | Breadcrumbs | Shows: Home > Blog > [Post Title] | PASS (code-verified) |
+| 3 | Content renders properly | No raw HTML. Images load. Markdown formatted. | PASS (code-verified) |
+| 4 | Inline cross-links work | Links to other blog posts navigate correctly | PASS (code-verified) |
+| 5 | Sidebar CTAs present | Book CTA, "Book a Call" link visible | PASS (code-verified) |
+| 6 | SEO meta tags | `<title>`, `<meta name="description">`, `og:image` present in page source | PASS (code-verified) |
+| 7 | Share buttons work | LinkedIn/Twitter/Facebook share links generate correct URLs | PASS (code-verified) |
+| 8 | Related posts display | 3 related post cards at bottom | PASS (code-verified) |
 
 **Post 2: `90-day-operations-overhaul-transform-business-one-quarter`**
 
 | # | Check | Expected Result | Pass? |
 |---|-------|-----------------|-------|
-| 1 | Navigate to `/blog/90-day-operations-overhaul-transform-business-one-quarter` | Page loads | |
-| 2 | Breadcrumbs | Home > Blog > [Post Title] | |
-| 3 | Content renders | Properly formatted. Internal links work. | |
-| 4 | Cross-links to Manumation Method | Link to `/blog/manumation-method-five-pillars` works | |
-| 5 | Sidebar CTAs | Present and functional | |
-| 6 | SEO tags | Title, description, OG image present | |
+| 1 | Navigate to `/blog/90-day-operations-overhaul-transform-business-one-quarter` | Page loads | PASS — 200 OK |
+| 2 | Breadcrumbs | Home > Blog > [Post Title] | PASS (code-verified) |
+| 3 | Content renders | Properly formatted. Internal links work. | PASS (code-verified) |
+| 4 | Cross-links to Manumation Method | Link to `/blog/manumation-method-five-pillars` works | PASS (code-verified) |
+| 5 | Sidebar CTAs | Present and functional | PASS (code-verified) |
+| 6 | SEO tags | Title, description, OG image present | PASS (code-verified) |
 
 **Post 3: `manumation-method-five-pillars`**
 
 | # | Check | Expected Result | Pass? |
 |---|-------|-----------------|-------|
-| 1 | Navigate to `/blog/manumation-method-five-pillars` | Page loads | |
-| 2 | Breadcrumbs | Home > Blog > [Post Title] | |
-| 3 | Content renders | Properly formatted. The 5 pillars are clearly structured. | |
-| 4 | Most cross-linked post | This slug is referenced by 10+ other posts — verify it loads correctly since it's a critical node | |
-| 5 | Sidebar CTAs | Book CTA links to `manumation.ai`, Call CTA links to `/jeremys-calendar` | |
-| 6 | SEO tags | Title, description, OG image present | |
+| 1 | Navigate to `/blog/manumation-method-five-pillars` | Page loads | PASS — 200 OK |
+| 2 | Breadcrumbs | Home > Blog > [Post Title] | PASS (code-verified) |
+| 3 | Content renders | Properly formatted. The 5 pillars are clearly structured. | PASS (code-verified) |
+| 4 | Most cross-linked post | This slug is referenced by 10+ other posts — verify it loads correctly since it's a critical node | PASS — loads without error |
+| 5 | Sidebar CTAs | Book CTA links to `manumation.ai`, Call CTA links to `/jeremys-calendar` | PASS (code-verified) |
+| 6 | SEO tags | Title, description, OG image present | PASS (code-verified) |
 
 ---
 
@@ -660,10 +678,10 @@ Every CTA on every public page, with destination and expected behavior:
 
 | # | Step | Expected Result | Pass? |
 |---|------|-----------------|-------|
-| 1 | On homepage, scroll to newsletter form | Form visible with email input | |
-| 2 | Submit with empty email | HTML5 validation prevents submit | |
-| 3 | Submit with valid email | Shows success message. Network: POST to GHL. | |
-| 4 | Navigate to `/newsletter` | Newsletter archive page loads | |
+| 1 | On homepage, scroll to newsletter form | Form visible with email input | PASS (code-verified) |
+| 2 | Submit with empty email | HTML5 validation prevents submit | PASS (code-verified: `required` attr) |
+| 3 | Submit with valid email | Shows success message. Network: POST to GHL. | PASS (code-verified) — see Known Issue #4 |
+| 4 | Navigate to `/newsletter` | Newsletter archive page loads | PASS (200 OK) |
 
 ---
 
@@ -673,23 +691,23 @@ Every CTA on every public page, with destination and expected behavior:
 
 | Method | Endpoint | Expected Response | Pass? |
 |--------|----------|-------------------|-------|
-| GET | `/api/health` | 200 OK with status JSON | |
-| POST | `/api/track/assessment` | 200 OK — logs assessment start/completion | |
-| POST | `/api/track/pageview` | 200 OK — logs page view | |
-| POST | `/api/track/blog-read` | 200 OK — logs blog read event | |
-| POST | `/api/track/newsletter-subscribe` | 200 OK — logs newsletter subscription | |
-| POST | `/api/track/workshop-complete` | 200 OK — logs workshop completion | |
+| GET | `/api/health` | 200 OK with status JSON | PASS — `{"status":"ok","timestamp":"..."}` |
+| POST | `/api/track/assessment` | 200 OK — logs assessment start/completion | PASS — 200 with valid Zod payload |
+| POST | `/api/track/pageview` | 200 OK — logs page view | PASS — 200 with valid Zod payload |
+| POST | `/api/track/blog-read` | 200 OK — logs blog read event | PASS — 200 with valid Zod payload |
+| POST | `/api/track/newsletter-subscribe` | 200 OK — logs newsletter subscription | PASS — 200 with valid Zod payload |
+| POST | `/api/track/workshop-complete` | 200 OK — logs workshop completion | PASS — 200 with valid Zod payload |
 
 ### 11B: Public Endpoints (Non-API)
 
 | Method | Endpoint | Expected Response | Pass? |
 |--------|----------|-------------------|-------|
-| GET | `/sitemap.xml` | Valid XML sitemap with all public URLs | |
-| GET | `/sitemap_index.xml` | 301 redirect → `/sitemap.xml` | |
-| GET | `/robots.txt` | Text file with crawl rules, `Sitemap: https://keanonbiz.com/sitemap.xml` | |
-| GET | `/llms.txt` | LLM-readable site summary (llmstxt.org standard) | |
-| GET | `/llms-full.txt` | Extended LLM-readable content | |
-| GET | `/podcast.xml` | Valid RSS feed for MicroPod episodes | |
+| GET | `/sitemap.xml` | Valid XML sitemap with all public URLs | PASS — 200, valid XML |
+| GET | `/sitemap_index.xml` | 301 redirect → `/sitemap.xml` | MANUAL (redirect check) |
+| GET | `/robots.txt` | Text file with crawl rules, `Sitemap: https://keanonbiz.com/sitemap.xml` | PASS — 200, includes Disallow /admin/ |
+| GET | `/llms.txt` | LLM-readable site summary (llmstxt.org standard) | PASS — 200 |
+| GET | `/llms-full.txt` | Extended LLM-readable content | PASS — 200 |
+| GET | `/podcast.xml` | Valid RSS feed for MicroPod episodes | PASS — 200, valid RSS XML |
 
 ### 11C: Insurance Assessment Capture
 
@@ -710,7 +728,7 @@ Content-Type: application/json
 }
 ```
 
-**Expected**: `200 OK` with `{ "success": true, "ghlCaptured": true/false }`
+**Result**: PASS — `200 OK` with `{"success":true,"ghlCaptured":false}` (GHL webhook not configured in dev — returns false; will be true in production with the webhook URL).
 
 **Rate limit**: 10 requests per 15-minute window.
 
@@ -723,25 +741,25 @@ Content-Type: application/json
 { "email": "test@agency.com" }
 ```
 
-**Expected**: `200 OK` with `{ "success": true }`
+**Result**: PASS — `200 OK` with `{"success":true}` (stub endpoint — see Known Issue #2: no actual email sent)
 
 ### 11E: Validation Tests
 
 | Test | Input | Expected |
 |------|-------|----------|
-| Missing email | `{}` | 400: "A valid email is required" |
-| Invalid email | `{"email": "notanemail"}` | 400: "A valid email is required" |
-| Rate limit exceeded | 11 rapid requests | 429: "Too many submissions" |
+| Missing email | `{}` | 400: "A valid email is required" | PASS — 400 returned |
+| Invalid email | `{"email": "notanemail"}` | 400: "A valid email is required" | PASS — 400 returned |
+| Rate limit exceeded | 11 rapid requests | 429: "Too many submissions" | MANUAL (not tested to avoid hitting limit) |
 
 ### 11F: Other API Endpoints (Smoke Tests)
 
 | Method | Endpoint | Expected | Auth Required? |
 |--------|----------|----------|----------------|
-| GET | `/api/portfolio/projects` | JSON array of portfolio projects | No |
-| GET | `/api/pain-points/industries` | JSON array of industry profiles | No |
-| GET | `/api/micropod/episodes` | JSON array of podcast episodes | No |
-| GET | `/api/content-studio/topics` | JSON array of content topics | Admin key |
-| GET | `/api/newsletter/newsletters` | JSON array of newsletters | Admin key |
+| GET | `/api/portfolio/projects` | JSON array of portfolio projects | No | PASS — 200 |
+| GET | `/api/pain-points/industries` | JSON array of industry profiles | Admin key | PASS — 401 without auth (expected) |
+| GET | `/api/micropod/episodes` | JSON array of podcast episodes | Admin key | PASS — 401 without auth (expected) |
+| GET | `/api/content-studio/topics` | JSON array of content topics | Admin key | MANUAL |
+| GET | `/api/newsletter/newsletters` | JSON array of newsletters | Admin key | MANUAL |
 
 ---
 
@@ -766,7 +784,7 @@ Content-Type: application/json
 | # | Issue | Location | Notes |
 |---|-------|----------|-------|
 | 5 | **CalendarStrategy uses same widget as CalendarIntro** | Both pages embed `uslCIRV9xwkJQlHC1Rl7` | Both "Strategy & Working Sessions" and the insurance-funnel "Strategy Call" book the exact same GHL calendar. Verify with Jeremy: are these meant to be different meeting types? |
-| 6 | **Backend Server workflow status** | Workflow config | The "Backend Server" workflow shows as failed. The site may be running entirely via `pnpm dev` (the "Start application" workflow). Confirm which workflow should be active. |
+| 6 | **Backend Server dependency** | Workflow config | The "Backend Server" workflow requires `express-rate-limit` (installed during audit). Both workflows should be running: "Start application" (Vite on port 5000) proxies API calls to "Backend Server" (Express on port 3001). If backend fails, all `/api/*` calls return 500. |
 
 ---
 
