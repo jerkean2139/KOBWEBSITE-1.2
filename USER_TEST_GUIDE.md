@@ -110,7 +110,10 @@ Phase 1: Q1–Q23 (radio questions, leakage counter builds)
    ↓ halfway interstitial at Q12
 Phase 2: Q24–Q30 (numeric + radio, recovery calculation)
    ↓ phase-transition interstitial
-[Email Gate]  →  POST /api/insurance-assessment/capture  →  GHL webhook
+[Email Gate]
+   → POST /api/insurance-assessment/capture
+   → Server forwards to GHL: https://services.leadconnectorhq.com/hooks/formSubmit
+   → formId: "insurance_revenue_leak_calculator"
    ↓ (submit email OR skip)
 [Results Page]
    ├── Full results if email submitted
@@ -118,7 +121,9 @@ Phase 2: Q24–Q30 (numeric + radio, recovery calculation)
    ↓
 CTA: "Book Your Strategy Call" → /jeremys-calendar-intro
    ↓
-[CalendarIntro Page] — GHL booking widget (uslCIRV9xwkJQlHC1Rl7)
+[CalendarIntro Page]
+   → GHL booking widget ID: uslCIRV9xwkJQlHC1Rl7
+   → Embed script: https://link.msgsndr.com/js/form_embed.js
 ```
 
 ### Funnel B: General Bottleneck Audit
@@ -126,7 +131,9 @@ CTA: "Book Your Strategy Call" → /jeremys-calendar-intro
 ```
 [Homepage / Nav / Blog CTAs]
    ↓
-/assessment  (embedded GHL form p7TQrdK8KZEQfC9JWtQT)
+/assessment
+   → Embedded GHL form ID: p7TQrdK8KZEQfC9JWtQT
+   → Captures: name, email, phone + diagnostic questions
    ↓
 [GHL handles scoring, nurture emails/SMS]
    ↓
@@ -138,7 +145,10 @@ Discovery Call booking (GHL-side automation)
 ```
 [Homepage footer newsletter form]
    ↓
-POST to GHL form WeCKj6eththzMepQtObZ (client-side direct)
+Client-side POST to GHL:
+   → URL: https://api.leadconnectorhq.com/widget/form/WeCKj6eththzMepQtObZ
+   → Form ID: WeCKj6eththzMepQtObZ
+   → Content-Type: application/x-www-form-urlencoded
    ↓
 GHL nurture sequence
 ```
@@ -168,10 +178,19 @@ CTA: Book a call → /jeremys-calendar or /jeremys-calendar-intro
 ```
 [Any page with booking CTA]
    ↓
-/jeremys-calendar  (Session selector)
-   ├── Strategy & Working Sessions → /jeremys-calendar-strategy (widget uslCIRV9xwkJQlHC1Rl7)
-   ├── 1:1 Coaching (Clients Only) → /jeremys-calendar-coaching (widget HDMThBdATyMVW7HFteZe)
-   └── Quick Connect → /jeremys-calendar-intro (widget uslCIRV9xwkJQlHC1Rl7)
+/jeremys-calendar  (Session selector — no embedded widget, links to sub-pages)
+   ↓
+   ├── Strategy & Working Sessions → /jeremys-calendar-strategy
+   │   → GHL widget ID: uslCIRV9xwkJQlHC1Rl7
+   │   → Embed script: https://link.msgsndr.com/js/form_embed.js
+   │
+   ├── 1:1 Coaching (Clients Only) → /jeremys-calendar-coaching
+   │   → GHL widget ID: HDMThBdATyMVW7HFteZe  (DIFFERENT widget)
+   │   → Embed script: https://link.msgsndr.com/js/form_embed.js
+   │
+   └── Quick Connect → /jeremys-calendar-intro
+       → GHL widget ID: uslCIRV9xwkJQlHC1Rl7  (SAME as Strategy)
+       → Embed script: https://link.msgsndr.com/js/form_embed.js
 ```
 
 ### Funnel F: Content → Booking
@@ -482,6 +501,70 @@ Every CTA on every public page, with destination and expected behavior:
 | Back to Insurance Coaching | `/insurance` | Navigate |
 | Back to Home | `/` | Navigate |
 
+### Calendar Selector (`/jeremys-calendar`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Strategy & Working Sessions card | `/jeremys-calendar-strategy` | Navigate |
+| 1:1 Coaching Call card | `/jeremys-calendar-coaching` | Navigate |
+| Quick Connect card | `/jeremys-calendar-intro` | Navigate |
+| "Schedule Quick Connect" (bottom) | `/jeremys-calendar-intro` | Navigate |
+| Back to Home | `/` | Navigate |
+
+### CalendarStrategy (`/jeremys-calendar-strategy`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| All Booking Options | `/jeremys-calendar` | Navigate |
+| Back to Home | `/` | Navigate |
+
+### CalendarCoaching (`/jeremys-calendar-coaching`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| All Booking Options | `/jeremys-calendar` | Navigate |
+| Back to Home | `/` | Navigate |
+
+### Podcast (`/micropod`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| RSS Feed link | `/podcast.xml` | New tab |
+| Apple Podcasts | `https://podcasts.apple.com` | New tab (placeholder) |
+| Spotify | `https://open.spotify.com` | New tab (placeholder) |
+| Book a Call | `/jeremys-calendar` | Navigate |
+| Manumation | `https://manumation.ai/coming-soon` | New tab |
+| Footer: Blog, MicroPod, Book a Call | Various internal links | Navigate |
+
+### Newsletter (`/newsletter`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Subscribe Free | GHL newsletter form | POST to GHL |
+| Footer: Home, Blog, MicroPod | Internal links | Navigate |
+| Footer: Book a Call | `/jeremys-calendar` | Navigate |
+| Footer: Terms / Privacy | `/terms`, `/privacy` | Navigate |
+
+### Portfolio (`/portfolio`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Project cards (GitHub link) | External GitHub URL | New tab |
+| Project cards (Live link) | External live URL | New tab |
+| Back to Home | `/` | Navigate |
+
+### Founder's Filter Landing (`/founders-filter`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Start The Founder's Filter Now | `/founders-filter/start` | Navigate |
+
+### Terms (`/terms`) & Privacy (`/privacy`)
+
+| CTA Text | Destination | Behavior |
+|----------|-------------|----------|
+| Email link | `mailto:support@keanonbiz.com` | Open mail client |
+
 ### Blog Index (`/blog`)
 
 | CTA Text | Destination | Behavior |
@@ -586,18 +669,29 @@ Every CTA on every public page, with destination and expected behavior:
 
 ## 11. API Endpoint Verification (Full)
 
-### 11A: Public Endpoints (Non-API)
+### 11A: Health & Tracking Endpoints
+
+| Method | Endpoint | Expected Response | Pass? |
+|--------|----------|-------------------|-------|
+| GET | `/api/health` | 200 OK with status JSON | |
+| POST | `/api/track/assessment` | 200 OK — logs assessment start/completion | |
+| POST | `/api/track/pageview` | 200 OK — logs page view | |
+| POST | `/api/track/blog-read` | 200 OK — logs blog read event | |
+| POST | `/api/track/newsletter-subscribe` | 200 OK — logs newsletter subscription | |
+| POST | `/api/track/workshop-complete` | 200 OK — logs workshop completion | |
+
+### 11B: Public Endpoints (Non-API)
 
 | Method | Endpoint | Expected Response | Pass? |
 |--------|----------|-------------------|-------|
 | GET | `/sitemap.xml` | Valid XML sitemap with all public URLs | |
 | GET | `/sitemap_index.xml` | 301 redirect → `/sitemap.xml` | |
-| GET | `/robots.txt` | Text file with crawl rules, Sitemap URL | |
+| GET | `/robots.txt` | Text file with crawl rules, `Sitemap: https://keanonbiz.com/sitemap.xml` | |
 | GET | `/llms.txt` | LLM-readable site summary (llmstxt.org standard) | |
 | GET | `/llms-full.txt` | Extended LLM-readable content | |
 | GET | `/podcast.xml` | Valid RSS feed for MicroPod episodes | |
 
-### 11B: Insurance Assessment Capture
+### 11C: Insurance Assessment Capture
 
 ```
 POST /api/insurance-assessment/capture
@@ -620,7 +714,7 @@ Content-Type: application/json
 
 **Rate limit**: 10 requests per 15-minute window.
 
-### 11C: Insurance Email Results
+### 11D: Insurance Email Results
 
 ```
 POST /api/insurance-assessment/email-results
@@ -631,7 +725,7 @@ Content-Type: application/json
 
 **Expected**: `200 OK` with `{ "success": true }`
 
-### 11D: Validation Tests
+### 11E: Validation Tests
 
 | Test | Input | Expected |
 |------|-------|----------|
@@ -639,7 +733,7 @@ Content-Type: application/json
 | Invalid email | `{"email": "notanemail"}` | 400: "A valid email is required" |
 | Rate limit exceeded | 11 rapid requests | 429: "Too many submissions" |
 
-### 11E: Other API Endpoints (Smoke Tests)
+### 11F: Other API Endpoints (Smoke Tests)
 
 | Method | Endpoint | Expected | Auth Required? |
 |--------|----------|----------|----------------|
