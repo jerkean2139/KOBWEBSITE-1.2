@@ -108,7 +108,7 @@ export default function Book() {
                   }}
                 >
                   <img
-                    src="/manumation-book-cover-nobg.png"
+                    src="/manumation-book-cover-nobg.webp"
                     alt="The Manumation Method Book Cover"
                     className="relative w-full rounded-xl"
                   />
@@ -311,7 +311,7 @@ export default function Book() {
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div>
                 <img 
-                  src="/kean-on-biz-logo.png" 
+                  src="/kean-on-biz-logo.webp" 
                   alt="Kean on Biz" 
                   className="h-10 mb-4"
                 />

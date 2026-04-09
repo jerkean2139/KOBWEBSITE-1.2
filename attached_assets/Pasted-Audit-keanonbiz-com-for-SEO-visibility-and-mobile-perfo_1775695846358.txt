@@ -1,0 +1,77 @@
+Audit keanonbiz.com for SEO visibility and mobile performance optimization based on these current findings from Dibb:
+
+- Mobile Speed: 2.9 sec (slow)
+- Core Vitals: 63/100 (needs work)
+- DMARC: issue detected
+- Sitemap: detected
+- SSL: valid
+- Email blacklists: clear
+- Domain Authority: 10/100 (stable)
+
+Interpretation:
+- The site is technically live and indexable
+- The main technical SEO issues are likely mobile speed and Core Web Vitals
+- Domain Authority is not a code issue and should not be treated as a development task
+- DMARC is an email/DNS issue and should be flagged separately, not handled in front-end optimization
+
+Tasks:
+1. Run a full mobile-first Lighthouse/PageSpeed Insights audit on the homepage and key landing pages.
+2. Identify the exact causes of poor Core Web Vitals, especially:
+   - Largest Contentful Paint (LCP)
+   - First Contentful Paint (FCP)
+   - render-blocking resources
+   - image optimization issues
+   - unused CSS/JS
+3. Audit the homepage hero and above-the-fold area first:
+   - oversized hero image
+   - background images
+   - video/sliders/carousels
+   - duplicate mobile/desktop hero sections
+   - lazy-loaded hero image
+4. Optimize above-the-fold assets:
+   - convert hero and major images to WebP/AVIF
+   - resize images to actual display dimensions
+   - do not lazy-load the LCP image
+   - preload critical image/font assets
+   - add fetchpriority="high" to the LCP image where appropriate
+5. Audit CSS delivery:
+   - inline critical CSS
+   - defer non-critical CSS
+   - remove unused CSS on homepage
+   - reduce page builder/theme bloat where possible
+6. Audit fonts:
+   - reduce font families and weights
+   - ensure font-display: swap
+   - preload only critical fonts
+7. Audit JavaScript and third-party scripts:
+   - delay non-essential scripts
+   - delay chat widgets, popups, social embeds, review widgets, scheduling widgets, heatmaps
+   - reduce unused JS
+8. Audit mobile-specific performance:
+   - header/logo size
+   - sticky nav scripts
+   - mobile menu overhead
+   - responsive image delivery
+   - unnecessary animations on mobile
+9. Audit caching and delivery:
+   - page caching
+   - browser caching
+   - Brotli/Gzip
+   - CDN/static asset caching
+10. Review internal SEO technical health:
+   - confirm sitemap is valid and accessible
+   - confirm canonical tags exist
+   - confirm robots.txt is valid
+   - confirm meta titles/H1 structure are clean on key pages
+   - confirm no major duplicate-content or indexing issues on core pages
+
+DMARC handling:
+- Do not try to fix DMARC in site code
+- Instead, flag it as a DNS/email authentication task requiring SPF/DKIM/DMARC review with the mail provider and DNS provider
+
+Deliverables:
+- ranked list of technical issues by SEO impact
+- exact LCP element and root causes
+- exact fixes implemented
+- before/after Lighthouse comparison
+- list of anything requiring DNS or WordPress admin changes outside the codebase

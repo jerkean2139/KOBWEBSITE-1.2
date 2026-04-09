@@ -449,7 +449,7 @@ export default function BlogPost() {
                   <AnimatedSection animation="slide-left" delay={0.3}>
                     <Card className="border-0 shadow-lg overflow-hidden">
                       <div className="bg-gradient-to-br from-primary to-blue-600 p-6 text-white">
-                        <img src="/manumation-book-cover-nobg.png" alt="Manumation Method" className="w-16 h-auto mb-4 rounded shadow-lg" />
+                        <img src="/manumation-book-cover-nobg.webp" alt="Manumation Method" className="w-16 h-auto mb-4 rounded shadow-lg" />
                         <h3 className="text-xl font-bold mb-2">The Manumation Method</h3>
                         <p className="text-white/90 text-sm">
                           Get the complete framework for transforming your business with AI automation.

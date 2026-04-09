@@ -104,7 +104,7 @@ export default function Home() {
       <SEO 
         title="Jeremy Kean | Business Coach & AI Automation Expert"
         description="Strategic coaching and AI-powered automation for insurance agencies and business owners. 35+ years experience, 100+ businesses helped. Transform your operations with The Manumation Method."
-        image="/manumation-book-cover-nobg.png"
+        image="/manumation-book-cover-nobg.webp"
       />
       <Navigation />
       <main id="main-content" className="min-h-screen" role="main">
@@ -133,7 +133,7 @@ export default function Home() {
             <rect width="100%" height="100%" fill="url(#hero-grid)" mask="url(#hero-grid-mask)" />
           </svg>
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 hero-gradient-shift"
             style={{
               background: "radial-gradient(ellipse 80% 50% at 20% 40%, oklch(0.45 0.15 250 / 0.12) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 85% 60%, oklch(0.55 0.12 85 / 0.06) 0%, transparent 70%)",
               animation: "hero-gradient-shift 20s ease-in-out infinite",
@@ -200,7 +200,7 @@ export default function Home() {
               
               {/* Quick Testimonial - Desktop only to avoid mobile clutter */}
               <div className="hidden md:flex items-center gap-3 mt-6 p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 max-w-lg">
-                <img src="/testimonial-ryan.jpg" alt="Ryan Templeton" className="w-10 h-10 rounded-full object-cover border-2 border-primary/50 shrink-0" />
+                <img src="/testimonial-ryan.webp" alt="Ryan Templeton" className="w-10 h-10 rounded-full object-cover border-2 border-primary/50 shrink-0" width="40" height="40" />
                 <p className="text-white/80 text-sm italic">"This is the specific blueprint I needed to stop manually grinding and start strategically scaling."</p>
               </div>
               
@@ -208,9 +208,11 @@ export default function Home() {
               <div className="lg:hidden mt-8 p-6 bg-gradient-to-br from-[#FFD700]/20 to-primary/20 rounded-2xl border-2 border-[#FFD700]/30">
                 <div className="flex items-center gap-4">
                   <img
-                    src="/manumation-book-cover-nobg.png"
+                    src="/manumation-book-cover-nobg.webp"
                     alt="The Manumation Method"
                     className="w-20 h-auto rounded-lg shadow-lg"
+                    width="80"
+                    height="107"
                   />
                   <div className="flex-1">
                     <p className="text-[#FFD700] text-xs font-bold uppercase mb-1">New Book</p>
@@ -225,16 +227,19 @@ export default function Home() {
               </div>
             </div>
             <div className="hidden lg:block mt-16">
-              <div className="relative max-w-xs mx-auto" style={{ animation: "book-float 6s ease-in-out infinite" }}>
+              <div className="relative max-w-xs mx-auto book-float" style={{ animation: "book-float 6s ease-in-out infinite" }}>
                 <div
                   className="absolute -inset-1 rounded-xl opacity-30"
                   style={{ background: "linear-gradient(135deg, oklch(0.6 0.15 250 / 0.4), oklch(0.7 0.15 85 / 0.3), oklch(0.6 0.15 250 / 0.4))", filter: "blur(20px)" }}
                 />
                 <img
-                  src="/manumation-book-cover-nobg.png"
+                  src="/manumation-book-cover-nobg.webp"
                   alt="The Manumation Method"
                   className="relative rounded-lg transform hover:scale-105 transition-transform duration-300 w-full drop-shadow-2xl"
                   style={{ filter: "drop-shadow(0 25px 50px rgba(0,0,0,0.5))" }}
+                  width="600"
+                  height="803"
+                  fetchPriority="high"
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -787,7 +792,7 @@ export default function Home() {
               <Card className="relative h-full bg-[#0f172a] border-primary/30 rounded-2xl overflow-hidden hover:bg-[#1a2744] transition-all duration-300">
                 <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center gap-3 mb-4">
-                    <img src="/testimonial-ryan.jpg" alt="Ryan Templeton" className="w-12 h-12 rounded-full object-cover border-2 border-primary/50" loading="lazy" />
+                    <img src="/testimonial-ryan.webp" alt="Ryan Templeton" className="w-12 h-12 rounded-full object-cover border-2 border-primary/50" loading="lazy" />
                     <div>
                       <h3 className="font-bold text-white text-sm">Ryan Templeton</h3>
                       <p className="text-white/70 text-xs">Founder, Premier Health Advisors</p>
@@ -812,7 +817,7 @@ export default function Home() {
               <Card className="relative h-full bg-[#0f172a] border-[#FFD700]/30 rounded-2xl overflow-hidden hover:bg-[#1a2744] transition-all duration-300">
                 <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center gap-3 mb-4">
-                    <img src="/testimonial-beth.jpg" alt="Beth Prince" className="w-12 h-12 rounded-full object-cover border-2 border-[#FFD700]/50" loading="lazy" />
+                    <img src="/testimonial-beth.webp" alt="Beth Prince" className="w-12 h-12 rounded-full object-cover border-2 border-[#FFD700]/50" loading="lazy" />
                     <div>
                       <h3 className="font-bold text-white text-sm">Beth Prince</h3>
                       <p className="text-white/70 text-xs">State Farm Insurance Agent</p>
@@ -911,7 +916,7 @@ export default function Home() {
                     <p className="text-sm text-[#a78bfa] font-medium">• Increased revenue by 28%</p>
                   </div>
                   <div className="flex items-center gap-4">
-                    <img src="/testimonial-6.jpg" alt="Erica T." className="w-14 h-14 rounded-full object-cover border-2 border-[#4c1d95] group-hover:border-[#FFD700] transition-colors duration-300" loading="lazy" />
+                    <img src="/testimonial-6.webp" alt="Erica T." className="w-14 h-14 rounded-full object-cover border-2 border-[#4c1d95] group-hover:border-[#FFD700] transition-colors duration-300" loading="lazy" />
                     <div>
                       <h3 className="font-bold text-white text-lg">Erica T.</h3>
                       <p className="text-white/60 text-sm">Small Business Owner</p>
@@ -940,7 +945,7 @@ export default function Home() {
                     <p className="text-sm text-[#93c5fd] font-medium">• Retention rate up to 94%</p>
                   </div>
                   <div className="flex items-center gap-4">
-                    <img src="/testimonial-7.jpg" alt="Amy L." className="w-14 h-14 rounded-full object-cover border-2 border-[#1e40af] group-hover:border-[#FFD700] transition-colors duration-300" loading="lazy" />
+                    <img src="/testimonial-7.webp" alt="Amy L." className="w-14 h-14 rounded-full object-cover border-2 border-[#1e40af] group-hover:border-[#FFD700] transition-colors duration-300" loading="lazy" />
                     <div>
                       <h3 className="font-bold text-white text-lg">Amy L.</h3>
                       <p className="text-white/60 text-sm">Insurance Broker</p>
@@ -1085,7 +1090,7 @@ export default function Home() {
                     <p className="text-sm text-[#c4b5fd] font-medium">• Staff focused on complex cases</p>
                   </div>
                   <div className="flex items-center gap-4">
-                    <img src="/testimonial-1.jpg" alt="Cody M." className="w-14 h-14 rounded-full object-cover border-2 border-[#6d28d9] group-hover:border-[#FFD700] transition-colors duration-300" loading="lazy" />
+                    <img src="/testimonial-1.webp" alt="Cody M." className="w-14 h-14 rounded-full object-cover border-2 border-[#6d28d9] group-hover:border-[#FFD700] transition-colors duration-300" loading="lazy" />
                     <div>
                       <h3 className="font-bold text-white text-lg">Cody M.</h3>
                       <p className="text-white/60 text-sm">Tech Director</p>
@@ -1336,7 +1341,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <img 
-                src="/kean-on-biz-logo.png" 
+                src="/kean-on-biz-logo.webp" 
                 alt="Kean on Biz" 
                 className="h-10 mb-4"
               />

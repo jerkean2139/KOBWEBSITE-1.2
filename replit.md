@@ -24,7 +24,7 @@ Preferred communication style: Simple, everyday language.
 - **Routing**: Wouter for client-side navigation across various pages and dynamic blog posts. All routes use `React.lazy()` + `Suspense` for route-level code splitting.
 - **SEO**: Server-side meta tag injection, JSON-LD structured data (Person, Organization, ProfessionalService, ProfilePage, ContactPage, PodcastSeries, PodcastEpisode, Book, BreadcrumbList), dynamic sitemap and robots.txt, PWA manifest, and automated internal linking.
 - **Accessibility**: WCAG-aligned contrast ratios (white/70+ on dark backgrounds), proper form labels with `aria-label`/`htmlFor`, `aria-live` regions for status messages, `aria-hidden` on decorative icons, mobile menu focus trap with Escape key support, visible breadcrumb navigation on subpages.
-- **Images**: All large images converted to WebP (avatars, hero photos, blog images). Unused duplicates removed. `/public` directory optimized from 83MB to ~64MB.
+- **Images**: All images converted to WebP (hero, blog, testimonials, logo). No .jpg/.jpeg references remain in client source. Explicit width/height attributes on above-fold images for CLS prevention. LCP image preloaded with fetchPriority="high".
 - **LLM Discoverability**: `llms.txt` and `llms-full.txt` endpoints for AI crawler indexing (following llmstxt.org standard).
 
 ### Backend
@@ -63,8 +63,11 @@ Preferred communication style: Simple, everyday language.
 
 ### Performance
 - Route-level code splitting via `React.lazy()` + `Suspense` for all pages in `App.tsx`.
-- WebP-optimized images with explicit width/height attributes to prevent CLS.
-- Lazy loading, optimized scroll animations, and mobile-first responsive design.
+- All images converted to WebP with explicit width/height attributes to prevent CLS.
+- Google Fonts loaded async (print→all swap pattern); no render-blocking CSS imports.
+- `prefers-reduced-motion` support disables scroll animations and keyframe animations.
+- Gzip compression (level 6), immutable cache headers for hashed assets, 1-day cache for images.
+- LCP hero image preloaded with `fetchPriority="high"`; above-fold images eager-loaded, below-fold lazy.
 - Reusable `Breadcrumbs` component (`client/src/components/Breadcrumbs.tsx`) used on BlogPost, TopicHub, CaseStudy, Podcast, About, and Contact pages.
 
 ### Security Architecture

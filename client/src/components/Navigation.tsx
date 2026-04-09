@@ -121,9 +121,11 @@ export default function Navigation({ logoVariant = "default" }: { logoVariant?: 
               </span>
             ) : (
               <img 
-                src="/kean-on-biz-logo.png" 
+                src="/kean-on-biz-logo.webp" 
                 alt="Kean on Biz" 
                 className="h-auto w-[185px]"
+                width="185"
+                height="61"
               />
             )}
           </a>

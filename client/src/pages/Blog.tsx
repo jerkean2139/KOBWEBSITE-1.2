@@ -127,7 +127,7 @@ export default function Blog() {
                     <div className="relative">
                       <div className="absolute -inset-6 bg-primary/20 rounded-3xl blur-3xl"></div>
                       <img
-                        src="/manumation-book-cover-nobg.png"
+                        src="/manumation-book-cover-nobg.webp"
                         alt="The Manumation Method - Book Cover"
                         className="relative rounded-2xl shadow-2xl max-w-sm transform hover:scale-[1.02] transition-transform duration-300"
                       />

@@ -3434,7 +3434,7 @@ Treat it like it matters.`,
     readTime: 6,
     category: "Business Operations",
     tags: ["time management", "business trust", "client relationships", "scheduling", "professionalism"],
-    featuredImage: "/blog-images/respecting-time-in-business.jpg",
+    featuredImage: "/blog-images/respecting-time-in-business.webp",
     featuredImageAlt: "Modern waiting room with minimalist clock showing Time is the first place trust breaks",
     faqs: [
       {
@@ -3608,7 +3608,7 @@ And that's where the fix starts.
     readTime: 5,
     category: "Coaching",
     tags: ["Coaching", "Leadership", "Business Owner", "1-on-1", "Manumation Method"],
-    featuredImage: "/blog-images/sidekick-coaching-featured.jpg",
+    featuredImage: "/blog-images/sidekick-coaching-featured.webp",
     featuredImageAlt: "Two people in deep conversation at a table, one listening intently while the other explains something with clarity",
     faqs: [
       {
@@ -3776,7 +3776,7 @@ Ready to see where you stand? [Take the free Bottleneck Audit](/assessment).
     readTime: 6,
     category: "Strategy",
     tags: ["Manumation Method", "Business Systems", "Operations", "Automation", "Framework"],
-    featuredImage: "/blog-images/five-pillars-featured.jpg",
+    featuredImage: "/blog-images/five-pillars-featured.webp",
     featuredImageAlt: "Five architectural pillars supporting a structure, representing the five pillars of the Manumation Method",
     faqs: [
       {
@@ -3952,7 +3952,7 @@ It'll show you where your business is leaking energy—and that's usually where 
     readTime: 5,
     category: "Strategy",
     tags: ["Goal Setting", "Planning", "Productivity", "Business Strategy", "New Year"],
-    featuredImage: "/blog-images/goal-setting-featured.jpg",
+    featuredImage: "/blog-images/goal-setting-featured.webp",
     featuredImageAlt: "A single clear target on a clean desk, representing focused goal-setting over scattered to-do lists",
     faqs: [
       {
@@ -4092,7 +4092,7 @@ See you on the other side.
     readTime: 5,
     category: "Business Mindset",
     tags: ["New Year", "2026 Goals", "Manumation Method", "Business Freedom", "Delegation"],
-    featuredImage: "/blog-images/100-business-owners-featured.jpg",
+    featuredImage: "/blog-images/100-business-owners-featured.webp",
     featuredImageAlt: "100 business owners gathered at sunrise - the 2026 mission to help founders break free",
     faqs: [
       {
@@ -4219,7 +4219,7 @@ See you tomorrow.
     readTime: 4,
     category: "AI & Automation",
     tags: ["Manumation Method", "Business Systems", "Automation", "Announcement"],
-    featuredImage: "/blog-images/manumation-dropping-featured.jpg",
+    featuredImage: "/blog-images/manumation-dropping-featured.webp",
     featuredImageAlt: "Sunrise over blueprints - the Manumation Method framework launching tomorrow",
     faqs: [
       {
@@ -4350,7 +4350,7 @@ See you tomorrow.
     readTime: 4,
     category: "Business Mindset",
     tags: ["Year-End Reflection", "2025", "Business Lessons", "Burnout", "Business Design"],
-    featuredImage: "/blog-images/2025-reflection-featured.jpg",
+    featuredImage: "/blog-images/2025-reflection-featured.webp",
     featuredImageAlt: "Business owner reflecting at desk overlooking city lights - 2025 year-end lessons",
     faqs: [
       {
@@ -4406,7 +4406,7 @@ I connected dots no one else even knew existed.
 From the outside, it looked like leadership.
 From the inside, it felt like carrying invisible weight.
 
-![The hidden weight of leadership — looking calm while carrying invisible responsibility](/blog-images/manumation-command-center.jpg)
+![The hidden weight of leadership — looking calm while carrying invisible responsibility](/blog-images/manumation-command-center.webp)
 
 The kind where every small break costs momentum.
 Where stepping away creates anxiety instead of relief.
@@ -4446,7 +4446,7 @@ Not because you're disorganized.
 
 **Because the business is quietly designed to rely on you.**
 
-![The business designed to rely on you — carrying the weight while everyone else moves on](/blog-images/manumation-pillars.jpg)
+![The business designed to rely on you — carrying the weight while everyone else moves on](/blog-images/manumation-pillars.webp)
 
 If you have ADD—or simply a brain that doesn't move in tidy sequences—most traditional systems fight how you think instead of supporting it.
 
@@ -4500,7 +4500,7 @@ At its core, Manumation is built around **five pillars every business already ha
 Every business has all five.
 Every business leaks in at least one.
 
-![The five pressure points — where energy leaks before results stall](/blog-images/manumation-flywheel.jpg)
+![The five pressure points — where energy leaks before results stall](/blog-images/manumation-flywheel.webp)
 
 Most business owners don't know where the leak is—
 only that everything feels harder than it should.
@@ -4535,7 +4535,7 @@ You don't have Manumation.
 
 That realization alone is often the first real relief people feel in years.
 
-![When initiation is automated, leaders get their judgment back](/blog-images/manumation-studio.jpg)
+![When initiation is automated, leaders get their judgment back](/blog-images/manumation-studio.webp)
 
 ---
 
@@ -4576,7 +4576,7 @@ And the book is where it really begins.
     readTime: 8,
     category: "AI Automation",
     tags: ["Manumation Method", "Business Systems", "Founder Burnout", "Business Automation", "ADD Entrepreneur", "Delegation", "Leadership", "Small Business"],
-    featuredImage: "/blog-images/manumation-featured.jpg",
+    featuredImage: "/blog-images/manumation-featured.webp",
     featuredImageAlt: "Jeremy Kean presenting the Manumation Method - where human creativity meets automated systems",
     faqs: [
       {
@@ -5036,7 +5036,7 @@ You are the system.
 
 And systems don't sleep.
 
-![Business owner overwhelmed with mental load](/blog-images/4am-mental-overload.jpeg)
+![Business owner overwhelmed with mental load](/blog-images/4am-mental-overload.webp)
 
 ---
 
@@ -5179,7 +5179,7 @@ You can't fully delegate what someone isn't equipped to handle. That's not deleg
 
 The Waterfall is how healthy companies scale. Task by task. Level by level. Until everyone is doing the work they're actually built for.
 
-![Tasks cascading down organizational levels like a waterfall](/blog-images/4am-waterfall-cascade.jpeg)
+![Tasks cascading down organizational levels like a waterfall](/blog-images/4am-waterfall-cascade.webp)
 
 ---
 
@@ -5221,7 +5221,7 @@ And finally start acting like the owner again.
     readTime: 8,
     category: "Business Mindset",
     tags: ["burnout", "delegation", "founder mindset", "productivity", "business systems"],
-    featuredImage: "/blog-images/4am-panic-featured.jpeg",
+    featuredImage: "/blog-images/4am-panic-featured.webp",
     featuredImageAlt: "Business owner in pajamas at 4AM holding a fire hose trying to put out fires on his burning business desk",
     faqs: [
       {
@@ -5531,7 +5531,7 @@ And now you finally know how much blood is on the floor.
     readTime: 8,
     category: "Operations",
     tags: ["productivity", "time management", "leadership", "automation", "business systems"],
-    featuredImage: "/blog-images/bleeding-time-featured.jpg",
+    featuredImage: "/blog-images/bleeding-time-featured.webp",
     featuredImageAlt: "Business owner realizing time leakage costs more than they thought",
     faqs: [
       {
@@ -5780,7 +5780,7 @@ That's usually where the real work starts.
     readTime: 6,
     category: "Leadership",
     tags: ["leadership", "team management", "feedback", "self-awareness"],
-    featuredImage: "/blog-images/employees-talking-featured.jpeg",
+    featuredImage: "/blog-images/employees-talking-featured.webp",
     featuredImageAlt: "Split view of employees - quiet in meeting with boss vs animated conversation when he leaves",
     faqs: [
       {
@@ -5955,7 +5955,7 @@ That's where the real work starts.
     readTime: 5,
     category: "Leadership",
     tags: ["leadership", "business coaching", "team management", "self-awareness", "accountability"],
-    featuredImage: "/blog-images/victim-or-bottleneck.jpeg",
+    featuredImage: "/blog-images/victim-or-bottleneck.webp",
     featuredImageAlt: "Business owner carrying heavy burden while team watches - leadership bottleneck concept",
     faqs: [
       {
@@ -6194,7 +6194,7 @@ And now you finally know how much blood is on the floor.
     readTime: 6,
     category: "Operations",
     tags: ["productivity", "automation", "efficiency", "cost analysis", "business systems"],
-    featuredImage: "/blog-images/paying-eight-hours-featured.jpeg",
+    featuredImage: "/blog-images/paying-eight-hours-featured.webp",
     featuredImageAlt: "Business owner pouring hours into a machine labeled Manual Processes and Waiting - only a fraction comes out as actual work",
     faqs: [
       {
@@ -6357,7 +6357,7 @@ That moment can be right now.
     readTime: 5,
     category: "Business Mindset",
     tags: ["December", "Business Reset", "Planning", "Year-End", "Productivity"],
-    featuredImage: "/blog-images/december-reset-featured.jpg",
+    featuredImage: "/blog-images/december-reset-featured.webp",
     featuredImageAlt: "Business owner at desk with calendar showing December - preparing for a strategic reset",
     faqs: [
       {
@@ -6537,7 +6537,7 @@ That's the real win.
     readTime: 5,
     category: "Leadership",
     tags: ["Delegation", "Team Building", "Leadership", "Ownership", "Management"],
-    featuredImage: "/blog-images/stop-being-answer-featured.jpg",
+    featuredImage: "/blog-images/stop-being-answer-featured.webp",
     featuredImageAlt: "Business owner stepping back while team collaborates and solves problems independently",
     faqs: [
       {
@@ -6724,7 +6724,7 @@ That's where the real leverage lives.
     readTime: 5,
     category: "AI & Automation",
     tags: ["Automation", "AI", "Business Systems", "Productivity", "First Steps"],
-    featuredImage: "/blog-images/first-automation-featured.jpg",
+    featuredImage: "/blog-images/first-automation-featured.webp",
     featuredImageAlt: "Business owner choosing between flashy automation and painful manual task - spotlight on the painful one",
     faqs: [
       {
@@ -6911,7 +6911,7 @@ That's the move.
     readTime: 5,
     category: "Leadership",
     tags: ["Sales", "Client Relations", "Decision Making", "Leadership", "Communication"],
-    featuredImage: "/blog-images/clients-dont-want-options-featured.jpg",
+    featuredImage: "/blog-images/clients-dont-want-options-featured.webp",
     featuredImageAlt: "Business owner confidently pointing to one recommendation while client looks relieved",
     faqs: [
       {
@@ -7083,7 +7083,7 @@ That's not productivity hacking. That's just sanity.
     readTime: 5,
     category: "Time Management",
     tags: ["Meetings", "Productivity", "Time Management", "Communication", "Operations"],
-    featuredImage: "/blog-images/meeting-email-featured.jpg",
+    featuredImage: "/blog-images/meeting-email-featured.webp",
     featuredImageAlt: "Conference room with empty chairs and a laptop showing an email - the meeting that should have been async",
     faqs: [
       {
@@ -7270,7 +7270,7 @@ Build them like tools.
     readTime: 5,
     category: "Operations",
     tags: ["SOPs", "Documentation", "Operations", "Team Training", "Productivity"],
-    featuredImage: "/blog-images/sop-nobody-reads-featured.jpg",
+    featuredImage: "/blog-images/sop-nobody-reads-featured.webp",
     featuredImageAlt: "Dusty binder on a shelf versus a clean one-page checklist being actively used",
     faqs: [
       {
@@ -7407,7 +7407,7 @@ The math isn't complicated. The letting go is.
     readTime: 4,
     category: "Productivity",
     tags: ["Delegation", "Time Management", "Operations", "Productivity", "Manumation Method"],
-    featuredImage: "/blog-images/five-minute-rule-featured.jpg",
+    featuredImage: "/blog-images/five-minute-rule-featured.webp",
     featuredImageAlt: "A stopwatch showing 5 minutes next to a checklist being handed from one person to another",
     faqs: [
       {
@@ -7543,7 +7543,7 @@ Looking back, Maria wasn't the risk.
     readTime: 5,
     category: "Leadership",
     tags: ["Team Management", "Risk Management", "Delegation", "Business Operations", "Leadership"],
-    featuredImage: "/blog-images/best-employee-risk-featured.jpg",
+    featuredImage: "/blog-images/best-employee-risk-featured.webp",
     featuredImageAlt: "A single person carrying a tower of blocks while others stand ready to help",
     faqs: [
       {
@@ -7702,7 +7702,7 @@ The business will be there tomorrow.
     readTime: 4,
     category: "Mindset",
     tags: ["Work-Life Balance", "Mindset", "Holidays", "Reflection", "Manumation Method"],
-    featuredImage: "/blog-images/letting-go-christmas-featured.jpg",
+    featuredImage: "/blog-images/letting-go-christmas-featured.webp",
     featuredImageAlt: "A peaceful home office with a closed laptop, soft Christmas lights glowing in the window",
     faqs: [
       {
@@ -7908,7 +7908,7 @@ Dennis helps businesses build their online presence through web design, SEO, and
     readTime: 5,
     category: "Business Strategy",
     tags: ["SEO", "Content Strategy", "AI", "Google Ranking", "Entity Framing", "Press Release"],
-    featuredImage: "/blog-images/one-day-to-page-one-dennis.jpeg",
+    featuredImage: "/blog-images/one-day-to-page-one-dennis.webp",
     featuredImageAlt: "Jeremy Kean and Dennis - AI leaders collaborating in Richmond",
     faqs: [
       {
@@ -8020,7 +8020,7 @@ NotebookLM is one piece of that puzzle. The Manumation Method provides the frame
     readTime: 6,
     category: "AI Automation",
     tags: ["NotebookLM", "AI Tools", "Manumation", "Productivity", "Business Systems", "Research"],
-    featuredImage: "/blog/notebooklm-manumation.jpeg",
+    featuredImage: "/blog/notebooklm-manumation.webp",
     featuredImageAlt: "NotebookLM and Manumation - Designing Systems for Smarter Business",
     audioFile: "/audio/design-systems-podcast.m4a",
     audioTitle: "Design Systems, Not Harder Work - AI Audio Deep Dive",
@@ -8883,7 +8883,7 @@ By the tenth, you'll wonder how you ever operated without them.
     readTime: 8,
     category: "Business Systems",
     tags: ["SOPs", "Documentation", "Business Systems", "Delegation", "Operations"],
-    featuredImage: "/blog-images/employees-meeting-featured.jpg",
+    featuredImage: "/blog-images/employees-meeting-featured.webp",
     featuredImageAlt: "Team meeting with organized documentation and process flows",
     faqs: [
       {
@@ -9319,7 +9319,7 @@ Close the gap → Remove the ceiling.
     readTime: 10,
     category: "Insurance Agency",
     tags: ["Insurance Agency", "Agency Growth", "Delegation", "Scaling", "Revenue Ceiling"],
-    featuredImage: "/blog-images/victim-or-bottleneck.jpeg",
+    featuredImage: "/blog-images/victim-or-bottleneck.webp",
     featuredImageAlt: "Business owner realizing they are the bottleneck in their agency",
     faqs: [
       {
@@ -9535,7 +9535,7 @@ Listen to it.
     readTime: 9,
     category: "Business Mindset",
     tags: ["Mindset", "Business Architecture", "Burnout", "Systems Thinking", "Leadership"],
-    featuredImage: "/blog-images/4am-mental-overload.jpeg",
+    featuredImage: "/blog-images/4am-mental-overload.webp",
     featuredImageAlt: "Business owner examining structural blueprint of their business operations",
     faqs: [
       {
@@ -9755,7 +9755,7 @@ Worth it.
     readTime: 10,
     category: "Time Management",
     tags: ["Time Audit", "Time Management", "Productivity", "Focus", "Calendar Management"],
-    featuredImage: "/blog-images/bleeding-time-featured.jpg",
+    featuredImage: "/blog-images/bleeding-time-featured.webp",
     featuredImageAlt: "Business owner tracking time with calendar and timer showing daily schedule analysis",
     faqs: [
       {
