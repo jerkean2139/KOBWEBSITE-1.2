@@ -18,6 +18,8 @@ import {
   AlertTriangle,
   BookOpen,
   Zap,
+  Star,
+  MessageSquare,
 } from "lucide-react";
 
 const INSURANCE_BLOG_POSTS = [
@@ -111,6 +113,27 @@ const COACHING_PILLARS = [
   },
 ];
 
+const TESTIMONIALS = [
+  {
+    name: "Ryan Templeton",
+    role: "Founder, Premier Health Advisors",
+    image: "/testimonial-ryan.webp",
+    quote: "Jeremy bridges the gap between 'tech' and 'tactical.' This isn't just theory; it is the specific blueprint I needed to stop manually grinding and start strategically scaling. If you want to build a machine that works for you, read this.",
+  },
+  {
+    name: "Beth P.",
+    role: "Insurance Agency Owner",
+    image: "/testimonial-beth.webp",
+    quote: "I was afraid automation would make my business feel robotic, but Jeremy proved the opposite. This method allowed me to 'clone' my values and voice, giving me more time with clients. A total game-changer.",
+  },
+  {
+    name: "Jason Elkins",
+    role: "100 Cups Consulting",
+    image: "/testimonial-jason.webp",
+    quote: "The Manumation Method gave me permission to simplify, evaluate problems quickly, and implement solutions without the decision-fatigue spiral. Finally, a framework that works for my brain.",
+  },
+];
+
 const RESULTS = [
   { metric: "30+", label: "Hours/Month Saved", sublabel: "on average per agency" },
   { metric: "90%+", label: "Retention Rate", sublabel: "target for coached agencies" },
@@ -120,7 +143,7 @@ const RESULTS = [
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Service",
   "name": "Insurance Agency Coaching — KeanOnBiz",
   "description": "Strategic coaching for insurance agency owners who want to grow revenue, retain more clients, and build systems that run without them.",
   "provider": {
@@ -335,6 +358,53 @@ export default function InsuranceCoaching() {
         </section>
 
         <section className="py-20 bg-gray-950">
+          <div className="container max-w-6xl">
+            <AnimatedSection>
+              <div className="text-center mb-14">
+                <MessageSquare className="text-red-500 mx-auto mb-4" size={32} />
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  What Clients Say
+                </h2>
+                <p className="text-white/60 text-lg max-w-2xl mx-auto">
+                  Real feedback from business owners who've worked with Jeremy.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {TESTIMONIALS.map((t, i) => (
+                <AnimatedSection key={t.name} delay={i * 0.1}>
+                  <div className="bg-gray-900/80 border border-white/10 rounded-2xl p-6 h-full flex flex-col">
+                    <div className="flex items-center gap-3 mb-4">
+                      <img
+                        src={t.image}
+                        alt={t.name}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-red-500/50"
+                        loading="lazy"
+                        width={48}
+                        height={48}
+                      />
+                      <div>
+                        <p className="text-white font-semibold text-sm">{t.name}</p>
+                        <p className="text-white/50 text-xs">{t.role}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(5)].map((_, j) => (
+                        <Star key={j} className="text-yellow-500 fill-yellow-500" size={14} />
+                      ))}
+                    </div>
+                    <p className="text-white/70 text-sm leading-relaxed flex-grow">
+                      "{t.quote}"
+                    </p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gray-900/50">
           <div className="container max-w-6xl">
             <AnimatedSection>
               <div className="text-center mb-10">

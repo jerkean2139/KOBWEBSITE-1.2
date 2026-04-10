@@ -115,7 +115,7 @@ const RELATED_POSTS = [
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Service",
   "name": "Business Automation Coaching — KeanOnBiz",
   "description": "The Manumation Method: systematize first, automate second. Strategic coaching for business owners who want to build operations that run without them.",
   "provider": {
@@ -363,6 +363,13 @@ export default function BusinessAutomation() {
                     No buzzwords, no dashboards for the sake of dashboards. Just the systems,
                     processes, and training that make your business run without you in the middle
                     of every decision.
+                  </p>
+                  <p className="text-white/70 leading-relaxed mb-4">
+                    The three-brand ecosystem behind the method:{" "}
+                    <strong className="text-white">KeanOnBiz</strong> (coaching & consulting),{" "}
+                    <strong className="text-white">Manumation</strong> (the framework & methodology), and{" "}
+                    <strong className="text-white">Zenoflo</strong> (the software engine that powers the
+                    automation tools, dashboards, and workflows clients use day-to-day).
                   </p>
                   <p className="text-white/70 leading-relaxed mb-6">
                     Whether you run an insurance agency, a service business, or a growing team,

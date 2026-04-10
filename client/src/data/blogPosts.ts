@@ -207,7 +207,9 @@ Don't try to overhaul everything at once. Pick the weakest link and fix that fir
 
 The agencies winning right now aren't the ones with the most technology. They're the ones with the right technology, properly connected, actually used.
 
-Build your stack with intention. Everything else follows.`,
+Build your stack with intention. Everything else follows.
+
+If you want hands-on help building the right stack for your agency, [explore insurance agency coaching](/insurance-coaching) or [book a strategy call](/jeremys-calendar).`,
     author: {
       name: "Sarah Chen",
       title: "AI Tools & Automation Specialist",
@@ -367,7 +369,9 @@ Automation handles the reminders. You handle the relationships.
 
 That's how you scale an agency without losing what made it successful in the first place.
 
-Ready to map out your renewal workflow? [Book a strategy session](/jeremys-calendar) and let's build it together. Or [take the free Bottleneck Audit](/assessment) to see where your agency's biggest opportunities are hiding.`,
+Ready to map out your renewal workflow? [Book a strategy session](/jeremys-calendar) and let's build it together. Or [take the free Bottleneck Audit](/assessment) to see where your agency's biggest opportunities are hiding.
+
+Want a structured approach to systematizing and automating your agency operations? Learn more about [insurance agency coaching](/insurance-coaching) or explore [business automation coaching](/business-automation).`,
     author: {
       name: "Jeremy Kean",
       title: "Business Coach & Automation Strategist",
@@ -547,7 +551,7 @@ Your book of business deserves better than a solo operator who can't take a vaca
 
 Build the systems. Then build the team.
 
-[Take the free Bottleneck Audit](/assessment) to see where your agency stands today.`,
+[Take the free Bottleneck Audit](/assessment) to see where your agency stands today. Or explore [insurance agency coaching](/insurance-coaching) for hands-on help building these systems.`,
     author: {
       name: "Jeremy Kean",
       title: "Business Coach & Automation Strategist",
@@ -9307,6 +9311,8 @@ That gap is your growth ceiling.
 Close the gap → Remove the ceiling.
 
 *The [Bottleneck Audit](/assessment) specifically identifies where agency owners are bottlenecking their own growth. If you've been stuck at the same revenue for more than 18 months, this is where to start.*
+
+*Ready for hands-on help breaking through your ceiling? Learn about [insurance agency coaching](/insurance-coaching) — strategic coaching built specifically for agency owners.*
     `,
     author: {
       name: "Jeremy Kean",
