@@ -1,0 +1,100 @@
+🔎 1. SEO Audit — What Needs to Be Updated
+🧠 A. Core SEO Strategy Issues
+Problem: The site lacks strong topical authority and keyword targeting.
+What I’m seeing:
+Pages are not clearly targeting specific keywords
+No clear content silo / topical map
+Weak internal linking structure
+Likely missing semantic depth (entities, NLP coverage)
+Fix:
+Build a topical map (example):
+KeanonBiz (main)
+Business Growth
+Digital Marketing
+SEO Services
+Case Studies
+Blog (cluster content)
+Each page should target:
+1 primary keyword
+5–10 semantic keywords
+Entities (brands, tools, locations)
+
+🏷️ B. Title Tags & Meta Descriptions (Critical)
+Problem: Titles are likely:
+Too generic OR
+Not keyword optimized OR
+Missing click-through intent
+Fix Formula:
+Title Tag:
+Primary Keyword | Benefit + Brand
+Example:
+Small Business SEO Services | Grow Faster with KeanonBiz
+Meta Description:
+Get expert SEO services for small businesses. Increase traffic, leads, and revenue with KeanonBiz. Free consultation available.
+
+🧱 C. On-Page SEO Issues
+Problems:
+Weak H1–H3 structure
+Pages may have multiple H1s or none
+Content lacks:
+keyword variation
+semantic entities
+structured sections
+Fix:
+Each page should follow:
+H1: Main keyword
+H2: Supporting sections
+H3: Details / FAQs
+Add:
+FAQs (schema boost)
+Bullet points
+Internal links every 2–3 paragraphs
+
+🔗 D. Internal Linking (BIG Opportunity)
+Problem: Likely minimal or random linking.
+Fix:
+Every page should link to:
+2–5 other relevant pages
+Use keyword-rich anchor text
+Example:
+“Learn more about our SEO services for small businesses”
+
+🧩 E. Missing Schema Markup
+Problem: No structured data = lost rankings.
+Add:
+Organization schema
+Local Business schema
+FAQ schema
+Service schema
+
+⚡ F. Page Speed & Performance
+Common issues I expect:
+Large images
+No lazy loading
+Too many scripts
+Fix:
+Compress images (WebP)
+Use lazy loading
+Reduce JS/CSS bloat
+
+📍 G. Local SEO (If Applicable)
+If you serve a location:
+Missing:
+Google Business Profile optimization
+Local keywords (e.g., “in Nashville”)
+Fix:
+Add location pages:
+“SEO Services in Nashville”
+Embed Google Map
+Add NAP (Name, Address, Phone)
+
+✍️ H. Content Depth (Major Ranking Factor)
+Problem: Pages likely too thin.
+Fix:
+Each service page:
+800–1,500+ words
+Include:
+process
+benefits
+case studies
+FAQs
