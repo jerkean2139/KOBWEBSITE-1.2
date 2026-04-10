@@ -39,7 +39,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "What industries does Jeremy work with?",
         answer:
-          'Jeremy works with business owners across multiple industries, with a particular focus on insurance agencies. He also serves home services, healthcare, professional services, real estate, fitness, and other service-based businesses. His frameworks are designed to work for any business that relies on people, processes, and client relationships.',
+          'Jeremy works with business owners across multiple industries, with a particular focus on <a href="/insurance-coaching" class="text-primary hover:underline">insurance agencies</a>. He also serves home services, healthcare, professional services, real estate, fitness, and other service-based businesses. His frameworks are designed to work for any business that relies on people, processes, and client relationships. Take the <a href="/assessment" class="text-primary hover:underline">Bottleneck Audit</a> to see how his approach applies to your industry.',
       },
     ],
   },
@@ -84,7 +84,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "How is the Manumation Method different from other business frameworks?",
         answer:
-          'Most business frameworks focus on either strategy or tools. The Manumation Method bridges both — it gives you the thinking framework AND the implementation playbook. It was built by someone who has actually run businesses (13 brands over 35 years), not by a consultant who only advises. It is designed for business owners who are hands-on and need systems that work in the real world.',
+          'Most business frameworks focus on either strategy or tools. The Manumation Method bridges both — it gives you the thinking framework AND the implementation playbook. It was built by someone who has actually run businesses (13 brands over 35 years), not by a consultant who only advises. It is designed for business owners who are hands-on and need systems that work in the real world. <a href="/about" class="text-primary hover:underline">Read Jeremy\'s full story</a>.',
       },
     ],
   },
@@ -99,7 +99,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Do I need to be tech-savvy to use AI tools?",
         answer:
-          'No. Jeremy\'s approach is designed for business owners, not engineers. The systems are built to be simple and practical. You do not need to write code or understand AI models — you just need to be willing to follow a process. Jeremy and his team handle the technical setup.',
+          'No. Jeremy\'s approach is designed for business owners, not engineers. The systems are built to be simple and practical. You do not need to write code or understand AI models — you just need to be willing to follow a process. Jeremy and his team handle the technical setup. Learn more about the approach on the <a href="/business-automation" class="text-primary hover:underline">Business Automation</a> page.',
       },
       {
         question: "What tools and platforms do you use?",
@@ -109,7 +109,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Will automation make my business feel impersonal?",
         answer:
-          'This is the most common concern — and the answer is no. The Manumation Method is specifically designed to preserve the human touch. Automation handles the back-office tasks so you can spend more time with clients, not less. As one client put it: "This method allowed me to clone my values and voice, giving me more time with clients."',
+          'This is the most common concern — and the answer is no. The Manumation Method is specifically designed to preserve the human touch. Automation handles the back-office tasks so you can spend more time with clients, not less. As one client put it: "This method allowed me to clone my values and voice, giving me more time with clients." <a href="/book" class="text-primary hover:underline">Read the book</a> to see how it works in practice.',
       },
     ],
   },
@@ -129,7 +129,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Can you help me automate my agency without losing the personal touch?",
         answer:
-          'Absolutely. That is the core of what we do. Insurance is a relationship business, and automation should enhance those relationships — not replace them. We help you automate renewals, follow-ups, onboarding, and reporting while keeping client-facing interactions personal and human.',
+          'Absolutely. That is the core of what we do. Insurance is a relationship business, and automation should enhance those relationships — not replace them. We help you automate renewals, follow-ups, onboarding, and reporting while keeping client-facing interactions personal and human. Try the <a href="/insurance" class="text-primary hover:underline">Revenue Leak Calculator</a> to see where your agency has the most opportunity.',
       },
     ],
   },
@@ -144,7 +144,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "What happens after I book a Discovery Call?",
         answer:
-          'During the Discovery Call, Jeremy will review your situation, discuss your goals, and help you determine whether coaching is the right fit. There is no pressure and no obligation. If coaching makes sense, he will recommend a specific engagement level and next steps. If it does not, he will tell you honestly.',
+          'During the Discovery Call, Jeremy will review your situation, discuss your goals, and help you determine whether coaching is the right fit. There is no pressure and no obligation. If coaching makes sense, he will recommend a specific engagement level and next steps. If it does not, he will tell you honestly. <a href="/jeremys-calendar-intro" class="text-primary hover:underline">Book your Discovery Call here</a>.',
       },
       {
         question: "Can I try before committing to coaching?",
