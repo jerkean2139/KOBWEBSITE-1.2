@@ -23,6 +23,7 @@ const STATIC_ROUTES = [
   { loc: "/insurance", changefreq: "monthly", priority: "0.9" },
   { loc: "/insurance-coaching", changefreq: "monthly", priority: "0.9" },
   { loc: "/business-automation", changefreq: "monthly", priority: "0.9" },
+  { loc: "/faq", changefreq: "monthly", priority: "0.8" },
   { loc: "/founders-filter", changefreq: "monthly", priority: "0.9" },
   { loc: "/portfolio", changefreq: "weekly", priority: "0.8" },
   { loc: "/jeremys-calendar", changefreq: "monthly", priority: "0.8" },
@@ -263,6 +264,7 @@ Jeremy Kean is a business coach specializing in helping overwhelmed business own
 - Bottleneck Audit: ${BASE_URL}/assessment
 - The Founder's Filter (Free Delegation Tool): ${BASE_URL}/founders-filter
 - Portfolio & Build Gallery: ${BASE_URL}/portfolio
+- FAQ: ${BASE_URL}/faq
 - Book a Strategy Call: ${BASE_URL}/jeremys-calendar
 - Newsletter: ${BASE_URL}/newsletter
 

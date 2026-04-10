@@ -22,7 +22,7 @@ Preferred communication style: Simple, everyday language.
 - **UI**: shadcn/ui (New York variant) and Tailwind CSS, supporting two color schemes and custom scroll animations. Site logo is inline CSS text (red/white), not PNG.
 - **Brand Colors**: Logo uses red (`text-red-500`) for "KEAN" and white for "BIZ" — consistent across all pages.
 - **Routing**: Wouter for client-side navigation across various pages and dynamic blog posts. All routes use `React.lazy()` + `Suspense` for route-level code splitting.
-- **SEO**: Server-side meta tag injection, JSON-LD structured data (Person, Organization, ProfessionalService, ProfilePage, ContactPage, PodcastSeries, PodcastEpisode, Book, BreadcrumbList), dynamic sitemap and robots.txt, PWA manifest, and automated internal linking.
+- **SEO**: Server-side meta tag injection, JSON-LD structured data (Person, Organization, ProfessionalService, ProfilePage, ContactPage, PodcastSeries, PodcastEpisode, Book, BreadcrumbList, FAQPage, Review, AggregateRating), dynamic sitemap and robots.txt, PWA manifest, and automated internal linking.
 - **Accessibility**: WCAG-aligned contrast ratios (white/70+ on dark backgrounds), proper form labels with `aria-label`/`htmlFor`, `aria-live` regions for status messages, `aria-hidden` on decorative icons, mobile menu focus trap with Escape key support, visible breadcrumb navigation on subpages.
 - **Images**: All images converted to WebP (hero, blog, testimonials, logo). No .jpg/.jpeg references remain in client source. Explicit width/height attributes on above-fold images for CLS prevention. LCP image preloaded with fetchPriority="high".
 - **LLM Discoverability**: `llms.txt` and `llms-full.txt` endpoints for AI crawler indexing (following llmstxt.org standard).
@@ -57,7 +57,7 @@ Preferred communication style: Simple, everyday language.
 - **Schema**: Defined in `shared/schema.ts` for managing newsletters, blog posts, content topics, media, portfolio projects, snapshots, podcast episodes, industry profiles, pain points, and research runs.
 
 ### Key Routes
-- **Public**: `/`, `/about`, `/contact`, `/portfolio`, `/portfolio/:slug`, `/micropod`, `/blog`, `/newsletter`, `/assessment`, `/book`, `/founders-filter`, `/insurance`, `/insurance-coaching`, `/business-automation`
+- **Public**: `/`, `/about`, `/contact`, `/portfolio`, `/portfolio/:slug`, `/micropod`, `/blog`, `/newsletter`, `/assessment`, `/book`, `/founders-filter`, `/insurance`, `/insurance-coaching`, `/business-automation`, `/faq`
 - **Admin**: `/admin/newsletter`, `/admin/content-studio`, `/admin/micropod`, `/admin/portfolio`, `/admin/pain-points`
 - **API**: `/api/portfolio`, `/api/pain-points`, `/api/micropod`, `/api/content-studio`, `/api/newsletter`, `/podcast.xml` (RSS feed)
 

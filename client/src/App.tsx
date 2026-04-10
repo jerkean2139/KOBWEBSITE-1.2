@@ -38,6 +38,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const InsuranceAssessment = lazy(() => import("./pages/InsuranceAssessment"));
 const InsuranceCoaching = lazy(() => import("./pages/InsuranceCoaching"));
 const BusinessAutomation = lazy(() => import("./pages/BusinessAutomation"));
+const FAQ = lazy(() => import("./pages/FAQ"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function LoadingFallback() {
@@ -81,6 +82,7 @@ function Router() {
         <Route path="/insurance/assessment" component={InsuranceAssessment} />
         <Route path="/insurance-coaching" component={InsuranceCoaching} />
         <Route path="/business-automation" component={BusinessAutomation} />
+        <Route path="/faq" component={FAQ} />
         <Route path="/portfolio" component={Portfolio} />
         <Route path="/portfolio/:slug" component={CaseStudy} />
         <Route path="/admin/portfolio" component={PortfolioAdmin} />

@@ -1399,6 +1399,9 @@ export default function Home() {
                 <a href="/jeremys-calendar-intro" className="text-background/70 hover:text-background transition-colors text-sm">
                   Book a Discovery Call
                 </a>
+                <a href="/faq" className="text-background/70 hover:text-background transition-colors text-sm">
+                  FAQ
+                </a>
               </div>
             </div>
             <div>

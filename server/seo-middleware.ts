@@ -78,6 +78,11 @@ const staticPageMeta: Record<string, Partial<PageMeta>> = {
     description: "Systematize first, automate second. The Manumation Method helps business owners build operations that run without them. 35+ years experience, 100+ businesses transformed.",
     image: "/manumation-book-cover-new.png",
   },
+  "/faq": {
+    title: "Frequently Asked Questions | Business Coaching & AI Automation | KeanOnBiz",
+    description: "Answers to common questions about business coaching, the Manumation Method, AI automation, insurance agency coaching, and getting started with Jeremy Kean.",
+    image: "/manumation-book-cover-new.png",
+  },
   "/founders-filter": {
     title: "The Founder's Filter | Delegation Tool | KeanOnBiz",
     description: "Free interactive tool to identify tasks you should delegate. Filter what to keep, what to hand off soon, and what to delegate immediately.",
