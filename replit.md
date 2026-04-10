@@ -57,7 +57,7 @@ Preferred communication style: Simple, everyday language.
 - **Schema**: Defined in `shared/schema.ts` for managing newsletters, blog posts, content topics, media, portfolio projects, snapshots, podcast episodes, industry profiles, pain points, and research runs.
 
 ### Key Routes
-- **Public**: `/`, `/about`, `/contact`, `/portfolio`, `/portfolio/:slug`, `/micropod`, `/blog`, `/newsletter`, `/assessment`, `/book`, `/founders-filter`, `/insurance`
+- **Public**: `/`, `/about`, `/contact`, `/portfolio`, `/portfolio/:slug`, `/micropod`, `/blog`, `/newsletter`, `/assessment`, `/book`, `/founders-filter`, `/insurance`, `/insurance-coaching`, `/business-automation`
 - **Admin**: `/admin/newsletter`, `/admin/content-studio`, `/admin/micropod`, `/admin/portfolio`, `/admin/pain-points`
 - **API**: `/api/portfolio`, `/api/pain-points`, `/api/micropod`, `/api/content-studio`, `/api/newsletter`, `/podcast.xml` (RSS feed)
 

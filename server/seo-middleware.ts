@@ -68,6 +68,16 @@ const staticPageMeta: Record<string, Partial<PageMeta>> = {
     description: "Take the free Revenue Leak Calculator to find out how much your insurance agency is losing every month from team gaps, sales process issues, and operations.",
     image: "/manumation-book-cover-new.png",
   },
+  "/insurance-coaching": {
+    title: "Insurance Agency Coaching | Grow Revenue & Build Systems | KeanOnBiz",
+    description: "Strategic coaching for insurance agency owners. Fix your pipeline, automate renewals, build a team that runs without you, and break through your revenue ceiling. 35+ years experience.",
+    image: "/jeremy-about-photo.webp",
+  },
+  "/business-automation": {
+    title: "Business Automation Coaching | The Manumation Method | KeanOnBiz",
+    description: "Systematize first, automate second. The Manumation Method helps business owners build operations that run without them. 35+ years experience, 100+ businesses transformed.",
+    image: "/manumation-book-cover-new.png",
+  },
   "/founders-filter": {
     title: "The Founder's Filter | Delegation Tool | KeanOnBiz",
     description: "Free interactive tool to identify tasks you should delegate. Filter what to keep, what to hand off soon, and what to delegate immediately.",
