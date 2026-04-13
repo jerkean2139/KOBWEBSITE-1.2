@@ -244,9 +244,9 @@ export default function Assessment() {
         mode: "no-cors",
       });
       
-      // Trigger GHL webhook for workflow automation
+      // Trigger GHL webhook for workflow automation (via backend to avoid CORS)
       try {
-        await fetch("https://services.leadconnectorhq.com/hooks/5yufDyfhuTKFx8nCQCP6/webhook-trigger/2cc0fbc2-7908-42f1-9abe-e78b8d5457d7", {
+        await fetch("/api/ghl-webhooks/assessment-completed", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -260,7 +260,6 @@ export default function Assessment() {
             assessment_date: new Date().toISOString(),
             ...answers,
           }),
-          mode: "no-cors",
         });
       } catch {
         console.log("GHL webhook skipped");

@@ -198,4 +198,58 @@ router.post("/contact-tag-added", async (req, res) => {
   }
 });
 
+const assessmentWebhookSchema = z.object({
+  full_name: z.string().max(200),
+  email: z.string().email().max(255),
+  phone: z.string().max(50),
+  lead_score: z.number(),
+  lead_score_label: z.string().max(100),
+  recommended_call_type: z.string().max(100),
+  assessment_source: z.string().max(100),
+  assessment_date: z.string().max(100),
+}).passthrough();
+
+const assessmentWebhookRateLimiter = createRateLimiter({
+  windowMs: 60 * 1000,
+  maxRequests: 10,
+  concurrentLimit: 5,
+});
+
+router.post("/assessment-completed", async (req, res) => {
+  try {
+    const rateLimitKey = req.ip || "unknown";
+    const { allowed, reason } = assessmentWebhookRateLimiter(rateLimitKey);
+    if (!allowed) {
+      return res.status(429).json({ error: "Rate limited", reason });
+    }
+
+    const result = assessmentWebhookSchema.safeParse(req.body);
+    if (!result.success) {
+      logger.warn("Invalid assessment webhook payload", { endpoint: "/api/ghl-webhooks/assessment-completed" });
+      return res.status(400).json({ error: "Invalid payload" });
+    }
+
+    const webhookResponse = await fetch(
+      "https://services.leadconnectorhq.com/hooks/5yufDyfhuTKFx8nCQCP6/webhook-trigger/2cc0fbc2-7908-42f1-9abe-e78b8d5457d7",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result.data),
+      }
+    );
+
+    logger.info("GHL Webhook: Assessment completed", {
+      endpoint: "/api/ghl-webhooks/assessment-completed",
+      email: result.data.email,
+      lead_score: result.data.lead_score,
+      ghl_status: webhookResponse.status,
+    });
+
+    res.json({ success: true, ghlStatus: webhookResponse.status });
+  } catch (error) {
+    logger.error("GHL webhook error", { endpoint: "/api/ghl-webhooks/assessment-completed" }, error as Error);
+    res.status(500).json({ error: "Webhook processing failed" });
+  }
+});
+
 export default router;
