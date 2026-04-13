@@ -102,6 +102,17 @@ const questions: Question[] = [
     ],
   },
   {
+    id: "business_type",
+    question: "What best describes your business?",
+    fieldName: "business_type",
+    options: [
+      { value: "insurance_agency", label: "Insurance Agency", description: "I own or run an insurance agency" },
+      { value: "coaching_consulting", label: "Coaching or Consulting", description: "I sell my expertise" },
+      { value: "service_business", label: "Service Business", description: "I deliver a service to clients" },
+      { value: "other", label: "Other", description: "Something else" },
+    ],
+  },
+  {
     id: "bottleneck",
     question: "What's the biggest bottleneck in your business right now?",
     fieldName: "biggest_bottleneck",
