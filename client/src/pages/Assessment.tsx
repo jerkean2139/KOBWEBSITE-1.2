@@ -244,6 +244,28 @@ export default function Assessment() {
         mode: "no-cors",
       });
       
+      // Trigger GHL webhook for workflow automation
+      try {
+        await fetch("https://services.leadconnectorhq.com/hooks/5yufDyfhuTKFx8nCQCP6/webhook-trigger/2cc0fbc2-7908-42f1-9abe-e78b8d5457d7", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            full_name: name,
+            email,
+            phone,
+            lead_score: score,
+            lead_score_label: scoreLabel.label,
+            recommended_call_type: recommendation.type,
+            assessment_source: "keanonbiz_website",
+            assessment_date: new Date().toISOString(),
+            ...answers,
+          }),
+          mode: "no-cors",
+        });
+      } catch {
+        console.log("GHL webhook skipped");
+      }
+
       // Also track the assessment completion for analytics
       try {
         await fetch("/api/track/assessment", {
