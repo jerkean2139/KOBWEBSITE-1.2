@@ -269,7 +269,12 @@ export default function Assessment() {
             recommended_call_type: recommendation.type,
             assessment_source: "keanonbiz_website",
             assessment_date: new Date().toISOString(),
-            ...answers,
+            contact: {
+              audit_business_type: answers.business_type || "",
+            },
+            ...Object.fromEntries(
+              Object.entries(answers).filter(([key]) => key !== "business_type")
+            ),
           }),
         });
       } catch {

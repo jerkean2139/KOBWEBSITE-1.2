@@ -207,6 +207,9 @@ const assessmentWebhookSchema = z.object({
   recommended_call_type: z.string().max(100),
   assessment_source: z.string().max(100),
   assessment_date: z.string().max(100),
+  contact: z.object({
+    audit_business_type: z.string().max(100).optional(),
+  }).optional(),
 }).passthrough();
 
 const assessmentWebhookRateLimiter = createRateLimiter({
