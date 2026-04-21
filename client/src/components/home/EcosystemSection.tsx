@@ -94,10 +94,10 @@ export default function EcosystemSection() {
         </div>
       </section>
 
-      {/* Brand Showcase — Zenoflo & AgentMob */}
+      {/* Brand Showcase — Zenoflo */}
       <section className="py-16" aria-label="Our platforms">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="max-w-xl mx-auto">
             <AnimatedSection animation="fade-in" delay={0.1}>
               <div className="p-6 rounded-lg" style={{ backgroundColor: "var(--surface-elevated)" }}>
                 <img src="/zenoflo-logo.svg" alt="Zenoflo" className="h-8 mb-4" loading="lazy" />
@@ -110,18 +110,6 @@ export default function EcosystemSection() {
                     Visit Zenoflo <ExternalLink size={14} className="ml-1" />
                   </Button>
                 </a>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection animation="fade-in" delay={0.2}>
-              <div className="relative p-6 rounded-lg" style={{ backgroundColor: "var(--surface-elevated)" }}>
-                <span className="absolute top-4 right-4 text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" style={{ backgroundColor: "var(--amber)", color: "var(--amber-foreground)" }}>
-                  Coming Soon
-                </span>
-                <img src="/agentmob-logo.png" alt="AgentMob.ai" className="h-8 mb-4" loading="lazy" />
-                <h3 className="text-lg font-bold text-foreground mb-2">AI Agent Orchestration Platform</h3>
-                <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-                  Your central hub for deploying, managing, and monitoring AI agents across your business.
-                </p>
               </div>
             </AnimatedSection>
           </div>

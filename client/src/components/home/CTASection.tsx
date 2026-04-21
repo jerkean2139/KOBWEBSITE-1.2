@@ -18,7 +18,7 @@ export default function CTASection() {
               Identify your biggest opportunities for automation and delegation in under 5 minutes.
             </p>
 
-            <div className="inline-flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
               {["5 Minutes", "Personalized Results", "Free"].map((item) => (
                 <span key={item} className="flex items-center gap-1.5 text-sm font-medium text-foreground">
                   <CheckCircle2 size={14} style={{ color: "var(--amber)" }} aria-hidden="true" />
@@ -27,19 +27,21 @@ export default function CTASection() {
               ))}
             </div>
 
-            <a href="/assessment">
-              <Button
-                size="lg"
-                className="h-14 px-10 text-base font-bold"
-                style={{
-                  backgroundColor: "var(--amber)",
-                  color: "var(--amber-foreground)",
-                }}
-              >
-                Take the Free Audit
-                <ArrowRight className="ml-2" size={18} />
-              </Button>
-            </a>
+            <div className="pt-2">
+              <a href="/assessment">
+                <Button
+                  size="lg"
+                  className="h-14 px-10 text-base font-bold"
+                  style={{
+                    backgroundColor: "var(--amber)",
+                    color: "var(--amber-foreground)",
+                  }}
+                >
+                  Take the Free Audit
+                  <ArrowRight className="ml-2" size={18} />
+                </Button>
+              </a>
+            </div>
           </div>
         </AnimatedSection>
       </div>

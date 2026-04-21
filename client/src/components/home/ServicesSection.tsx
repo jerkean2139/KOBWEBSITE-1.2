@@ -65,7 +65,7 @@ export default function ServicesSection() {
             return (
               <AnimatedSection key={tier.id} animation="fade-in" delay={0.15 + i * 0.1}>
                 <div
-                  className={`relative rounded-lg p-6 sm:p-8 lg:p-10 transition-colors ${
+                  className={`rounded-lg p-6 sm:p-8 lg:p-10 transition-colors ${
                     tier.emphasis ? "ring-1" : ""
                   }`}
                   style={{
@@ -74,15 +74,6 @@ export default function ServicesSection() {
                     ringColor: tier.emphasis ? "var(--amber)" : undefined,
                   }}
                 >
-                  {tier.badge && (
-                    <span
-                      className="absolute top-4 right-4 sm:top-6 sm:right-6 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full"
-                      style={{ backgroundColor: "var(--amber)", color: "var(--amber-foreground)" }}
-                    >
-                      {tier.badge}
-                    </span>
-                  )}
-
                   <div className="grid lg:grid-cols-[auto_1fr_auto] gap-6 lg:gap-10 items-center">
                     {/* Icon + Title */}
                     <div className="flex items-center gap-4 lg:min-w-[240px]">
@@ -90,7 +81,17 @@ export default function ServicesSection() {
                         <Icon className="w-6 h-6 text-foreground" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-foreground">{tier.title}</h3>
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <h3 className="text-xl font-bold text-foreground">{tier.title}</h3>
+                          {tier.badge && (
+                            <span
+                              className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                              style={{ backgroundColor: "var(--amber)", color: "var(--amber-foreground)" }}
+                            >
+                              {tier.badge}
+                            </span>
+                          )}
+                        </div>
                         <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>{tier.tagline}</p>
                       </div>
                     </div>
