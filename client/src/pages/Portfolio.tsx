@@ -91,7 +91,7 @@ export default function Portfolio() {
         );
       case "on_deck":
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#FFD700]/20 text-[#FFD700] border border-[#FFD700]/30">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--amber)]/20 text-[var(--amber)] border border-[var(--amber)]/30">
             <Lightbulb className="w-3 h-3" />
             On Deck
           </span>
@@ -148,7 +148,7 @@ export default function Portfolio() {
           )}
           
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-            <Button className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-gray-900 font-semibold text-sm shadow-lg">
+            <Button className="bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-gray-900 font-semibold text-sm shadow-lg">
               <Eye className="w-4 h-4 mr-2" />
               View Details
             </Button>
@@ -160,7 +160,7 @@ export default function Portfolio() {
         </div>
 
         <div className="p-5">
-          <h3 className="text-lg font-bold text-white group-hover:text-[#FFD700] transition-colors mb-2">
+          <h3 className="text-lg font-bold text-white group-hover:text-[var(--amber)] transition-colors mb-2">
             {project.title}
           </h3>
 
@@ -196,7 +196,7 @@ export default function Portfolio() {
           )}
 
           <div className="flex items-center justify-between pt-3 border-t border-white/5">
-            <span className="text-xs text-primary font-medium group-hover:text-[#FFD700] transition-colors flex items-center gap-1">
+            <span className="text-xs text-primary font-medium group-hover:text-[var(--amber)] transition-colors flex items-center gap-1">
               View case study
               <ArrowRight className="w-3 h-3" />
             </span>
@@ -244,7 +244,7 @@ export default function Portfolio() {
         <section className="pt-28 pb-16 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" aria-hidden="true">
             <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-[120px]" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#FFD700]/20 rounded-full blur-[150px]" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-[var(--amber)]/20 rounded-full blur-[150px]" />
           </div>
 
           <div className="container relative z-10">
@@ -260,12 +260,12 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center mb-12"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFD700]/20 rounded-full mb-6 border border-[#FFD700]/30">
-                <Building2 className="text-[#FFD700]" size={16} aria-hidden="true" />
-                <p className="text-[#FFD700] text-sm font-bold uppercase tracking-wider">Portfolio</p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--amber)]/20 rounded-full mb-6 border border-[var(--amber)]/30">
+                <Building2 className="text-[var(--amber)]" size={16} aria-hidden="true" />
+                <p className="text-[var(--amber)] text-sm font-bold uppercase tracking-wider">Portfolio</p>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-                The Build <span className="text-[#FFD700]">Gallery</span>
+                The Build <span className="text-[var(--amber)]">Gallery</span>
               </h1>
               <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
                 Real projects. Real results. From concept to deployment — see how we build 
@@ -354,8 +354,8 @@ export default function Portfolio() {
                 transition={{ delay: 0.4 }}
                 className="flex items-center gap-3 mb-8"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#FFD700]/20 flex items-center justify-center border border-[#FFD700]/30">
-                  <Code2 className="w-5 h-5 text-[#FFD700]" />
+                <div className="w-10 h-10 rounded-xl bg-[var(--amber)]/20 flex items-center justify-center border border-[var(--amber)]/30">
+                  <Code2 className="w-5 h-5 text-[var(--amber)]" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-white">SaaS Tools</h2>

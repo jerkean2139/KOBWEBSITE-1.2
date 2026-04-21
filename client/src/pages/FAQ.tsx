@@ -1,5 +1,6 @@
 import DOMPurify from "dompurify";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -187,7 +188,7 @@ export default function FAQ() {
           className="relative py-16 md:py-24 overflow-hidden"
           style={{
             background:
-              "linear-gradient(135deg, oklch(0.20 0.08 250) 0%, oklch(0.15 0.06 255) 50%, oklch(0.18 0.07 245) 100%)",
+              "linear-gradient(135deg, var(--secondary) 0%, var(--surface-sunken) 50%, var(--secondary) 100%)",
           }}
         >
           <div className="container relative z-10">
@@ -294,32 +295,7 @@ export default function FAQ() {
           </div>
         </section>
 
-        <footer className="bg-foreground text-background py-12">
-          <div className="container">
-            <div className="border-t border-background/20 pt-8">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-background/70 text-sm">
-                <p>
-                  &copy; {new Date().getFullYear()} Kean on Biz. All rights
-                  reserved. | Headquarters in Indiana
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <a
-                    href="/terms"
-                    className="hover:text-background transition-colors"
-                  >
-                    Terms of Service
-                  </a>
-                  <a
-                    href="/privacy"
-                    className="hover:text-background transition-colors"
-                  >
-                    Privacy Policy
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   );

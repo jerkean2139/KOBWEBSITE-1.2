@@ -51,7 +51,7 @@ export default function CalendarIntro() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0f1a]">
+    <div className="min-h-screen bg-[var(--surface-sunken)]">
       <Navigation logoVariant="red" />
 
       <section className="pt-28 pb-16 relative overflow-hidden">
@@ -81,7 +81,7 @@ export default function CalendarIntro() {
                     {["BP", "AV", "SF", "JM", "RL"].map((initials, i) => (
                       <div
                         key={i}
-                        className="w-8 h-8 rounded-full bg-gray-800 border-2 border-[#0a0f1a] flex items-center justify-center text-[10px] font-bold text-white/80"
+                        className="w-8 h-8 rounded-full bg-gray-800 border-2 border-[var(--surface-sunken)] flex items-center justify-center text-[10px] font-bold text-white/80"
                       >
                         {initials}
                       </div>

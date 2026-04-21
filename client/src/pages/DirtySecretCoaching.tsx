@@ -22,10 +22,10 @@ export default function DirtySecretCoaching() {
         <section
           aria-labelledby="dirty-secret-heading"
           className="relative min-h-screen pt-24 pb-20"
-          style={{ backgroundColor: "#0a0a12" }}
+          style={{ backgroundColor: "var(--surface-sunken)" }}
         >
           <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" aria-hidden="true"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#FFD700]/10 rounded-full blur-3xl" aria-hidden="true"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-[var(--amber)]/10 rounded-full blur-3xl" aria-hidden="true"></div>
           
           <div className="container relative z-10">
             <div className="max-w-3xl mx-auto">
@@ -49,7 +49,7 @@ export default function DirtySecretCoaching() {
                 </p>
 
                 <p>
-                  And in that exact second, <span className="text-[#FFD700] font-bold">The Riptide</span> grabbed them.
+                  And in that exact second, <span className="text-[var(--amber)] font-bold">The Riptide</span> grabbed them.
                 </p>
 
                 <p>
@@ -60,7 +60,7 @@ export default function DirtySecretCoaching() {
                   They didn't <em>choose</em> to ignore your advice. They were dragged back out into the Ocean of Overwhelm before they could even write down their next step.
                 </p>
 
-                <div className="border-l-4 border-[#FFD700] pl-6 py-4 my-10">
+                <div className="border-l-4 border-[var(--amber)] pl-6 py-4 my-10">
                   <p className="text-2xl md:text-3xl font-bold text-white m-0">
                     You Are Selling Maps to People Who Are Drowning
                   </p>
@@ -119,7 +119,7 @@ export default function DirtySecretCoaching() {
                 {/* Dramatic closing statement */}
                 <div className="relative py-16 my-12">
                   <div 
-                    className="absolute inset-0 border-y-2 border-[#FFD700]/30"
+                    className="absolute inset-0 border-y-2 border-[var(--amber)]/30"
                     style={{ 
                       boxShadow: "0 -4px 30px rgba(255, 215, 0, 0.15), 0 4px 30px rgba(59, 130, 246, 0.15)"
                     }}
@@ -132,7 +132,7 @@ export default function DirtySecretCoaching() {
                       Your clients don't need more advice on how to swim.
                     </p>
                     <p 
-                      className="text-3xl md:text-5xl text-[#FFD700] font-black"
+                      className="text-3xl md:text-5xl text-[var(--amber)] font-black"
                       style={{ textShadow: "0 0 60px rgba(255, 215, 0, 0.4), 0 4px 0 rgba(59, 130, 246, 0.6)" }}
                     >
                       They need you to build them the raft.
@@ -160,19 +160,19 @@ export default function DirtySecretCoaching() {
                   
                   {/* Main card */}
                   <div 
-                    className="relative bg-[#12121f] border-2 border-white/20 rounded-2xl p-10 md:p-14 text-center"
+                    className="relative bg-card border-2 border-white/20 rounded-2xl p-10 md:p-14 text-center"
                     style={{ 
                       boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 60px rgba(59, 130, 246, 0.1)"
                     }}
                   >
                     {/* Corner accents */}
-                    <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-[#FFD700] rounded-tl-2xl" />
+                    <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-[var(--amber)] rounded-tl-2xl" />
                     <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-primary rounded-tr-2xl" />
                     <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-primary rounded-bl-2xl" />
-                    <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-[#FFD700] rounded-br-2xl" />
+                    <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-[var(--amber)] rounded-br-2xl" />
                     
                     <div 
-                      className="inline-block px-6 py-2 bg-[#FFD700] text-gray-900 text-sm font-black uppercase tracking-widest mb-6"
+                      className="inline-block px-6 py-2 bg-[var(--amber)] text-gray-900 text-sm font-black uppercase tracking-widest mb-6"
                       style={{ 
                         boxShadow: "4px 4px 0 rgba(59, 130, 246, 0.8)",
                         transform: "rotate(-2deg)"
@@ -225,10 +225,10 @@ export default function DirtySecretCoaching() {
                   <div className="flex items-center justify-center gap-8 mb-8">
                     <div className="h-px flex-1 max-w-24 bg-primary/40" style={{ boxShadow: "0 0 10px rgba(59, 130, 246, 0.5)" }} />
                     <div 
-                      className="w-3 h-3 bg-[#FFD700] rotate-45"
+                      className="w-3 h-3 bg-[var(--amber)] rotate-45"
                       style={{ boxShadow: "0 0 15px rgba(255, 215, 0, 0.6)" }}
                     />
-                    <div className="h-px flex-1 max-w-24 bg-[#FFD700]/40" style={{ boxShadow: "0 0 10px rgba(255, 215, 0, 0.5)" }} />
+                    <div className="h-px flex-1 max-w-24 bg-[var(--amber)]/40" style={{ boxShadow: "0 0 10px rgba(255, 215, 0, 0.5)" }} />
                   </div>
                   
                   <div className="text-center">

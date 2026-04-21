@@ -2,6 +2,7 @@ import { useParams, Link, Redirect } from "wouter";
 import { useEffect, useMemo } from "react";
 import DOMPurify from "dompurify";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -582,29 +583,7 @@ export default function BlogPost() {
           </div>
         </article>
 
-        <footer className="py-8 bg-gray-900 text-white">
-          <div className="container">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()} KeanOnBiz. All rights reserved.
-              </p>
-              <div className="flex items-center gap-6">
-                <a href="https://manumation.ai/coming-soon" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Manumation
-                </a>
-                <a href="https://zenoflo.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Zenoflo
-                </a>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Home
-                </Link>
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Blog
-                </Link>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   );

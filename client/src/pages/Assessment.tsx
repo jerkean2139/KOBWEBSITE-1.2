@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ClipboardCheck, ArrowRight, ArrowLeft, Check, Loader2, ChevronRight, AlertCircle, Calendar, Zap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -72,7 +73,7 @@ function getScoreLabel(score: number): { label: string; color: string; message: 
   };
   if (score >= 30) return { 
     label: "Bottleneck Risk: Moderate", 
-    color: "#3b82f6",
+    color: "var(--primary)",
     message: "You've built a decent foundation, but there are hidden bottlenecks limiting your potential. A few strategic changes could unlock real freedom and scalable growth."
   };
   return { 
@@ -329,7 +330,7 @@ export default function Assessment() {
     return (
       <>
         <Navigation />
-        <main className="min-h-screen bg-[#0a0a12] py-20">
+        <main className="min-h-screen bg-[var(--surface-sunken)] py-20">
           <div className="container max-w-3xl px-4">
             {/* Success Header */}
             <motion.div
@@ -363,7 +364,7 @@ export default function Assessment() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-[#13131f] rounded-2xl border border-white/10 p-6 mb-6"
+              className="bg-[var(--card)] rounded-2xl border border-white/10 p-6 mb-6"
             >
               <div className="flex items-center justify-between mb-4">
                 <span className="text-white/70 text-sm uppercase tracking-wider">Your Bottleneck Score</span>
@@ -399,10 +400,10 @@ export default function Assessment() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="bg-gradient-to-br from-[#3b82f6]/20 to-[#FFD700]/20 rounded-2xl border border-[#3b82f6]/30 p-6 mb-6"
+                className="bg-gradient-to-br from-[var(--primary)]/20 to-[var(--amber)]/20 rounded-2xl border border-[var(--primary)]/30 p-6 mb-6"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#3b82f6] flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[var(--primary)] flex items-center justify-center shrink-0">
                     {recommendedCall.type === "strategy" ? (
                       <Calendar className="text-white" size={24} aria-hidden="true" />
                     ) : (
@@ -410,12 +411,12 @@ export default function Assessment() {
                     )}
                   </div>
                   <div className="flex-1">
-                    <p className="text-[#FFD700] text-sm font-bold uppercase tracking-wider mb-1">Recommended Next Step</p>
+                    <p className="text-[var(--amber)] text-sm font-bold uppercase tracking-wider mb-1">Recommended Next Step</p>
                     <h3 className="text-xl font-bold text-white mb-2">{recommendedCall.label}</h3>
                     <p className="text-white/70 mb-4">{recommendedCall.description}</p>
                     <Button
                       size="lg"
-                      className="w-full sm:w-auto bg-[#3b82f6] hover:bg-[#3b82f6]/90 text-white font-bold"
+                      className="w-full sm:w-auto bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-white font-bold"
                       asChild
                     >
                       <a href={recommendedCall.url}>
@@ -436,25 +437,25 @@ export default function Assessment() {
             >
               <a 
                 href="/book"
-                className="bg-[#13131f] rounded-2xl border border-white/10 p-5 hover:border-[#FFD700]/30 hover:bg-[#FFD700]/5 transition-all group"
+                className="bg-[var(--card)] rounded-2xl border border-white/10 p-5 hover:border-[var(--amber)]/30 hover:bg-[var(--amber)]/5 transition-all group"
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-[#FFD700]/20 flex items-center justify-center">
-                    <span className="text-[#FFD700] text-lg">📖</span>
+                  <div className="w-10 h-10 rounded-full bg-[var(--amber)]/20 flex items-center justify-center">
+                    <span className="text-[var(--amber)] text-lg">📖</span>
                   </div>
-                  <h4 className="text-white font-bold group-hover:text-[#FFD700] transition-colors">Get the Book</h4>
+                  <h4 className="text-white font-bold group-hover:text-[var(--amber)] transition-colors">Get the Book</h4>
                 </div>
                 <p className="text-white/60 text-sm">The Manumation Method — the complete framework for building a business that runs without you.</p>
               </a>
               <div 
-                className="bg-[#13131f] rounded-2xl border border-white/10 p-5 relative overflow-hidden"
+                className="bg-[var(--card)] rounded-2xl border border-white/10 p-5 relative overflow-hidden"
               >
-                <div className="absolute top-3 right-3 px-2.5 py-1 bg-[#3b82f6] rounded-full">
+                <div className="absolute top-3 right-3 px-2.5 py-1 bg-[var(--primary)] rounded-full">
                   <span className="text-white text-xs font-bold uppercase tracking-wider">Coming Soon</span>
                 </div>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-[#3b82f6]/20 flex items-center justify-center">
-                    <Users className="text-[#3b82f6]" size={20} />
+                  <div className="w-10 h-10 rounded-full bg-[var(--primary)]/20 flex items-center justify-center">
+                    <Users className="text-[var(--primary)]" size={20} />
                   </div>
                   <h4 className="text-white font-bold">Join the Community</h4>
                 </div>
@@ -498,26 +499,26 @@ export default function Assessment() {
         description="Take this 5-minute Bottleneck Audit to identify your biggest business bottlenecks and get a personalized action plan for growth."
       />
       <Navigation />
-      <main id="main-content" className="min-h-screen bg-[#0a0a12]" role="main">
+      <main id="main-content" className="min-h-screen bg-[var(--surface-sunken)]" role="main">
         {/* Header Section */}
         <section className="relative pt-28 pb-8 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div 
               className="absolute top-10 right-20 w-80 h-80 rounded-full opacity-15"
-              style={{ backgroundColor: "#3b82f6", filter: "blur(100px)" }}
+              style={{ backgroundColor: "var(--primary)", filter: "blur(100px)" }}
             />
             <div 
               className="absolute bottom-10 left-20 w-64 h-64 rounded-full opacity-10"
-              style={{ backgroundColor: "#FFD700", filter: "blur(80px)" }}
+              style={{ backgroundColor: "var(--amber)", filter: "blur(80px)" }}
             />
           </div>
           
           <div className="container relative z-10">
             <AnimatedSection animation="fade-in">
               <div className="max-w-2xl mx-auto text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 border border-[#3b82f6]/30 bg-[#3b82f6]/10">
-                  <ClipboardCheck className="text-[#3b82f6]" size={16} aria-hidden="true" />
-                  <p className="text-[#3b82f6] text-sm font-bold uppercase tracking-wider">5-Minute Bottleneck Audit</p>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 border border-[var(--primary)]/30 bg-[var(--primary)]/10">
+                  <ClipboardCheck className="text-[var(--primary)]" size={16} aria-hidden="true" />
+                  <p className="text-[var(--primary)] text-sm font-bold uppercase tracking-wider">5-Minute Bottleneck Audit</p>
                 </div>
                 <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
                   Discover Your Path to Freedom
@@ -536,7 +537,7 @@ export default function Assessment() {
           </div>
           <div className="h-2 bg-white/10 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#3b82f6] to-[#FFD700]"
+              className="h-full bg-gradient-to-r from-[var(--primary)] to-[var(--amber)]"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}
@@ -548,7 +549,7 @@ export default function Assessment() {
         <section className="pb-20">
           <div className="container max-w-2xl mx-auto px-4">
             <div 
-              className="bg-[#13131f] rounded-3xl border border-white/10 overflow-hidden"
+              className="bg-[var(--card)] rounded-3xl border border-white/10 overflow-hidden"
               style={{ boxShadow: "0 25px 60px rgba(0,0,0,0.4)" }}
             >
               <div className="relative overflow-hidden">
@@ -577,13 +578,13 @@ export default function Assessment() {
                               onClick={() => handleOptionSelect(option.value)}
                               className={`w-full text-left p-5 rounded-xl border-2 transition-all duration-200 group ${
                                 isSelected
-                                  ? "border-[#3b82f6] bg-[#3b82f6]/10"
+                                  ? "border-[var(--primary)] bg-[var(--primary)]/10"
                                   : "border-white/10 bg-white/5 hover:border-white/30 hover:bg-white/10"
                               }`}
                             >
                               <div className="flex items-center justify-between">
                                 <div>
-                                  <p className={`font-semibold text-lg ${isSelected ? "text-[#3b82f6]" : "text-white"}`}>
+                                  <p className={`font-semibold text-lg ${isSelected ? "text-[var(--primary)]" : "text-white"}`}>
                                     {option.label}
                                   </p>
                                   {option.description && (
@@ -592,7 +593,7 @@ export default function Assessment() {
                                 </div>
                                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                                   isSelected 
-                                    ? "border-[#3b82f6] bg-[#3b82f6]" 
+                                    ? "border-[var(--primary)] bg-[var(--primary)]" 
                                     : "border-white/30 group-hover:border-white/50"
                                 }`}>
                                   {isSelected && <Check className="text-white" size={14} />}
@@ -618,7 +619,7 @@ export default function Assessment() {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Jeremy Kean"
-                            className="w-full px-5 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[#3b82f6] focus:ring-1 focus:ring-[#3b82f6]/50 transition-all"
+                            className="w-full px-5 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]/50 transition-all"
                           />
                         </div>
                         <div>
@@ -629,7 +630,7 @@ export default function Assessment() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="jeremy@example.com"
-                            className="w-full px-5 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[#3b82f6] focus:ring-1 focus:ring-[#3b82f6]/50 transition-all"
+                            className="w-full px-5 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]/50 transition-all"
                           />
                         </div>
                         <div>
@@ -640,15 +641,15 @@ export default function Assessment() {
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             placeholder="(555) 123-4567"
-                            className="w-full px-5 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[#3b82f6] focus:ring-1 focus:ring-[#3b82f6]/50 transition-all"
+                            className="w-full px-5 py-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]/50 transition-all"
                           />
                         </div>
                       </div>
                       <p className="text-white/70 text-xs mt-6">
                         By submitting, you agree to our{" "}
-                        <a href="/privacy" className="text-[#3b82f6] hover:underline">Privacy Policy</a>
+                        <a href="/privacy" className="text-[var(--primary)] hover:underline">Privacy Policy</a>
                         {" "}and{" "}
-                        <a href="/terms" className="text-[#3b82f6] hover:underline">Terms of Service</a>.
+                        <a href="/terms" className="text-[var(--primary)] hover:underline">Terms of Service</a>.
                       </p>
                     </>
                   )}
@@ -683,7 +684,7 @@ export default function Assessment() {
                   <Button
                     onClick={handleSubmit}
                     disabled={!name || !email || isSubmitting}
-                    className="bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:opacity-90 text-white font-semibold px-8 py-6 text-lg disabled:opacity-50"
+                    className="bg-gradient-to-r from-[var(--primary)] to-[#2563eb] hover:opacity-90 text-white font-semibold px-8 py-6 text-lg disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>

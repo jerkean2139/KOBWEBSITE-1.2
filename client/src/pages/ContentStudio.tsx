@@ -524,8 +524,8 @@ export default function ContentStudio() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#0a0a12] flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-[#12121f] border-white/10">
+      <div className="min-h-screen bg-[var(--surface-sunken)] flex items-center justify-center p-4">
+        <Card className="w-full max-w-md bg-card border-white/10">
           <CardHeader className="text-center">
             <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
               <Sparkles className="text-primary" size={32} />
@@ -556,8 +556,8 @@ export default function ContentStudio() {
   return (
     <>
       <SEO title="Content Studio - Admin" noindex={true} />
-      <div className="min-h-screen bg-[#0a0a12]">
-        <header className="border-b border-white/10 bg-[#0a0a12]/80 backdrop-blur-sm sticky top-0 z-50">
+      <div className="min-h-screen bg-[var(--surface-sunken)]">
+        <header className="border-b border-white/10 bg-[var(--surface-sunken)]/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
@@ -606,7 +606,7 @@ export default function ContentStudio() {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="bg-[#1a1a2e] border border-white/10 mb-8 p-1">
+          <TabsList className="bg-secondary border border-white/10 mb-8 p-1">
             <TabsTrigger value="dashboard" className="text-white/60 data-[state=active]:bg-primary data-[state=active]:text-white">
               <BarChart3 className="mr-2 h-4 w-4" /> Dashboard
             </TabsTrigger>
@@ -632,7 +632,7 @@ export default function ContentStudio() {
 
           <TabsContent value="dashboard">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-              <Card className="bg-[#12121f] border-white/10">
+              <Card className="bg-card border-white/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -643,7 +643,7 @@ export default function ContentStudio() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="bg-[#12121f] border-white/10">
+              <Card className="bg-card border-white/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -654,7 +654,7 @@ export default function ContentStudio() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="bg-[#12121f] border-white/10">
+              <Card className="bg-card border-white/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -665,7 +665,7 @@ export default function ContentStudio() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="bg-[#12121f] border-white/10">
+              <Card className="bg-card border-white/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -676,7 +676,7 @@ export default function ContentStudio() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="bg-[#12121f] border-white/10">
+              <Card className="bg-card border-white/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -690,7 +690,7 @@ export default function ContentStudio() {
             </div>
 
             {stats?.pillarDistribution && (
-              <Card className="bg-[#12121f] border-white/10 mb-8">
+              <Card className="bg-card border-white/10 mb-8">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <BarChart3 className="text-primary" size={20} />
@@ -732,7 +732,7 @@ export default function ContentStudio() {
             )}
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="bg-[#12121f] border-white/10">
+              <Card className="bg-card border-white/10">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
                     <Clock className="text-primary" size={20} />
@@ -778,10 +778,10 @@ export default function ContentStudio() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#12121f] border-white/10">
+              <Card className="bg-card border-white/10">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Zap className="text-[#FFD700]" size={20} />
+                    <Zap className="text-[var(--amber)]" size={20} />
                     Quick Generate
                   </CardTitle>
                 </CardHeader>
@@ -790,7 +790,7 @@ export default function ContentStudio() {
                     <SelectTrigger className="bg-white/5 border-white/10 text-white">
                       <SelectValue placeholder="Select a topic (optional)" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#1a1a2e] border-white/10">
+                    <SelectContent className="bg-secondary border-white/10">
                       {topics.map(topic => (
                         <SelectItem key={topic.id} value={topic.id.toString()} className="text-white">
                           {topic.name}
@@ -804,7 +804,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Author" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         {AUTHOR_OPTIONS.map(author => (
                           <SelectItem key={author.value} value={author.value} className="text-white">
                             <span className="flex flex-col">
@@ -819,7 +819,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Pillar" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         {PILLAR_OPTIONS.map(pillar => (
                           <SelectItem key={pillar.value} value={pillar.value} className="text-white">
                             <span className="flex items-center gap-2">
@@ -837,7 +837,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Length" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         {LENGTH_OPTIONS.map(length => (
                           <SelectItem key={length.value} value={length.value} className="text-white">
                             {length.label}
@@ -850,7 +850,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Style" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         {STYLE_OPTIONS.map(style => (
                           <SelectItem key={style.value} value={style.value} className="text-white">
                             {style.label}
@@ -864,7 +864,7 @@ export default function ContentStudio() {
                     <SelectTrigger className="bg-white/5 border-white/10 text-white">
                       <SelectValue placeholder="Select image provider" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#1a1a2e] border-white/10">
+                    <SelectContent className="bg-secondary border-white/10">
                       <SelectItem value="gemini" className="text-white">
                         <span className="flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-blue-500"></span>
@@ -889,7 +889,7 @@ export default function ContentStudio() {
                   <Button
                     onClick={createAndGeneratePost}
                     disabled={generating}
-                    className="w-full bg-[#FFD700] hover:bg-[#FFD700]/90 text-black font-bold"
+                    className="w-full bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-black font-bold"
                   >
                     {generating ? (
                       <>
@@ -913,7 +913,7 @@ export default function ContentStudio() {
                           ) : p.stage === "error" ? (
                             <AlertCircle className="text-red-400 shrink-0 mt-0.5" size={14} />
                           ) : p.stage === "review_complete" ? (
-                            <CheckCircle2 className="text-[#FFD700] shrink-0 mt-0.5" size={14} />
+                            <CheckCircle2 className="text-[var(--amber)] shrink-0 mt-0.5" size={14} />
                           ) : (
                             <Loader2 className="text-primary animate-spin shrink-0 mt-0.5" size={14} />
                           )}
@@ -924,8 +924,8 @@ export default function ContentStudio() {
                   )}
                   
                   {latestReview && (
-                    <div className="mt-4 p-4 bg-black/30 rounded-lg border border-[#FFD700]/30">
-                      <h4 className="text-[#FFD700] font-semibold mb-3 flex items-center gap-2">
+                    <div className="mt-4 p-4 bg-black/30 rounded-lg border border-[var(--amber)]/30">
+                      <h4 className="text-[var(--amber)] font-semibold mb-3 flex items-center gap-2">
                         <Lightbulb size={16} />
                         AI Review Score: {latestReview.overallScore}/100
                       </h4>
@@ -967,7 +967,7 @@ export default function ContentStudio() {
           </TabsContent>
 
           <TabsContent value="generate">
-            <Card className="bg-[#12121f] border-white/10">
+            <Card className="bg-card border-white/10">
               <CardHeader>
                 <CardTitle className="text-white">Generate New Blog Post</CardTitle>
                 <CardDescription className="text-white/60">
@@ -1002,7 +1002,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Auto-generate from pillar" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         {topics.map(topic => (
                           <SelectItem key={topic.id} value={topic.id.toString()} className="text-white">
                             <div className="flex items-center gap-2">
@@ -1021,7 +1021,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Auto-match from pillar" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         <SelectItem value="none" className="text-white/60">
                           Auto-match from pillar
                         </SelectItem>
@@ -1040,7 +1040,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Author" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         {AUTHOR_OPTIONS.map(author => (
                           <SelectItem key={author.value} value={author.value} className="text-white">
                             {author.label} — {author.title}
@@ -1058,7 +1058,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Length" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         {LENGTH_OPTIONS.map(length => (
                           <SelectItem key={length.value} value={length.value} className="text-white">
                             {length.label}
@@ -1073,7 +1073,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Style" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         {STYLE_OPTIONS.map(style => (
                           <SelectItem key={style.value} value={style.value} className="text-white">
                             {style.label} — {style.description}
@@ -1088,7 +1088,7 @@ export default function ContentStudio() {
                       <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Image provider" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a2e] border-white/10">
+                      <SelectContent className="bg-secondary border-white/10">
                         <SelectItem value="gemini" className="text-white">
                           Gemini Nano Banana
                         </SelectItem>
@@ -1107,7 +1107,7 @@ export default function ContentStudio() {
                   onClick={createAndGeneratePost}
                   disabled={generating}
                   size="lg"
-                  className="w-full bg-[#FFD700] hover:bg-[#FFD700]/90 text-black font-bold"
+                  className="w-full bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-black font-bold"
                 >
                   {generating ? (
                     <>
@@ -1151,7 +1151,7 @@ export default function ContentStudio() {
           </TabsContent>
 
           <TabsContent value="posts">
-            <Card className="bg-[#12121f] border-white/10">
+            <Card className="bg-card border-white/10">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
@@ -1275,7 +1275,7 @@ export default function ContentStudio() {
           </TabsContent>
 
           <TabsContent value="topics">
-            <Card className="bg-[#12121f] border-white/10">
+            <Card className="bg-card border-white/10">
               <CardHeader>
                 <CardTitle className="text-white">Content Topics</CardTitle>
                 <CardDescription className="text-white/60">
@@ -1309,7 +1309,7 @@ export default function ContentStudio() {
           </TabsContent>
 
           <TabsContent value="channels">
-            <Card className="bg-[#12121f] border-white/10">
+            <Card className="bg-card border-white/10">
               <CardHeader>
                 <CardTitle className="text-white">YouTube Channels</CardTitle>
                 <CardDescription className="text-white/60">
@@ -1351,7 +1351,7 @@ export default function ContentStudio() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Draft Posts Queue */}
               <div className="lg:col-span-1 space-y-4">
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardHeader>
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <FileText size={18} /> Draft Queue
@@ -1398,14 +1398,14 @@ export default function ContentStudio() {
               {/* Review Panel */}
               <div className="lg:col-span-2 space-y-4">
                 {loadingApproval ? (
-                  <Card className="bg-[#12121f] border-white/10">
+                  <Card className="bg-card border-white/10">
                     <CardContent className="flex items-center justify-center py-20">
                       <RefreshCcw className="animate-spin text-primary" size={24} />
                       <span className="ml-3 text-white/60">Loading post for review...</span>
                     </CardContent>
                   </Card>
                 ) : !approvalPost ? (
-                  <Card className="bg-[#12121f] border-white/10">
+                  <Card className="bg-card border-white/10">
                     <CardContent className="flex flex-col items-center justify-center py-20 text-white/40">
                       <ArrowRight size={40} className="mb-3 opacity-30" />
                       <p className="text-lg">Select a draft from the queue to review</p>
@@ -1415,7 +1415,7 @@ export default function ContentStudio() {
                 ) : (
                   <>
                     {/* Quality Checklist */}
-                    <Card className="bg-[#12121f] border-white/10">
+                    <Card className="bg-card border-white/10">
                       <CardHeader className="pb-3">
                         <CardTitle className="text-white text-lg flex items-center gap-2">
                           <CircleDot size={18} /> Quality Checklist
@@ -1464,7 +1464,7 @@ export default function ContentStudio() {
                       const review = parseAiReview(approvalPost);
                       if (!review) return null;
                       return (
-                        <Card className="bg-[#12121f] border-white/10">
+                        <Card className="bg-card border-white/10">
                           <CardHeader className="pb-3">
                             <CardTitle className="text-white text-lg flex items-center gap-2">
                               <Sparkles size={18} /> AI Review Scores
@@ -1534,7 +1534,7 @@ export default function ContentStudio() {
                     })()}
 
                     {/* Content Preview */}
-                    <Card className="bg-[#12121f] border-white/10">
+                    <Card className="bg-card border-white/10">
                       <CardHeader className="pb-3">
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-white text-lg">Content Preview</CardTitle>
@@ -1639,7 +1639,7 @@ export default function ContentStudio() {
 
       {/* Post Detail Modal */}
       <Dialog open={!!selectedPost} onOpenChange={(open) => !open && setSelectedPost(null)}>
-        <DialogContent className="bg-[#12121f] border-white/10 max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+        <DialogContent className="bg-card border-white/10 max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
           <DialogHeader className="shrink-0">
             <div className="flex items-center justify-between">
               <DialogTitle className="text-white text-xl">
@@ -1674,7 +1674,7 @@ export default function ContentStudio() {
                     <Button
                       size="sm"
                       onClick={savePostEdits}
-                      className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-black"
+                      className="bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-black"
                     >
                       <Save size={14} className="mr-1" /> Save
                     </Button>
@@ -1875,7 +1875,7 @@ export default function ContentStudio() {
                   <SelectTrigger className="w-48 bg-white/5 border-white/10 text-white text-sm">
                     <SelectValue placeholder="Image provider" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#1a1a2e] border-white/10">
+                  <SelectContent className="bg-secondary border-white/10">
                     <SelectItem value="gemini" className="text-white">Gemini</SelectItem>
                     <SelectItem value="leonardo" className="text-white">Leonardo</SelectItem>
                     <SelectItem value="replicate" className="text-white">Replicate</SelectItem>

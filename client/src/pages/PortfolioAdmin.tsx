@@ -451,7 +451,7 @@ export default function PortfolioAdmin() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0B1C2C] to-[#0f2537] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--surface-sunken)] to-[var(--background)] flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-blue-400" />
       </div>
     );
@@ -462,7 +462,7 @@ export default function PortfolioAdmin() {
   return (
     <>
       <SEO title="Portfolio Admin" noindex={true} />
-      <div className="min-h-screen bg-gradient-to-b from-[#0B1C2C] via-[#0f2537] to-[#0B1C2C]">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--surface-sunken)] via-[var(--background)] to-[var(--surface-sunken)]">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
@@ -496,7 +496,7 @@ export default function PortfolioAdmin() {
                       className={`border cursor-pointer transition-all ${
                         editingProject?.id === project.id
                           ? "bg-blue-900/20 border-blue-500/50"
-                          : "bg-[#0f2537]/80 border-slate-700/50 hover:border-slate-600"
+                          : "bg-[var(--background)]/80 border-slate-700/50 hover:border-slate-600"
                       }`}
                       onClick={() => openEditProject(project)}
                     >
@@ -550,7 +550,7 @@ export default function PortfolioAdmin() {
 
             {isEditorOpen && (
               <div className="lg:col-span-8">
-                <Card className="bg-[#0f2537]/90 border-slate-700/50">
+                <Card className="bg-[var(--background)]/90 border-slate-700/50">
                   <div className="p-4 border-b border-slate-700/50 flex items-center justify-between">
                     <h2 className="text-lg font-semibold text-white">
                       {editingProject ? `Editing: ${editingProject.title}` : "New Project"}

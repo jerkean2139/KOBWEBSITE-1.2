@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { AssessmentContainer } from "@/components/InsuranceAssessment";
 import { useInsuranceAssessment } from "@/hooks/useInsuranceAssessment";
@@ -47,7 +48,7 @@ function FloatingCard({
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay, duration: 0.7, ease: "easeOut" }}
-      className={`bg-gray-900/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl ${className}`}
+      className={`bg-gray-900 border border-white/10 rounded-2xl shadow-2xl ${className}`}
     >
       {children}
     </motion.div>
@@ -740,6 +741,7 @@ export default function InsuranceAssessmentPage() {
           </section>
         )}
       </main>
+      <Footer variant="insurance" />
     </>
   );
 }

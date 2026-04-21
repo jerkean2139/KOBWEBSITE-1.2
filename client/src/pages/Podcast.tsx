@@ -164,14 +164,14 @@ export default function Podcast() {
         Skip to main content
       </a>
 
-      <main id="main-content" className="min-h-screen bg-[#0f172a]" role="main">
-        <section className="relative pt-32 pb-16 overflow-hidden" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #172554 100%)" }}>
+      <main id="main-content" className="min-h-screen bg-[var(--background)]" role="main">
+        <section className="relative pt-32 pb-16 overflow-hidden" style={{ background: "linear-gradient(135deg, var(--background) 0%, var(--surface-elevated) 50%, var(--secondary) 100%)" }}>
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1e1b4b]/30 via-transparent to-[#4c1d95]/20"></div>
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FFD700]/30 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary)]/30 via-transparent to-[#4c1d95]/20"></div>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--amber)]/30 to-transparent"></div>
             <div className="absolute inset-0 opacity-20">
               <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-[#4c1d95]/40 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-[#FFD700]/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-[var(--amber)]/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
           
@@ -196,9 +196,9 @@ export default function Podcast() {
                 
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8">
                   <div className="flex-1">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFD700]/20 rounded-full mb-6">
-                      <Mic className="text-[#FFD700]" size={16} aria-hidden="true" />
-                      <span className="text-[#FFD700] text-sm font-bold uppercase tracking-wider">Podcast</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--amber)]/20 rounded-full mb-6">
+                      <Mic className="text-[var(--amber)]" size={16} aria-hidden="true" />
+                      <span className="text-[var(--amber)] text-sm font-bold uppercase tracking-wider">Podcast</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
                       The MicroPod<br />
@@ -229,22 +229,22 @@ export default function Podcast() {
         </section>
 
         {loading ? (
-          <section className="py-20" style={{ background: "linear-gradient(180deg, #172554 0%, #0f172a 100%)" }}>
+          <section className="py-20" style={{ background: "linear-gradient(180deg, var(--secondary) 0%, var(--background) 100%)" }}>
             <div className="container">
               <div className="max-w-4xl mx-auto text-center">
-                <div className="w-12 h-12 border-2 border-[#FFD700] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                <div className="w-12 h-12 border-2 border-[var(--amber)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                 <p className="text-white/70">Loading episodes...</p>
               </div>
             </div>
           </section>
         ) : hasEpisodes ? (
-          <section className="py-16" style={{ background: "linear-gradient(180deg, #172554 0%, #0f172a 100%)" }}>
+          <section className="py-16" style={{ background: "linear-gradient(180deg, var(--secondary) 0%, var(--background) 100%)" }}>
             <div className="container">
               <AnimatedSection animation="fade-in">
                 <div className="max-w-4xl mx-auto">
                   <div className="flex items-center justify-between mb-10">
                     <h2 className="text-2xl font-bold text-white">Latest Episodes</h2>
-                    <Button variant="outline" size="sm" className="text-[#FFD700] border-[#FFD700]/30 hover:bg-[#FFD700]/10" asChild>
+                    <Button variant="outline" size="sm" className="text-[var(--amber)] border-[var(--amber)]/30 hover:bg-[var(--amber)]/10" asChild>
                       <a href="/podcast.xml" target="_blank" rel="noopener noreferrer">
                         <Rss size={16} className="mr-2" />
                         RSS Feed
@@ -325,13 +325,13 @@ export default function Podcast() {
             </div>
           </section>
         ) : (
-          <section className="py-20" style={{ background: "linear-gradient(180deg, #172554 0%, #1e1b4b 50%, #0f172a 100%)" }}>
+          <section className="py-20" style={{ background: "linear-gradient(180deg, var(--secondary) 0%, var(--secondary) 50%, var(--background) 100%)" }}>
             <div className="container">
               <AnimatedSection animation="fade-in">
                 <div className="max-w-3xl mx-auto text-center">
                   <div className="relative mb-8">
-                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-[#4c1d95] to-primary rounded-full flex items-center justify-center shadow-2xl border-2 border-[#FFD700]/30">
-                      <Mic className="text-[#FFD700]" size={48} />
+                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-[#4c1d95] to-primary rounded-full flex items-center justify-center shadow-2xl border-2 border-[var(--amber)]/30">
+                      <Mic className="text-[var(--amber)]" size={48} />
                     </div>
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-[#4c1d95]/40 rounded-full blur-3xl -z-10"></div>
                   </div>
@@ -345,7 +345,7 @@ export default function Podcast() {
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                    <Button size="lg" className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-[#0f172a] font-bold" asChild>
+                    <Button size="lg" className="bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-[var(--background)] font-bold" asChild>
                       <a href="/#contact">
                         Get Notified <ArrowRight className="ml-2" size={18} />
                       </a>
@@ -369,8 +369,8 @@ export default function Podcast() {
                     </Card>
                     
                     <Card className="border-0 bg-white/5 backdrop-blur-sm border border-white/10 p-6 text-left">
-                      <div className="w-12 h-12 bg-[#FFD700]/20 rounded-xl flex items-center justify-center mb-4 border border-[#FFD700]/30">
-                        <Play className="text-[#FFD700]" size={24} aria-hidden="true" />
+                      <div className="w-12 h-12 bg-[var(--amber)]/20 rounded-xl flex items-center justify-center mb-4 border border-[var(--amber)]/30">
+                        <Play className="text-[var(--amber)]" size={24} aria-hidden="true" />
                       </div>
                       <h3 className="font-bold text-white mb-2">Real Stories</h3>
                       <p className="text-white/70 text-sm">
@@ -394,7 +394,7 @@ export default function Podcast() {
           </section>
         )}
 
-        <section className="py-16" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)" }}>
+        <section className="py-16" style={{ background: "linear-gradient(135deg, var(--background) 0%, var(--surface-elevated) 100%)" }}>
           <div className="container">
             <AnimatedSection animation="fade-in">
               <div className="max-w-3xl mx-auto text-center">
@@ -407,7 +407,7 @@ export default function Podcast() {
                 <div className="flex flex-wrap gap-4 justify-center mb-12">
                   <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10" asChild>
                     <a href="/podcast.xml" target="_blank" rel="noopener noreferrer">
-                      <Rss size={18} className="mr-2 text-[#FFD700]" />
+                      <Rss size={18} className="mr-2 text-[var(--amber)]" />
                       RSS Feed
                       <ExternalLink size={14} className="ml-2 opacity-50" />
                     </a>
@@ -428,7 +428,7 @@ export default function Podcast() {
                   </Button>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-[#0f172a] font-bold" asChild>
+                  <Button size="lg" className="bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-[var(--background)] font-bold" asChild>
                     <a href="/jeremys-calendar">
                       Book a Strategy Call <ArrowRight className="ml-2" size={18} />
                     </a>
@@ -444,7 +444,7 @@ export default function Podcast() {
           </div>
         </section>
 
-        <footer className="py-8 text-white border-t border-white/10" style={{ background: "#0f172a" }}>
+        <footer className="py-8 text-white border-t border-white/10" style={{ background: "var(--background)" }}>
           <div className="container">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-gray-400 text-sm">

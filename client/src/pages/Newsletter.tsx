@@ -61,13 +61,13 @@ function NewsletterSignupForm() {
           placeholder="Enter your email" 
           required
           disabled={status === "loading"}
-          className="flex-1 px-5 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFD700]/50 focus:ring-2 focus:ring-[#FFD700]/30 transition-all disabled:opacity-50 text-lg"
+          className="flex-1 px-5 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-[var(--amber)]/50 focus:ring-2 focus:ring-[var(--amber)]/30 transition-all disabled:opacity-50 text-lg"
         />
         <Button 
           type="submit" 
           size="lg"
           disabled={status === "loading"}
-          className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-gray-900 font-bold px-8 py-4 text-lg min-h-[56px]"
+          className="bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-gray-900 font-bold px-8 py-4 text-lg min-h-[56px]"
         >
           {status === "loading" ? (
             <Loader2 className="animate-spin" size={20} />
@@ -107,14 +107,14 @@ export default function Newsletter() {
           
           <div className="container relative z-10 px-4">
             <AnimatedSection animation="fade-in" className="text-center max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFD700]/20 rounded-full mb-6 border border-[#FFD700]/30">
-                <Mail className="text-[#FFD700]" size={18} />
-                <span className="text-[#FFD700] text-sm font-bold uppercase tracking-wider">Free Bi-Weekly Newsletter</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--amber)]/20 rounded-full mb-6 border border-[var(--amber)]/30">
+                <Mail className="text-[var(--amber)]" size={18} />
+                <span className="text-[var(--amber)] text-sm font-bold uppercase tracking-wider">Free Bi-Weekly Newsletter</span>
               </div>
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                 Business Wisdom That
-                <span className="text-[#FFD700]"> Actually Works</span>
+                <span className="text-[var(--amber)]"> Actually Works</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -222,7 +222,7 @@ export default function Newsletter() {
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               <AnimatedSection animation="slide-left">
                 <div className="relative">
-                  <div className="absolute -inset-4 bg-[#FFD700]/20 rounded-2xl blur-2xl"></div>
+                  <div className="absolute -inset-4 bg-[var(--amber)]/20 rounded-2xl blur-2xl"></div>
                   <img
                     src="/jeremy-about-photo.webp"
                     alt="Jeremy Kean"
@@ -238,22 +238,22 @@ export default function Newsletter() {
                   Who's Behind This Newsletter?
                 </h2>
                 <p className="text-lg text-white/80 mb-4 leading-relaxed">
-                  I'm Jeremy Kean. Over the past 35 years, I've built 13 brands, helped over 100 businesses transform their operations, and developed a framework called <span className="text-[#FFD700] font-semibold">Manumation</span> that combines human wisdom with smart automation.
+                  I'm Jeremy Kean. Over the past 35 years, I've built 13 brands, helped over 100 businesses transform their operations, and developed a framework called <span className="text-[var(--amber)] font-semibold">Manumation</span> that combines human wisdom with smart automation.
                 </p>
                 <p className="text-lg text-white/80 mb-6 leading-relaxed">
                   As a husband, father of three, and business owner with A.D.D., I understand the chaos that comes with juggling multiple priorities. That's exactly why I became obsessed with creating systems that actually work in the real world.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <div className="px-4 py-2 bg-white/10 rounded-lg border border-white/20">
-                    <span className="text-[#FFD700] font-bold text-2xl">35+</span>
+                    <span className="text-[var(--amber)] font-bold text-2xl">35+</span>
                     <p className="text-white/70 text-sm">Years Experience</p>
                   </div>
                   <div className="px-4 py-2 bg-white/10 rounded-lg border border-white/20">
-                    <span className="text-[#FFD700] font-bold text-2xl">13</span>
+                    <span className="text-[var(--amber)] font-bold text-2xl">13</span>
                     <p className="text-white/70 text-sm">Brands Built</p>
                   </div>
                   <div className="px-4 py-2 bg-white/10 rounded-lg border border-white/20">
-                    <span className="text-[#FFD700] font-bold text-2xl">100+</span>
+                    <span className="text-[var(--amber)] font-bold text-2xl">100+</span>
                     <p className="text-white/70 text-sm">Businesses Helped</p>
                   </div>
                 </div>

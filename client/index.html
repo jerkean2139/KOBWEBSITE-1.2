@@ -31,7 +31,7 @@
     <meta name="twitter:description" content="Strategic coaching and AI-powered automation. 35+ years experience helping 100+ businesses transform with The Manumation Method." />
     <meta name="twitter:image" content="https://keanonbiz.com/manumation-book-cover-new.png" />
     
-    <meta name="theme-color" content="#1a1a2e" />
+    <meta name="theme-color" content="#1a2030" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -50,10 +50,10 @@
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://widgets.leadconnectorhq.com" />
     <link rel="preconnect" href="https://link.msgsndr.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Libre+Franklin:wght@400;500;600;700&display=swap" /></noscript>
     
-    <link rel="preload" as="image" href="/manumation-book-cover-nobg.webp" fetchpriority="high" type="image/webp" />
+    <link rel="preload" as="image" href="/jeremy-main-hero.webp" fetchpriority="high" type="image/webp" />
     
     <script type="application/ld+json">
     {
@@ -328,32 +328,45 @@
     <script type="module" src="/src/main.tsx"></script>
     
     <script>
+      // Load GA immediately after page load (no artificial delay)
       window.addEventListener('load', function() {
-        setTimeout(function() {
-          var ga = document.createElement('script');
-          ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-395WY11195';
-          ga.async = true;
-          document.head.appendChild(ga);
-          ga.onload = function() {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', 'G-395WY11195');
-          };
-          
+        // GA4 — load right away, non-blocking
+        var ga = document.createElement('script');
+        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-395WY11195';
+        ga.async = true;
+        document.head.appendChild(ga);
+        ga.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-395WY11195');
+        };
+
+        // GHL chat widget — defer until user interacts or idle
+        function loadGHL() {
+          if (window._ghlLoaded) return;
+          window._ghlLoaded = true;
           var ghlDiv = document.createElement('div');
           ghlDiv.setAttribute('data-chat-widget', '');
           ghlDiv.setAttribute('data-widget-id', '69976e828fa15328755bc29a');
           ghlDiv.setAttribute('data-location-id', '5yufDyfhuTKFx8nCQCP6');
           document.body.appendChild(ghlDiv);
-
           var ghl = document.createElement('script');
           ghl.src = 'https://beta.leadconnectorhq.com/loader.js';
           ghl.dataset.resourcesUrl = 'https://beta.leadconnectorhq.com/chat-widget/loader.js';
           ghl.dataset.widgetId = '69976e828fa15328755bc29a';
           document.body.appendChild(ghl);
-        }, 3000);
+        }
+        // Load GHL on first user interaction (scroll, click, touch) or after 5s idle
+        ['scroll', 'click', 'touchstart', 'mousemove'].forEach(function(evt) {
+          window.addEventListener(evt, loadGHL, { once: true, passive: true });
+        });
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadGHL, { timeout: 5000 });
+        } else {
+          setTimeout(loadGHL, 5000);
+        }
       });
     </script>
   </body>

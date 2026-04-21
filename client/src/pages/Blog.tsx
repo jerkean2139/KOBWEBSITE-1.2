@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -116,9 +117,9 @@ export default function Blog() {
                         <span className="text-white/80 text-sm">Team Growth</span>
                       </div>
                       <Link href="/micropod">
-                        <div className="flex items-center gap-2 px-4 py-2 bg-[#FFD700]/20 rounded-lg border border-[#FFD700]/30 hover:bg-[#FFD700]/30 transition-colors cursor-pointer">
-                          <Mic className="text-[#FFD700]" size={16} aria-hidden="true" />
-                          <span className="text-[#FFD700] text-sm font-medium">MicroPod Coming Soon</span>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-[var(--amber)]/20 rounded-lg border border-[var(--amber)]/30 hover:bg-[var(--amber)]/30 transition-colors cursor-pointer">
+                          <Mic className="text-[var(--amber)]" size={16} aria-hidden="true" />
+                          <span className="text-[var(--amber)] text-sm font-medium">MicroPod Coming Soon</span>
                         </div>
                       </Link>
                     </div>
@@ -338,26 +339,7 @@ export default function Blog() {
           </div>
         </section>
 
-        <footer className="py-8 bg-gray-900 text-white">
-          <div className="container">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()} KeanOnBiz. All rights reserved.
-              </p>
-              <div className="flex items-center gap-6">
-                <a href="https://manumation.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Manumation
-                </a>
-                <a href="https://zenoflo.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Zenoflo
-                </a>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Home
-                </Link>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   );

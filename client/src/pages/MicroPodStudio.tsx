@@ -393,8 +393,8 @@ export default function MicroPodStudio() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#0a0a12] flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-[#12121f] border-white/10">
+      <div className="min-h-screen bg-[var(--surface-sunken)] flex items-center justify-center p-4">
+        <Card className="w-full max-w-md bg-card border-white/10">
           <CardHeader className="text-center">
             <div className="mx-auto w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mb-4">
               <Mic className="text-purple-400" size={32} />
@@ -433,8 +433,8 @@ export default function MicroPodStudio() {
   return (
     <>
       <SEO title="MicroPod Studio - Admin" noindex={true} />
-      <div className="min-h-screen bg-[#0a0a12]">
-        <header className="border-b border-white/10 bg-[#0a0a12]/80 backdrop-blur-sm sticky top-0 z-50">
+      <div className="min-h-screen bg-[var(--surface-sunken)]">
+        <header className="border-b border-white/10 bg-[var(--surface-sunken)]/80 backdrop-blur-sm sticky top-0 z-50">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
@@ -474,7 +474,7 @@ export default function MicroPodStudio() {
 
         <main className="container mx-auto px-4 py-8">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="bg-[#1a1a2e] border border-white/10 mb-8 p-1">
+            <TabsList className="bg-secondary border border-white/10 mb-8 p-1">
               <TabsTrigger value="dashboard" className="text-white/60 data-[state=active]:bg-purple-600 data-[state=active]:text-white">
                 <BarChart3 className="mr-2 h-4 w-4" /> Dashboard
               </TabsTrigger>
@@ -497,7 +497,7 @@ export default function MicroPodStudio() {
 
             <TabsContent value="dashboard">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -508,7 +508,7 @@ export default function MicroPodStudio() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -519,7 +519,7 @@ export default function MicroPodStudio() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -530,7 +530,7 @@ export default function MicroPodStudio() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -543,7 +543,7 @@ export default function MicroPodStudio() {
                 </Card>
               </div>
 
-              <Card className="bg-[#12121f] border-white/10">
+              <Card className="bg-card border-white/10">
                 <CardHeader>
                   <CardTitle className="text-white">Recent Episodes</CardTitle>
                 </CardHeader>
@@ -576,7 +576,7 @@ export default function MicroPodStudio() {
 
             <TabsContent value="generate">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center gap-2">
                       <Sparkles className="text-purple-400" size={20} />
@@ -648,7 +648,7 @@ export default function MicroPodStudio() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center gap-2">
                       <Clock className="text-purple-400" size={20} />
@@ -737,14 +737,14 @@ export default function MicroPodStudio() {
 
                 <div className="lg:col-span-2">
                   {!selectedEpisode ? (
-                    <Card className="bg-[#12121f] border-white/10">
+                    <Card className="bg-card border-white/10">
                       <CardContent className="p-12 text-center">
                         <Mic className="mx-auto text-white/20 mb-4" size={48} />
                         <p className="text-white/40">Select an episode to view or edit</p>
                       </CardContent>
                     </Card>
                   ) : (
-                    <Card className="bg-[#12121f] border-white/10">
+                    <Card className="bg-card border-white/10">
                       <CardHeader>
                         <div className="flex items-center justify-between">
                           <div className="flex-1">
@@ -998,7 +998,7 @@ export default function MicroPodStudio() {
 
                 <div className="lg:col-span-2">
                   {!approvalEpisode ? (
-                    <Card className="bg-[#12121f] border-white/10">
+                    <Card className="bg-card border-white/10">
                       <CardContent className="p-12 text-center">
                         <Shield className="mx-auto text-white/20 mb-4" size={48} />
                         <p className="text-white/40">Select an episode from the queue to review</p>
@@ -1012,7 +1012,7 @@ export default function MicroPodStudio() {
 
                     return (
                       <div className="space-y-6">
-                        <Card className="bg-[#12121f] border-white/10">
+                        <Card className="bg-card border-white/10">
                           <CardHeader>
                             <div className="flex items-center justify-between">
                               <div>

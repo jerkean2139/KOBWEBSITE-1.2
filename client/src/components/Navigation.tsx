@@ -101,8 +101,8 @@ export default function Navigation({ logoVariant = "default" }: { logoVariant?: 
       aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0f172a]/95 backdrop-blur-md shadow-lg border-b border-white/10"
-          : "bg-[#0f172a]"
+          ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-white/10"
+          : "bg-background"
       }`}
     >
       <div className="container">
@@ -115,9 +115,9 @@ export default function Navigation({ logoVariant = "default" }: { logoVariant?: 
           >
             {logoVariant === "red" ? (
               <span className="flex items-baseline gap-1">
-                <span className="text-red-500 font-bold text-2xl tracking-tight" style={{ fontFamily: "'Inter', sans-serif" }}>KEAN</span>
-                <span className="text-white/60 font-normal text-sm tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>ON</span>
-                <span className="text-white font-bold text-xl tracking-tight" style={{ fontFamily: "'Inter', sans-serif" }}>BIZ</span>
+                <span className="text-red-500 font-bold text-2xl tracking-tight" style={{ fontFamily: "'Archivo', sans-serif" }}>KEAN</span>
+                <span className="text-white/60 font-normal text-sm tracking-wide" style={{ fontFamily: "'Archivo', sans-serif" }}>ON</span>
+                <span className="text-white font-bold text-xl tracking-tight" style={{ fontFamily: "'Archivo', sans-serif" }}>BIZ</span>
               </span>
             ) : (
               <img 
@@ -181,7 +181,7 @@ export default function Navigation({ logoVariant = "default" }: { logoVariant?: 
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation menu"
-          className="md:hidden bg-[#0f172a] border-t border-white/10 fixed inset-x-0 top-20 bottom-0 overflow-y-auto"
+          className="md:hidden bg-background border-t border-white/10 fixed inset-x-0 top-20 bottom-0 overflow-y-auto"
         >
           <div className="container py-6 flex flex-col gap-2">
             <a

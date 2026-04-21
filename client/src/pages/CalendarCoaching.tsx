@@ -17,18 +17,18 @@ export default function CalendarCoaching() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-[var(--background)]">
       <Navigation />
       
-      <section className="pt-32 pb-12 bg-[#0f172a]">
+      <section className="pt-32 pb-12 bg-[var(--background)]">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-[#FFD700] text-[#0f172a] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 bg-[var(--amber)] text-[var(--background)] px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <ShieldCheck size={16} />
               <span>Clients Only</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              1:1 <span className="text-[#FFD700]">Coaching Call</span>
+              1:1 <span className="text-[var(--amber)]">Coaching Call</span>
             </h1>
             <p className="text-xl text-slate-300">
               Exclusive sessions for active coaching clients and their teams.
@@ -41,7 +41,7 @@ export default function CalendarCoaching() {
         </div>
       </section>
 
-      <section className="py-12 bg-[#172554]">
+      <section className="py-12 bg-[var(--secondary)]">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -56,16 +56,16 @@ export default function CalendarCoaching() {
                     "Addressing urgent challenges as they arise",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-slate-300">
-                      <CheckCircle className="text-[#FFD700] mt-0.5 flex-shrink-0" size={20} />
+                      <CheckCircle className="text-[var(--amber)] mt-0.5 flex-shrink-0" size={20} />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-[#0f172a] rounded-xl p-6 border border-[#1e3a5f]">
+              <div className="bg-[var(--background)] rounded-xl p-6 border border-[var(--surface-elevated)]">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-[#1e3a5f] flex items-center justify-center">
-                    <Users className="text-[#FFD700]" size={24} />
+                  <div className="w-12 h-12 rounded-full bg-[var(--surface-elevated)] flex items-center justify-center">
+                    <Users className="text-[var(--amber)]" size={24} />
                   </div>
                   <div>
                     <h3 className="font-bold text-white">For Active Clients</h3>
@@ -81,7 +81,7 @@ export default function CalendarCoaching() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#0f172a]">
+      <section className="py-16 bg-[var(--background)]">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
@@ -100,17 +100,17 @@ export default function CalendarCoaching() {
         </div>
       </section>
 
-      <section className="py-8 bg-[#0f172a] border-t border-[#1e3a5f]">
+      <section className="py-8 bg-[var(--background)] border-t border-[var(--surface-elevated)]">
         <div className="container">
           <div className="flex justify-center gap-4">
             <Link href="/jeremys-calendar">
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[#1e3a5f]">
+              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[var(--surface-elevated)]">
                 <ArrowLeft className="mr-2" size={16} />
                 All Booking Options
               </Button>
             </Link>
             <Link href="/">
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[#1e3a5f]">
+              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[var(--surface-elevated)]">
                 Back to Home
               </Button>
             </Link>

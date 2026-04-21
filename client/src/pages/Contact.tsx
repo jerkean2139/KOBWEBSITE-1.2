@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
@@ -34,7 +35,7 @@ export default function Contact() {
 
       <main id="main-content" className="pt-20">
         <section className="py-12 md:py-20" style={{
-          background: "linear-gradient(135deg, oklch(0.25 0.08 250) 0%, oklch(0.20 0.06 255) 100%)"
+          background: "linear-gradient(135deg, var(--secondary) 0%, var(--surface-sunken) 100%)"
         }}>
           <div className="container">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} variant="dark" />
@@ -154,7 +155,7 @@ export default function Contact() {
         </section>
 
         <section className="py-16 md:py-24" style={{
-          background: "linear-gradient(135deg, oklch(0.25 0.08 250) 0%, oklch(0.20 0.06 255) 100%)"
+          background: "linear-gradient(135deg, var(--secondary) 0%, var(--surface-sunken) 100%)"
         }}>
           <div className="container">
             <AnimatedSection animation="fade-in">
@@ -172,15 +173,7 @@ export default function Contact() {
         </section>
       </main>
 
-      <footer className="bg-foreground text-background py-8">
-        <div className="container text-center">
-          <p className="text-background/70 text-sm">
-            &copy; {new Date().getFullYear()} KeanOnBiz. All rights reserved. |{" "}
-            <Link href="/terms" className="hover:text-background transition-colors">Terms</Link> |{" "}
-            <Link href="/privacy" className="hover:text-background transition-colors">Privacy</Link>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

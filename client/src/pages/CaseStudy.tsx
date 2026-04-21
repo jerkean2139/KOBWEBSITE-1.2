@@ -35,7 +35,7 @@ interface Project {
 const statusConfig = {
   completed: { label: "Deployed", icon: CheckCircle, color: "bg-green-500", textColor: "text-green-400", borderColor: "border-green-500/30" },
   in_progress: { label: "Currently Building", icon: Wrench, color: "bg-blue-500", textColor: "text-blue-400", borderColor: "border-blue-500/30" },
-  on_deck: { label: "On Deck", icon: Lightbulb, color: "bg-[#FFD700]", textColor: "text-[#FFD700]", borderColor: "border-[#FFD700]/30" },
+  on_deck: { label: "On Deck", icon: Lightbulb, color: "bg-[var(--amber)]", textColor: "text-[var(--amber)]", borderColor: "border-[var(--amber)]/30" },
 };
 
 export default function CaseStudy() {
@@ -63,7 +63,7 @@ export default function CaseStudy() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0a1628] to-[#0f2035] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--surface-sunken)] to-[var(--background)] flex items-center justify-center">
         <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full" />
       </div>
     );
@@ -71,7 +71,7 @@ export default function CaseStudy() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0a1628] to-[#0f2035] flex flex-col items-center justify-center text-white">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--surface-sunken)] to-[var(--background)] flex flex-col items-center justify-center text-white">
         <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
         <Link href="/portfolio">
           <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
@@ -90,7 +90,7 @@ export default function CaseStudy() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gradient-to-b from-[#0a1628] via-[#0d1f33] to-[#0a1628] pt-20">
+      <div className="min-h-screen bg-gradient-to-b from-[var(--surface-sunken)] via-[var(--secondary)] to-[var(--surface-sunken)] pt-20">
         <div className="max-w-6xl mx-auto px-4 py-8">
           <Link href="/portfolio">
             <Button variant="ghost" className="text-gray-400 hover:text-white mb-4">
@@ -129,7 +129,7 @@ export default function CaseStudy() {
                 {project.category}
               </Badge>
               {project.clientIndustry && (
-                <Badge variant="outline" className="border-[#FFD700]/40 text-[#FFD700]">
+                <Badge variant="outline" className="border-[var(--amber)]/40 text-[var(--amber)]">
                   {project.clientIndustry}
                 </Badge>
               )}
@@ -138,7 +138,7 @@ export default function CaseStudy() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{project.title}</h1>
             
             {project.caseStudy?.tagline && (
-              <p className="text-xl text-[#FFD700] font-medium mb-4">{project.caseStudy.tagline}</p>
+              <p className="text-xl text-[var(--amber)] font-medium mb-4">{project.caseStudy.tagline}</p>
             )}
             
             <p className="text-lg text-gray-300 max-w-3xl">{project.description}</p>
@@ -240,13 +240,13 @@ export default function CaseStudy() {
                 <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-1 h-6 bg-[#FFD700] rounded-full" />
+                      <div className="w-1 h-6 bg-[var(--amber)] rounded-full" />
                       <h2 className="text-2xl font-bold text-white">Key Features</h2>
                     </div>
                     <ul className="space-y-3">
                       {project.caseStudy.keyFeatures.map((feature, i) => (
                         <li key={i} className="flex items-start gap-3 text-gray-300">
-                          <ChevronRight className="w-5 h-5 text-[#FFD700] flex-shrink-0 mt-0.5" />
+                          <ChevronRight className="w-5 h-5 text-[var(--amber)] flex-shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -256,7 +256,7 @@ export default function CaseStudy() {
               )}
 
               {project.caseStudy?.resultsAchieved && project.caseStudy.resultsAchieved.length > 0 && (
-                <Card className="bg-[#FFD700]/5 border-[#FFD700]/20 backdrop-blur-sm">
+                <Card className="bg-[var(--amber)]/5 border-[var(--amber)]/20 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-1 h-6 bg-green-400 rounded-full" />
@@ -275,14 +275,14 @@ export default function CaseStudy() {
               )}
 
               {project.caseStudy?.clientTestimonial && (
-                <Card className="bg-white/5 border-[#FFD700]/20 backdrop-blur-sm">
+                <Card className="bg-white/5 border-[var(--amber)]/20 backdrop-blur-sm">
                   <CardContent className="p-6">
-                    <Quote className="w-8 h-8 text-[#FFD700] mb-4" />
+                    <Quote className="w-8 h-8 text-[var(--amber)] mb-4" />
                     <p className="text-xl text-gray-300 italic leading-relaxed mb-4">
                       "{project.caseStudy.clientTestimonial}"
                     </p>
                     {project.clientName && (
-                      <p className="text-[#FFD700] font-medium">— {project.clientName}</p>
+                      <p className="text-[var(--amber)] font-medium">— {project.clientName}</p>
                     )}
                   </CardContent>
                 </Card>
@@ -314,7 +314,7 @@ export default function CaseStudy() {
                     <h3 className="text-lg font-bold text-white mb-4">Client</h3>
                     <p className="text-gray-300">{project.clientName}</p>
                     {project.clientIndustry && (
-                      <p className="text-[#FFD700]/70 text-sm mt-1">{project.clientIndustry}</p>
+                      <p className="text-[var(--amber)]/70 text-sm mt-1">{project.clientIndustry}</p>
                     )}
                   </CardContent>
                 </Card>
@@ -340,16 +340,16 @@ export default function CaseStudy() {
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-white mb-6">Build Timeline</h2>
               <div className="relative">
-                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-[#FFD700] to-primary/30" />
+                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-[var(--amber)] to-primary/30" />
                 <div className="space-y-6">
                   {project.milestones.map((milestone, i) => (
                     <div key={milestone.id} className="relative pl-12">
-                      <div className="absolute left-2 w-5 h-5 rounded-full bg-primary border-4 border-[#0a1628]" />
+                      <div className="absolute left-2 w-5 h-5 rounded-full bg-primary border-4 border-[var(--surface-sunken)]" />
                       <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between gap-4">
                             <div>
-                              <p className="text-xs text-[#FFD700]/70 mb-1">
+                              <p className="text-xs text-[var(--amber)]/70 mb-1">
                                 {new Date(milestone.date).toLocaleDateString()}
                               </p>
                               <h3 className="font-bold text-white">{milestone.title}</h3>
@@ -395,7 +395,7 @@ export default function CaseStudy() {
                       <img src={media.url} alt={media.caption} className="w-full h-full object-cover" />
                     )}
                     {media.phase && (
-                      <span className="absolute bottom-2 left-2 text-xs bg-black/60 text-[#FFD700] px-2 py-0.5 rounded">
+                      <span className="absolute bottom-2 left-2 text-xs bg-black/60 text-[var(--amber)] px-2 py-0.5 rounded">
                         {media.phase}
                       </span>
                     )}
@@ -424,7 +424,7 @@ export default function CaseStudy() {
                 )}
                 <p className="text-white text-center mt-4">{selectedMedia.caption}</p>
                 {selectedMedia.phase && (
-                  <p className="text-[#FFD700]/60 text-center text-sm">Phase: {selectedMedia.phase}</p>
+                  <p className="text-[var(--amber)]/60 text-center text-sm">Phase: {selectedMedia.phase}</p>
                 )}
               </div>
             </div>

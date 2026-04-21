@@ -17,18 +17,18 @@ export default function CalendarStrategy() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-[var(--background)]">
       <Navigation />
       
-      <section className="pt-32 pb-12 bg-[#0f172a]">
+      <section className="pt-32 pb-12 bg-[var(--background)]">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-[#1e3a5f] text-slate-300 px-4 py-2 rounded-full text-sm mb-6">
+            <div className="inline-flex items-center gap-2 bg-[var(--surface-elevated)] text-slate-300 px-4 py-2 rounded-full text-sm mb-6">
               <Clock size={16} />
               <span>60 minute session</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Strategy & <span className="text-[#FFD700]">Working Sessions</span>
+              Strategy & <span className="text-[var(--amber)]">Working Sessions</span>
             </h1>
             <p className="text-xl text-slate-300">
               Deep strategic planning and focused execution work with Jeremy.
@@ -37,7 +37,7 @@ export default function CalendarStrategy() {
         </div>
       </section>
 
-      <section className="py-12 bg-[#1e1b4b]">
+      <section className="py-12 bg-[var(--secondary)]">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -52,16 +52,16 @@ export default function CalendarStrategy() {
                     "AI integration and custom solutions",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-slate-300">
-                      <CheckCircle className="text-[#FFD700] mt-0.5 flex-shrink-0" size={20} />
+                      <CheckCircle className="text-[var(--amber)] mt-0.5 flex-shrink-0" size={20} />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-[#0f172a] rounded-xl p-6 border border-[#1e3a5f]">
+              <div className="bg-[var(--background)] rounded-xl p-6 border border-[var(--surface-elevated)]">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-[#1e3a5f] flex items-center justify-center">
-                    <CalendarIcon className="text-[#FFD700]" size={24} />
+                  <div className="w-12 h-12 rounded-full bg-[var(--surface-elevated)] flex items-center justify-center">
+                    <CalendarIcon className="text-[var(--amber)]" size={24} />
                   </div>
                   <div>
                     <h3 className="font-bold text-white">Strategy Session</h3>
@@ -77,7 +77,7 @@ export default function CalendarStrategy() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#0f172a]">
+      <section className="py-16 bg-[var(--background)]">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
@@ -96,17 +96,17 @@ export default function CalendarStrategy() {
         </div>
       </section>
 
-      <section className="py-8 bg-[#0f172a] border-t border-[#1e3a5f]">
+      <section className="py-8 bg-[var(--background)] border-t border-[var(--surface-elevated)]">
         <div className="container">
           <div className="flex justify-center gap-4">
             <Link href="/jeremys-calendar">
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[#1e3a5f]">
+              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[var(--surface-elevated)]">
                 <ArrowLeft className="mr-2" size={16} />
                 All Booking Options
               </Button>
             </Link>
             <Link href="/">
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[#1e3a5f]">
+              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[var(--surface-elevated)]">
                 Back to Home
               </Button>
             </Link>

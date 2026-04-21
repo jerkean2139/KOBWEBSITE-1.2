@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
@@ -34,7 +35,7 @@ export default function About() {
 
       <main id="main-content" className="pt-20">
         <section className="py-12 md:py-20" style={{
-          background: "linear-gradient(135deg, oklch(0.25 0.08 250) 0%, oklch(0.20 0.06 255) 100%)"
+          background: "linear-gradient(135deg, var(--secondary) 0%, var(--surface-sunken) 100%)"
         }}>
           <div className="container">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} variant="dark" />
@@ -97,7 +98,7 @@ export default function About() {
         </section>
 
         <section className="py-16 md:py-24" style={{
-          background: "linear-gradient(135deg, oklch(0.25 0.08 250) 0%, oklch(0.20 0.06 255) 100%)"
+          background: "linear-gradient(135deg, var(--secondary) 0%, var(--surface-sunken) 100%)"
         }}>
           <div className="container">
             <AnimatedSection animation="fade-in">
@@ -112,7 +113,7 @@ export default function About() {
                   <Card key={stat.label} className="bg-white/5 border-white/10 text-center">
                     <CardContent className="p-6">
                       <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" aria-hidden="true" />
-                      <div className="text-3xl md:text-4xl font-bold text-[#FFD700] mb-2">{stat.number}</div>
+                      <div className="text-3xl md:text-4xl font-bold text-[var(--amber)] mb-2">{stat.number}</div>
                       <div className="text-white/70 text-sm">{stat.label}</div>
                     </CardContent>
                   </Card>
@@ -149,7 +150,7 @@ export default function About() {
         </section>
 
         <section className="py-16 md:py-24" style={{
-          background: "linear-gradient(135deg, oklch(0.25 0.08 250) 0%, oklch(0.20 0.06 255) 100%)"
+          background: "linear-gradient(135deg, var(--secondary) 0%, var(--surface-sunken) 100%)"
         }}>
           <div className="container">
             <AnimatedSection animation="fade-in">
@@ -194,26 +195,26 @@ export default function About() {
                     </Card>
 
                     <a href="https://manumation.ai/coming-soon" target="_blank" rel="noopener noreferrer" className="group block">
-                      <Card className="bg-[oklch(0.22_0.06_60)] border-[#C4972A]/30 border-2 relative overflow-hidden hover:border-[#C4972A]/60 transition-colors h-full">
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-[#C4972A]"></div>
+                      <Card className="bg-[oklch(0.22_0.06_60)] border-[var(--amber)]/30 border-2 relative overflow-hidden hover:border-[var(--amber)]/60 transition-colors h-full">
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-[var(--amber)]"></div>
                         <CardContent className="p-6 md:p-8">
                           <div className="flex items-center gap-3 mb-4">
-                            <div className="w-12 h-12 rounded-xl bg-[#C4972A]/20 flex items-center justify-center">
-                              <GraduationCap className="w-6 h-6 text-[#C4972A]" aria-hidden="true" />
+                            <div className="w-12 h-12 rounded-xl bg-[var(--amber)]/20 flex items-center justify-center">
+                              <GraduationCap className="w-6 h-6 text-[var(--amber)]" aria-hidden="true" />
                             </div>
                             <div>
-                              <h3 className="text-xl font-bold text-white group-hover:text-[#C4972A] transition-colors">Manumation</h3>
-                              <span className="text-[#C4972A] text-sm font-semibold">The Framework</span>
+                              <h3 className="text-xl font-bold text-white group-hover:text-[var(--amber)] transition-colors">Manumation</h3>
+                              <span className="text-[var(--amber)] text-sm font-semibold">The Framework</span>
                             </div>
                           </div>
-                          <div className="inline-block px-3 py-1 bg-[#C4972A]/10 rounded-full mb-4">
-                            <span className="text-[#C4972A]/80 text-xs font-medium uppercase tracking-wider">Education & Community</span>
+                          <div className="inline-block px-3 py-1 bg-[var(--amber)]/10 rounded-full mb-4">
+                            <span className="text-[var(--amber)]/80 text-xs font-medium uppercase tracking-wider">Education & Community</span>
                           </div>
                           <p className="text-white/70 text-sm mb-4">Book, workshop, community, and DONNA AI. Where business owners learn the method and commit to change.</p>
                           <ul className="space-y-2">
                             {["Book", "Workshop", "Community", "DONNA AI Tool"].map((item) => (
                               <li key={item} className="flex items-center gap-2 text-white/60 text-sm">
-                                <CheckCircle2 className="w-4 h-4 text-[#C4972A] flex-shrink-0" aria-hidden="true" />
+                                <CheckCircle2 className="w-4 h-4 text-[var(--amber)] flex-shrink-0" aria-hidden="true" />
                                 {item}
                               </li>
                             ))}
@@ -257,7 +258,7 @@ export default function About() {
                       <span className="text-white/60 text-sm">Buyer Discovers & Engages</span>
                       <ChevronRight className="w-4 h-4 text-primary" aria-hidden="true" />
                       <span className="text-white/60 text-sm">Buyer Learns & Commits</span>
-                      <ChevronRight className="w-4 h-4 text-[#C4972A]" aria-hidden="true" />
+                      <ChevronRight className="w-4 h-4 text-[var(--amber)]" aria-hidden="true" />
                       <span className="text-white/60 text-sm">Client Success Drives Referrals</span>
                       <ChevronRight className="w-4 h-4 text-white/50" aria-hidden="true" />
                       <span className="text-white/60 text-sm italic">Repeat</span>
@@ -271,7 +272,7 @@ export default function About() {
                     </div>
                     <div className="flex items-center gap-2 text-white/60 text-sm">
                       <span>Buyer Learns & Commits</span>
-                      <ArrowRight className="w-4 h-4 text-[#C4972A]" aria-hidden="true" />
+                      <ArrowRight className="w-4 h-4 text-[var(--amber)]" aria-hidden="true" />
                     </div>
                     <div className="flex items-center gap-2 text-white/60 text-sm">
                       <span>Client Success Drives Referrals</span>
@@ -306,15 +307,7 @@ export default function About() {
         </section>
       </main>
 
-      <footer className="bg-foreground text-background py-8">
-        <div className="container text-center">
-          <p className="text-background/70 text-sm">
-            &copy; {new Date().getFullYear()} KeanOnBiz. All rights reserved. |{" "}
-            <Link href="/terms" className="hover:text-background transition-colors">Terms</Link> |{" "}
-            <Link href="/privacy" className="hover:text-background transition-colors">Privacy</Link>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

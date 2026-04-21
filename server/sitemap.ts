@@ -64,6 +64,71 @@ router.get("/waterfall-workshop/start", (_req, res) => {
   res.redirect(301, "/founders-filter/start");
 });
 
+// ── Legacy URL Redirects (old Wix/Webflow site) ──
+// These URLs are still in Google's index from the previous site.
+// 301 = permanent redirect (tells Google to transfer ranking signals).
+// 410 = permanently gone (tells Google to remove from index).
+
+// Old /post/* URLs → /blog/* (Wix blog URL pattern)
+router.get("/post/:slug", (req, res) => {
+  res.redirect(301, `/blog/${req.params.slug}`);
+});
+
+// Old /blogs-news paths
+router.get("/blogs-news", (_req, res) => {
+  res.redirect(301, "/blog");
+});
+router.get("/blogs-news/*", (_req, res) => {
+  res.redirect(301, "/blog");
+});
+
+// Old /category/blog path
+router.get("/category/blog", (_req, res) => {
+  res.redirect(301, "/blog");
+});
+router.get("/category/blog/*", (_req, res) => {
+  res.redirect(301, "/blog");
+});
+
+// Old /blog/c/* and /blog/b/* malformed URL patterns (Google discovered these)
+router.get("/blog/c/:rest*", (_req, res) => {
+  res.redirect(301, "/blog");
+});
+router.get("/blog/b/:rest*", (_req, res) => {
+  res.redirect(301, "/blog");
+});
+
+// Duplicate homepage URLs
+router.get("/home", (_req, res) => {
+  res.redirect(301, "/");
+});
+router.get("/homepage", (_req, res) => {
+  res.redirect(301, "/");
+});
+
+// Old page URLs that have equivalents
+router.get("/case-studies", (_req, res) => {
+  res.redirect(301, "/portfolio");
+});
+router.get("/insurance/assessment", (_req, res) => {
+  res.redirect(301, "/insurance");
+});
+
+// Old URLs that no longer exist — return 410 Gone so Google removes them
+const goneUrls = [
+  "/state-farm", "/stfrm", "/tools", "/ai-power", "/u-haul", "/mlb",
+  "/http:", "/from-overwhelmed-to-automated", "/from-overwhelmed-to-automated-resource-hub",
+  "/agent-tools",
+];
+for (const url of goneUrls) {
+  router.get(url, (_req, res) => {
+    res.status(410).set("Content-Type", "text/html").send(
+      `<!DOCTYPE html><html><head><title>Page Removed</title><meta name="robots" content="noindex" /></head>` +
+      `<body><h1>This page has been permanently removed.</h1><p><a href="/">Visit KeanOnBiz Home</a></p></body></html>`
+    );
+  });
+}
+
 router.get("/sitemap.xml", async (_req, res) => {
   try {
     const today = formatDate(new Date());

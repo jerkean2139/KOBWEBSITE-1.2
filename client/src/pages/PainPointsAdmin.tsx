@@ -398,8 +398,8 @@ export default function PainPointsAdmin() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#0a0a12] flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-[#12121f] border-white/10">
+      <div className="min-h-screen bg-[var(--surface-sunken)] flex items-center justify-center p-4">
+        <Card className="w-full max-w-md bg-card border-white/10">
           <CardHeader className="text-center">
             <div className="mx-auto w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mb-4">
               <Brain className="text-amber-400" size={32} />
@@ -430,8 +430,8 @@ export default function PainPointsAdmin() {
   return (
     <>
       <SEO title="Industry Intelligence - Admin" noindex={true} />
-      <div className="min-h-screen bg-[#0a0a12]">
-        <header className="border-b border-white/10 bg-[#0a0a12]/80 backdrop-blur-sm sticky top-0 z-50">
+      <div className="min-h-screen bg-[var(--surface-sunken)]">
+        <header className="border-b border-white/10 bg-[var(--surface-sunken)]/80 backdrop-blur-sm sticky top-0 z-50">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center">
@@ -471,7 +471,7 @@ export default function PainPointsAdmin() {
 
         <main className="container mx-auto px-4 py-8">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="bg-[#1a1a2e] border border-white/10 mb-8 p-1">
+            <TabsList className="bg-secondary border border-white/10 mb-8 p-1">
               <TabsTrigger value="dashboard" className="text-white/60 data-[state=active]:bg-amber-500 data-[state=active]:text-black">
                 <BarChart3 className="mr-2 h-4 w-4" /> Dashboard
               </TabsTrigger>
@@ -491,7 +491,7 @@ export default function PainPointsAdmin() {
 
             <TabsContent value="dashboard">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -502,7 +502,7 @@ export default function PainPointsAdmin() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -513,7 +513,7 @@ export default function PainPointsAdmin() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -524,7 +524,7 @@ export default function PainPointsAdmin() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -538,7 +538,7 @@ export default function PainPointsAdmin() {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardHeader>
                     <CardTitle className="text-white text-lg">Pain Points per Industry</CardTitle>
                   </CardHeader>
@@ -568,7 +568,7 @@ export default function PainPointsAdmin() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardHeader>
                     <CardTitle className="text-white text-lg">Category Distribution</CardTitle>
                   </CardHeader>
@@ -596,7 +596,7 @@ export default function PainPointsAdmin() {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardHeader>
                     <CardTitle className="text-white text-lg">Coverage Gaps</CardTitle>
                     <CardDescription className="text-white/50">Industries with fewer than 8 pain points</CardDescription>
@@ -622,7 +622,7 @@ export default function PainPointsAdmin() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardHeader>
                     <CardTitle className="text-white text-lg">Quick Actions</CardTitle>
                   </CardHeader>
@@ -671,7 +671,7 @@ export default function PainPointsAdmin() {
                 {industries.map(ind => {
                   const count = painPoints.filter(pp => pp.industryId === ind.id).length;
                   return (
-                    <Card key={ind.id} className="bg-[#12121f] border-white/10 hover:border-amber-500/30 transition-colors">
+                    <Card key={ind.id} className="bg-card border-white/10 hover:border-amber-500/30 transition-colors">
                       <CardContent className="p-5">
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex-1 min-w-0">
@@ -708,7 +708,7 @@ export default function PainPointsAdmin() {
                 })}
               </div>
               {industries.length === 0 && (
-                <Card className="bg-[#12121f] border-white/10">
+                <Card className="bg-card border-white/10">
                   <CardContent className="p-12 text-center">
                     <Building2 className="mx-auto text-white/20 mb-4" size={48} />
                     <p className="text-white/50 mb-4">No industries yet</p>
@@ -769,7 +769,7 @@ export default function PainPointsAdmin() {
 
               <div className="space-y-3">
                 {filteredPainPoints.map(pp => (
-                  <Card key={pp.id} className="bg-[#12121f] border-white/10 hover:border-white/20 transition-colors">
+                  <Card key={pp.id} className="bg-card border-white/10 hover:border-white/20 transition-colors">
                     <CardContent className="p-4">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0 mt-1">
@@ -819,7 +819,7 @@ export default function PainPointsAdmin() {
                   </Card>
                 ))}
                 {filteredPainPoints.length === 0 && (
-                  <Card className="bg-[#12121f] border-white/10">
+                  <Card className="bg-card border-white/10">
                     <CardContent className="p-12 text-center">
                       <Target className="mx-auto text-white/20 mb-4" size={48} />
                       <p className="text-white/50">No pain points found</p>
@@ -844,7 +844,7 @@ export default function PainPointsAdmin() {
 
               <div className="space-y-4">
                 {researchRuns.map(run => (
-                  <Card key={run.id} className="bg-[#12121f] border-white/10">
+                  <Card key={run.id} className="bg-card border-white/10">
                     <CardContent className="p-5">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">
@@ -901,7 +901,7 @@ export default function PainPointsAdmin() {
                   </Card>
                 ))}
                 {researchRuns.length === 0 && (
-                  <Card className="bg-[#12121f] border-white/10">
+                  <Card className="bg-card border-white/10">
                     <CardContent className="p-12 text-center">
                       <Search className="mx-auto text-white/20 mb-4" size={48} />
                       <p className="text-white/50 mb-4">No research runs yet</p>
@@ -919,7 +919,7 @@ export default function PainPointsAdmin() {
       </div>
 
       <Dialog open={industryDialogOpen} onOpenChange={setIndustryDialogOpen}>
-        <DialogContent className="bg-[#12121f] border-white/10 text-white max-w-lg">
+        <DialogContent className="bg-card border-white/10 text-white max-w-lg">
           <DialogHeader>
             <DialogTitle>{editingIndustry ? "Edit Industry" : "Add Industry"}</DialogTitle>
           </DialogHeader>
@@ -994,7 +994,7 @@ export default function PainPointsAdmin() {
       </Dialog>
 
       <Dialog open={painPointDialogOpen} onOpenChange={setPainPointDialogOpen}>
-        <DialogContent className="bg-[#12121f] border-white/10 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-card border-white/10 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingPainPoint ? "Edit Pain Point" : "Add Pain Point"}</DialogTitle>
           </DialogHeader>

@@ -377,7 +377,7 @@ export default function NewsletterCreator() {
     return (
       <>
         <Navigation />
-        <main className="min-h-screen pt-20 flex items-center justify-center" style={{ backgroundColor: "#0f172a" }}>
+        <main className="min-h-screen pt-20 flex items-center justify-center" style={{ backgroundColor: "var(--background)" }}>
           <Card className="w-full max-w-md bg-white/5 border-white/10">
             <CardHeader className="text-center">
               <CardTitle className="text-white text-2xl">Newsletter Admin</CardTitle>
@@ -414,7 +414,7 @@ export default function NewsletterCreator() {
     <>
       <SEO title="Newsletter Creator - Admin" noindex={true} />
       <Navigation />
-      <main className="min-h-screen pt-20" style={{ backgroundColor: "#0f172a" }}>
+      <main className="min-h-screen pt-20" style={{ backgroundColor: "var(--background)" }}>
         <div className="container py-8">
           <div className="flex items-center gap-4 mb-8">
             <Link href="/">

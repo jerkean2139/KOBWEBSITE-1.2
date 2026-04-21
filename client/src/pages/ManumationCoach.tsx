@@ -24,9 +24,9 @@ export default function ManumationCoach() {
           <div className="container relative z-10 py-16">
             <div className="max-w-4xl mx-auto text-center">
               <AnimatedSection animation="fade-in">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFD700]/20 rounded-full mb-6">
-                  <Award className="text-[#FFD700]" size={16} />
-                  <p className="text-[#FFD700] text-sm font-bold uppercase tracking-wider">Coming Soon</p>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--amber)]/20 rounded-full mb-6">
+                  <Award className="text-[var(--amber)]" size={16} />
+                  <p className="text-[var(--amber)] text-sm font-bold uppercase tracking-wider">Coming Soon</p>
                 </div>
               </AnimatedSection>
 
@@ -58,7 +58,7 @@ export default function ManumationCoach() {
                           className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/90 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                         />
                       </div>
-                      <Button size="lg" className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-gray-900 font-bold px-6">
+                      <Button size="lg" className="bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-gray-900 font-bold px-6">
                         Notify Me
                       </Button>
                     </div>

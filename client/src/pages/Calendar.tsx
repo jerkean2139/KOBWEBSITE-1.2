@@ -36,19 +36,19 @@ const sessionTypes = [
 
 export default function Calendar() {
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-[var(--background)]">
       <Navigation />
       
-      <section className="pt-32 pb-16 bg-[#0f172a]">
+      <section className="pt-32 pb-16 bg-[var(--background)]">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <img 
               src="/jeremy-about-photo.webp" 
               alt="Jeremy Kean" 
-              className="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-6 object-cover border-4 border-[#FFD700]/30 shadow-lg"
+              className="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-6 object-cover border-4 border-[var(--amber)]/30 shadow-lg"
             />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Book with <span className="text-[#FFD700]">Jeremy</span>
+              Book with <span className="text-[var(--amber)]">Jeremy</span>
             </h1>
             <p className="text-xl text-slate-300">
               Choose the session type that fits your needs
@@ -57,25 +57,25 @@ export default function Calendar() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#0f172a]">
+      <section className="py-16 bg-[var(--background)]">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {sessionTypes.map((session) => {
               const Icon = session.icon;
               return (
                 <Link key={session.id} href={session.href}>
-                  <div className="group relative h-full bg-[#1e3a5f] hover:bg-[#172554] border border-[#1e3a5f] hover:border-[#FFD700]/50 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col">
+                  <div className="group relative h-full bg-[var(--surface-elevated)] hover:bg-[var(--secondary)] border border-[var(--surface-elevated)] hover:border-[var(--amber)]/50 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col">
                     {session.badge && (
-                      <span className="absolute top-4 right-4 bg-[#FFD700] text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+                      <span className="absolute top-4 right-4 bg-[var(--amber)] text-[var(--background)] text-xs font-bold px-3 py-1 rounded-full">
                         {session.badge}
                       </span>
                     )}
                     
-                    <div className="w-14 h-14 rounded-full bg-[#0f172a] flex items-center justify-center mb-4">
-                      <Icon className="text-[#FFD700]" size={28} />
+                    <div className="w-14 h-14 rounded-full bg-[var(--background)] flex items-center justify-center mb-4">
+                      <Icon className="text-[var(--amber)]" size={28} />
                     </div>
                     
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#FFD700] transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[var(--amber)] transition-colors">
                       {session.title}
                     </h3>
                     
@@ -92,14 +92,14 @@ export default function Calendar() {
                       {session.highlights.map((highlight) => (
                         <span
                           key={highlight}
-                          className="text-xs bg-[#0f172a] text-slate-300 px-2 py-1 rounded"
+                          className="text-xs bg-[var(--background)] text-slate-300 px-2 py-1 rounded"
                         >
                           {highlight}
                         </span>
                       ))}
                     </div>
                     
-                    <div className="flex items-center text-[#FFD700] font-medium group-hover:gap-3 gap-2 transition-all mt-auto">
+                    <div className="flex items-center text-[var(--amber)] font-medium group-hover:gap-3 gap-2 transition-all mt-auto">
                       <span>Book Now</span>
                       <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -111,7 +111,7 @@ export default function Calendar() {
         </div>
       </section>
 
-      <section className="py-12 bg-[#1e1b4b]">
+      <section className="py-12 bg-[var(--secondary)]">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
@@ -123,7 +123,7 @@ export default function Calendar() {
             <Link href="/jeremys-calendar-intro">
               <Button 
                 size="lg" 
-                className="bg-[#FFD700] hover:bg-[#FFD700]/90 text-[#0f172a] font-semibold"
+                className="bg-[var(--amber)] hover:bg-[var(--amber)]/90 text-[var(--background)] font-semibold"
               >
                 Schedule Quick Connect
               </Button>
@@ -132,11 +132,11 @@ export default function Calendar() {
         </div>
       </section>
 
-      <section className="py-8 bg-[#0f172a] border-t border-[#1e3a5f]">
+      <section className="py-8 bg-[var(--background)] border-t border-[var(--surface-elevated)]">
         <div className="container">
           <div className="text-center">
             <Link href="/">
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[#1e3a5f]">
+              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[var(--surface-elevated)]">
                 <ArrowLeft className="mr-2" size={16} />
                 Back to Home
               </Button>

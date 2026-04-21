@@ -7,7 +7,7 @@ import { Route, Switch, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
-const Home = lazy(() => import("./pages/Home"));
+import Home from "./pages/Home";
 const Calendar = lazy(() => import("./pages/Calendar"));
 const CalendarStrategy = lazy(() => import("./pages/CalendarStrategy"));
 const CalendarCoaching = lazy(() => import("./pages/CalendarCoaching"));
@@ -43,8 +43,8 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 function LoadingFallback() {
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
-      <div style={{ width: 40, height: 40, border: "4px solid rgba(0,0,0,0.1)", borderTopColor: "#3b82f6", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", backgroundColor: "oklch(0.16 0.02 250)" }}>
+      <div style={{ width: 40, height: 40, border: "4px solid rgba(255,255,255,0.1)", borderTopColor: "oklch(0.58 0.20 250)", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
@@ -79,7 +79,6 @@ function Router() {
         <Route path="/waterfall-workshop">{() => <Redirect to="/founders-filter" />}</Route>
         <Route path="/waterfall-workshop/start">{() => <Redirect to="/founders-filter/start" />}</Route>
         <Route path="/insurance" component={InsuranceAssessment} />
-        <Route path="/insurance/assessment" component={InsuranceAssessment} />
         <Route path="/insurance-coaching" component={InsuranceCoaching} />
         <Route path="/business-automation" component={BusinessAutomation} />
         <Route path="/faq" component={FAQ} />
@@ -100,7 +99,7 @@ function App() {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider defaultTheme="light">
+        <ThemeProvider defaultTheme="dark">
           <TooltipProvider>
             <Toaster />
             <Router />

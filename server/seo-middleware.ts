@@ -63,11 +63,6 @@ const staticPageMeta: Record<string, Partial<PageMeta>> = {
     description: "Find out how much your insurance agency is losing every month. Take the free Revenue Leak Calculator to identify gaps in team performance, sales process, and operations.",
     image: "/manumation-book-cover-new.png",
   },
-  "/insurance/assessment": {
-    title: "Revenue Leak Calculator | Insurance Agency Assessment | KeanOnBiz",
-    description: "Take the free Revenue Leak Calculator to find out how much your insurance agency is losing every month from team gaps, sales process issues, and operations.",
-    image: "/manumation-book-cover-new.png",
-  },
   "/insurance-coaching": {
     title: "Insurance Agency Coaching | Grow Revenue & Build Systems | KeanOnBiz",
     description: "Strategic coaching for insurance agency owners. Fix your pipeline, automate renewals, build a team that runs without you, and break through your revenue ceiling. 35+ years experience.",

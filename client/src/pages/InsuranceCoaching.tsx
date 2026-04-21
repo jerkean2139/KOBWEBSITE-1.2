@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -169,7 +170,7 @@ export default function InsuranceCoaching() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navigation />
+      <Navigation logoVariant="red" />
 
       <main id="main-content">
         <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-20 pb-16">
@@ -245,7 +246,7 @@ export default function InsuranceCoaching() {
               </div>
 
               <div className="hidden lg:block">
-                <div className="bg-gray-900/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8">
+                <div className="bg-gray-900 border border-white/10 rounded-2xl shadow-2xl p-8">
                   <h2 className="text-xl font-bold text-white mb-6">What Coaching Covers</h2>
                   <ul className="space-y-4">
                     {["Lead systems that follow up automatically", "Renewal workflows that retain 90%+ of clients", "Team accountability without micromanagement", "Tech stack that actually talks to each other", "Growth plan with real numbers, not theory"].map((item) => (
@@ -568,15 +569,7 @@ export default function InsuranceCoaching() {
         </section>
       </main>
 
-      <footer className="bg-gray-950 border-t border-white/10 py-8">
-        <div className="container text-center">
-          <p className="text-white/40 text-sm">
-            &copy; {new Date().getFullYear()} KeanOnBiz. All rights reserved. |{" "}
-            <Link href="/terms" className="hover:text-white/70 transition-colors">Terms</Link> |{" "}
-            <Link href="/privacy" className="hover:text-white/70 transition-colors">Privacy</Link>
-          </p>
-        </div>
-      </footer>
+      <Footer variant="insurance" />
     </div>
   );
 }

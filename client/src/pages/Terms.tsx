@@ -4,7 +4,7 @@ export default function Terms() {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#0f172a] pt-24 pb-16">
+      <main className="min-h-screen bg-[var(--background)] pt-24 pb-16">
         <div className="container max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-8">Terms of Service</h1>
           
