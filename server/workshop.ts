@@ -1,6 +1,6 @@
 import { Router, json } from "express";
 import { storage } from "./storage";
-import OpenAI from "openai";
+import { chatCompletion } from "./ai-client";
 import crypto from "node:crypto";
 import { workshopDonnaLimiter } from "./rate-limiter";
 import { validateBody, workshopSessionUpdateSchema, workshopDonnaMessageSchema } from "./validation";
@@ -90,10 +90,6 @@ function getOrCreateAnonymousUser(req: any, res: any): string | null {
   return newToken.id;
 }
 
-const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL || undefined,
-});
 
 const DONNA_SYSTEM_PROMPT = `You are Donna, a warm, patient, and focused AI assistant helping business owners through The Founder's Filter. Your goal is to help them identify tasks they need to stop doing themselves.
 
@@ -261,7 +257,7 @@ router.post("/sessions/:id/donna", async (req: any, res: any) => {
       delegateNowCount: (session.delegateNowItems || []).length,
     };
 
-    const response = await openai.chat.completions.create({
+    const response = await chatCompletion({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: DONNA_SYSTEM_PROMPT },
@@ -276,7 +272,7 @@ router.post("/sessions/:id/donna", async (req: any, res: any) => {
       temperature: 0.7,
     });
 
-    const donnaResponse = response.choices[0]?.message?.content || "Let's keep going. What else is on your mind?";
+    const donnaResponse = response.content || "Let's keep going. What else is on your mind?";
 
     const updatedConversation = [
       ...conversation,

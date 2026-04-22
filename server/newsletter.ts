@@ -2,7 +2,7 @@ import { Router, json } from "express";
 import { db } from "./db";
 import { newsletters, researchSources, apiSessionTokens, painPoints, industryProfiles } from "../shared/schema";
 import { eq, desc } from "drizzle-orm";
-import OpenAI from "openai";
+import { chatCompletion } from "./ai-client";
 import { Resend } from "resend";
 import { GoogleGenAI, Modality } from "@google/genai";
 import path from "path";
@@ -69,11 +69,6 @@ router.use((req, res, next) => {
     return next();
   }
   authMiddleware(req, res, next);
-});
-
-const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
 });
 
 const resend = process.env.RESEND_API_KEY 
@@ -215,7 +210,7 @@ router.post("/newsletters/:id/summarize", authMiddleware, async (req, res) => {
 
     const sourcesText = sources.map((s, i) => `[${i+1}] ${s.title}\nURL: ${s.url || 'N/A'}\nContent: ${s.content?.slice(0, 1000) || 'N/A'}`).join("\n\n---\n\n");
 
-    const completion = await openai.chat.completions.create({
+    const completion = await chatCompletion({
       model: "gpt-4o",
       messages: [
         {
@@ -267,7 +262,7 @@ Format your response as JSON:
       response_format: { type: "json_object" }
     });
 
-    const result = JSON.parse(completion.choices[0].message.content || "{}");
+    const result = JSON.parse(completion.content || "{}");
 
     await db.update(newsletters)
       .set({ 
@@ -533,7 +528,7 @@ router.get("/newsletters/:id/auto-generate", authMiddleware, async (req, res) =>
     // Stage 2b: Research - AI generates trending topics grounded in real pain points
     sendEvent("researching", "Generating research items grounded in real industry data...");
     
-    const researchCompletion = await openai.chat.completions.create({
+    const researchCompletion = await chatCompletion({
       model: "gpt-4o",
       messages: [
         {
@@ -573,7 +568,7 @@ Format as JSON array:
       response_format: { type: "json_object" }
     });
 
-    const researchData = JSON.parse(researchCompletion.choices[0].message.content || "{}");
+    const researchData = JSON.parse(researchCompletion.content || "{}");
     const items = researchData.items || [];
     
     sendEvent("researching", `Found ${items.length} trending topics (grounded in ${painPointCount} real pain points)`, { count: items.length, painPointCount });
@@ -599,7 +594,7 @@ Format as JSON array:
       `[${i+1}] ${s.title} (${s.category})\n${s.summary}`
     ).join("\n\n");
 
-    const summaryCompletion = await openai.chat.completions.create({
+    const summaryCompletion = await chatCompletion({
       model: "gpt-4o",
       messages: [
         {
@@ -636,7 +631,7 @@ Format response as JSON:
       response_format: { type: "json_object" }
     });
 
-    const result = JSON.parse(summaryCompletion.choices[0].message.content || "{}");
+    const result = JSON.parse(summaryCompletion.content || "{}");
     
     sendEvent("ranking", "Selected Top 10 insights!", { topTen: result.topTen });
     await new Promise(r => setTimeout(r, 500));
@@ -644,13 +639,13 @@ Format response as JSON:
     // Stage 4: Generate newsletter title
     sendEvent("writing", "Creating newsletter title and TLDR...");
     
-    const titleCompletion = await openai.chat.completions.create({
+    const titleCompletion = await chatCompletion({
       model: "gpt-4o",
       messages: [
         {
           role: "user",
           content: `Based on this TLDR, generate a catchy newsletter title (max 60 chars):
-          
+
 TLDR: ${result.tldr}
 
 Just respond with the title, nothing else.`
@@ -658,7 +653,7 @@ Just respond with the title, nothing else.`
       ]
     });
 
-    const generatedTitle = titleCompletion.choices[0].message.content?.trim() || "This Week in Business & AI";
+    const generatedTitle = titleCompletion.content?.trim() || "This Week in Business & AI";
 
     // Update newsletter in database
     await db.update(newsletters)

@@ -13,7 +13,7 @@ import {
   painPoints
 } from "@shared/schema";
 import { eq, desc, and, isNull, sql } from "drizzle-orm";
-import OpenAI from "openai";
+import { chatCompletion } from "./ai-client";
 import { GoogleGenAI, Modality } from "@google/genai";
 import Replicate from "replicate";
 import { 
@@ -33,10 +33,6 @@ import {
 import { logger } from "./logger";
 
 const router = Router();
-const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-});
 
 // Path traversal protection - sanitize slugs for file operations
 function sanitizeSlug(slug: string): string {
@@ -450,13 +446,13 @@ Provide your response as JSON:
   "improvedImagePrompt": "optional better image prompt if score < 80"
 }`;
 
-  const reviewResponse = await openai.chat.completions.create({
+  const reviewResponse = await chatCompletion({
     model: "gpt-4o",
     messages: [{ role: "user", content: reviewPrompt }],
     response_format: { type: "json_object" },
   });
 
-  return JSON.parse(reviewResponse.choices[0].message.content || "{}");
+  return JSON.parse(reviewResponse.content || "{}");
 }
 
 import { 
@@ -766,12 +762,12 @@ REQUIREMENTS:
 Write the complete article in markdown format with ## for headers:`;
 
       try {
-        const articleResponse = await openai.chat.completions.create({
+        const articleResponse = await chatCompletion({
           model: "gpt-4o",
           messages: [{ role: "user", content: articlePrompt }],
         });
 
-        const newContent = articleResponse.choices[0].message.content || "";
+        const newContent = articleResponse.content || "";
         const wordCount = newContent.split(/\s+/).length;
 
         const [updatedPost] = await db.update(blogPosts)
@@ -1061,13 +1057,13 @@ Format your response as JSON:
   ]
 }`;
 
-    const researchResponse = await openai.chat.completions.create({
+    const researchResponse = await chatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: researchPrompt }],
       response_format: { type: "json_object" },
     });
 
-    const research = JSON.parse(researchResponse.choices[0].message.content || "{}");
+    const research = JSON.parse(researchResponse.content || "{}");
     sendEvent("progress", { stage: "research_complete", message: `Topic: ${research.title}`, data: research });
 
     // Step 2: Generate the full article
@@ -1158,12 +1154,12 @@ DO NOT use: "Book a call now", "Schedule today", or any hard-sell language.
 
 Write the complete article in markdown format with ## for headers:`;
 
-    const articleResponse = await openai.chat.completions.create({
+    const articleResponse = await chatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: articlePrompt }],
     });
 
-    const articleContent = articleResponse.choices[0].message.content || "";
+    const articleContent = articleResponse.content || "";
     sendEvent("progress", { stage: "writing_complete", message: "Article written with statistics and citations" });
 
     // Generate slug early for use in image naming
@@ -1227,13 +1223,13 @@ Suggest 2-3 YouTube video search queries that would find relevant videos from th
 
 Format as JSON array: ["query1", "query2", "query3"]`;
 
-      const videoSearchResponse = await openai.chat.completions.create({
+      const videoSearchResponse = await chatCompletion({
         model: "gpt-4o-mini",
         messages: [{ role: "user", content: videoSearchPrompt }],
         response_format: { type: "json_object" },
       });
 
-      const searchQueries = JSON.parse(videoSearchResponse.choices[0].message.content || "[]");
+      const searchQueries = JSON.parse(videoSearchResponse.content || "[]");
       sendEvent("progress", { stage: "youtube_complete", message: `Video suggestions: ${Array.isArray(searchQueries) ? searchQueries.slice(0, 3).join(", ") : "Generated"}` });
     } catch (ytError) {
       logger.error("YouTube search error", { endpoint: "/api/content-studio/blog-posts/:id/generate" }, ytError as Error);
@@ -1490,13 +1486,13 @@ Format your response as JSON:
   "targetNiche": "financial_services|real_estate|coaches|general"
 }`;
 
-        const researchResponse = await openai.chat.completions.create({
+        const researchResponse = await chatCompletion({
           model: "gpt-4o",
           messages: [{ role: "user", content: researchPrompt }],
           response_format: { type: "json_object" },
         });
 
-        const research = JSON.parse(researchResponse.choices[0].message.content || "{}");
+        const research = JSON.parse(researchResponse.content || "{}");
         
         // Step 2: Write article
         sendEvent("progress", { stage: "writing", current: postNum, message: `[${postNum}/${count}] Writing article: ${research.title}` });
@@ -1532,12 +1528,12 @@ DO NOT use: "Book a call now", "Schedule today", or any hard-sell language.
 
 Write the complete article in markdown format with ## for headers:`;
 
-        const articleResponse = await openai.chat.completions.create({
+        const articleResponse = await chatCompletion({
           model: "gpt-4o",
           messages: [{ role: "user", content: articlePrompt }],
         });
 
-        const articleContent = articleResponse.choices[0].message.content || "";
+        const articleContent = articleResponse.content || "";
         
         const slug = research.title
           .toLowerCase()

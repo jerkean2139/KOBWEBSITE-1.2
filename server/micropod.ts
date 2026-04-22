@@ -5,16 +5,12 @@ import { eq, desc, sql } from "drizzle-orm";
 import { logger } from "./logger";
 import { requireAuth, createSessionToken, validateSseToken, deleteSessionToken } from "./auth-utils";
 import { createRateLimiter } from "./rate-limiter";
-import OpenAI from "openai";
+import { chatCompletion } from "./ai-client";
 import { generateBlogSystemPrompt, JEREMY_VOICE_PROFILE } from "./jeremy-voice-profile";
 import * as fs from "fs";
 import * as path from "path";
 
 const router = Router();
-const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-});
 
 const writeLimiter = createRateLimiter({
   windowMs: 60 * 1000,
@@ -250,7 +246,7 @@ router.get("/episodes/:id/generate", async (req, res) => {
 
     sendEvent("progress", { stage: "talking_points", message: "Generating talking points..." });
 
-    const talkingPointsResponse = await openai.chat.completions.create({
+    const talkingPointsResponse = await chatCompletion({
       model: "gpt-4o",
       messages: [
         {
@@ -279,7 +275,7 @@ Return as JSON: { "talkingPoints": [{ "point": "...", "details": "...", "timeEst
       temperature: 0.7,
     });
 
-    const talkingPointsData = JSON.parse(talkingPointsResponse.choices[0]?.message?.content || "{}");
+    const talkingPointsData = JSON.parse(talkingPointsResponse.content || "{}");
 
     sendEvent("progress", {
       stage: "talking_points_complete",
@@ -291,7 +287,7 @@ Return as JSON: { "talkingPoints": [{ "point": "...", "details": "...", "timeEst
 
     const wordTarget = targetLength * 150;
 
-    const scriptResponse = await openai.chat.completions.create({
+    const scriptResponse = await chatCompletion({
       model: "gpt-4o",
       messages: [
         {
@@ -341,7 +337,7 @@ Write the full script now. Make it sound like Jeremy talking to one person.`,
       max_tokens: 4000,
     });
 
-    const script = scriptResponse.choices[0]?.message?.content || "";
+    const script = scriptResponse.content || "";
 
     sendEvent("progress", {
       stage: "script_complete",
@@ -350,7 +346,7 @@ Write the full script now. Make it sound like Jeremy talking to one person.`,
 
     sendEvent("progress", { stage: "script_review", message: "Reviewing script for flow and pacing..." });
 
-    const reviewResponse = await openai.chat.completions.create({
+    const reviewResponse = await chatCompletion({
       model: "gpt-4o",
       messages: [
         {
@@ -382,7 +378,7 @@ Return JSON: {
       temperature: 0.3,
     });
 
-    const reviewData = JSON.parse(reviewResponse.choices[0]?.message?.content || "{}");
+    const reviewData = JSON.parse(reviewResponse.content || "{}");
 
     sendEvent("progress", {
       stage: "review_complete",

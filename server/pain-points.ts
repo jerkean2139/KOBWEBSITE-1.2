@@ -5,13 +5,9 @@ import { eq, desc, and, sql } from "drizzle-orm";
 import { logger } from "./logger";
 import { requireAuth } from "./auth-utils";
 import { createRateLimiter } from "./rate-limiter";
-import OpenAI from "openai";
+import { chatCompletion } from "./ai-client";
 
 const router = Router();
-const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-});
 
 const writeLimiter = createRateLimiter({
   windowMs: 60 * 1000,
@@ -312,7 +308,7 @@ async function executeResearchRun(runId: number, industries: Array<{ id: number;
 
       addLog(`Running ${searchQueries.length} search queries for ${industry.name}`);
 
-      const completion = await openai.chat.completions.create({
+      const completion = await chatCompletion({
         model: "gpt-4o",
         messages: [
           {
@@ -350,7 +346,7 @@ Return ONLY valid JSON array. No markdown formatting.`,
       });
 
       try {
-        const content = completion.choices[0]?.message?.content || "{}";
+        const content = completion.content || "{}";
         const parsed = JSON.parse(content);
         const findings = parsed.painPoints || parsed.pain_points || parsed.findings || [];
 
