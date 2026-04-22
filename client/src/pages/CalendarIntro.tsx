@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
+import CalendarGate from "@/components/CalendarGate";
+import { useReferral } from "@/hooks/useReferral";
 import {
   Calendar as CalendarIcon,
   Clock,
@@ -39,7 +41,18 @@ const testimonials = [
 ];
 
 export default function CalendarIntro() {
+  const { isReferral } = useReferral();
+  const [isQualified, setIsQualified] = useState(false);
+
   useEffect(() => {
+    const auditCompleted = sessionStorage.getItem("kob_mini_audit_completed");
+    if (auditCompleted || isReferral) {
+      setIsQualified(true);
+    }
+  }, [isReferral]);
+
+  useEffect(() => {
+    if (!isQualified) return;
     const script = document.createElement("script");
     script.src = "https://link.msgsndr.com/js/form_embed.js";
     script.type = "text/javascript";
@@ -48,7 +61,19 @@ export default function CalendarIntro() {
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  }, [isQualified]);
+
+  // Show gate for non-referral, non-qualified visitors
+  if (!isQualified) {
+    return (
+      <div className="min-h-screen" style={{ backgroundColor: "var(--surface-sunken)" }}>
+        <Navigation logoVariant="red" />
+        <main className="pt-20">
+          <CalendarGate onQualified={() => setIsQualified(true)} />
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[var(--surface-sunken)]">
