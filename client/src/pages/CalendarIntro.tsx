@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
-import CalendarGate from "@/components/CalendarGate";
 import { useReferral } from "@/hooks/useReferral";
 import {
   Calendar as CalendarIcon,
@@ -41,18 +40,16 @@ const testimonials = [
 ];
 
 export default function CalendarIntro() {
-  const { isReferral } = useReferral();
-  const [isQualified, setIsQualified] = useState(false);
+  const { isReferral, referralCode } = useReferral();
+  const [wasReferred, setWasReferred] = useState(isReferral);
+  const [referredBy, setReferredBy] = useState("");
+  const [referralSubmitted, setReferralSubmitted] = useState(false);
 
   useEffect(() => {
-    const auditCompleted = sessionStorage.getItem("kob_mini_audit_completed");
-    if (auditCompleted || isReferral) {
-      setIsQualified(true);
-    }
+    if (isReferral) setWasReferred(true);
   }, [isReferral]);
 
   useEffect(() => {
-    if (!isQualified) return;
     const script = document.createElement("script");
     script.src = "https://link.msgsndr.com/js/form_embed.js";
     script.type = "text/javascript";
@@ -61,19 +58,28 @@ export default function CalendarIntro() {
     return () => {
       document.body.removeChild(script);
     };
-  }, [isQualified]);
+  }, []);
 
-  // Show gate for non-referral, non-qualified visitors
-  if (!isQualified) {
-    return (
-      <div className="min-h-screen" style={{ backgroundColor: "var(--surface-sunken)" }}>
-        <Navigation logoVariant="red" />
-        <main className="pt-20">
-          <CalendarGate onQualified={() => setIsQualified(true)} />
-        </main>
-      </div>
-    );
-  }
+  const handleReferralSubmit = async () => {
+    if (!referredBy.trim()) return;
+    setReferralSubmitted(true);
+    // Fire and forget — capture for GHL pipeline
+    try {
+      await fetch("/api/track/assessment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: "referral_captured",
+          referred_by: referredBy.trim(),
+          referral_code: referralCode || "",
+          page: "/jeremys-calendar-intro",
+          timestamp: new Date().toISOString(),
+        }),
+      });
+    } catch {
+      // Non-critical
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[var(--surface-sunken)]">
@@ -286,6 +292,70 @@ export default function CalendarIntro() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Referral Capture — honor system */}
+      <section className="py-10 border-t border-white/5">
+        <div className="container">
+          <div className="max-w-md mx-auto">
+            {!wasReferred && !referralSubmitted && (
+              <div className="text-center">
+                <p className="text-sm mb-3" style={{ color: "var(--text-secondary)" }}>
+                  Were you referred by someone?
+                </p>
+                <div className="flex gap-3 justify-center">
+                  <button
+                    onClick={() => setWasReferred(true)}
+                    className="px-5 py-2 rounded-lg text-sm font-medium transition-colors"
+                    style={{ backgroundColor: "var(--surface-elevated)", color: "var(--foreground)", border: "1px solid var(--border)" }}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => setReferralSubmitted(true)}
+                    className="px-5 py-2 rounded-lg text-sm font-medium transition-colors"
+                    style={{ color: "var(--text-tertiary)" }}
+                  >
+                    No, just browsing
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {wasReferred && !referralSubmitted && (
+              <div className="text-center">
+                <p className="text-sm mb-3" style={{ color: "var(--text-secondary)" }}>
+                  Who referred you? We'd love to thank them.
+                </p>
+                <div className="flex gap-2 max-w-sm mx-auto">
+                  <input
+                    type="text"
+                    value={referredBy}
+                    onChange={(e) => setReferredBy(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleReferralSubmit()}
+                    placeholder="Their name"
+                    className="flex-1 px-4 py-2.5 bg-white/5 border rounded-lg text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-red-500/50 transition-all"
+                    style={{ borderColor: "rgba(255,255,255,0.1)" }}
+                  />
+                  <Button
+                    onClick={handleReferralSubmit}
+                    disabled={!referredBy.trim()}
+                    size="sm"
+                    className="bg-red-600 hover:bg-red-700 text-white font-medium px-5 disabled:opacity-40"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            {referralSubmitted && referredBy && (
+              <p className="text-center text-sm" style={{ color: "oklch(0.65 0.18 155)" }}>
+                Thanks! We'll make sure {referredBy} knows they made an impact.
+              </p>
+            )}
           </div>
         </div>
       </section>

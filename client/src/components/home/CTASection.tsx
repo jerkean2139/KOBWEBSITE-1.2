@@ -1,11 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useReferral } from "@/hooks/useReferral";
-
 export default function CTASection() {
-  const { isReferral } = useReferral();
-
   return (
     <section id="assessment" className="py-24 lg:py-32" style={{ backgroundColor: "var(--surface-sunken)" }} aria-label="Bottleneck Audit call to action">
       <div className="container">
@@ -38,7 +34,7 @@ export default function CTASection() {
                   <ArrowRight className="ml-2" size={18} />
                 </Button>
               </a>
-              <a href={isReferral ? "/jeremys-calendar-intro" : "/assessment"}>
+              <a href="/jeremys-calendar-intro">
                 <Button
                   variant="outline"
                   size="lg"

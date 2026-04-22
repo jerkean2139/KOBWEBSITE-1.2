@@ -93,7 +93,7 @@ export default function HeroSection() {
                   </Button>
                 </a>
                 <a
-                  href={isReferral ? "/jeremys-calendar-intro" : "/assessment"}
+                  href="/jeremys-calendar-intro"
                   onClick={() => trackCTAClick("book_call")}
                 >
                   <Button
