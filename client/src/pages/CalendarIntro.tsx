@@ -94,7 +94,7 @@ export default function CalendarIntro() {
                 <div className="inline-flex items-center gap-2 bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm mb-6 border border-red-500/20">
                   <Clock size={16} />
                   <span className="font-bold uppercase tracking-widest text-xs">
-                    60 minute strategy session
+                    30 minute discovery call
                   </span>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
@@ -223,7 +223,7 @@ export default function CalendarIntro() {
                   <div>
                     <h3 className="font-bold text-white">Strategy Call</h3>
                     <p className="text-sm text-gray-500">
-                      60 minutes with Jeremy
+                      30 minutes with Jeremy
                     </p>
                   </div>
                 </div>

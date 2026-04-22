@@ -25,12 +25,12 @@ const sessionTypes = [
   },
   {
     id: "intro",
-    title: "Quick Connect",
-    description: "Brief check-in for idea exchange, introductions, or exploring whether coaching is right for you.",
-    duration: "15-20 min",
+    title: "Discovery Call",
+    description: "A focused conversation about your business, your bottlenecks, and whether we're a good fit to work together.",
+    duration: "30 min",
     icon: Zap,
     href: "/jeremys-calendar-intro",
-    highlights: ["Quick questions", "Introductions", "Explore fit"],
+    highlights: ["Your situation", "Identify bottlenecks", "Explore fit"],
   },
 ];
 
