@@ -92,23 +92,17 @@ export default function HeroSection() {
             </div>
           </AnimatedSection>
 
-          {/* Right: Editorial photo */}
+          {/* Right: Editorial photo — no decoration, the crop IS the design */}
           <AnimatedSection animation="fade-in" delay={0.3}>
-            <div className="hidden lg:block relative">
+            <div className="hidden lg:block">
               <img
                 src="/jeremy-main-hero.webp"
                 alt="Jeremy Kean — Business Coach"
                 width="600"
                 height="700"
-                className="w-full max-w-lg ml-auto rounded-lg object-cover"
-                style={{ aspectRatio: "5/6" }}
+                className="w-full max-w-lg ml-auto object-cover"
+                style={{ aspectRatio: "5/6", borderRadius: "2px" }}
                 {...{ fetchpriority: "high" } as any}
-              />
-              {/* Accent line */}
-              <div
-                className="absolute -bottom-4 -left-4 w-24 h-24 rounded-lg"
-                style={{ backgroundColor: "var(--amber)", opacity: 0.15 }}
-                aria-hidden="true"
               />
             </div>
           </AnimatedSection>

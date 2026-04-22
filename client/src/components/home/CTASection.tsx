@@ -1,33 +1,29 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section id="assessment" className="py-20 lg:py-28" style={{ backgroundColor: "var(--surface-sunken)" }} aria-label="Bottleneck Audit call to action">
+    <section id="assessment" className="py-24 lg:py-32" style={{ backgroundColor: "var(--surface-sunken)" }} aria-label="Bottleneck Audit call to action">
       <div className="container">
         <AnimatedSection animation="fade-in" delay={0.1}>
-          <div className="text-center max-w-xl mx-auto">
-            <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: "var(--amber)" }}>
-              Bottleneck Audit
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: "var(--amber)" }}>
+              Free Assessment
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-              Discover Your Bottleneck Score
+            <h2
+              className="font-extrabold tracking-tight mb-6"
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: "1.08" }}
+            >
+              Discover Your
+              <br />
+              Bottleneck Score
             </h2>
-            <p className="text-base mb-8" style={{ color: "var(--text-secondary)" }}>
-              Identify your biggest opportunities for automation and delegation in under 5 minutes.
+            <p className="text-lg mb-10 leading-relaxed max-w-lg mx-auto" style={{ color: "var(--text-secondary)" }}>
+              Five minutes. Thirty questions. A personalized score showing exactly where coaching and automation would make the biggest impact on your business.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
-              {["5 Minutes", "Personalized Results", "Free"].map((item) => (
-                <span key={item} className="flex items-center gap-1.5 text-sm font-medium text-foreground">
-                  <CheckCircle2 size={14} style={{ color: "var(--amber)" }} aria-hidden="true" />
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            <div className="pt-2">
+            <div className="flex flex-col items-center gap-6">
               <a href="/assessment">
                 <Button
                   size="lg"
@@ -41,6 +37,14 @@ export default function CTASection() {
                   <ArrowRight className="ml-2" size={18} />
                 </Button>
               </a>
+
+              <div className="flex flex-wrap justify-center gap-6 text-sm" style={{ color: "var(--text-tertiary)" }}>
+                <span>5 minutes</span>
+                <span aria-hidden="true">·</span>
+                <span>Personalized results</span>
+                <span aria-hidden="true">·</span>
+                <span>100% free</span>
+              </div>
             </div>
           </div>
         </AnimatedSection>
