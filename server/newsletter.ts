@@ -140,7 +140,7 @@ The image should evoke themes of business growth, automation, systems thinking, 
   }
 }
 
-router.get("/newsletters", async (_req, res) => {
+router.get("/newsletters", authMiddleware, async (_req, res) => {
   try {
     const allNewsletters = await db.select().from(newsletters).orderBy(desc(newsletters.createdAt));
     res.json(allNewsletters);
@@ -150,7 +150,7 @@ router.get("/newsletters", async (_req, res) => {
   }
 });
 
-router.post("/newsletters", async (req, res) => {
+router.post("/newsletters", authMiddleware, async (req, res) => {
   try {
     const validation = validateBody(newsletterCreateSchema, req.body);
     if (!validation.success) {
@@ -166,7 +166,7 @@ router.post("/newsletters", async (req, res) => {
   }
 });
 
-router.get("/newsletters/:id", async (req, res) => {
+router.get("/newsletters/:id", authMiddleware, async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const [newsletter] = await db.select().from(newsletters).where(eq(newsletters.id, id));
@@ -181,7 +181,7 @@ router.get("/newsletters/:id", async (req, res) => {
   }
 });
 
-router.post("/newsletters/:id/sources", async (req, res) => {
+router.post("/newsletters/:id/sources", authMiddleware, async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     
@@ -204,7 +204,7 @@ router.post("/newsletters/:id/sources", async (req, res) => {
   }
 });
 
-router.post("/newsletters/:id/summarize", async (req, res) => {
+router.post("/newsletters/:id/summarize", authMiddleware, async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const sources = await db.select().from(researchSources).where(eq(researchSources.newsletterId, id));
@@ -284,7 +284,7 @@ Format your response as JSON:
   }
 });
 
-router.post("/newsletters/:id/generate-html", async (req, res) => {
+router.post("/newsletters/:id/generate-html", authMiddleware, async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const [newsletter] = await db.select().from(newsletters).where(eq(newsletters.id, id));
@@ -313,7 +313,7 @@ router.post("/newsletters/:id/generate-html", async (req, res) => {
   }
 });
 
-router.post("/newsletters/:id/send", async (req, res) => {
+router.post("/newsletters/:id/send", authMiddleware, async (req, res) => {
   try {
     if (!resend) {
       return res.status(400).json({ error: "Resend API key not configured" });
@@ -352,7 +352,7 @@ router.post("/newsletters/:id/send", async (req, res) => {
   }
 });
 
-router.put("/newsletters/:id", async (req, res) => {
+router.put("/newsletters/:id", authMiddleware, async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const { title, tldr, topTenItems } = req.body;
@@ -391,7 +391,7 @@ router.put("/newsletters/:id", async (req, res) => {
   }
 });
 
-router.post("/newsletters/:id/approve", async (req, res) => {
+router.post("/newsletters/:id/approve", authMiddleware, async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const [newsletter] = await db.select().from(newsletters).where(eq(newsletters.id, id));
@@ -424,7 +424,7 @@ router.post("/newsletters/:id/approve", async (req, res) => {
   }
 });
 
-router.post("/fetch-article", async (req, res) => {
+router.post("/fetch-article", authMiddleware, async (req, res) => {
   try {
     const { url } = req.body;
     if (!url) {
@@ -465,7 +465,7 @@ router.post("/fetch-article", async (req, res) => {
 });
 
 // Automated newsletter generation with streaming progress (SSE - auth via session token)
-router.get("/newsletters/:id/auto-generate", async (req, res) => {
+router.get("/newsletters/:id/auto-generate", authMiddleware, async (req, res) => {
   // Validate session token (short-lived, not the admin key)
   const sessionToken = req.query.token as string;
   const isValidToken = await validateSseToken(sessionToken);

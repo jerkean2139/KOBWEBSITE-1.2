@@ -54,9 +54,14 @@ const staticPageMeta: Record<string, Partial<PageMeta>> = {
     image: "/manumation-book-cover-new.png",
   },
   "/assessment": {
-    title: "Free Bottleneck Audit | Find Your Growth Opportunities | KeanOnBiz",
-    description: "Take the free Bottleneck Audit to identify your biggest business bottlenecks, automation potential, and areas where coaching can help you scale.",
+    title: "Free Mini Audit — Discover What's Holding You Back | KeanOnBiz",
+    description: "Take the free 5-minute Mini Audit to score your business across 4 critical categories: Founder Dependency, Systems Maturity, Growth Readiness, and Automation Potential.",
     image: "/manumation-book-cover-new.png",
+  },
+  "/manumation-audit": {
+    title: "The Manumation Audit — Deep Business Diagnostic | KeanOnBiz",
+    description: "A comprehensive $2,500 business audit that identifies your exact revenue leaks, builds a custom automation blueprint, and gives you a 90-day implementation roadmap. Includes 1-on-1 strategy session with Jeremy Kean.",
+    image: "/jeremy-about-photo.webp",
   },
   "/insurance": {
     title: "Insurance Agency Coaching | Revenue Leak Calculator | KeanOnBiz",

@@ -23,6 +23,7 @@ const PUBLIC_PAGES = [
   { path: "/coaching-truth", name: "Coaching Truth" },
   { path: "/become-a-coach", name: "Become a Coach" },
   { path: "/jeremys-calendar-intro", name: "Calendar Intro" },
+  { path: "/manumation-audit", name: "Manumation Audit" },
   { path: "/dev", name: "Dev Sitemap" },
 ];
 
@@ -446,5 +447,133 @@ test.describe("Structured data", () => {
       }
     }
     expect(foundFaq, "FAQPage schema not found in any JSON-LD block").toBeTruthy();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 11. Homepage new sections render, removed sections don't appear
+// ---------------------------------------------------------------------------
+test.describe("Homepage sections", () => {
+  test("ManumationAuditSection renders with audit areas", async ({ page }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+
+    const auditHeading = page.locator('text="See What\'s Actually"');
+    expect(await auditHeading.count()).toBeGreaterThan(0);
+
+    // Should have the 5 audit areas
+    const areas = ["Operations Efficiency", "Delegation Readiness", "Automation Maturity", "Revenue Leaks", "Time Allocation"];
+    for (const area of areas) {
+      expect(await page.locator(`text="${area}"`).count(), `Missing audit area: ${area}`).toBeGreaterThan(0);
+    }
+  });
+
+  test("ResultsSection renders with stats", async ({ page }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+
+    expect(await page.locator('text="Numbers Don\'t Lie"').count()).toBeGreaterThan(0);
+  });
+
+  test("EcosystemSection and FunnelSection are removed", async ({ page }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+
+    // These were removed — should not appear
+    expect(await page.locator('text="Strategy. Method. Machine."').count()).toBe(0);
+    expect(await page.locator('text="Your Path to Freedom"').count()).toBe(0);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 12. Manumation Audit page
+// ---------------------------------------------------------------------------
+test.describe("Manumation Audit page", () => {
+  test("renders hero with pricing", async ({ page }) => {
+    await page.goto("/manumation-audit", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1000);
+
+    expect(await page.locator('text="$2,500"').count()).toBeGreaterThan(0);
+    expect(await page.locator('text="Stop Guessing."').count()).toBeGreaterThan(0);
+  });
+
+  test("renders comparison table", async ({ page }) => {
+    await page.goto("/manumation-audit", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1000);
+
+    expect(await page.locator('text="Mini Audit vs. Full Audit"').count()).toBeGreaterThan(0);
+    expect(await page.locator("table").count()).toBeGreaterThan(0);
+  });
+
+  test("has booking CTA", async ({ page }) => {
+    await page.goto("/manumation-audit", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1000);
+
+    const bookCTA = page.locator('a[href="/jeremys-calendar-strategy"]');
+    expect(await bookCTA.count()).toBeGreaterThan(0);
+  });
+
+  test("/audit redirects to /manumation-audit", async ({ page }) => {
+    await page.goto("/audit", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    expect(page.url()).toContain("/manumation-audit");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 13. Mini Audit starts and shows questions
+// ---------------------------------------------------------------------------
+test.describe("Mini Audit flow", () => {
+  test("assessment page loads and shows first question", async ({ page }) => {
+    await page.goto("/assessment", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+
+    // Should show the first question about hours
+    const hourQuestion = page.locator("h2", { hasText: "hours per week" });
+    expect(await hourQuestion.count()).toBeGreaterThan(0);
+
+    // Should have option buttons
+    const options = page.locator("button", { hasText: "Under 40" });
+    expect(await options.count()).toBeGreaterThan(0);
+  });
+
+  test("clicking an option advances to next question", async ({ page }) => {
+    await page.goto("/assessment", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+
+    // Click first option
+    await page.locator("button", { hasText: "Under 40 hours" }).click();
+    await page.waitForTimeout(800);
+
+    // Should advance to question 2
+    const q2 = page.locator("h2", { hasText: "describes your business" });
+    expect(await q2.count()).toBeGreaterThan(0);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 14. Calendar referral capture
+// ---------------------------------------------------------------------------
+test.describe("Calendar referral capture", () => {
+  test("calendar page has referral capture or name input", async ({ page }) => {
+    await page.goto("/jeremys-calendar-intro", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+
+    // Should show either the "Were you referred?" prompt or the name input
+    // (depends on session state from prior tests)
+    const referralPrompt = page.locator("text=referred");
+    const nameInput = page.locator('input[placeholder="Their name"]');
+    const hasReferral = (await referralPrompt.count()) > 0;
+    const hasInput = (await nameInput.count()) > 0;
+
+    expect(hasReferral || hasInput, "Referral capture section not found").toBeTruthy();
+  });
+
+  test("calendar page has GHL booking embed", async ({ page }) => {
+    await page.goto("/jeremys-calendar-intro", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+
+    const iframe = page.locator("iframe");
+    expect(await iframe.count()).toBeGreaterThan(0);
   });
 });

@@ -20,6 +20,7 @@ const STATIC_ROUTES = [
   { loc: "/contact", changefreq: "monthly", priority: "0.8" },
   { loc: "/book", changefreq: "weekly", priority: "0.9" },
   { loc: "/assessment", changefreq: "monthly", priority: "0.9" },
+  { loc: "/manumation-audit", changefreq: "monthly", priority: "0.9" },
   { loc: "/insurance", changefreq: "monthly", priority: "0.9" },
   { loc: "/insurance-coaching", changefreq: "monthly", priority: "0.9" },
   { loc: "/business-automation", changefreq: "monthly", priority: "0.9" },
@@ -326,7 +327,8 @@ Jeremy Kean is a business coach specializing in helping overwhelmed business own
 - Insurance Agency Coaching: ${BASE_URL}/insurance-coaching
 - Business Automation Coaching: ${BASE_URL}/business-automation
 - Revenue Leak Calculator: ${BASE_URL}/insurance
-- Bottleneck Audit: ${BASE_URL}/assessment
+- Free Mini Audit: ${BASE_URL}/assessment
+- The Manumation Audit ($2,500 diagnostic): ${BASE_URL}/manumation-audit
 - The Founder's Filter (Free Delegation Tool): ${BASE_URL}/founders-filter
 - Portfolio & Build Gallery: ${BASE_URL}/portfolio
 - FAQ: ${BASE_URL}/faq
