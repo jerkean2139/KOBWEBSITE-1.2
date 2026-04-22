@@ -4,9 +4,9 @@ import { SEO } from "@/components/SEO";
 import HeroSection from "@/components/home/HeroSection";
 import StatementSection from "@/components/home/StatementSection";
 import AboutSection from "@/components/home/AboutSection";
-import EcosystemSection from "@/components/home/EcosystemSection";
+import ManumationAuditSection from "@/components/home/ManumationAuditSection";
+import ResultsSection from "@/components/home/ResultsSection";
 import ServicesSection from "@/components/home/ServicesSection";
-import FunnelSection from "@/components/home/FunnelSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import CTASection from "@/components/home/CTASection";
 import NewsletterSection from "@/components/home/NewsletterSection";
@@ -60,9 +60,9 @@ export default function Home() {
         <HeroSection />
         <StatementSection />
         <AboutSection />
+        <ManumationAuditSection />
+        <ResultsSection />
         <ServicesSection />
-        <EcosystemSection />
-        <FunnelSection />
         <TestimonialsSection />
         <CTASection />
         <NewsletterSection />

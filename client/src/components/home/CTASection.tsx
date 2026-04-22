@@ -1,8 +1,11 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useReferral } from "@/hooks/useReferral";
 
 export default function CTASection() {
+  const { isReferral } = useReferral();
+
   return (
     <section id="assessment" className="py-24 lg:py-32" style={{ backgroundColor: "var(--surface-sunken)" }} aria-label="Bottleneck Audit call to action">
       <div className="container">
@@ -15,15 +18,13 @@ export default function CTASection() {
               className="font-extrabold tracking-tight mb-6"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: "1.08" }}
             >
-              Discover Your
-              <br />
-              Bottleneck Score
+              Get Your Free Score
             </h2>
             <p className="text-lg mb-10 leading-relaxed max-w-lg mx-auto" style={{ color: "var(--text-secondary)" }}>
-              Five minutes. Thirty questions. A personalized score showing exactly where coaching and automation would make the biggest impact on your business.
+              Five minutes. Personalized insights across five critical business areas. See where you stand — and what the full Manumation Audit would reveal.
             </p>
 
-            <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href="/assessment">
                 <Button
                   size="lg"
@@ -33,19 +34,24 @@ export default function CTASection() {
                     color: "var(--amber-foreground)",
                   }}
                 >
-                  Take the Free Audit
+                  Take the Free Mini Audit
                   <ArrowRight className="ml-2" size={18} />
                 </Button>
               </a>
-
-              <div className="flex flex-wrap justify-center gap-6 text-sm" style={{ color: "var(--text-tertiary)" }}>
-                <span>5 minutes</span>
-                <span aria-hidden="true">·</span>
-                <span>Personalized results</span>
-                <span aria-hidden="true">·</span>
-                <span>100% free</span>
-              </div>
+              <a href={isReferral ? "/jeremys-calendar-intro" : "/assessment"}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="h-14 px-8 text-base font-semibold"
+                >
+                  Book a Call
+                </Button>
+              </a>
             </div>
+
+            <p className="text-sm mt-6" style={{ color: "var(--text-tertiary)" }}>
+              5 minutes · Personalized results · 100% free
+            </p>
           </div>
         </AnimatedSection>
       </div>

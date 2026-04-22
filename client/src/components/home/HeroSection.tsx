@@ -3,9 +3,11 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
 import { ArrowRight, Users, Clock, Award } from "lucide-react";
 import { useHeroABTest } from "@/hooks/useHeroABTest";
+import { useReferral } from "@/hooks/useReferral";
 
 export default function HeroSection() {
   const { variant, trackCTAClick } = useHeroABTest();
+  const { isReferral } = useReferral();
 
   return (
     <section
@@ -72,23 +74,37 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* CTA */}
-              <a
-                href="/assessment"
-                onClick={() => trackCTAClick("take_assessment")}
-              >
-                <Button
-                  size="lg"
-                  className="h-14 px-8 text-base font-bold rounded-lg"
-                  style={{
-                    backgroundColor: "var(--amber)",
-                    color: "var(--amber-foreground)",
-                  }}
+              {/* Dual CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/assessment"
+                  onClick={() => trackCTAClick("take_assessment")}
                 >
-                  Take the Free Bottleneck Audit
-                  <ArrowRight className="ml-2" size={18} />
-                </Button>
-              </a>
+                  <Button
+                    size="lg"
+                    className="h-14 px-8 text-base font-bold rounded-lg w-full sm:w-auto"
+                    style={{
+                      backgroundColor: "var(--amber)",
+                      color: "var(--amber-foreground)",
+                    }}
+                  >
+                    Take the Free Mini Audit
+                    <ArrowRight className="ml-2" size={18} />
+                  </Button>
+                </a>
+                <a
+                  href={isReferral ? "/jeremys-calendar-intro" : "/assessment"}
+                  onClick={() => trackCTAClick("book_call")}
+                >
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="h-14 px-8 text-base font-semibold rounded-lg w-full sm:w-auto"
+                  >
+                    Book a Call
+                  </Button>
+                </a>
+              </div>
             </div>
           </AnimatedSection>
 

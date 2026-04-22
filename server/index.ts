@@ -16,6 +16,7 @@ import ghlWebhooksRouter from "./ghl-webhooks";
 import painPointsRouter from "./pain-points";
 import micropodRouter, { handlePodcastRss } from "./micropod";
 import insuranceAssessmentRouter from "./insurance-assessment";
+import referralRouter from "./referral";
 import { logger, withRequestLogging } from "./logger";
 import { createSeoMiddleware } from "./seo-middleware";
 
@@ -66,6 +67,9 @@ async function startServer() {
 
   // Insurance Assessment API routes - PUBLIC
   app.use("/api/insurance-assessment", insuranceAssessmentRouter);
+
+  // Referral validation - PUBLIC
+  app.use("/api/referral", referralRouter);
 
   // Set up authentication (applies session middleware to routes after this)
   await setupAuth(app);
