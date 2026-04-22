@@ -17,6 +17,7 @@ import painPointsRouter from "./pain-points";
 import micropodRouter, { handlePodcastRss } from "./micropod";
 import insuranceAssessmentRouter from "./insurance-assessment";
 import referralRouter from "./referral";
+import miniAuditRouter from "./mini-audit";
 import { logger, withRequestLogging } from "./logger";
 import { createSeoMiddleware } from "./seo-middleware";
 
@@ -70,6 +71,9 @@ async function startServer() {
 
   // Referral validation - PUBLIC
   app.use("/api/referral", referralRouter);
+
+  // Mini Audit API - PUBLIC
+  app.use("/api/mini-audit", miniAuditRouter);
 
   // Set up authentication (applies session middleware to routes after this)
   await setupAuth(app);

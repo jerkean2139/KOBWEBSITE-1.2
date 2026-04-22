@@ -324,7 +324,7 @@ test.describe("SEO meta tags", () => {
     { path: "/faq", titleContains: "Questions" },
     { path: "/insurance", titleContains: "Insurance" },
     { path: "/insurance-coaching", titleContains: "Insurance" },
-    { path: "/assessment", titleContains: "Bottleneck" },
+    { path: "/assessment", titleContains: "Audit" },
     { path: "/book", titleContains: "Manumation" },
   ];
 
