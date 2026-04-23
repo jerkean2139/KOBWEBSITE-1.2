@@ -1,20 +1,11 @@
-import { useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Brain, Target, Users, Clock, Calendar, Star, Quote, Download, FileText } from "lucide-react";
 import { Link } from "wouter";
 import { generateFoundersFilterPDF } from "@/components/FoundersFilterPDFGenerator";
+import GHLForm from "@/components/GHLForm";
 
 export default function FoundersFilterLanding() {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.msgsndr.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
@@ -87,23 +78,14 @@ export default function FoundersFilterLanding() {
                 </span>
               </div>
             </div>
-            <div className="bg-slate-800/80 rounded-xl p-4 border border-slate-700">
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/form/zgCM4tgBuMifZyMfWfmH"
-                style={{ width: "100%", height: "489px", border: "none", borderRadius: "3px" }}
-                id="inline-zgCM4tgBuMifZyMfWfmH"
-                data-layout='{"id":"INLINE"}'
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="The Founder's Filter"
-                data-height="489"
-                data-layout-iframe-id="inline-zgCM4tgBuMifZyMfWfmH"
-                data-form-id="zgCM4tgBuMifZyMfWfmH"
-                title="The Founder's Filter"
+            <div className="rounded-xl p-5" style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}>
+              <GHLForm
+                formId="zgCM4tgBuMifZyMfWfmH"
+                heading="Start Your Session"
+                buttonText="Begin The Founder's Filter"
+                successMessage="You're all set! Redirecting to your session..."
+                source="founders_filter_landing"
+                onSuccess={() => { setTimeout(() => window.location.assign("/founders-filter/start"), 1500); }}
               />
               <div className="mt-4 pt-4 border-t border-slate-700 text-center">
                 <p className="text-slate-400 text-sm mb-3">Already signed up?</p>
@@ -369,23 +351,14 @@ export default function FoundersFilterLanding() {
           <p className="text-xl text-slate-400 mb-8">
             59 minutes from now, you'll have clarity you haven't had in years.
           </p>
-          <div className="bg-slate-800/80 rounded-xl p-4 border border-slate-700">
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/form/zgCM4tgBuMifZyMfWfmH"
-              style={{ width: "100%", height: "489px", border: "none", borderRadius: "3px" }}
-              id="inline-zgCM4tgBuMifZyMfWfmH-bottom"
-              data-layout='{"id":"INLINE"}'
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="The Founder's Filter"
-              data-height="489"
-              data-layout-iframe-id="inline-zgCM4tgBuMifZyMfWfmH-bottom"
-              data-form-id="zgCM4tgBuMifZyMfWfmH"
-              title="The Founder's Filter"
+          <div className="rounded-xl p-5 max-w-md mx-auto" style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}>
+            <GHLForm
+              formId="zgCM4tgBuMifZyMfWfmH"
+              heading="Start Your Free Session"
+              buttonText="Begin The Founder's Filter"
+              successMessage="You're all set! Redirecting..."
+              source="founders_filter_landing_bottom"
+              onSuccess={() => { setTimeout(() => window.location.assign("/founders-filter/start"), 1500); }}
             />
           </div>
           <p className="text-slate-500 text-sm mt-6">

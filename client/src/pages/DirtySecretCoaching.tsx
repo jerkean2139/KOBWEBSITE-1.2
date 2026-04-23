@@ -1,19 +1,10 @@
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
+import GHLForm from "@/components/GHLForm";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
 
 export default function DirtySecretCoaching() {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.msgsndr.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   return (
     <>
@@ -199,22 +190,12 @@ export default function DirtySecretCoaching() {
                         {" "}and{" "}
                         <a href="/terms" className="text-primary hover:underline">Terms of Service</a>.
                       </p>
-                      <iframe
-                        src="https://api.leadconnectorhq.com/widget/form/BmNwodj0BwAaw5UlvZO0"
-                        style={{ width: "100%", height: "450px", border: "none", borderRadius: "8px" }}
-                        id="inline-BmNwodj0BwAaw5UlvZO0"
-                        data-layout="{'id':'INLINE'}"
-                        data-trigger-type="alwaysShow"
-                        data-trigger-value=""
-                        data-activation-type="alwaysActivated"
-                        data-activation-value=""
-                        data-deactivation-type="neverDeactivate"
-                        data-deactivation-value=""
-                        data-form-name="Manumation Certified Coach Interest"
-                        data-height="450"
-                        data-layout-iframe-id="inline-BmNwodj0BwAaw5UlvZO0"
-                        data-form-id="BmNwodj0BwAaw5UlvZO0"
-                        title="Manumation Certified Coach Interest"
+                      <GHLForm
+                        formId="BmNwodj0BwAaw5UlvZO0"
+                        heading="Join the Waitlist"
+                        buttonText="Get Early Access"
+                        successMessage="You're on the list! We'll be in touch."
+                        source="coaching_truth_interest"
                       />
                     </div>
                   </div>

@@ -255,4 +255,59 @@ router.post("/assessment-completed", async (req, res) => {
   }
 });
 
+// Generic form submission webhook — used by styled GHLForm component
+const formSubmitSchema = z.object({
+  formId: z.string().max(100),
+  full_name: z.string().min(1).max(200),
+  email: z.string().email().max(255),
+  phone: z.string().max(50).optional().default(""),
+  source: z.string().max(100).optional().default("keanonbiz_website"),
+});
+
+router.post("/form-submit", async (req, res) => {
+  try {
+    const rateLimitKey = req.ip || "unknown";
+    const { allowed, reason } = assessmentWebhookRateLimiter(rateLimitKey);
+    if (!allowed) {
+      return res.status(429).json({ error: "Rate limited", reason });
+    }
+
+    const result = formSubmitSchema.safeParse(req.body);
+    if (!result.success) {
+      return res.status(400).json({ error: "Invalid payload" });
+    }
+
+    const data = result.data;
+
+    // Forward to GHL webhook for workflow automation
+    try {
+      await fetch(
+        "https://services.leadconnectorhq.com/hooks/5yufDyfhuTKFx8nCQCP6/webhook-trigger/2cc0fbc2-7908-42f1-9abe-e78b8d5457d7",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...data,
+            submission_date: new Date().toISOString(),
+          }),
+        }
+      );
+    } catch (webhookError) {
+      logger.error("GHL webhook failed for form-submit", {}, webhookError as Error);
+    }
+
+    logger.info("GHL form submitted via webhook", {
+      endpoint: "/api/ghl-webhooks/form-submit",
+      formId: data.formId,
+      email: data.email,
+      source: data.source,
+    });
+
+    res.json({ success: true });
+  } catch (error) {
+    logger.error("Form submit error", { endpoint: "/api/ghl-webhooks/form-submit" }, error as Error);
+    res.status(500).json({ error: "Submit failed" });
+  }
+});
+
 export default router;
