@@ -31,8 +31,13 @@ import {
   releaseConcurrentRequest 
 } from "./rate-limiter";
 import { logger } from "./logger";
+import { createAuthMiddleware } from "./auth-utils";
 
 const router = Router();
+const authMiddleware = createAuthMiddleware();
+
+// All content-studio routes require admin auth
+router.use(authMiddleware);
 
 // Path traversal protection - sanitize slugs for file operations
 function sanitizeSlug(slug: string): string {

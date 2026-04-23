@@ -35,9 +35,10 @@ export default function FoundersFilterLanding() {
                   </div>
                   <div className="flex gap-6 items-center">
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-amber-500/30 flex-shrink-0">
-                      <img 
-                        src="/jeremy-main-hero.webp" 
+                      <img
+                        src="/jeremy-main-hero.webp"
                         alt="Jeremy Kean"
+                        loading="lazy"
                         className="w-full h-full object-cover"
                       />
                     </div>

@@ -2,6 +2,7 @@ import DOMPurify from "dompurify";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import {
@@ -178,10 +179,7 @@ export default function FAQ() {
         title="Frequently Asked Questions | KeanOnBiz"
         description="Answers to common questions about business coaching, the Manumation Method, AI automation, insurance agency coaching, and getting started with Jeremy Kean."
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <JsonLd data={faqJsonLd} />
       <Navigation />
       <main id="main-content" className="min-h-screen pt-20">
         <section

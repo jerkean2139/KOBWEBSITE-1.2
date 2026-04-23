@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
@@ -166,10 +167,7 @@ export default function InsuranceCoaching() {
         description="Strategic coaching for insurance agency owners. Fix your pipeline, automate renewals, build a team that runs without you, and break through your revenue ceiling. 35+ years experience."
         image="/jeremy-about-photo.webp"
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <Navigation logoVariant="red" />
 
       <main id="main-content">

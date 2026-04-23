@@ -113,7 +113,7 @@ async function startServer() {
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "font-src 'self' https://fonts.gstatic.com",
         "img-src 'self' data: https: blob:",
-        "connect-src 'self' https://www.google-analytics.com https://api.openai.com https://api.anthropic.com https://*.leadconnectorhq.com wss://*.leadconnectorhq.com",
+        "connect-src 'self' https://www.google-analytics.com https://api.anthropic.com https://*.leadconnectorhq.com wss://*.leadconnectorhq.com",
         "frame-src 'self' https://link.msgsndr.com https://assets.calendly.com https://www.youtube.com https://player.vimeo.com https://*.leadconnectorhq.com",
         "media-src 'self' blob:",
         "object-src 'none'",

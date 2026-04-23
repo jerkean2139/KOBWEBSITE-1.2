@@ -136,9 +136,10 @@ export default function Portfolio() {
       >
         <div className="relative aspect-video overflow-hidden">
           {project.featuredImage ? (
-            <img 
-              src={project.featuredImage} 
+            <img
+              src={project.featuredImage}
               alt={project.title}
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (

@@ -42,9 +42,10 @@ export default function Calendar() {
       <section className="pt-32 pb-16 bg-[var(--background)]">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <img 
-              src="/jeremy-about-photo.webp" 
-              alt="Jeremy Kean" 
+            <img
+              src="/jeremy-about-photo.webp"
+              alt="Jeremy Kean"
+              loading="lazy"
               className="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-6 object-cover border-4 border-[var(--amber)]/30 shadow-lg"
             />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">

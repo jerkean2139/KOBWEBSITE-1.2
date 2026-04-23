@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import { SEO } from "@/components/SEO";
+import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
@@ -137,10 +138,7 @@ export default function BusinessAutomation() {
         description="Systematize first, automate second. The Manumation Method helps business owners build operations that run without them. 35+ years experience, 100+ businesses transformed."
         image="/manumation-book-cover-new.png"
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <Navigation />
 
       <main id="main-content">

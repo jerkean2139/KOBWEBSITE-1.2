@@ -201,9 +201,10 @@ export default function CaseStudy() {
           {project.featuredImage && !project.heroVideoUrl && (
             <section className="mb-12">
               <div className="aspect-video rounded-xl overflow-hidden bg-card border border-white/10">
-                <img 
-                  src={project.featuredImage} 
+                <img
+                  src={project.featuredImage}
                   alt={project.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -360,7 +361,7 @@ export default function CaseStudy() {
                                 {milestone.mediaType === "video" ? (
                                   <video src={milestone.mediaUrl} className="w-full h-full object-cover" />
                                 ) : (
-                                  <img src={milestone.mediaUrl} alt="" className="w-full h-full object-cover" />
+                                  <img src={milestone.mediaUrl} alt="" loading="lazy" className="w-full h-full object-cover" />
                                 )}
                               </div>
                             )}
@@ -392,7 +393,7 @@ export default function CaseStudy() {
                         </div>
                       </>
                     ) : (
-                      <img src={media.url} alt={media.caption} className="w-full h-full object-cover" />
+                      <img src={media.url} alt={media.caption} loading="lazy" className="w-full h-full object-cover" />
                     )}
                     {media.phase && (
                       <span className="absolute bottom-2 left-2 text-xs bg-black/60 text-[var(--amber)] px-2 py-0.5 rounded">
@@ -420,7 +421,7 @@ export default function CaseStudy() {
                 {selectedMedia.type === "video" ? (
                   <video src={selectedMedia.url} controls autoPlay className="w-full rounded-lg" />
                 ) : (
-                  <img src={selectedMedia.url} alt={selectedMedia.caption} className="w-full rounded-lg" />
+                  <img src={selectedMedia.url} alt={selectedMedia.caption} loading="lazy" className="w-full rounded-lg" />
                 )}
                 <p className="text-white text-center mt-4">{selectedMedia.caption}</p>
                 {selectedMedia.phase && (

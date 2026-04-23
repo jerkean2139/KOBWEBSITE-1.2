@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { JsonLd } from "@/components/JsonLd";
 import HeroSection from "@/components/home/HeroSection";
 import StatementSection from "@/components/home/StatementSection";
 import AboutSection from "@/components/home/AboutSection";
@@ -51,10 +52,7 @@ export default function Home() {
         description="Strategic coaching and AI-powered automation for insurance agencies and business owners. 35+ years experience, 100+ businesses helped. Transform your operations with The Manumation Method."
         image="/manumation-book-cover-nobg.webp"
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
-      />
+      <JsonLd data={reviewsJsonLd} />
       <Navigation />
       <main id="main-content" className="min-h-screen" role="main">
         <HeroSection />

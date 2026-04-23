@@ -1,6 +1,7 @@
 import { useParams, Link, Redirect } from "wouter";
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
+import { JsonLd } from "@/components/JsonLd";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -82,10 +83,7 @@ export default function TopicHub() {
         title={info.metaTitle}
         description={info.metaDescription}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+      <JsonLd data={collectionSchema} />
 
       <Navigation />
       <main id="main-content" className="min-h-screen bg-background" role="main">

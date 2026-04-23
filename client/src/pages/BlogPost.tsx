@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { getBlogPostBySlug, getAllBlogPosts, getRelatedPosts, pillarInfo, blogPosts as allBlogPostsData } from "@/data/blogPosts";
 import { Clock, Calendar, ArrowLeft, ArrowRight, Share2, Linkedin, Twitter, Facebook, BookOpen, Bot, Sparkles, Users } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 function injectInternalLinks(content: string, currentSlug: string): string {
@@ -66,7 +67,7 @@ function renderMarkdown(content: string): string {
     .replace(/^> (.+)$/gim, '<blockquote class="my-8 pl-6 py-4 pr-4 border-l-4 border-primary bg-primary/5 rounded-r-lg italic" style="color: var(--text-secondary)">$1</blockquote>')
     .replace(/\*\*(.*?)\*\*/gim, '<strong class="font-semibold text-foreground">$1</strong>')
     .replace(/\*(.*?)\*/gim, '<em>$1</em>')
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<figure class="my-10"><img src="$2" alt="$1" class="w-full rounded-xl shadow-lg" /><figcaption class="text-center text-sm mt-3" style="color: var(--text-tertiary)">$1</figcaption></figure>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<figure class="my-10"><img loading="lazy" src="$2" alt="$1" class="w-full rounded-xl shadow-lg" /><figcaption class="text-center text-sm mt-3" style="color: var(--text-tertiary)">$1</figcaption></figure>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, (match, text, url) => {
       const isExternal = url.startsWith('http');
       if (isExternal) {
@@ -198,18 +199,9 @@ export default function BlogPost() {
         modifiedTime={post.updatedAt}
         author={post.author.name}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
-      />
+      <JsonLd data={articleSchema} />
+      <JsonLd data={faqSchema} />
+      <JsonLd data={speakableSchema} />
       
       <Navigation />
       <main id="main-content" className="min-h-screen bg-background" role="main">
@@ -450,7 +442,7 @@ export default function BlogPost() {
                   <AnimatedSection animation="slide-left" delay={0.3}>
                     <Card className="border-0 shadow-lg overflow-hidden">
                       <div className="bg-gradient-to-br from-primary to-primary/80 p-6 text-white">
-                        <img src="/manumation-book-cover-nobg.webp" alt="Manumation Method" className="w-16 h-auto mb-4 rounded shadow-lg" />
+                        <img src="/manumation-book-cover-nobg.webp" alt="Manumation Method" className="w-16 h-auto mb-4 rounded shadow-lg" loading="lazy" />
                         <h3 className="text-xl font-bold mb-2">The Manumation Method</h3>
                         <p className="text-white/90 text-sm">
                           Get the complete framework for transforming your business with AI automation.
@@ -469,7 +461,7 @@ export default function BlogPost() {
                   <AnimatedSection animation="slide-left" delay={0.4}>
                     <Card className="border-0 shadow-lg overflow-hidden">
                       <div className="p-6 text-foreground" style={{ backgroundColor: "var(--surface-sunken)" }}>
-                        <img src="/zenoflo-logo.svg" alt="Zenoflo" className="w-12 h-12 mb-4" />
+                        <img src="/zenoflo-logo.svg" alt="Zenoflo" className="w-12 h-12 mb-4" loading="lazy" />
                         <h3 className="text-xl font-bold mb-2">Zenoflo Automation</h3>
                         <p className="text-white/90 text-sm">
                           Ready-to-deploy AI workflows for insurance agencies and businesses.

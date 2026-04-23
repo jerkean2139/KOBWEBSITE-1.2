@@ -1,9 +1,31 @@
-import { Router } from "express";
+import { Router, Request, Response, NextFunction } from "express";
 import { logger } from "./logger";
 import { z } from "zod";
 import { createRateLimiter } from "./rate-limiter";
 
 const router = Router();
+
+// GHL webhook secret verification — checks ?secret= query param or X-Webhook-Secret header
+// Set GHL_WEBHOOK_SECRET in Railway env vars and append ?secret=VALUE to the webhook URL in GHL
+const WEBHOOK_SECRET = process.env.GHL_WEBHOOK_SECRET;
+
+function verifyWebhookSecret(req: Request, res: Response, next: NextFunction) {
+  if (!WEBHOOK_SECRET) {
+    // If no secret configured, allow (backwards compatible) but warn
+    logger.warn("GHL_WEBHOOK_SECRET not set — webhook endpoints are unprotected");
+    return next();
+  }
+  const secretFromQuery = req.query.secret as string | undefined;
+  const secretFromHeader = req.headers["x-webhook-secret"] as string | undefined;
+  if (secretFromQuery === WEBHOOK_SECRET || secretFromHeader === WEBHOOK_SECRET) {
+    return next();
+  }
+  logger.warn("GHL webhook rejected — invalid secret", { ip: req.ip, path: req.path });
+  res.status(401).json({ error: "Unauthorized" });
+}
+
+// Apply to all webhook routes
+router.use(verifyWebhookSecret);
 
 const webhookRateLimiter = createRateLimiter({
   windowMs: 60 * 1000,

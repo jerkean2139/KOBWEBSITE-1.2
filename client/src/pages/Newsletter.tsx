@@ -226,6 +226,7 @@ export default function Newsletter() {
                   <img
                     src="/jeremy-about-photo.webp"
                     alt="Jeremy Kean"
+                    loading="lazy"
                     className="relative rounded-2xl shadow-2xl w-full h-auto object-cover object-top"
                     style={{ maxHeight: '500px' }}
                     loading="lazy"

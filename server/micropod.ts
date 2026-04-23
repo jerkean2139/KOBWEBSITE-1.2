@@ -145,7 +145,7 @@ router.delete("/episodes/:id", requireAuth, async (req, res) => {
   }
 });
 
-router.get("/episodes/:id/generate", async (req, res) => {
+router.get("/episodes/:id/generate", requireAuth, async (req, res) => {
   const token = req.query.token as string;
   if (!token || !(await validateSseToken(token))) {
     return res.status(401).json({ error: "Unauthorized" });
