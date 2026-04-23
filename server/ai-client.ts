@@ -10,8 +10,8 @@ const anthropic = new Anthropic({
 // gpt-4o → claude-sonnet-4-20250514 (fast, capable, cost-effective)
 // gpt-4o-mini → claude-haiku-3-5-20241022 (fastest, cheapest)
 const MODEL_MAP = {
-  "gpt-4o": "claude-sonnet-4-20250514",
-  "gpt-4o-mini": "claude-haiku-3-5-20241022",
+  "gpt-4o": "claude-sonnet-4-6-20250627",
+  "gpt-4o-mini": "claude-haiku-4-5-20251001",
 } as const;
 
 type OpenAIModel = keyof typeof MODEL_MAP;
