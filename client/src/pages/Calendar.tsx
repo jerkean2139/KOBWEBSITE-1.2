@@ -50,7 +50,7 @@ export default function Calendar() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Book with <span className="text-[var(--amber)]">Jeremy</span>
             </h1>
-            <p className="text-xl text-slate-300">
+            <p className="text-xl" style={{ color: "var(--text-secondary)" }}>
               Choose the session type that fits your needs
             </p>
           </div>
@@ -79,12 +79,12 @@ export default function Calendar() {
                       {session.title}
                     </h3>
                     
-                    <div className="flex items-center gap-2 text-slate-400 mb-4">
+                    <div className="flex items-center gap-2 mb-4" style={{ color: "var(--text-tertiary)" }}>
                       <Clock size={16} />
                       <span className="text-sm">{session.duration}</span>
                     </div>
                     
-                    <p className="text-slate-300 text-sm mb-6 leading-relaxed flex-grow">
+                    <p className="text-sm mb-6 leading-relaxed flex-grow" style={{ color: "var(--text-secondary)" }}>
                       {session.description}
                     </p>
                     
@@ -92,7 +92,7 @@ export default function Calendar() {
                       {session.highlights.map((highlight) => (
                         <span
                           key={highlight}
-                          className="text-xs bg-[var(--background)] text-slate-300 px-2 py-1 rounded"
+                          className="text-xs bg-[var(--background)] px-2 py-1 rounded" style={{ color: "var(--text-secondary)" }}
                         >
                           {highlight}
                         </span>
@@ -117,7 +117,7 @@ export default function Calendar() {
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Not Sure Which Session?
             </h2>
-            <p className="text-slate-300 mb-6">
+            <p className="mb-6" style={{ color: "var(--text-secondary)" }}>
               Start with a Quick Connect call and we'll figure out the best path forward together.
             </p>
             <Link href="/jeremys-calendar-intro">
@@ -136,7 +136,7 @@ export default function Calendar() {
         <div className="container">
           <div className="text-center">
             <Link href="/">
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[var(--surface-elevated)]">
+              <Button variant="ghost" className="hover:text-white hover:bg-[var(--surface-elevated)]" style={{ color: "var(--text-tertiary)" }}>
                 <ArrowLeft className="mr-2" size={16} />
                 Back to Home
               </Button>

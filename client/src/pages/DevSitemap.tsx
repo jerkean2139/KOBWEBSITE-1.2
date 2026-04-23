@@ -52,7 +52,7 @@ const categoryInfo = {
   content: { label: "Content & Media", icon: <BookOpen className="w-4 h-4" />, color: "from-purple-500 to-pink-500" },
   tools: { label: "Interactive Tools", icon: <Settings className="w-4 h-4" />, color: "from-amber-500 to-orange-500" },
   admin: { label: "Admin Tools", icon: <Lock className="w-4 h-4" />, color: "from-red-500 to-rose-500" },
-  legal: { label: "Legal", icon: <FileText className="w-4 h-4" />, color: "from-slate-500 to-gray-500" },
+  legal: { label: "Legal", icon: <FileText className="w-4 h-4" />, color: "from-zinc-500 to-zinc-600" },
 };
 
 export default function DevSitemap() {
@@ -77,7 +77,7 @@ export default function DevSitemap() {
   return (
     <>
       <SEO title="Dev Sitemap" noindex={true} />
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+      <div className="min-h-screen bg-background">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
@@ -93,7 +93,7 @@ export default function DevSitemap() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Site Map
           </h1>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl max-w-2xl mx-auto" style={{ color: "var(--text-tertiary)" }}>
             Interactive overview of all pages on KeanOnBiz. Click any card to visit that page.
           </p>
         </div>
@@ -105,11 +105,11 @@ export default function DevSitemap() {
             { label: "Content", value: stats.content, color: "bg-purple-500" },
             { label: "Tools", value: stats.tools, color: "bg-amber-500" },
           ].map((stat, i) => (
-            <Card key={i} className="bg-slate-800/50 border-slate-700">
+            <Card key={i} className="bg-card border-border">
               <CardContent className="p-4 text-center">
                 <div className={`inline-flex w-3 h-3 rounded-full ${stat.color} mb-2`}></div>
                 <p className="text-3xl font-bold text-white">{stat.value}</p>
-                <p className="text-sm text-slate-400">{stat.label}</p>
+                <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>{stat.label}</p>
               </CardContent>
             </Card>
           ))}
@@ -117,26 +117,26 @@ export default function DevSitemap() {
 
         <div className="flex flex-col md:flex-row gap-4 mb-8">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: "var(--text-tertiary)" }} />
             <Input
               placeholder="Search pages..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500"
+              className="pl-10 bg-card border-border text-white placeholder:opacity-30"
             />
           </div>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-          <TabsList className="bg-slate-800/50 border border-slate-700 p-1 flex-wrap h-auto">
-            <TabsTrigger value="all" className="text-slate-300 data-[state=active]:bg-primary data-[state=active]:text-white">
+          <TabsList className="bg-card border border-border p-1 flex-wrap h-auto">
+            <TabsTrigger value="all" className="data-[state=active]:bg-primary data-[state=active]:text-white">
               All Pages
             </TabsTrigger>
             {Object.entries(categoryInfo).map(([key, info]) => (
               <TabsTrigger 
                 key={key} 
                 value={key}
-                className="text-slate-300 data-[state=active]:bg-primary data-[state=active]:text-white flex items-center gap-1"
+                className="data-[state=active]:bg-primary data-[state=active]:text-white flex items-center gap-1"
               >
                 {info.icon}
                 <span className="hidden sm:inline">{info.label}</span>
@@ -150,26 +150,26 @@ export default function DevSitemap() {
             const catInfo = categoryInfo[route.category];
             return (
               <Link key={route.path} href={route.path}>
-                <Card className="group cursor-pointer bg-slate-800/50 border-slate-700 hover:border-slate-600 hover:bg-slate-800/80 transition-all duration-300 h-full overflow-hidden">
+                <Card className="group cursor-pointer bg-card border-border hover:border-white/20 hover:bg-white/5 transition-all duration-300 h-full overflow-hidden">
                   <div className={`h-1 bg-gradient-to-r ${catInfo.color}`}></div>
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className={`p-3 rounded-xl bg-gradient-to-br ${catInfo.color} text-white`}>
                         {route.icon}
                       </div>
-                      <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-white transition-colors" />
+                      <ExternalLink className="w-4 h-4 group-hover:text-white transition-colors" style={{ color: "var(--text-tertiary)" }} />
                     </div>
                     <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-primary transition-colors">
                       {route.name}
                     </h3>
-                    <p className="text-sm text-slate-400 mb-4">
+                    <p className="text-sm mb-4" style={{ color: "var(--text-tertiary)" }}>
                       {route.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <code className="text-xs bg-slate-900/50 text-slate-500 px-2 py-1 rounded font-mono">
+                      <code className="text-xs bg-background/50 px-2 py-1 rounded font-mono" style={{ color: "var(--text-tertiary)" }}>
                         {route.path}
                       </code>
-                      <span className="text-xs text-slate-500 flex items-center gap-1">
+                      <span className="text-xs flex items-center gap-1" style={{ color: "var(--text-tertiary)" }}>
                         {catInfo.icon}
                         {catInfo.label}
                       </span>
@@ -183,13 +183,13 @@ export default function DevSitemap() {
 
         {filteredRoutes.length === 0 && (
           <div className="text-center py-16">
-            <Search className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-            <p className="text-slate-400">No pages found matching "{searchQuery}"</p>
+            <Search className="w-12 h-12 mx-auto mb-4" style={{ color: "var(--text-tertiary)" }} />
+            <p style={{ color: "var(--text-tertiary)" }}>No pages found matching "{searchQuery}"</p>
           </div>
         )}
 
         <div className="mt-16 text-center">
-          <p className="text-slate-500 text-sm">
+          <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>
             KeanOnBiz Developer Tools • {new Date().toLocaleDateString()}
           </p>
         </div>

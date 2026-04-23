@@ -93,7 +93,7 @@ export default function CaseStudy() {
       <div className="min-h-screen bg-gradient-to-b from-[var(--surface-sunken)] via-[var(--secondary)] to-[var(--surface-sunken)] pt-20">
         <div className="max-w-6xl mx-auto px-4 py-8">
           <Link href="/portfolio">
-            <Button variant="ghost" className="text-gray-400 hover:text-white mb-4">
+            <Button variant="ghost" className="hover:text-white mb-4" style={{ color: "var(--text-tertiary)" }}>
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Portfolio
             </Button>
@@ -125,7 +125,7 @@ export default function CaseStudy() {
                 <StatusIcon className="w-3 h-3 mr-1" />
                 {status.label}
               </Badge>
-              <Badge variant="outline" className="border-gray-600 text-gray-400">
+              <Badge variant="outline" className="border-border" style={{ color: "var(--text-tertiary)" }}>
                 {project.category}
               </Badge>
               {project.clientIndustry && (
@@ -141,7 +141,7 @@ export default function CaseStudy() {
               <p className="text-xl text-[var(--amber)] font-medium mb-4">{project.caseStudy.tagline}</p>
             )}
             
-            <p className="text-lg text-gray-300 max-w-3xl">{project.description}</p>
+            <p className="text-lg max-w-3xl" style={{ color: "var(--text-secondary)" }}>{project.description}</p>
 
             <div className="flex flex-wrap gap-4 mt-6">
               {project.liveUrl && (
@@ -154,14 +154,14 @@ export default function CaseStudy() {
               )}
               {project.replitUrl && (
                 <a href={project.replitUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+                  <Button variant="outline" className="border-border hover:bg-white/5" style={{ color: "var(--text-secondary)" }}>
                     View on Replit
                   </Button>
                 </a>
               )}
               {project.githubUrl && (
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+                  <Button variant="outline" className="border-border hover:bg-white/5" style={{ color: "var(--text-secondary)" }}>
                     <Github className="w-4 h-4 mr-2" />
                     Source Code
                   </Button>
@@ -170,7 +170,7 @@ export default function CaseStudy() {
             </div>
 
             {project.buildStartDate && (
-              <div className="flex items-center gap-4 mt-6 text-gray-400 text-sm">
+              <div className="flex items-center gap-4 mt-6 text-sm" style={{ color: "var(--text-tertiary)" }}>
                 <span className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
                   Started: {new Date(project.buildStartDate).toLocaleDateString()}
@@ -187,7 +187,7 @@ export default function CaseStudy() {
 
           {project.heroVideoUrl && (
             <section className="mb-12">
-              <div className="aspect-video rounded-xl overflow-hidden bg-gray-900 border border-white/10">
+              <div className="aspect-video rounded-xl overflow-hidden bg-card border border-white/10">
                 <video 
                   src={project.heroVideoUrl} 
                   controls 
@@ -200,7 +200,7 @@ export default function CaseStudy() {
 
           {project.featuredImage && !project.heroVideoUrl && (
             <section className="mb-12">
-              <div className="aspect-video rounded-xl overflow-hidden bg-gray-900 border border-white/10">
+              <div className="aspect-video rounded-xl overflow-hidden bg-card border border-white/10">
                 <img 
                   src={project.featuredImage} 
                   alt={project.title}
@@ -219,7 +219,7 @@ export default function CaseStudy() {
                       <div className="w-1 h-6 bg-red-400 rounded-full" />
                       <h2 className="text-2xl font-bold text-white">The Challenge</h2>
                     </div>
-                    <p className="text-gray-300 leading-relaxed">{project.caseStudy.problemStatement}</p>
+                    <p className="leading-relaxed" style={{ color: "var(--text-secondary)" }}>{project.caseStudy.problemStatement}</p>
                   </CardContent>
                 </Card>
               )}
@@ -231,7 +231,7 @@ export default function CaseStudy() {
                       <div className="w-1 h-6 bg-primary rounded-full" />
                       <h2 className="text-2xl font-bold text-white">The Solution</h2>
                     </div>
-                    <p className="text-gray-300 leading-relaxed">{project.caseStudy.solutionOverview}</p>
+                    <p className="leading-relaxed" style={{ color: "var(--text-secondary)" }}>{project.caseStudy.solutionOverview}</p>
                   </CardContent>
                 </Card>
               )}
@@ -245,7 +245,7 @@ export default function CaseStudy() {
                     </div>
                     <ul className="space-y-3">
                       {project.caseStudy.keyFeatures.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3 text-gray-300">
+                        <li key={i} className="flex items-start gap-3" style={{ color: "var(--text-secondary)" }}>
                           <ChevronRight className="w-5 h-5 text-[var(--amber)] flex-shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </li>
@@ -264,7 +264,7 @@ export default function CaseStudy() {
                     </div>
                     <ul className="space-y-3">
                       {project.caseStudy.resultsAchieved.map((result, i) => (
-                        <li key={i} className="flex items-start gap-3 text-gray-300">
+                        <li key={i} className="flex items-start gap-3" style={{ color: "var(--text-secondary)" }}>
                           <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                           <span>{result}</span>
                         </li>
@@ -278,7 +278,7 @@ export default function CaseStudy() {
                 <Card className="bg-white/5 border-[var(--amber)]/20 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <Quote className="w-8 h-8 text-[var(--amber)] mb-4" />
-                    <p className="text-xl text-gray-300 italic leading-relaxed mb-4">
+                    <p className="text-xl italic leading-relaxed mb-4" style={{ color: "var(--text-secondary)" }}>
                       "{project.caseStudy.clientTestimonial}"
                     </p>
                     {project.clientName && (
@@ -312,7 +312,7 @@ export default function CaseStudy() {
                 <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <h3 className="text-lg font-bold text-white mb-4">Client</h3>
-                    <p className="text-gray-300">{project.clientName}</p>
+                    <p style={{ color: "var(--text-secondary)" }}>{project.clientName}</p>
                     {project.clientIndustry && (
                       <p className="text-[var(--amber)]/70 text-sm mt-1">{project.clientIndustry}</p>
                     )}
@@ -353,10 +353,10 @@ export default function CaseStudy() {
                                 {new Date(milestone.date).toLocaleDateString()}
                               </p>
                               <h3 className="font-bold text-white">{milestone.title}</h3>
-                              <p className="text-gray-400 text-sm mt-1">{milestone.description}</p>
+                              <p className="text-sm mt-1" style={{ color: "var(--text-tertiary)" }}>{milestone.description}</p>
                             </div>
                             {milestone.mediaUrl && (
-                              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gray-800">
+                              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-card">
                                 {milestone.mediaType === "video" ? (
                                   <video src={milestone.mediaUrl} className="w-full h-full object-cover" />
                                 ) : (
@@ -382,7 +382,7 @@ export default function CaseStudy() {
                   <button
                     key={media.id}
                     onClick={() => setSelectedMedia(media)}
-                    className="aspect-video rounded-lg overflow-hidden bg-gray-800 hover:ring-2 hover:ring-primary transition-all group relative"
+                    className="aspect-video rounded-lg overflow-hidden bg-card hover:ring-2 hover:ring-primary transition-all group relative"
                   >
                     {media.type === "video" ? (
                       <>
@@ -411,7 +411,7 @@ export default function CaseStudy() {
               onClick={() => setSelectedMedia(null)}
             >
               <button 
-                className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+                className="absolute top-4 right-4 text-white hover:text-white/70 z-10"
                 onClick={() => setSelectedMedia(null)}
               >
                 <X className="w-8 h-8" />

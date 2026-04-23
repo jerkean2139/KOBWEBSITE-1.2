@@ -81,10 +81,10 @@ export default function Blog() {
         description="Practical strategies for business owners: AI automation, delegation systems, and building businesses that run without you. 35 years of hard-won lessons."
       />
       <Navigation />
-      <main id="main-content" className="min-h-screen bg-white" role="main">
-        <section className="relative pt-32 pb-16 bg-gray-900 overflow-hidden">
+      <main id="main-content" className="min-h-screen bg-background" role="main">
+        <section className="relative pt-32 pb-16 overflow-hidden" style={{ backgroundColor: "var(--surface-sunken)" }}>
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"></div>
+            <div className="absolute inset-0 bg-background"></div>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           </div>
           
@@ -96,11 +96,11 @@ export default function Blog() {
                     <p className="text-primary font-medium text-sm uppercase tracking-wider mb-4">
                       No Fluff. No Theory. Just What Works.
                     </p>
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
                       The Playbook<br />
                       <span className="text-primary">They Don't Teach</span>
                     </h1>
-                    <p className="text-lg text-gray-400 leading-relaxed mb-6">
+                    <p className="text-lg leading-relaxed mb-6" style={{ color: "var(--text-secondary)" }}>
                       35 years of hard-won lessons on AI, automation, and building businesses that run without you in the weeds. Updated daily.
                     </p>
                     <div className="flex flex-wrap gap-3">
@@ -139,7 +139,7 @@ export default function Blog() {
                 <div className="mt-10 pt-8 border-t border-white/10">
                   <div className="flex items-center gap-2 mb-4">
                     <Mail className="text-primary" size={20} aria-hidden="true" />
-                    <p className="text-white font-medium">Get weekly business insights delivered free</p>
+                    <p className="text-foreground font-medium">Get weekly business insights delivered free</p>
                   </div>
                   <div className="max-w-lg">
                     <BlogNewsletterForm />
@@ -151,10 +151,10 @@ export default function Blog() {
           </div>
         </section>
 
-        <section className="py-6 bg-white border-b border-gray-100">
+        <section className="py-6 bg-background border-b border-border">
           <div className="container">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="text-sm font-medium text-gray-500 mr-2">Browse by Pillar:</span>
+              <span className="text-sm font-medium mr-2" style={{ color: "var(--text-tertiary)" }}>Browse by Pillar:</span>
               {getAllPillars().map(p => {
                 const pInfo = pillarInfo[p];
                 const iconMap: Record<string, React.ReactNode> = {
@@ -184,15 +184,15 @@ export default function Blog() {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        <section className="py-16" style={{ backgroundColor: "var(--surface-elevated)" }}>
           <div className="container">
             {featuredPost && (
               <AnimatedSection animation="slide-up" delay={0.1} className="mb-16">
                 <div className="mb-8">
-                  <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Featured Article</h2>
+                  <h2 className="text-sm font-semibold uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>Featured Article</h2>
                 </div>
                 <Link href={`/blog/${featuredPost.slug}`}>
-                  <Card className="group cursor-pointer overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 bg-white">
+                  <Card className="group cursor-pointer overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 bg-card">
                     <div className="flex flex-col xl:flex-row">
                       <div className="relative aspect-video xl:aspect-auto xl:w-1/2 xl:min-h-[400px] overflow-hidden shrink-0">
                         <img
@@ -217,15 +217,15 @@ export default function Blog() {
                             {categoryIcons[featuredPost.category]}
                             {featuredPost.category}
                           </Badge>
-                          <span className="text-sm text-gray-500 flex items-center gap-1.5">
+                          <span className="text-sm flex items-center gap-1.5" style={{ color: "var(--text-tertiary)" }}>
                             <Clock size={14} />
                             {featuredPost.readTime} min read
                           </span>
                         </div>
-                        <h2 className="text-2xl xl:text-3xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors leading-tight">
+                        <h2 className="text-2xl xl:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors leading-tight">
                           {featuredPost.title}
                         </h2>
-                        <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
+                        <p className="mb-6 leading-relaxed line-clamp-3" style={{ color: "var(--text-tertiary)" }}>
                           {featuredPost.excerpt}
                         </p>
                         <div className="flex items-center justify-between">
@@ -236,8 +236,8 @@ export default function Blog() {
                               className="w-10 h-10 rounded-full object-cover"
                             />
                             <div>
-                              <p className="font-semibold text-gray-900 text-sm">{featuredPost.author.name}</p>
-                              <p className="text-gray-500 text-xs flex items-center gap-1">
+                              <p className="font-semibold text-foreground text-sm">{featuredPost.author.name}</p>
+                              <p className="text-xs flex items-center gap-1" style={{ color: "var(--text-tertiary)" }}>
                                 <Calendar size={12} />
                                 {new Date(featuredPost.publishedAt).toLocaleDateString('en-US', {
                                   month: 'long',
@@ -262,7 +262,7 @@ export default function Blog() {
               {otherPosts.map((post, index) => (
                 <AnimatedSection key={post.id} animation="slide-up" delay={0.2 + index * 0.1}>
                   <Link href={`/blog/${post.slug}`}>
-                    <Card className="group cursor-pointer h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 bg-white">
+                    <Card className="group cursor-pointer h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 bg-card">
                       <div className="relative aspect-video overflow-hidden">
                         <img
                           src={post.featuredImage}
@@ -277,26 +277,26 @@ export default function Blog() {
                             {categoryIcons[post.category]}
                             {post.category}
                           </Badge>
-                          <span className="text-xs text-gray-500 flex items-center gap-1">
+                          <span className="text-xs flex items-center gap-1" style={{ color: "var(--text-tertiary)" }}>
                             <Clock size={12} />
                             {post.readTime} min
                           </span>
                         </div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors leading-snug line-clamp-2">
+                        <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors leading-snug line-clamp-2">
                           {post.title}
                         </h3>
-                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                        <p className="text-sm mb-4 line-clamp-2" style={{ color: "var(--text-tertiary)" }}>
                           {post.excerpt}
                         </p>
-                        <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                        <div className="flex items-center gap-3 pt-4 border-t border-border">
                           <img
                             src={post.author.image}
                             alt={post.author.name}
                             className="w-8 h-8 rounded-full object-cover"
                           />
                           <div className="flex-1">
-                            <p className="font-medium text-gray-900 text-sm">{post.author.name}</p>
-                            <p className="text-gray-500 text-xs">
+                            <p className="font-medium text-foreground text-sm">{post.author.name}</p>
+                            <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
                               {new Date(post.publishedAt).toLocaleDateString('en-US', {
                                 month: 'short',
                                 day: 'numeric',
@@ -314,11 +314,11 @@ export default function Blog() {
 
             <AnimatedSection animation="fade-in" delay={0.4}>
               <div className="mt-20 text-center">
-                <div className="max-w-2xl mx-auto p-8 bg-gradient-to-br from-primary/5 to-blue-500/5 rounded-2xl border border-primary/10">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <div className="max-w-2xl mx-auto p-8 bg-gradient-to-br from-primary/5 to-primary/5 rounded-2xl border border-primary/10">
+                  <h3 className="text-2xl font-bold text-foreground mb-3">
                     Want More Business Growth Insights?
                   </h3>
-                  <p className="text-gray-600 mb-6">
+                  <p className="mb-6" style={{ color: "var(--text-tertiary)" }}>
                     Get the complete framework for transforming your business with AI automation in The Manumation Method.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -30,10 +30,10 @@ export default function CalendarCoaching() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               1:1 <span className="text-[var(--amber)]">Coaching Call</span>
             </h1>
-            <p className="text-xl text-slate-300">
+            <p className="text-xl" style={{ color: "var(--text-secondary)" }}>
               Exclusive sessions for active coaching clients and their teams.
             </p>
-            <div className="inline-flex items-center gap-2 text-slate-400 mt-4">
+            <div className="inline-flex items-center gap-2 mt-4" style={{ color: "var(--text-tertiary)" }}>
               <Clock size={18} />
               <span>60 minute session</span>
             </div>
@@ -55,7 +55,7 @@ export default function CalendarCoaching() {
                     "Team member training and walkthroughs",
                     "Addressing urgent challenges as they arise",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-slate-300">
+                    <li key={item} className="flex items-start gap-3" style={{ color: "var(--text-secondary)" }}>
                       <CheckCircle className="text-[var(--amber)] mt-0.5 flex-shrink-0" size={20} />
                       <span>{item}</span>
                     </li>
@@ -69,10 +69,10 @@ export default function CalendarCoaching() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white">For Active Clients</h3>
-                    <p className="text-sm text-slate-400">60 minutes with Jeremy</p>
+                    <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>60 minutes with Jeremy</p>
                   </div>
                 </div>
-                <p className="text-slate-300 text-sm">
+                <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
                   This session is for active coaching clients and their team members who need additional time outside regularly scheduled sessions.
                 </p>
               </div>
@@ -86,7 +86,7 @@ export default function CalendarCoaching() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-2xl font-bold text-white mb-2">Select Your Time</h2>
-              <p className="text-slate-400">Choose a date and time that works for you</p>
+              <p style={{ color: "var(--text-tertiary)" }}>Choose a date and time that works for you</p>
             </div>
             <div className="bg-white rounded-xl overflow-hidden shadow-2xl">
               <iframe 
@@ -104,13 +104,13 @@ export default function CalendarCoaching() {
         <div className="container">
           <div className="flex justify-center gap-4">
             <Link href="/jeremys-calendar">
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[var(--surface-elevated)]">
+              <Button variant="ghost" className="hover:text-white hover:bg-[var(--surface-elevated)]" style={{ color: "var(--text-tertiary)" }}>
                 <ArrowLeft className="mr-2" size={16} />
                 All Booking Options
               </Button>
             </Link>
             <Link href="/">
-              <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-[var(--surface-elevated)]">
+              <Button variant="ghost" className="hover:text-white hover:bg-[var(--surface-elevated)]" style={{ color: "var(--text-tertiary)" }}>
                 Back to Home
               </Button>
             </Link>

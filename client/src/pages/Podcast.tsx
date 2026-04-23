@@ -204,7 +204,7 @@ export default function Podcast() {
                       The MicroPod<br />
                       <span className="text-primary">Business Bites</span>
                     </h1>
-                    <p className="text-lg text-gray-400 leading-relaxed max-w-xl">
+                    <p className="text-lg leading-relaxed max-w-xl" style={{ color: "var(--text-tertiary)" }}>
                       Quick, actionable business insights in under 10 minutes. No fluff, no theory – just what works from 35 years of building and automating businesses.
                     </p>
                   </div>
@@ -447,20 +447,20 @@ export default function Podcast() {
         <footer className="py-8 text-white border-t border-white/10" style={{ background: "var(--background)" }}>
           <div className="container">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
+              <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>
                 © {new Date().getFullYear()} KeanOnBiz. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <a href="https://manumation.ai/coming-soon" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <a href="https://manumation.ai/coming-soon" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm" style={{ color: "var(--text-tertiary)" }}>
                   Manumation
                 </a>
-                <a href="https://zenoflo.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <a href="https://zenoflo.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm" style={{ color: "var(--text-tertiary)" }}>
                   Zenoflo
                 </a>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/" className="hover:text-white transition-colors text-sm" style={{ color: "var(--text-tertiary)" }}>
                   Home
                 </Link>
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/blog" className="hover:text-white transition-colors text-sm" style={{ color: "var(--text-tertiary)" }}>
                   Blog
                 </Link>
               </div>

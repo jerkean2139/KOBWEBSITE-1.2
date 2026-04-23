@@ -131,7 +131,7 @@ const jsonLd = {
 
 export default function BusinessAutomation() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-background text-white">
       <SEO
         title="Business Automation Coaching | The Manumation Method | KeanOnBiz"
         description="Systematize first, automate second. The Manumation Method helps business owners build operations that run without them. 35+ years experience, 100+ businesses transformed."
@@ -209,7 +209,7 @@ export default function BusinessAutomation() {
               </div>
 
               <div className="hidden lg:block">
-                <div className="bg-gray-900/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8">
+                <div className="bg-card backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8">
                   <h2 className="text-xl font-bold text-white mb-6">The Problem With "Just Automate It"</h2>
                   <div className="space-y-4 text-white/70 text-sm leading-relaxed">
                     <p>
@@ -233,7 +233,7 @@ export default function BusinessAutomation() {
           </div>
         </section>
 
-        <section className="py-20 bg-gray-900/50">
+        <section className="py-20" style={{ backgroundColor: "var(--surface-elevated)" }}>
           <div className="container max-w-6xl">
             <AnimatedSection>
               <div className="text-center mb-14">
@@ -250,7 +250,7 @@ export default function BusinessAutomation() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {AUTOMATION_STAGES.map((stage, i) => (
                 <AnimatedSection key={stage.title} delay={i * 0.1}>
-                  <div className="bg-gray-900/80 border border-white/10 rounded-xl p-6 h-full">
+                  <div className="bg-card border border-white/10 rounded-xl p-6 h-full">
                     <span className="text-red-500 text-3xl font-bold opacity-40">{stage.number}</span>
                     <h3 className="text-lg font-bold text-white mt-2 mb-3">{stage.title}</h3>
                     <p className="text-white/60 text-sm leading-relaxed mb-4">{stage.description}</p>
@@ -269,7 +269,7 @@ export default function BusinessAutomation() {
           </div>
         </section>
 
-        <section className="py-20 bg-gray-950">
+        <section className="py-20 bg-background">
           <div className="container max-w-6xl">
             <AnimatedSection>
               <div className="text-center mb-14">
@@ -285,7 +285,7 @@ export default function BusinessAutomation() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {USE_CASES.map((uc, i) => (
                 <AnimatedSection key={uc.title} delay={i * 0.08}>
-                  <div className="bg-gray-900/60 border border-white/10 rounded-xl p-6 h-full">
+                  <div className="bg-card border border-white/10 rounded-xl p-6 h-full">
                     <div className="flex items-center gap-3 mb-4">
                       <uc.icon className="text-red-500" size={22} />
                       <h3 className="text-base font-bold text-white">{uc.title}</h3>
@@ -307,7 +307,7 @@ export default function BusinessAutomation() {
           </div>
         </section>
 
-        <section className="py-20 bg-gray-900/50">
+        <section className="py-20" style={{ backgroundColor: "var(--surface-elevated)" }}>
           <div className="container max-w-6xl">
             <AnimatedSection>
               <div className="text-center mb-14">
@@ -320,7 +320,7 @@ export default function BusinessAutomation() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {RESULTS.map((r, i) => (
                 <AnimatedSection key={r.label} delay={i * 0.1}>
-                  <div className="text-center p-6 bg-gray-900/80 border border-white/10 rounded-xl">
+                  <div className="text-center p-6 bg-card border border-white/10 rounded-xl">
                     <p className="text-3xl md:text-4xl font-bold text-red-500 mb-1">{r.metric}</p>
                     <p className="text-white font-semibold text-sm mb-1">{r.label}</p>
                     <p className="text-white/40 text-xs">{r.sublabel}</p>
@@ -331,7 +331,7 @@ export default function BusinessAutomation() {
           </div>
         </section>
 
-        <section className="py-20 bg-gray-950">
+        <section className="py-20 bg-background">
           <div className="container max-w-6xl">
             <AnimatedSection>
               <div className="text-center mb-10">
@@ -342,7 +342,7 @@ export default function BusinessAutomation() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.1}>
-              <div className="grid md:grid-cols-[200px_1fr] gap-8 items-start bg-gray-900/60 border border-white/10 rounded-2xl p-8 md:p-10">
+              <div className="grid md:grid-cols-[200px_1fr] gap-8 items-start bg-card border border-white/10 rounded-2xl p-8 md:p-10">
                 <img
                   src="/jeremy-about-photo.webp"
                   alt="Jeremy Kean - Business Coach & Automation Expert"
@@ -390,7 +390,7 @@ export default function BusinessAutomation() {
           </div>
         </section>
 
-        <section className="py-20 bg-gray-900/50">
+        <section className="py-20" style={{ backgroundColor: "var(--surface-elevated)" }}>
           <div className="container max-w-6xl">
             <AnimatedSection>
               <div className="text-center mb-10">
@@ -406,7 +406,7 @@ export default function BusinessAutomation() {
                 <AnimatedSection key={post.slug} delay={i * 0.06}>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="block bg-gray-900/80 border border-white/10 rounded-xl p-5 hover:border-red-500/30 transition-colors h-full"
+                    className="block bg-card border border-white/10 rounded-xl p-5 hover:border-red-500/30 transition-colors h-full"
                   >
                     <h3 className="text-white font-semibold text-sm leading-snug mb-2">{post.title}</h3>
                     <span className="text-red-500 text-xs font-medium flex items-center gap-1">
@@ -429,7 +429,7 @@ export default function BusinessAutomation() {
           </div>
         </section>
 
-        <section className="py-20 bg-gray-950">
+        <section className="py-20 bg-background">
           <div className="container max-w-6xl">
             <AnimatedSection>
               <div className="text-center mb-10">
@@ -442,7 +442,7 @@ export default function BusinessAutomation() {
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <AnimatedSection delay={0.05}>
-                <div className="bg-gray-900/80 border border-white/10 rounded-2xl p-8 h-full flex flex-col">
+                <div className="bg-card border border-white/10 rounded-2xl p-8 h-full flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-red-500/15 rounded-lg flex items-center justify-center">
                       <BarChart3 className="text-red-500" size={20} />
@@ -462,7 +462,7 @@ export default function BusinessAutomation() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.1}>
-                <div className="bg-gray-900/80 border border-white/10 rounded-2xl p-8 h-full flex flex-col">
+                <div className="bg-card border border-white/10 rounded-2xl p-8 h-full flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-red-500/15 rounded-lg flex items-center justify-center">
                       <Zap className="text-red-500" size={20} />
@@ -510,7 +510,7 @@ export default function BusinessAutomation() {
         </section>
       </main>
 
-      <footer className="bg-gray-950 border-t border-white/10 py-8">
+      <footer className="bg-background border-t border-white/10 py-8">
         <div className="container text-center">
           <p className="text-white/40 text-sm">
             &copy; {new Date().getFullYear()} KeanOnBiz. All rights reserved. |{" "}

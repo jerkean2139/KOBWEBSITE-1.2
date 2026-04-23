@@ -59,14 +59,14 @@ function injectInternalLinks(content: string, currentSlug: string): string {
 
 function renderMarkdown(content: string): string {
   let html = content
-    .replace(/^## (.*$)/gim, '<h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-6">$1</h2>')
-    .replace(/^### (.*$)/gim, '<h3 class="text-xl md:text-2xl font-semibold text-gray-900 mt-10 mb-4">$1</h3>')
-    .replace(/^#### (.*$)/gim, '<h4 class="text-lg font-semibold text-gray-900 mt-8 mb-3">$1</h4>')
-    .replace(/^---$/gim, '<hr class="my-10 border-t-2 border-gray-200" />')
-    .replace(/^> (.+)$/gim, '<blockquote class="my-8 pl-6 py-4 pr-4 border-l-4 border-primary bg-primary/5 rounded-r-lg text-gray-800 italic">$1</blockquote>')
-    .replace(/\*\*(.*?)\*\*/gim, '<strong class="font-semibold text-gray-900">$1</strong>')
+    .replace(/^## (.*$)/gim, '<h2 class="text-2xl md:text-3xl font-bold text-foreground mt-12 mb-6">$1</h2>')
+    .replace(/^### (.*$)/gim, '<h3 class="text-xl md:text-2xl font-semibold text-foreground mt-10 mb-4">$1</h3>')
+    .replace(/^#### (.*$)/gim, '<h4 class="text-lg font-semibold text-foreground mt-8 mb-3">$1</h4>')
+    .replace(/^---$/gim, '<hr class="my-10 border-t-2 border-border" />')
+    .replace(/^> (.+)$/gim, '<blockquote class="my-8 pl-6 py-4 pr-4 border-l-4 border-primary bg-primary/5 rounded-r-lg italic" style="color: var(--text-secondary)">$1</blockquote>')
+    .replace(/\*\*(.*?)\*\*/gim, '<strong class="font-semibold text-foreground">$1</strong>')
     .replace(/\*(.*?)\*/gim, '<em>$1</em>')
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<figure class="my-10"><img src="$2" alt="$1" class="w-full rounded-xl shadow-lg" /><figcaption class="text-center text-sm text-gray-500 mt-3">$1</figcaption></figure>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<figure class="my-10"><img src="$2" alt="$1" class="w-full rounded-xl shadow-lg" /><figcaption class="text-center text-sm mt-3" style="color: var(--text-tertiary)">$1</figcaption></figure>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, (match, text, url) => {
       const isExternal = url.startsWith('http');
       if (isExternal) {
@@ -74,12 +74,12 @@ function renderMarkdown(content: string): string {
       }
       return `<a href="${url}" class="text-primary hover:text-primary/80 underline underline-offset-4 font-medium">${text}</a>`;
     })
-    .replace(/^\- (.*$)/gim, '<li class="ml-6 mb-3 text-gray-700 leading-relaxed list-disc">$1</li>')
+    .replace(/^\- (.*$)/gim, '<li class="ml-6 mb-3 leading-relaxed list-disc" style="color: var(--text-secondary)">$1</li>')
     .replace(/^\| (.+) \|$/gim, (match, content) => {
-      const cells = content.split(' | ').map((cell: string) => `<td class="px-4 py-3 border border-gray-200">${cell.trim()}</td>`).join('');
+      const cells = content.split(' | ').map((cell: string) => `<td class="px-4 py-3 border border-border">${cell.trim()}</td>`).join('');
       return `<tr>${cells}</tr>`;
     })
-    .replace(/^(\d+)\. (.*$)/gim, '<li class="ml-6 mb-2 text-gray-700 leading-relaxed"><span class="font-semibold">$1.</span> $2</li>');
+    .replace(/^(\d+)\. (.*$)/gim, '<li class="ml-6 mb-2 leading-relaxed" style="color: var(--text-secondary)"><span class="font-semibold">$1.</span> $2</li>');
 
   const paragraphs = html.split('\n\n');
   html = paragraphs.map(p => {
@@ -89,7 +89,7 @@ function renderMarkdown(content: string): string {
     if (p.includes('<li')) {
       return `<ul class="my-6 space-y-2 list-inside">${p}</ul>`;
     }
-    return `<p class="text-gray-700 leading-relaxed mb-6">${p}</p>`;
+    return `<p class="leading-relaxed mb-6" style="color: var(--text-secondary)">${p}</p>`;
   }).join('\n');
 
   return html;
@@ -212,9 +212,9 @@ export default function BlogPost() {
       />
       
       <Navigation />
-      <main id="main-content" className="min-h-screen bg-white" role="main">
+      <main id="main-content" className="min-h-screen bg-background" role="main">
         <article itemScope itemType="https://schema.org/Article">
-          <header className="relative pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+          <header className="relative pt-28 pb-16 bg-background overflow-hidden">
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-20 right-10 w-72 h-72 bg-primary rounded-full blur-3xl"></div>
             </div>
@@ -231,7 +231,7 @@ export default function BlogPost() {
                       {categoryIcons[post.category]}
                       {post.category}
                     </Badge>
-                    <span className="text-sm text-gray-500 flex items-center gap-1.5">
+                    <span className="text-sm flex items-center gap-1.5" style={{ color: "var(--text-tertiary)" }}>
                       <Clock size={14} />
                       {post.readTime} min read
                     </span>
@@ -240,16 +240,16 @@ export default function BlogPost() {
                   <h1 
                     id="hero-heading"
                     itemProp="headline"
-                    className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight"
                   >
                     {post.title}
                   </h1>
                   
-                  <p className="article-summary text-xl text-gray-600 leading-relaxed mb-8" itemProp="description">
+                  <p className="article-summary text-xl leading-relaxed mb-8" itemProp="description" style={{ color: "var(--text-tertiary)" }}>
                     {post.excerpt}
                   </p>
 
-                  <div className="flex flex-wrap items-center justify-between gap-6 pb-8 border-b border-gray-200">
+                  <div className="flex flex-wrap items-center justify-between gap-6 pb-8 border-b border-border">
                     <div className="flex items-center gap-4">
                       <img
                         src={post.author.image}
@@ -258,11 +258,11 @@ export default function BlogPost() {
                         className="h-12 w-auto object-contain"
                       />
                       <div itemProp="author" itemScope itemType="https://schema.org/Person">
-                        <p itemProp="name" className="font-semibold text-gray-900">{post.author.name}</p>
-                        <p className="text-gray-500 text-sm">{post.author.title}</p>
+                        <p itemProp="name" className="font-semibold text-foreground">{post.author.name}</p>
+                        <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>{post.author.title}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-6 text-sm text-gray-500">
+                    <div className="flex items-center gap-6 text-sm" style={{ color: "var(--text-tertiary)" }}>
                       <time itemProp="datePublished" dateTime={post.publishedAt} className="flex items-center gap-1.5">
                         <Calendar size={14} />
                         {new Date(post.publishedAt).toLocaleDateString('en-US', {
@@ -272,7 +272,7 @@ export default function BlogPost() {
                         })}
                       </time>
                       {post.updatedAt !== post.publishedAt && (
-                        <span className="text-gray-400">
+                        <span style={{ color: "var(--text-secondary)" }}>
                           Updated: {new Date(post.updatedAt).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
@@ -302,12 +302,12 @@ export default function BlogPost() {
             <div className="grid lg:grid-cols-12 gap-12">
               <aside className="hidden lg:block lg:col-span-1">
                 <div className="sticky top-32 flex flex-col items-center gap-4">
-                  <span className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Share</span>
+                  <span className="text-xs font-medium uppercase tracking-wider mb-2" style={{ color: "var(--text-tertiary)" }}>Share</span>
                   <a
                     href={`https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-gray-100 hover:bg-blue-100 hover:text-blue-500 flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-card hover:bg-primary/10 hover:text-primary flex items-center justify-center transition-colors"
                     aria-label="Share on Twitter"
                   >
                     <Twitter size={18} />
@@ -316,7 +316,7 @@ export default function BlogPost() {
                     href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${shareText}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-gray-100 hover:bg-blue-100 hover:text-blue-600 flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-card hover:bg-primary/10 hover:text-primary flex items-center justify-center transition-colors"
                     aria-label="Share on LinkedIn"
                   >
                     <Linkedin size={18} />
@@ -325,7 +325,7 @@ export default function BlogPost() {
                     href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-gray-100 hover:bg-blue-100 hover:text-blue-700 flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-card hover:bg-primary/10 hover:text-primary flex items-center justify-center transition-colors"
                     aria-label="Share on Facebook"
                   >
                     <Facebook size={18} />
@@ -336,7 +336,7 @@ export default function BlogPost() {
               <div className="lg:col-span-7">
                 {post.audioFile && (
                   <AnimatedSection animation="fade-in" delay={0.25}>
-                    <div className="mb-10 p-6 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-xl">
+                    <div className="mb-10 p-6 rounded-2xl shadow-xl" style={{ backgroundColor: "var(--surface-sunken)" }}>
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                           <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
@@ -344,7 +344,7 @@ export default function BlogPost() {
                           </svg>
                         </div>
                         <div>
-                          <p className="text-white font-semibold">{post.audioTitle || "Audio Deep Dive"}</p>
+                          <p className="text-foreground font-semibold">{post.audioTitle || "Audio Deep Dive"}</p>
                           <p className="text-white/70 text-sm">Listen to this article</p>
                         </div>
                       </div>
@@ -369,18 +369,18 @@ export default function BlogPost() {
 
                 {post.faqs.length > 0 && (
                   <AnimatedSection animation="slide-up" delay={0.4}>
-                    <div className="faq-container mt-16 pt-12 border-t border-gray-200">
-                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                    <div className="faq-container mt-16 pt-12 border-t border-border">
+                      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
                         Frequently Asked Questions
                       </h2>
                       <div className="space-y-6">
                         {post.faqs.map((faq, index) => (
                           <Card key={index} className="border-0 shadow-md">
                             <CardContent className="p-6">
-                              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                              <h3 className="text-lg font-semibold text-foreground mb-3">
                                 {faq.question}
                               </h3>
-                              <p className="text-gray-600 leading-relaxed">
+                              <p className="leading-relaxed" style={{ color: "var(--text-tertiary)" }}>
                                 {faq.answer}
                               </p>
                             </CardContent>
@@ -404,22 +404,22 @@ export default function BlogPost() {
                 {post.pillar && pillarInfo[post.pillar] && (
                   <AnimatedSection animation="fade-in" delay={0.55}>
                     <div className="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/10">
-                      <p className="text-sm text-gray-600 mb-2">This article is part of our</p>
+                      <p className="text-sm mb-2" style={{ color: "var(--text-tertiary)" }}>This article is part of our</p>
                       <Link href={`/blog/topic/${post.pillar}`} className="font-semibold text-primary hover:underline text-lg">
                         {pillarInfo[post.pillar].title} &rarr;
                       </Link>
-                      <p className="text-sm text-gray-500 mt-1">{pillarInfo[post.pillar].description}</p>
+                      <p className="text-sm mt-1" style={{ color: "var(--text-tertiary)" }}>{pillarInfo[post.pillar].description}</p>
                     </div>
                   </AnimatedSection>
                 )}
 
-                <div className="lg:hidden mt-8 flex items-center justify-center gap-4 p-4 bg-gray-50 rounded-xl">
-                  <span className="text-sm font-medium text-gray-500">Share:</span>
+                <div className="lg:hidden mt-8 flex items-center justify-center gap-4 p-4 rounded-xl" style={{ backgroundColor: "var(--surface-elevated)" }}>
+                  <span className="text-sm font-medium" style={{ color: "var(--text-tertiary)" }}>Share:</span>
                   <a
                     href={`https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white shadow-sm hover:bg-blue-50 hover:text-blue-500 flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-card shadow-sm hover:bg-primary/10 hover:text-primary flex items-center justify-center transition-colors"
                     aria-label="Share on Twitter"
                   >
                     <Twitter size={18} />
@@ -428,7 +428,7 @@ export default function BlogPost() {
                     href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${shareText}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white shadow-sm hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-card shadow-sm hover:bg-primary/10 hover:text-primary flex items-center justify-center transition-colors"
                     aria-label="Share on LinkedIn"
                   >
                     <Linkedin size={18} />
@@ -437,7 +437,7 @@ export default function BlogPost() {
                     href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white shadow-sm hover:bg-blue-50 hover:text-blue-700 flex items-center justify-center transition-colors"
+                    className="w-10 h-10 rounded-full bg-card shadow-sm hover:bg-primary/10 hover:text-primary flex items-center justify-center transition-colors"
                     aria-label="Share on Facebook"
                   >
                     <Facebook size={18} />
@@ -449,7 +449,7 @@ export default function BlogPost() {
                 <div className="sticky top-32 space-y-8">
                   <AnimatedSection animation="slide-left" delay={0.3}>
                     <Card className="border-0 shadow-lg overflow-hidden">
-                      <div className="bg-gradient-to-br from-primary to-blue-600 p-6 text-white">
+                      <div className="bg-gradient-to-br from-primary to-primary/80 p-6 text-white">
                         <img src="/manumation-book-cover-nobg.webp" alt="Manumation Method" className="w-16 h-auto mb-4 rounded shadow-lg" />
                         <h3 className="text-xl font-bold mb-2">The Manumation Method</h3>
                         <p className="text-white/90 text-sm">
@@ -468,7 +468,7 @@ export default function BlogPost() {
 
                   <AnimatedSection animation="slide-left" delay={0.4}>
                     <Card className="border-0 shadow-lg overflow-hidden">
-                      <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-6 text-white">
+                      <div className="p-6 text-foreground" style={{ backgroundColor: "var(--surface-sunken)" }}>
                         <img src="/zenoflo-logo.svg" alt="Zenoflo" className="w-12 h-12 mb-4" />
                         <h3 className="text-xl font-bold mb-2">Zenoflo Automation</h3>
                         <p className="text-white/90 text-sm">
@@ -487,7 +487,7 @@ export default function BlogPost() {
 
                   <AnimatedSection animation="slide-left" delay={0.5}>
                     <Card className="border-0 shadow-lg p-6">
-                      <h3 className="font-bold text-gray-900 mb-4">About the Author</h3>
+                      <h3 className="font-bold text-foreground mb-4">About the Author</h3>
                       <div className="flex items-center gap-4 mb-4">
                         <img
                           src={post.author.image}
@@ -495,11 +495,11 @@ export default function BlogPost() {
                           className="h-14 w-auto object-contain"
                         />
                         <div>
-                          <p className="font-semibold text-gray-900">{post.author.name}</p>
-                          <p className="text-sm text-gray-500">{post.author.title}</p>
+                          <p className="font-semibold text-foreground">{post.author.name}</p>
+                          <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>{post.author.title}</p>
                         </div>
                       </div>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-tertiary)" }}>
                         {post.author.bio}
                       </p>
                       <Button variant="outline" className="w-full" asChild>
@@ -515,8 +515,8 @@ export default function BlogPost() {
 
             {relatedPosts.length > 0 && (
               <AnimatedSection animation="slide-up" delay={0.6}>
-                <div className="mt-16 pt-12 border-t border-gray-200">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                <div className="mt-16 pt-12 border-t border-border">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
                     Related Articles
                   </h2>
                   <div className="grid md:grid-cols-3 gap-6">
@@ -535,10 +535,10 @@ export default function BlogPost() {
                             <Badge variant="secondary" className="mb-2 text-xs">
                               {related.category}
                             </Badge>
-                            <h3 className="font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2 mb-2">
+                            <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
                               {related.title}
                             </h3>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>
                               {related.readTime} min read
                             </p>
                           </CardContent>
@@ -551,15 +551,15 @@ export default function BlogPost() {
             )}
 
             <AnimatedSection animation="fade-in" delay={0.7}>
-              <nav className="mt-16 pt-12 border-t border-gray-200">
+              <nav className="mt-16 pt-12 border-t border-border">
                 <div className="grid md:grid-cols-2 gap-8">
                   {prevPost && (
                     <Link href={`/blog/${prevPost.slug}`}>
                       <Card className="group cursor-pointer h-full border-0 shadow-md hover:shadow-lg transition-all p-6">
-                        <p className="text-sm text-gray-500 mb-2 flex items-center gap-2">
+                        <p className="text-sm mb-2 flex items-center gap-2" style={{ color: "var(--text-tertiary)" }}>
                           <ArrowLeft size={14} /> Previous Article
                         </p>
-                        <h4 className="font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                           {prevPost.title}
                         </h4>
                       </Card>
@@ -568,10 +568,10 @@ export default function BlogPost() {
                   {nextPost && (
                     <Link href={`/blog/${nextPost.slug}`}>
                       <Card className="group cursor-pointer h-full border-0 shadow-md hover:shadow-lg transition-all p-6 text-right md:col-start-2">
-                        <p className="text-sm text-gray-500 mb-2 flex items-center gap-2 justify-end">
+                        <p className="text-sm mb-2 flex items-center gap-2 justify-end" style={{ color: "var(--text-tertiary)" }}>
                           Next Article <ArrowRight size={14} />
                         </p>
-                        <h4 className="font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                           {nextPost.title}
                         </h4>
                       </Card>

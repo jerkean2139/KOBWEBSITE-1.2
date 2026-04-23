@@ -454,10 +454,10 @@ export default function FoundersFilter() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-8 h-8 animate-spin text-amber-500 mx-auto mb-4" />
-          <p className="text-slate-400">Loading The Founder's Filter...</p>
+          <p style={{ color: "var(--text-secondary)" }}>Loading The Founder's Filter...</p>
         </div>
       </div>
     );
@@ -465,12 +465,12 @@ export default function FoundersFilter() {
 
   if (currentStep === "summary") {
     return (
-      <div className="min-h-screen bg-slate-900 p-6">
+      <div className="min-h-screen bg-background p-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <h1 className="text-3xl font-bold text-white mb-2">The Founder's Filter Complete!</h1>
-            <p className="text-slate-400">Here's your action plan</p>
+            <h1 className="text-3xl font-bold text-foreground mb-2">The Founder's Filter Complete!</h1>
+            <p style={{ color: "var(--text-secondary)" }}>Here's your action plan</p>
           </div>
 
           <div className="grid gap-6">
@@ -482,7 +482,7 @@ export default function FoundersFilter() {
                 </h2>
                 <ul className="space-y-2">
                   {delegateNow.filter(t => t.isPriority).map(task => (
-                    <li key={task.id} className="text-white flex items-center gap-2">
+                    <li key={task.id} className="text-foreground flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-red-400" />
                       {task.text}
                       {task.operationsFlag && (
@@ -500,25 +500,25 @@ export default function FoundersFilter() {
               <h2 className="text-xl font-semibold text-amber-400 mb-4">Delegate NOW ({delegateNow.length})</h2>
               <ul className="space-y-2">
                 {delegateNow.map(task => (
-                  <li key={task.id} className="text-slate-300">• {task.text}</li>
+                  <li key={task.id} style={{ color: "var(--text-secondary)" }}>• {task.text}</li>
                 ))}
               </ul>
             </Card>
 
-            <Card className="bg-blue-900/20 border-blue-500/30 p-6">
-              <h2 className="text-xl font-semibold text-blue-400 mb-4">Delegate Soon ({delegateSoon.length})</h2>
+            <Card className="bg-primary/10 border-primary/30 p-6">
+              <h2 className="text-xl font-semibold text-primary mb-4">Delegate Soon ({delegateSoon.length})</h2>
               <ul className="space-y-2">
                 {delegateSoon.map(task => (
-                  <li key={task.id} className="text-slate-300">• {task.text}</li>
+                  <li key={task.id} style={{ color: "var(--text-secondary)" }}>• {task.text}</li>
                 ))}
               </ul>
             </Card>
 
-            <Card className="bg-slate-800/50 border-slate-700 p-6">
-              <h2 className="text-xl font-semibold text-slate-300 mb-4">Only I Can Do ({onlyICan.length})</h2>
+            <Card className="bg-card border-border p-6">
+              <h2 className="text-xl font-semibold mb-4" style={{ color: "var(--text-secondary)" }}>Only I Can Do ({onlyICan.length})</h2>
               <ul className="space-y-2">
                 {onlyICan.map(task => (
-                  <li key={task.id} className="text-slate-400">• {task.text}</li>
+                  <li key={task.id} style={{ color: "var(--text-secondary)" }}>• {task.text}</li>
                 ))}
               </ul>
             </Card>
@@ -527,60 +527,60 @@ export default function FoundersFilter() {
           <div className="mt-8 grid md:grid-cols-2 gap-6">
             <div className="p-6 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-xl text-center">
               <Download className="w-12 h-12 text-amber-400 mx-auto mb-3" />
-              <h3 className="text-xl font-bold text-white mb-2">Download Your Action Plan</h3>
-              <p className="text-slate-300 mb-4 text-sm">Get a PDF with your personalized delegation plan to print or share with your team.</p>
+              <h3 className="text-xl font-bold text-foreground mb-2">Download Your Action Plan</h3>
+              <p className="mb-4 text-sm" style={{ color: "var(--text-secondary)" }}>Get a PDF with your personalized delegation plan to print or share with your team.</p>
               <Button 
                 onClick={() => generatePersonalizedPDF()}
                 size="lg"
-                className="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold"
+                className="w-full bg-amber-500 hover:bg-amber-600 text-background font-bold"
               >
                 <Download className="w-5 h-5 mr-2" />
                 Download PDF
               </Button>
             </div>
 
-            <div className="p-6 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-xl text-center">
-              <Calendar className="w-12 h-12 text-blue-400 mx-auto mb-3" />
-              <h3 className="text-xl font-bold text-white mb-2">Need Help Implementing?</h3>
-              <p className="text-slate-300 mb-4 text-sm">Book a free strategy call to discuss how to actually delegate these tasks and build systems.</p>
-              <Button 
+            <div className="p-6 bg-gradient-to-r from-primary/20 to-cyan-500/20 border border-primary/30 rounded-xl text-center">
+              <Calendar className="w-12 h-12 text-primary mx-auto mb-3" />
+              <h3 className="text-xl font-bold text-foreground mb-2">Need Help Implementing?</h3>
+              <p className="mb-4 text-sm" style={{ color: "var(--text-secondary)" }}>Book a free strategy call to discuss how to actually delegate these tasks and build systems.</p>
+              <Button
                 onClick={() => window.location.href = "/jeremys-calendar-strategy"}
                 size="lg"
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold"
+                className="w-full bg-primary hover:bg-primary/90 text-foreground font-bold"
               >
                 Book a Strategy Call
               </Button>
             </div>
           </div>
 
-          <Card className="mt-6 bg-slate-800/50 border-slate-700 p-6">
-            <h3 className="text-lg font-semibold text-white mb-4">Your Next Steps:</h3>
-            <ol className="space-y-3 text-slate-300">
+          <Card className="mt-6 bg-card border-border p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4">Your Next Steps:</h3>
+            <ol className="space-y-3" style={{ color: "var(--text-secondary)" }}>
               <li className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-slate-900 rounded-full flex items-center justify-center text-sm font-bold">1</span>
-                <span><strong className="text-white">Download your PDF</strong> — Print it or save it somewhere visible</span>
+                <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-background rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                <span><strong className="text-foreground">Download your PDF</strong> — Print it or save it somewhere visible</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-slate-900 rounded-full flex items-center justify-center text-sm font-bold">2</span>
-                <span><strong className="text-white">Pick ONE task from "Delegate NOW"</strong> — Start with the easiest one to build momentum</span>
+                <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-background rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                <span><strong className="text-foreground">Pick ONE task from "Delegate NOW"</strong> — Start with the easiest one to build momentum</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-slate-900 rounded-full flex items-center justify-center text-sm font-bold">3</span>
-                <span><strong className="text-white">Document how YOU do it</strong> — Record a Loom video or write out the steps</span>
+                <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-background rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                <span><strong className="text-foreground">Document how YOU do it</strong> — Record a Loom video or write out the steps</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-slate-900 rounded-full flex items-center justify-center text-sm font-bold">4</span>
-                <span><strong className="text-white">Hand it off THIS WEEK</strong> — Don't wait. The longer you wait, the heavier it gets.</span>
+                <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-background rounded-full flex items-center justify-center text-sm font-bold">4</span>
+                <span><strong className="text-foreground">Hand it off THIS WEEK</strong> — Don't wait. The longer you wait, the heavier it gets.</span>
               </li>
             </ol>
           </Card>
 
           <div className="mt-6 text-center">
-            <p className="text-slate-400 mb-4">We recommend doing this every quarter to stay clear.</p>
-            <Button 
+            <p className="mb-4" style={{ color: "var(--text-secondary)" }}>We recommend doing this every quarter to stay clear.</p>
+            <Button
               onClick={() => window.location.href = "/founders-filter"}
               variant="outline"
-              className="border-slate-600 text-slate-300"
+              className="border-border" style={{ color: "var(--text-secondary)" }}
             >
               Back to Founder's Filter Home
             </Button>
@@ -591,17 +591,17 @@ export default function FoundersFilter() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-background">
       <div className="flex h-screen">
-        <div className="w-80 bg-slate-800 border-r border-slate-700 flex flex-col">
-          <div className="p-4 border-b border-slate-700">
+        <div className="w-80 bg-card border-r border-border flex flex-col">
+          <div className="p-4 border-b border-border">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-foreground font-bold">
                 D
               </div>
               <div>
-                <p className="text-white font-medium">Donna</p>
-                <p className="text-xs text-slate-400">Your AI Guide</p>
+                <p className="text-foreground font-medium">Donna</p>
+                <p className="text-xs" style={{ color: "var(--text-secondary)" }}>Your AI Guide</p>
               </div>
             </div>
           </div>
@@ -614,14 +614,14 @@ export default function FoundersFilter() {
                   className={`p-3 rounded-lg text-sm ${
                     msg.role === "donna"
                       ? "bg-amber-500/10 text-amber-100 border border-amber-500/20"
-                      : "bg-slate-700 text-slate-200"
+                      : "text-foreground bg-white/5"
                   }`}
                 >
                   {msg.message}
                 </div>
               ))}
               {donnaLoading && (
-                <div className="flex items-center gap-2 text-slate-400 text-sm">
+                <div className="flex items-center gap-2 text-sm" style={{ color: "var(--text-secondary)" }}>
                   <Loader2 className="w-4 h-4 animate-spin" />
                   Donna is thinking...
                 </div>
@@ -629,14 +629,14 @@ export default function FoundersFilter() {
             </div>
           </ScrollArea>
 
-          <div className="p-4 border-t border-slate-700">
+          <div className="p-4 border-t border-border">
             <div className="flex gap-2">
               <Input
                 value={donnaMessage}
                 onChange={e => setDonnaMessage(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && sendDonnaMessage()}
                 placeholder="Ask Donna for help..."
-                className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
+                className="border-border text-foreground placeholder:opacity-30" style={{ backgroundColor: "var(--surface-elevated)" }}
               />
               <Button onClick={sendDonnaMessage} disabled={donnaLoading} size="icon" className="bg-amber-500 hover:bg-amber-600">
                 <Send className="w-4 h-4" />
@@ -646,9 +646,9 @@ export default function FoundersFilter() {
         </div>
 
         <div className="flex-1 flex flex-col">
-          <div className="p-4 border-b border-slate-700 flex items-center justify-between bg-slate-800">
+          <div className="p-4 border-b border-border flex items-center justify-between bg-card">
             <div className="flex items-center gap-4">
-              <h1 className="text-xl font-bold text-white">The Founder's Filter</h1>
+              <h1 className="text-xl font-bold text-foreground">The Founder's Filter</h1>
               <div className="flex gap-2">
                 {["brain_dump", "sorting", "review"].map((step, i) => (
                   <button
@@ -656,8 +656,8 @@ export default function FoundersFilter() {
                     onClick={() => goToStep(step as StepType)}
                     className={`px-3 py-1 text-sm rounded-full transition ${
                       currentStep === step
-                        ? "bg-amber-500 text-slate-900"
-                        : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+                        ? "bg-amber-500 text-background"
+                        : "bg-white/5 hover:bg-white/10"
                     }`}
                   >
                     {i + 1}. {step === "brain_dump" ? "Brain Dump" : step === "sorting" ? "Sort" : "Review"}
@@ -670,7 +670,7 @@ export default function FoundersFilter() {
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                 <span className="text-emerald-400 text-xs font-medium">Session Active</span>
               </div>
-              {saving && <span className="text-slate-400 text-sm">Saving...</span>}
+              {saving && <span className="text-sm" style={{ color: "var(--text-secondary)" }}>Saving...</span>}
               {currentStep === "review" && (
                 <Button onClick={completeWorkshop} className="bg-green-500 hover:bg-green-600">
                   Complete Session
@@ -682,8 +682,8 @@ export default function FoundersFilter() {
           <div className="flex-1 p-6 overflow-auto">
             {currentStep === "brain_dump" && (
               <div className="max-w-2xl mx-auto">
-                <h2 className="text-2xl font-bold text-white mb-2">Brain Dump</h2>
-                <p className="text-slate-400 mb-6">
+                <h2 className="text-2xl font-bold text-foreground mb-2">Brain Dump</h2>
+                <p className="mb-6" style={{ color: "var(--text-secondary)" }}>
                   Get everything out of your head. What tasks are you carrying that feel heavy?
                 </p>
 
@@ -693,7 +693,7 @@ export default function FoundersFilter() {
                     onChange={e => setNewTask(e.target.value)}
                     onKeyDown={e => e.key === "Enter" && addTask()}
                     placeholder="Type a task and press Enter..."
-                    className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500"
+                    className="bg-card border-border text-foreground placeholder:opacity-30"
                   />
                   <Button onClick={addTask} className="bg-amber-500 hover:bg-amber-600">
                     <Plus className="w-4 h-4" />
@@ -730,8 +730,8 @@ export default function FoundersFilter() {
                   const visible = available.slice(0, VISIBLE_COUNT);
                   if (visible.length === 0) return null;
                   return (
-                    <div className="mb-6 p-4 bg-slate-800/50 border border-slate-700 rounded-lg">
-                      <p className="text-slate-400 text-sm mb-3">Click any example to add it, or type your own:</p>
+                    <div className="mb-6 p-4 bg-card border border-border rounded-lg">
+                      <p className="text-sm mb-3" style={{ color: "var(--text-secondary)" }}>Click any example to add it, or type your own:</p>
                       <div className="flex flex-wrap gap-2">
                         {visible.map((example) => (
                           <button
@@ -741,7 +741,7 @@ export default function FoundersFilter() {
                               setBrainDump(prev => [...prev, task]);
                               setUsedSuggestions(prev => new Set(prev).add(example));
                             }}
-                            className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-full transition border border-slate-600 hover:border-amber-500/50"
+                            className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-sm rounded-full transition border border-border hover:border-amber-500/50" style={{ color: "var(--text-secondary)" }}
                           >
                             + {example}
                           </button>
@@ -753,7 +753,7 @@ export default function FoundersFilter() {
 
                 <div className="space-y-2">
                   {brainDump.map(task => (
-                    <div key={task.id} className="bg-slate-800 p-3 rounded-lg text-white border border-slate-700">
+                    <div key={task.id} className="bg-card p-3 rounded-lg text-foreground border border-border">
                       {task.text}
                     </div>
                   ))}
@@ -777,11 +777,11 @@ export default function FoundersFilter() {
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={`bg-slate-800/50 rounded-xl p-4 border ${
-                          snapshot.isDraggingOver ? "border-amber-500" : "border-slate-700"
+                        className={`bg-card rounded-xl p-4 border ${
+                          snapshot.isDraggingOver ? "border-amber-500" : "border-border"
                         }`}
                       >
-                        <h3 className="text-lg font-semibold text-slate-300 mb-4">
+                        <h3 className="text-lg font-semibold mb-4" style={{ color: "var(--text-secondary)" }}>
                           Unsorted ({brainDump.length})
                         </h3>
                         <div className="space-y-2">
@@ -794,9 +794,10 @@ export default function FoundersFilter() {
                                   {...provided.dragHandleProps}
                                   className={`p-3 rounded-lg text-sm ${
                                     snapshot.isDragging
-                                      ? "bg-amber-500 text-slate-900"
-                                      : "bg-slate-700 text-white"
+                                      ? "bg-amber-500 text-background"
+                                      : "text-foreground"
                                   }`}
+                                  style={snapshot.isDragging ? {} : { backgroundColor: "var(--surface-elevated)" }}
                                 >
                                   {task.text}
                                 </div>
@@ -814,14 +815,14 @@ export default function FoundersFilter() {
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={`bg-slate-800/50 rounded-xl p-4 border ${
-                          snapshot.isDraggingOver ? "border-slate-400" : "border-slate-700"
+                        className={`bg-card rounded-xl p-4 border ${
+                          snapshot.isDraggingOver ? "border-foreground/50" : "border-border"
                         }`}
                       >
-                        <h3 className="text-lg font-semibold text-slate-300 mb-4">
+                        <h3 className="text-lg font-semibold mb-4" style={{ color: "var(--text-secondary)" }}>
                           Only I Can Do ({onlyICan.length})
                         </h3>
-                        <p className="text-xs text-slate-500 mb-4">Tasks requiring your unique expertise</p>
+                        <p className="text-xs mb-4" style={{ color: "var(--text-tertiary)" }}>Tasks requiring your unique expertise</p>
                         <div className="space-y-2">
                           {onlyICan.map((task, index) => (
                             <Draggable key={task.id} draggableId={task.id} index={index}>
@@ -832,9 +833,10 @@ export default function FoundersFilter() {
                                   {...provided.dragHandleProps}
                                   className={`p-3 rounded-lg text-sm ${
                                     snapshot.isDragging
-                                      ? "bg-slate-400 text-slate-900"
-                                      : "bg-slate-700 text-white"
+                                      ? "bg-foreground/50 text-background"
+                                      : "text-foreground"
                                   }`}
+                                  style={snapshot.isDragging ? {} : { backgroundColor: "var(--surface-elevated)" }}
                                 >
                                   {task.text}
                                 </div>
@@ -852,14 +854,14 @@ export default function FoundersFilter() {
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={`bg-blue-900/20 rounded-xl p-4 border ${
-                          snapshot.isDraggingOver ? "border-blue-400" : "border-blue-500/30"
+                        className={`bg-primary/10 rounded-xl p-4 border ${
+                          snapshot.isDraggingOver ? "border-primary" : "border-primary/30"
                         }`}
                       >
-                        <h3 className="text-lg font-semibold text-blue-400 mb-4">
+                        <h3 className="text-lg font-semibold text-primary mb-4">
                           Delegate Soon ({delegateSoon.length})
                         </h3>
-                        <p className="text-xs text-blue-400/60 mb-4">Hand off in 30-60 days</p>
+                        <p className="text-xs text-primary/60 mb-4">Hand off in 30-60 days</p>
                         <div className="space-y-2">
                           {delegateSoon.map((task, index) => (
                             <Draggable key={task.id} draggableId={task.id} index={index}>
@@ -870,8 +872,8 @@ export default function FoundersFilter() {
                                   {...provided.dragHandleProps}
                                   className={`p-3 rounded-lg text-sm ${
                                     snapshot.isDragging
-                                      ? "bg-blue-500 text-white"
-                                      : "bg-blue-900/40 text-blue-100"
+                                      ? "bg-primary text-foreground"
+                                      : "bg-primary/20 text-primary/90"
                                   }`}
                                 >
                                   {task.text}
@@ -908,7 +910,7 @@ export default function FoundersFilter() {
                                   {...provided.dragHandleProps}
                                   className={`p-3 rounded-lg text-sm ${
                                     snapshot.isDragging
-                                      ? "bg-red-500 text-white"
+                                      ? "bg-red-500 text-foreground"
                                       : "bg-red-900/40 text-red-100"
                                   }`}
                                 >
@@ -919,9 +921,10 @@ export default function FoundersFilter() {
                                         onClick={() => togglePriority(task.id)}
                                         className={`text-xs px-2 py-1 rounded ${
                                           task.isPriority
-                                            ? "bg-amber-500 text-slate-900"
-                                            : "bg-slate-700 text-slate-300"
+                                            ? "bg-amber-500 text-background"
+                                            : "bg-white/5"
                                         }`}
+                                        style={task.isPriority ? {} : { color: "var(--text-secondary)" }}
                                       >
                                         Priority
                                       </button>
@@ -929,9 +932,10 @@ export default function FoundersFilter() {
                                         onClick={() => toggleOperationsFlag(task.id)}
                                         className={`text-xs px-2 py-1 rounded ${
                                           task.operationsFlag
-                                            ? "bg-amber-500 text-slate-900"
-                                            : "bg-slate-700 text-slate-300"
+                                            ? "bg-amber-500 text-background"
+                                            : "bg-white/5"
                                         }`}
+                                        style={task.operationsFlag ? {} : { color: "var(--text-secondary)" }}
                                       >
                                         Ops Change
                                       </button>
@@ -951,7 +955,7 @@ export default function FoundersFilter() {
             )}
           </div>
 
-          <div className="p-4 border-t border-slate-700 bg-slate-800 flex justify-between relative z-[9999]">
+          <div className="p-4 border-t border-border bg-card flex justify-between relative z-[9999]">
             <Button
               variant="outline"
               onClick={() => {
@@ -959,7 +963,7 @@ export default function FoundersFilter() {
                 if (currentStep === "review") goToStep("sorting");
               }}
               disabled={currentStep === "brain_dump"}
-              className="border-slate-600 text-slate-300"
+              className="border-border" style={{ color: "var(--text-secondary)" }}
             >
               <ArrowLeft className="w-4 h-4 mr-2" /> Back
             </Button>
@@ -986,29 +990,29 @@ export default function FoundersFilter() {
       </div>
 
       <Dialog open={showPrivacyConsent} onOpenChange={() => {}}>
-        <DialogContent className="bg-slate-800 border-slate-700 text-white max-w-lg">
+        <DialogContent className="bg-card border-border text-foreground max-w-lg">
           <DialogHeader>
             <div className="flex items-center gap-3 mb-2">
               <Shield className="w-6 h-6 text-amber-500" />
               <DialogTitle className="text-xl">Privacy & Data Usage</DialogTitle>
             </div>
-            <DialogDescription className="text-slate-300 text-base">
+            <DialogDescription className="text-base" style={{ color: "var(--text-secondary)" }}>
               Before we begin, please review how we handle your data.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
-            <div className="bg-slate-700/50 rounded-lg p-4 space-y-3 text-sm text-slate-300">
+            <div className="rounded-lg p-4 space-y-3 text-sm" style={{ backgroundColor: "var(--surface-elevated)", color: "var(--text-secondary)" }}>
               <p>
-                <strong className="text-white">What we collect:</strong> The tasks you enter, your sorting decisions, and your conversation with Donna.
+                <strong className="text-foreground">What we collect:</strong> The tasks you enter, your sorting decisions, and your conversation with Donna.
               </p>
               <p>
-                <strong className="text-white">How we use it:</strong> To save your progress and help you complete the session. Your data is stored securely and never sold.
+                <strong className="text-foreground">How we use it:</strong> To save your progress and help you complete the session. Your data is stored securely and never sold.
               </p>
               <p>
-                <strong className="text-white">AI Processing:</strong> Your messages to Donna are processed by AI to provide personalized guidance.
+                <strong className="text-foreground">AI Processing:</strong> Your messages to Donna are processed by AI to provide personalized guidance.
               </p>
               <p>
-                <strong className="text-white">Your rights:</strong> You can request deletion of your data at any time by contacting us.
+                <strong className="text-foreground">Your rights:</strong> You can request deletion of your data at any time by contacting us.
               </p>
             </div>
             <div className="flex items-start gap-3 pt-2">
@@ -1016,9 +1020,9 @@ export default function FoundersFilter() {
                 id="privacy-consent"
                 checked={privacyAccepted}
                 onCheckedChange={(checked) => setPrivacyAccepted(checked === true)}
-                className="mt-1 border-slate-500 data-[state=checked]:bg-amber-500 data-[state=checked]:border-amber-500"
+                className="mt-1 border-border data-[state=checked]:bg-amber-500 data-[state=checked]:border-amber-500"
               />
-              <label htmlFor="privacy-consent" className="text-sm text-slate-300 cursor-pointer">
+              <label htmlFor="privacy-consent" className="text-sm cursor-pointer" style={{ color: "var(--text-secondary)" }}>
                 I understand and agree to the data usage described above. I consent to having my session data stored and processed to provide this service.
               </label>
             </div>

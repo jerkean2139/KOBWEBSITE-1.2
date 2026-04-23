@@ -88,7 +88,7 @@ export default function TopicHub() {
       />
 
       <Navigation />
-      <main id="main-content" className="min-h-screen bg-white" role="main">
+      <main id="main-content" className="min-h-screen bg-background" role="main">
         <section className={`relative pt-32 pb-20 bg-gradient-to-br ${pillarColors[pillar]} overflow-hidden`}>
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -130,11 +130,11 @@ export default function TopicHub() {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        <section className="py-16" style={{ backgroundColor: "var(--surface-elevated)" }}>
           <div className="container">
             <div className="flex flex-wrap gap-3 mb-12">
               <Link href="/blog">
-                <Badge variant="outline" className="px-4 py-2 cursor-pointer hover:bg-gray-100 transition-colors text-sm">
+                <Badge variant="outline" className="px-4 py-2 cursor-pointer hover:bg-white/5 transition-colors text-sm">
                   All Topics
                 </Badge>
               </Link>
@@ -142,7 +142,7 @@ export default function TopicHub() {
                 <Link key={p} href={`/blog/topic/${p}`}>
                   <Badge
                     variant={p === pillar ? "default" : "outline"}
-                    className={`px-4 py-2 cursor-pointer transition-colors text-sm ${p === pillar ? "bg-primary text-white" : "hover:bg-gray-100"}`}
+                    className={`px-4 py-2 cursor-pointer transition-colors text-sm ${p === pillar ? "bg-primary text-white" : "hover:bg-white/5"}`}
                   >
                     {pillarInfo[p].title}
                   </Badge>
@@ -153,7 +153,7 @@ export default function TopicHub() {
             {posts.length > 0 && (
               <AnimatedSection animation="slide-up" delay={0.1} className="mb-12">
                 <Link href={`/blog/${posts[0].slug}`}>
-                  <Card className="group cursor-pointer overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 bg-white">
+                  <Card className="group cursor-pointer overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 bg-card">
                     <div className="flex flex-col xl:flex-row">
                       <div className="relative aspect-video xl:aspect-auto xl:w-1/2 xl:min-h-[350px] overflow-hidden shrink-0">
                         <img
@@ -170,14 +170,14 @@ export default function TopicHub() {
                       <CardContent className="p-8 xl:p-10 flex flex-col justify-center xl:w-1/2">
                         <div className="flex items-center gap-3 mb-4">
                           <Badge variant="outline" className="text-xs">{posts[0].category}</Badge>
-                          <span className="text-sm text-gray-500 flex items-center gap-1.5">
+                          <span className="text-sm flex items-center gap-1.5" style={{ color: "var(--text-tertiary)" }}>
                             <Clock size={14} /> {posts[0].readTime} min read
                           </span>
                         </div>
-                        <h2 className="text-2xl xl:text-3xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors leading-tight">
+                        <h2 className="text-2xl xl:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors leading-tight">
                           {posts[0].title}
                         </h2>
-                        <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
+                        <p className="mb-6 leading-relaxed line-clamp-3" style={{ color: "var(--text-tertiary)" }}>
                           {posts[0].excerpt}
                         </p>
                         <div className="flex items-center justify-between">
@@ -188,8 +188,8 @@ export default function TopicHub() {
                               className="w-10 h-10 rounded-full object-cover"
                             />
                             <div>
-                              <p className="font-semibold text-gray-900 text-sm">{posts[0].author.name}</p>
-                              <p className="text-gray-500 text-xs flex items-center gap-1">
+                              <p className="font-semibold text-foreground text-sm">{posts[0].author.name}</p>
+                              <p className="text-xs flex items-center gap-1" style={{ color: "var(--text-tertiary)" }}>
                                 <Calendar size={12} />
                                 {new Date(posts[0].publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                               </p>
@@ -210,7 +210,7 @@ export default function TopicHub() {
               {posts.slice(1).map((post, index) => (
                 <AnimatedSection key={post.id} animation="slide-up" delay={0.15 + index * 0.05}>
                   <Link href={`/blog/${post.slug}`}>
-                    <Card className="group cursor-pointer h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 bg-white">
+                    <Card className="group cursor-pointer h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 bg-card">
                       <div className="relative aspect-video overflow-hidden">
                         <img
                           src={post.featuredImage}
@@ -222,19 +222,19 @@ export default function TopicHub() {
                       <CardContent className="p-6">
                         <div className="flex items-center gap-3 mb-3">
                           <Badge variant="outline" className="text-xs">{post.category}</Badge>
-                          <span className="text-xs text-gray-500 flex items-center gap-1">
+                          <span className="text-xs flex items-center gap-1" style={{ color: "var(--text-tertiary)" }}>
                             <Clock size={12} /> {post.readTime} min
                           </span>
                         </div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors leading-snug line-clamp-2">
+                        <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors leading-snug line-clamp-2">
                           {post.title}
                         </h3>
-                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-                        <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                        <p className="text-sm mb-4 line-clamp-2" style={{ color: "var(--text-tertiary)" }}>{post.excerpt}</p>
+                        <div className="flex items-center gap-3 pt-4 border-t border-border">
                           <img src={post.author.image} alt={post.author.name} className="w-8 h-8 rounded-full object-cover" />
                           <div className="flex-1">
-                            <p className="font-medium text-gray-900 text-sm">{post.author.name}</p>
-                            <p className="text-gray-500 text-xs">
+                            <p className="font-medium text-foreground text-sm">{post.author.name}</p>
+                            <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
                               {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                             </p>
                           </div>
@@ -248,9 +248,9 @@ export default function TopicHub() {
 
             {posts.length === 0 && (
               <div className="text-center py-20">
-                <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Coming Soon</h2>
-                <p className="text-gray-600 mb-6">We're working on more content for this topic. Check back soon!</p>
+                <BookOpen className="w-16 h-16 mx-auto mb-4" style={{ color: "var(--text-secondary)" }} />
+                <h2 className="text-2xl font-bold text-foreground mb-2">Coming Soon</h2>
+                <p className="mb-6" style={{ color: "var(--text-tertiary)" }}>We're working on more content for this topic. Check back soon!</p>
                 <Button asChild>
                   <Link href="/blog">Browse All Articles</Link>
                 </Button>
@@ -259,10 +259,10 @@ export default function TopicHub() {
           </div>
         </section>
 
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-background">
           <div className="container">
             <AnimatedSection animation="fade-in">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Explore More Topics</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-8">Explore More Topics</h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {otherPillars.map(p => {
                   const pInfo = pillarInfo[p];
@@ -278,10 +278,10 @@ export default function TopicHub() {
                             </div>
                             <Badge variant="secondary" className="text-xs">{pPosts.length} articles</Badge>
                           </div>
-                          <h3 className="font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                          <h3 className="font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                             {pInfo.title}
                           </h3>
-                          <p className="text-gray-600 text-sm line-clamp-2">{pInfo.description}</p>
+                          <p className="text-sm line-clamp-2" style={{ color: "var(--text-tertiary)" }}>{pInfo.description}</p>
                         </CardContent>
                       </Card>
                     </Link>
@@ -292,14 +292,14 @@ export default function TopicHub() {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        <section className="py-16" style={{ backgroundColor: "var(--surface-elevated)" }}>
           <div className="container">
             <AnimatedSection animation="fade-in">
-              <div className="max-w-2xl mx-auto text-center p-8 bg-gradient-to-br from-primary/5 to-blue-500/5 rounded-2xl border border-primary/10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <div className="max-w-2xl mx-auto text-center p-8 bg-gradient-to-br from-primary/5 to-primary/5 rounded-2xl border border-primary/10">
+                <h3 className="text-2xl font-bold text-foreground mb-3">
                   Ready to Transform Your Business?
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="mb-6" style={{ color: "var(--text-tertiary)" }}>
                   Get personalized guidance on {info.title.toLowerCase()} from Jeremy Kean with 35+ years of hands-on experience.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -319,17 +319,17 @@ export default function TopicHub() {
           </div>
         </section>
 
-        <footer className="py-8 bg-gray-900 text-white">
+        <footer className="py-8 bg-background text-foreground">
           <div className="container">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
+              <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
                 &copy; {new Date().getFullYear()} KeanOnBiz. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</Link>
-                <a href="https://manumation.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">Manumation</a>
-                <a href="https://zenoflo.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">Zenoflo</a>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors text-sm">Home</Link>
+                <Link href="/blog" className="transition-colors text-sm" style={{ color: "var(--text-secondary)" }}>Blog</Link>
+                <a href="https://manumation.ai" target="_blank" rel="noopener noreferrer" className="transition-colors text-sm" style={{ color: "var(--text-secondary)" }}>Manumation</a>
+                <a href="https://zenoflo.com" target="_blank" rel="noopener noreferrer" className="transition-colors text-sm" style={{ color: "var(--text-secondary)" }}>Zenoflo</a>
+                <Link href="/" className="transition-colors text-sm" style={{ color: "var(--text-secondary)" }}>Home</Link>
               </div>
             </div>
           </div>

@@ -296,7 +296,7 @@ export default function Book() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="text-lg px-8 py-6 text-foreground border-2 border-gray-300 bg-white"
+                    className="text-lg px-8 py-6 text-foreground border-2 border-border bg-card"
                     style={{
                       boxShadow: "0 4px 0 rgba(0, 0, 0, 0.1)"
                     }}
