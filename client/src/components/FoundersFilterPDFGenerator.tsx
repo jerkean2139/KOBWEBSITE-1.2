@@ -56,40 +56,38 @@ export function generateFoundersFilterPDF(): void {
   doc.setFillColor(...BRAND.amber);
   doc.rect(0, 0, pageWidth, 3, 'F');
 
+  // ── Title block — compact, top-third of page ──
   doc.setTextColor(...BRAND.amber);
-  doc.setFontSize(11);
+  doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
-  doc.text('KEANONBIZ', pageWidth / 2, 40, { align: 'center' });
+  doc.text('KEANONBIZ', pageWidth / 2, 28, { align: 'center' });
 
   doc.setTextColor(...BRAND.foreground);
-  doc.setFontSize(36);
+  doc.setFontSize(32);
   doc.setFont('helvetica', 'bold');
-  doc.text("The Founder's", pageWidth / 2, 70, { align: 'center' });
-  doc.text('Filter', pageWidth / 2, 85, { align: 'center' });
+  doc.text("The Founder's Filter", pageWidth / 2, 48, { align: 'center' });
 
-  doc.setFontSize(14);
+  doc.setFontSize(13);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...BRAND.textSecondary);
-  doc.text('Your Task Delegation Workbook', pageWidth / 2, 100, { align: 'center' });
+  doc.text('Your Task Delegation Workbook', pageWidth / 2, 60, { align: 'center' });
 
-  // Amber divider
   doc.setFillColor(...BRAND.amber);
-  doc.rect(pageWidth / 2 - 20, 110, 40, 1, 'F');
+  doc.rect(pageWidth / 2 - 15, 67, 30, 0.8, 'F');
 
   doc.setTextColor(...BRAND.textTertiary);
-  doc.setFontSize(10);
-  doc.text('by Jeremy Kean', pageWidth / 2, 122, { align: 'center' });
-  doc.text('keanonbiz.com', pageWidth / 2, 130, { align: 'center' });
+  doc.setFontSize(9);
+  doc.text('by Jeremy Kean  |  keanonbiz.com', pageWidth / 2, 77, { align: 'center' });
 
-  // Explanation section
-  let yPos = 155;
+  // ── Explanation — starts earlier, more breathing room ──
+  let yPos = 95;
   doc.setTextColor(...BRAND.foreground);
-  doc.setFontSize(16);
+  doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
   doc.text("What Is The Founder's Filter?", margin, yPos);
 
-  yPos += 10;
-  doc.setFontSize(10);
+  yPos += 9;
+  doc.setFontSize(9.5);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...BRAND.textSecondary);
 
@@ -104,15 +102,16 @@ export function generateFoundersFilterPDF(): void {
     "What passes through the filter stays. Everything else flows down to the",
     'people and systems built to handle it.',
   ];
-  lines.forEach(line => { doc.text(line, margin, yPos); yPos += 5.5; });
+  lines.forEach(line => { doc.text(line, margin, yPos); yPos += 5.2; });
 
-  yPos += 10;
+  // ── Three Buckets — generous spacing ──
+  yPos += 12;
   doc.setTextColor(...BRAND.amber);
-  doc.setFontSize(13);
+  doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
   doc.text('The Three Buckets', margin, yPos);
 
-  yPos += 10;
+  yPos += 12;
   const buckets = [
     { title: '01  Only I Can Do This', desc: 'Strategic decisions, key relationships, vision-setting', color: BRAND.green },
     { title: '02  Delegate Soon', desc: 'Important but trainable — someone else could learn this', color: BRAND.yellow },
@@ -120,14 +119,14 @@ export function generateFoundersFilterPDF(): void {
   ];
   buckets.forEach(b => {
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
+    doc.setFontSize(11);
     doc.setTextColor(...b.color);
     doc.text(b.title, margin, yPos);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...BRAND.textSecondary);
     doc.setFontSize(9);
-    doc.text(b.desc, margin + 2, yPos + 5);
-    yPos += 15;
+    doc.text(b.desc, margin + 2, yPos + 6);
+    yPos += 18;
   });
 
   drawFooter(doc);
