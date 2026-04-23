@@ -305,174 +305,149 @@ export default function FoundersFilter() {
 
   const generatePersonalizedPDF = () => {
     const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'letter' });
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const margin = 20;
-    let y = 25;
+    const pw = doc.internal.pageSize.getWidth();
+    const ph = doc.internal.pageSize.getHeight();
+    const margin = 22;
 
-    doc.setFillColor(37, 99, 235);
-    doc.rect(0, 0, pageWidth, 50, 'F');
-    doc.setTextColor(255, 255, 255);
-    doc.setFontSize(24);
-    doc.setFont('helvetica', 'bold');
-    doc.text("Your Founder's Filter Action Plan", pageWidth / 2, 25, { align: 'center' });
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Generated ${new Date().toLocaleDateString()}`, pageWidth / 2, 38, { align: 'center' });
+    // Brand colors
+    const navy: [number, number, number] = [26, 32, 48];
+    const amber: [number, number, number] = [204, 163, 41];
+    const fg: [number, number, number] = [230, 232, 238];
+    const textSec: [number, number, number] = [160, 165, 180];
+    const textTer: [number, number, number] = [110, 118, 138];
+    const border: [number, number, number] = [58, 65, 85];
+    const surface: [number, number, number] = [38, 48, 68];
+    const red: [number, number, number] = [220, 60, 60];
+    const yellow: [number, number, number] = [220, 170, 30];
+    const green: [number, number, number] = [50, 180, 100];
 
-    y = 65;
-    doc.setTextColor(30, 41, 59);
+    const drawBg = () => { doc.setFillColor(...navy); doc.rect(0, 0, pw, ph, 'F'); };
+    const drawFoot = () => {
+      doc.setDrawColor(...border); doc.setLineWidth(0.3); doc.line(margin, ph - 18, pw - margin, ph - 18);
+      doc.setFontSize(8); doc.setTextColor(...textTer);
+      doc.text('KeanOnBiz.com', margin, ph - 12);
+      doc.text("Founder's Filter Action Plan", pw - margin, ph - 12, { align: 'right' });
+    };
+    const drawHeader = (title: string) => {
+      doc.setFillColor(...navy); doc.rect(0, 0, pw, 28, 'F');
+      doc.setFillColor(...amber); doc.rect(0, 28, pw, 1.5, 'F');
+      doc.setTextColor(...fg); doc.setFontSize(16); doc.setFont('helvetica', 'bold');
+      doc.text(title, pw / 2, 18, { align: 'center' });
+    };
+
+    // ── PAGE 1: TASK BREAKDOWN ──
+    drawBg();
+    doc.setFillColor(...amber); doc.rect(0, 0, pw, 3, 'F');
+
+    doc.setTextColor(...amber); doc.setFontSize(10); doc.setFont('helvetica', 'bold');
+    doc.text('KEANONBIZ', pw / 2, 25, { align: 'center' });
+
+    doc.setTextColor(...fg); doc.setFontSize(26); doc.setFont('helvetica', 'bold');
+    doc.text("Your Founder's Filter", pw / 2, 42, { align: 'center' });
+    doc.setFontSize(16);
+    doc.text('Action Plan', pw / 2, 52, { align: 'center' });
+
+    doc.setTextColor(...textTer); doc.setFontSize(10); doc.setFont('helvetica', 'normal');
+    doc.text(`Generated ${new Date().toLocaleDateString()}`, pw / 2, 62, { align: 'center' });
+
+    doc.setFillColor(...amber); doc.rect(pw / 2 - 15, 68, 30, 0.8, 'F');
+
+    let y = 82;
 
     const priorityTasks = delegateNow.filter(t => t.isPriority);
     if (priorityTasks.length > 0) {
-      doc.setFontSize(16);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(220, 38, 38);
-      doc.text('PRIORITY: Delegate NOW', margin, y);
-      y += 8;
-      doc.setFontSize(11);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(30, 41, 59);
+      doc.setFontSize(13); doc.setFont('helvetica', 'bold'); doc.setTextColor(...red);
+      doc.text('PRIORITY: Delegate NOW', margin, y); y += 8;
+      doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...fg);
       priorityTasks.forEach(task => {
-        const lines = doc.splitTextToSize(`• ${task.text}${task.operationsFlag ? ' [Ops Change Needed]' : ''}`, pageWidth - margin * 2);
-        doc.text(lines, margin, y);
-        y += lines.length * 5 + 2;
+        const lines = doc.splitTextToSize(`•  ${task.text}${task.operationsFlag ? '  [Ops Change Needed]' : ''}`, pw - margin * 2);
+        doc.text(lines, margin, y); y += lines.length * 5 + 2;
       });
-      y += 8;
+      y += 6;
     }
 
     if (delegateNow.length > 0) {
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(217, 119, 6);
-      doc.text(`Delegate NOW (${delegateNow.length} tasks)`, margin, y);
-      y += 7;
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(30, 41, 59);
+      if (y > 230) { doc.addPage(); drawBg(); y = 35; }
+      doc.setFontSize(12); doc.setFont('helvetica', 'bold'); doc.setTextColor(...yellow);
+      doc.text(`Delegate NOW  (${delegateNow.length})`, margin, y); y += 7;
+      doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...textSec);
       delegateNow.forEach(task => {
-        if (y > 250) { doc.addPage(); y = 25; }
-        const lines = doc.splitTextToSize(`• ${task.text}`, pageWidth - margin * 2);
-        doc.text(lines, margin, y);
-        y += lines.length * 4.5 + 2;
+        if (y > 250) { doc.addPage(); drawBg(); y = 25; }
+        const lines = doc.splitTextToSize(`•  ${task.text}`, pw - margin * 2);
+        doc.text(lines, margin, y); y += lines.length * 4.5 + 2;
       });
-      y += 8;
+      y += 6;
     }
 
     if (delegateSoon.length > 0) {
-      if (y > 230) { doc.addPage(); y = 25; }
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(37, 99, 235);
-      doc.text(`Delegate Soon (${delegateSoon.length} tasks)`, margin, y);
-      y += 7;
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(30, 41, 59);
+      if (y > 220) { doc.addPage(); drawBg(); y = 35; }
+      doc.setFontSize(12); doc.setFont('helvetica', 'bold'); doc.setTextColor(...amber);
+      doc.text(`Delegate Soon  (${delegateSoon.length})`, margin, y); y += 7;
+      doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...textSec);
       delegateSoon.forEach(task => {
-        if (y > 250) { doc.addPage(); y = 25; }
-        const lines = doc.splitTextToSize(`• ${task.text}`, pageWidth - margin * 2);
-        doc.text(lines, margin, y);
-        y += lines.length * 4.5 + 2;
+        if (y > 250) { doc.addPage(); drawBg(); y = 25; }
+        const lines = doc.splitTextToSize(`•  ${task.text}`, pw - margin * 2);
+        doc.text(lines, margin, y); y += lines.length * 4.5 + 2;
       });
-      y += 8;
+      y += 6;
     }
 
     if (onlyICan.length > 0) {
-      if (y > 230) { doc.addPage(); y = 25; }
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(100, 116, 139);
-      doc.text(`Only I Can Do (${onlyICan.length} tasks)`, margin, y);
-      y += 7;
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(30, 41, 59);
+      if (y > 220) { doc.addPage(); drawBg(); y = 35; }
+      doc.setFontSize(12); doc.setFont('helvetica', 'bold'); doc.setTextColor(...green);
+      doc.text(`Only I Can Do  (${onlyICan.length})`, margin, y); y += 7;
+      doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...textSec);
       onlyICan.forEach(task => {
-        if (y > 250) { doc.addPage(); y = 25; }
-        const lines = doc.splitTextToSize(`• ${task.text}`, pageWidth - margin * 2);
-        doc.text(lines, margin, y);
-        y += lines.length * 4.5 + 2;
+        if (y > 250) { doc.addPage(); drawBg(); y = 25; }
+        const lines = doc.splitTextToSize(`•  ${task.text}`, pw - margin * 2);
+        doc.text(lines, margin, y); y += lines.length * 4.5 + 2;
+      });
+    }
+    drawFoot();
+
+    // ── PAGE 2: IMPLEMENTATION PLAN ──
+    doc.addPage(); drawBg();
+    drawHeader("Donna's Strategy & Implementation Plan");
+
+    y = 42;
+    const sections = [
+      { title: 'Week 1: Quick Wins', text: delegateNow.length > 0
+        ? `Focus on delegating "${delegateNow[0]?.text || 'your first task'}". Create a simple checklist or record a 5-minute Loom video showing exactly how you do it. Hand it off by Friday.`
+        : 'Review your task list and identify the single easiest task to delegate first.' },
+      { title: 'Week 2-4: Build Momentum', text: `Delegate ${Math.min(delegateNow.length, 3)} more tasks from your "Delegate NOW" list. For each: (1) Document the process, (2) Train the person, (3) Let them do it while you observe, (4) Step away completely.` },
+      { title: 'Month 2: Systems & Structure', text: `Move to your "Delegate Soon" list (${delegateSoon.length} tasks). These may need more documentation or training. Use SOPs, video tutorials, or checklists to make handoffs smoother.` },
+      { title: 'Ongoing: Protect Your Time', text: `Your "${onlyICan.length} Only I Can Do" tasks are your zone of genius. Block dedicated time for these high-value activities. Everything else should flow to your team or systems.` },
+    ];
+
+    sections.forEach(s => {
+      doc.setTextColor(...amber); doc.setFontSize(12); doc.setFont('helvetica', 'bold');
+      doc.text(s.title, margin, y); y += 7;
+      doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...textSec);
+      const lines = doc.splitTextToSize(s.text, pw - margin * 2);
+      doc.text(lines, margin, y); y += lines.length * 5 + 10;
+    });
+
+    const opsTasks = delegateNow.filter(t => t.operationsFlag);
+    if (opsTasks.length > 0) {
+      doc.setTextColor(...yellow); doc.setFontSize(12); doc.setFont('helvetica', 'bold');
+      doc.text('Operations Changes Needed:', margin, y); y += 7;
+      doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...textSec);
+      opsTasks.forEach(task => {
+        const lines = doc.splitTextToSize(`•  ${task.text} — Consider what systems, tools, or people you need to make this delegation work.`, pw - margin * 2);
+        doc.text(lines, margin, y); y += lines.length * 5 + 2;
       });
     }
 
-    doc.addPage();
-    y = 25;
-    
-    doc.setFillColor(245, 158, 11);
-    doc.rect(0, 0, pageWidth, 40, 'F');
-    doc.setTextColor(30, 41, 59);
-    doc.setFontSize(20);
-    doc.setFont('helvetica', 'bold');
-    doc.text("Donna's Strategy & Implementation Plan", pageWidth / 2, 25, { align: 'center' });
+    // CTA box
+    y = Math.max(y + 15, 220);
+    doc.setFillColor(...surface);
+    doc.roundedRect(margin, y, pw - margin * 2, 28, 3, 3, 'F');
+    doc.setTextColor(...amber); doc.setFontSize(11); doc.setFont('helvetica', 'bold');
+    doc.text('Ready for the Next Step?', margin + 8, y + 10);
+    doc.setTextColor(...textSec); doc.setFontSize(9); doc.setFont('helvetica', 'normal');
+    doc.text('Take the free Mini Audit at keanonbiz.com/assessment', margin + 8, y + 19);
 
-    y = 55;
-    doc.setTextColor(30, 41, 59);
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Week 1: Quick Wins', margin, y);
-    y += 7;
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
-    const week1Text = delegateNow.length > 0 
-      ? `Focus on delegating "${delegateNow[0]?.text || 'your first task'}". Create a simple checklist or record a 5-minute Loom video showing exactly how you do it. Hand it off by Friday.`
-      : 'Review your task list and identify the single easiest task to delegate first.';
-    const week1Lines = doc.splitTextToSize(week1Text, pageWidth - margin * 2);
-    doc.text(week1Lines, margin, y);
-    y += week1Lines.length * 5 + 10;
-
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Week 2-4: Build Momentum', margin, y);
-    y += 7;
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
-    const week2Text = `Delegate ${Math.min(delegateNow.length, 3)} more tasks from your "Delegate NOW" list. For each task: (1) Document the process, (2) Train the person, (3) Let them do it while you observe, (4) Step away completely.`;
-    const week2Lines = doc.splitTextToSize(week2Text, pageWidth - margin * 2);
-    doc.text(week2Lines, margin, y);
-    y += week2Lines.length * 5 + 10;
-
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Month 2: Systems & Structure', margin, y);
-    y += 7;
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
-    const month2Text = `Move to your "Delegate Soon" list (${delegateSoon.length} tasks). These may need more documentation or training. Consider using SOPs, video tutorials, or checklists to make handoffs smoother.`;
-    const month2Lines = doc.splitTextToSize(month2Text, pageWidth - margin * 2);
-    doc.text(month2Lines, margin, y);
-    y += month2Lines.length * 5 + 10;
-
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Ongoing: Protect Your Time', margin, y);
-    y += 7;
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
-    const ongoingText = `Your "${onlyICan.length} Only I Can Do" tasks are your zone of genius. Block dedicated time for these high-value activities. Everything else should flow to your team or systems.`;
-    const ongoingLines = doc.splitTextToSize(ongoingText, pageWidth - margin * 2);
-    doc.text(ongoingLines, margin, y);
-    y += ongoingLines.length * 5 + 15;
-
-    if (delegateNow.filter(t => t.operationsFlag).length > 0) {
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(217, 119, 6);
-      doc.text('Operations Changes Needed:', margin, y);
-      y += 7;
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(30, 41, 59);
-      delegateNow.filter(t => t.operationsFlag).forEach(task => {
-        const lines = doc.splitTextToSize(`• ${task.text} - Consider what systems, tools, or people you need to make this delegation work.`, pageWidth - margin * 2);
-        doc.text(lines, margin, y);
-        y += lines.length * 5 + 2;
-      });
-    }
-
-    doc.setFontSize(9);
-    doc.setTextColor(100, 116, 139);
-    doc.text("KeanOnBiz.com | The Founder's Filter", pageWidth / 2, 270, { align: 'center' });
-
+    drawFoot();
     doc.save('founders-filter-action-plan.pdf');
     toast.success('Your action plan has been downloaded!');
   };
