@@ -21,8 +21,57 @@ class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
+  componentDidCatch(error: Error) {
+    // Auto-reload on stale chunk imports (happens after deploys)
+    const isChunkError =
+      error.message.includes("Failed to fetch dynamically imported module") ||
+      error.message.includes("Loading chunk") ||
+      error.message.includes("Loading CSS chunk");
+
+    if (isChunkError) {
+      const reloadKey = "kob_chunk_reload";
+      const lastReload = sessionStorage.getItem(reloadKey);
+      // Only auto-reload once per session to avoid infinite loops
+      if (!lastReload) {
+        sessionStorage.setItem(reloadKey, Date.now().toString());
+        window.location.reload();
+        return;
+      }
+    }
+  }
+
   render() {
     if (this.state.hasError) {
+      // Check if it's a chunk loading error — show simpler message
+      const isChunkError = this.state.error?.message.includes("dynamically imported module") ||
+        this.state.error?.message.includes("Loading chunk");
+
+      if (isChunkError) {
+        return (
+          <div className="flex items-center justify-center min-h-screen p-8 bg-background">
+            <div className="flex flex-col items-center text-center max-w-md">
+              <h2 className="text-xl font-bold mb-3 text-foreground">Page Updated</h2>
+              <p className="text-muted-foreground mb-6">
+                A new version of the site was deployed. Please reload to get the latest.
+              </p>
+              <button
+                onClick={() => {
+                  sessionStorage.removeItem("kob_chunk_reload");
+                  window.location.reload();
+                }}
+                className={cn(
+                  "flex items-center gap-2 px-6 py-3 rounded-lg",
+                  "bg-primary text-primary-foreground font-semibold",
+                  "hover:opacity-90 cursor-pointer"
+                )}
+              >
+                <RotateCcw size={16} />
+                Reload Page
+              </button>
+            </div>
+          </div>
+        );
+      }
       return (
         <div className="flex items-center justify-center min-h-screen p-8 bg-background">
           <div className="flex flex-col items-center w-full max-w-2xl p-8">
